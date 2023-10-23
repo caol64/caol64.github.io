@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>PS2纹理图片编码算法A1B5G5R5 | 路边的阿不</title>
+<meta name="keywords" content="">
+<meta name="description" content="在上一篇文章里我们介绍了PS2使用的图片压缩算法RLE，这次我们再来研究一下它的纹理贴图编码算法——A1B5G5R5。 对于纹理来说，常用的图">
+<meta name="author" content="">
+<link rel="canonical" href="https://caol64.github.io/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5cfc680b1eeaeef9efbced92d46c2a9e876b72ee14fba85846afc4cff9e6e6f8.css" integrity="sha256-XPxoCx7q7vnvvO2S1Gwqnodrcu4U&#43;6hYRq/Ez/nm5vg=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://caol64.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://caol64.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://caol64.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://caol64.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://caol64.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="PS2纹理图片编码算法A1B5G5R5" />
+<meta property="og:description" content="在上一篇文章里我们介绍了PS2使用的图片压缩算法RLE，这次我们再来研究一下它的纹理贴图编码算法——A1B5G5R5。 对于纹理来说，常用的图" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://caol64.github.io/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-20T14:48:52+08:00" />
+<meta property="article:modified_time" content="2023-10-20T14:48:52+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PS2纹理图片编码算法A1B5G5R5"/>
+<meta name="twitter:description" content="在上一篇文章里我们介绍了PS2使用的图片压缩算法RLE，这次我们再来研究一下它的纹理贴图编码算法——A1B5G5R5。 对于纹理来说，常用的图"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://caol64.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "PS2纹理图片编码算法A1B5G5R5",
+      "item": "https://caol64.github.io/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "PS2纹理图片编码算法A1B5G5R5",
+  "name": "PS2纹理图片编码算法A1B5G5R5",
+  "description": "在上一篇文章里我们介绍了PS2使用的图片压缩算法RLE，这次我们再来研究一下它的纹理贴图编码算法——A1B5G5R5。 对于纹理来说，常用的图",
+  "keywords": [
+    
+  ],
+  "articleBody": "在上一篇文章里我们介绍了PS2使用的图片压缩算法RLE，这次我们再来研究一下它的纹理贴图编码算法——A1B5G5R5。\n对于纹理来说，常用的图片编码格式如jpg或png都不适合。因为图片是由GPU读取并进行渲染的，你总不能送过去一张jpg图片，让GPU要读取其中一个像素的时候，先把整个图片解码吧？因此最理想的图片格式是未经压缩的位图格式，可以根据像素点坐标直接获取RGB数据。今天要介绍的A1B5G5R5正是这种编码格式之一。\n标准的32位位图，每个像素占用4字节数据，分别为RGBA四个通道。拿上面这两个纹理图片来说，它们的像素数量都为128x128，因此图片大小为128x128x4字节。\n上图为32位RGBA每像素数据结构。\n对于A1B5G5R5编码来说，每个像素占用2字节数据，其中alpha通道占用1位，其它3种颜色各占5位。\n上图为A1B5G5R5每像素数据结构。\n将A1B5G5R5解码为32位RGBA可以用下图的方法进行。\n伪代码如下：\nwhile tex_offset \u003c len(self.texture): b = tex_struct.unpack_from(self.texture, tex_offset)[0] out[rgb_tex_offset] = (b \u0026 0x1F) \u003c\u003c 3 # R out[rgb_tex_offset + 1] = ((b \u003e\u003e 5) \u0026 0x1F) \u003c\u003c 3 # G out[rgb_tex_offset + 2] = ((b \u003e\u003e 10) \u0026 0x1F) \u003c\u003c 3 # B rgb_tex_offset += 3 tex_offset += tex_struct.size 很明显可以看到，将32位的RGBA图片编码成16位的A1B5G5R5，会丢失每种色彩的最后3个bit数据，是一种有损编码格式，但带来的好处是压缩比2:1，图片缩小了一半。再配合上一篇讲到的RLE编码，可以进一步缩小图片大小。\n最后放上上面两个纹理图片渲染后的效果，有小伙伴还记得这两个游戏吗？\n本篇文章使用的代码和图片摘自我的一个github项目：ps2mc-browser，欢迎同好一起完善这个项目。\n",
+  "wordCount" : "668",
+  "inLanguage": "en",
+  "datePublished": "2023-10-20T14:48:52+08:00",
+  "dateModified": "2023-10-20T14:48:52+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://caol64.github.io/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "路边的阿不",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://caol64.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://caol64.github.io/" accesskey="h" title="路边的阿不 (Alt + H)">路边的阿不</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://caol64.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://caol64.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://example.org" title="example.org">
+                    <span>example.org</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      PS2纹理图片编码算法A1B5G5R5
+    </h1>
+    <div class="post-meta"><span title='2023-10-20 14:48:52 +0800 CST'>October 20, 2023</span>&nbsp;·&nbsp;2 min
+
+</div>
+  </header> 
+  <div class="post-content"><p>在<a href="">上一篇文章</a>里我们介绍了<code>PS2</code>使用的图片压缩算法<code>RLE</code>，这次我们再来研究一下它的纹理贴图编码算法——<code>A1B5G5R5</code>。</p>
+<p>对于纹理来说，常用的图片编码格式如<code>jpg</code>或<code>png</code>都不适合。因为图片是由<code>GPU</code>读取并进行渲染的，你总不能送过去一张<code>jpg</code>图片，让<code>GPU</code>要读取其中一个像素的时候，先把整个图片解码吧？因此最理想的图片格式是未经压缩的位图格式，可以根据像素点坐标直接获取<code>RGB</code>数据。今天要介绍的<code>A1B5G5R5</code>正是这种编码格式之一。</p>
+<p><img loading="lazy" src="images/3.jpg" alt=""  />
+</p>
+<p>标准的<code>32位</code>位图，每个像素占用<code>4字节</code>数据，分别为<code>RGBA</code>四个通道。拿上面这两个纹理图片来说，它们的像素数量都为<code>128x128</code>，因此图片大小为<code>128x128x4</code>字节。</p>
+<p><img loading="lazy" src="images/RGBA.jpg" alt=""  />
+</p>
+<p>上图为<code>32位RGBA</code>每像素数据结构。</p>
+<p>对于<code>A1B5G5R5</code>编码来说，每个像素占用<code>2字节</code>数据，其中<code>alpha通道</code>占用<code>1位</code>，其它3种颜色各占<code>5位</code>。</p>
+<p><img loading="lazy" src="images/A1B5G5R5.jpg" alt=""  />
+</p>
+<p>上图为<code>A1B5G5R5</code>每像素数据结构。</p>
+<p>将<code>A1B5G5R5</code>解码为<code>32位RGBA</code>可以用下图的方法进行。</p>
+<p><img loading="lazy" src="images/decode.jpg" alt=""  />
+</p>
+<p>伪代码如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> tex_offset <span style="color:#f92672">&lt;</span> len(self<span style="color:#f92672">.</span>texture):
+</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">=</span> tex_struct<span style="color:#f92672">.</span>unpack_from(self<span style="color:#f92672">.</span>texture, tex_offset)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    out[rgb_tex_offset] <span style="color:#f92672">=</span> (b <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x1F</span>) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">3</span> <span style="color:#75715e"># R</span>
+</span></span><span style="display:flex;"><span>    out[rgb_tex_offset <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> ((b <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">5</span>) <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x1F</span>) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">3</span> <span style="color:#75715e"># G</span>
+</span></span><span style="display:flex;"><span>    out[rgb_tex_offset <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> ((b <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x1F</span>) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">3</span> <span style="color:#75715e"># B</span>
+</span></span><span style="display:flex;"><span>    rgb_tex_offset <span style="color:#f92672">+=</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>    tex_offset <span style="color:#f92672">+=</span> tex_struct<span style="color:#f92672">.</span>size
+</span></span></code></pre></div><p>很明显可以看到，将<code>32位</code>的<code>RGBA</code>图片编码成<code>16位</code>的<code>A1B5G5R5</code>，会丢失每种色彩的最后3个<code>bit</code>数据，是一种有损编码格式，但带来的好处是压缩比2:1，图片缩小了一半。再配合上一篇讲到的<code>RLE</code>编码，可以进一步缩小图片大小。</p>
+<p>最后放上上面两个纹理图片渲染后的效果，有小伙伴还记得这两个游戏吗？</p>
+<p><img loading="lazy" src="images/4.jpg" alt=""  />
+</p>
+<p>本篇文章使用的代码和图片摘自我的一个<code>github</code>项目：<a href="https://github.com/caol64/ps2mc-browser">ps2mc-browser</a>，欢迎同好一起完善这个项目。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://caol64.github.io/">路边的阿不</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

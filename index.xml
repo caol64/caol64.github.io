@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>路边的阿不</title>
+    <link>https://caol64.github.io/</link>
+    <description>Recent content on 路边的阿不</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 23 Oct 2023 05:24:45 +0000</lastBuildDate><atom:link href="https://caol64.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello World</title>
+      <link>https://caol64.github.io/posts/hello-world/</link>
+      <pubDate>Mon, 23 Oct 2023 05:24:45 +0000</pubDate>
+      
+      <guid>https://caol64.github.io/posts/hello-world/</guid>
+      <description>spf13-vim is a cross platform distribution of vim plugins and resources for Vim.</description>
+    </item>
+    
+    <item>
+      <title>PS2纹理图片编码算法A1B5G5R5</title>
+      <link>https://caol64.github.io/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</link>
+      <pubDate>Fri, 20 Oct 2023 14:48:52 +0800</pubDate>
+      
+      <guid>https://caol64.github.io/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</guid>
+      <description>在上一篇文章里我们介绍了PS2使用的图片压缩算法RLE，这次我们再来研究一下它的纹理贴图编码算法——A1B5G5R5。 对于纹理来说，常用的图</description>
+    </item>
+    
+  </channel>
+</rss>
