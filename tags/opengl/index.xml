@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>OpenGL on 路边的阿不</title>
+    <link>https://babyno.top/tags/opengl/</link>
+    <description>Recent content in OpenGL on 路边的阿不</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 09 Oct 2023 17:34:15 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/opengl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用Python和OpenGL渲染PS2存档3D图标</title>
+      <link>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</link>
+      <pubDate>Mon, 09 Oct 2023 17:34:15 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</guid>
+      <description>经过前面一系列文章的铺垫，PS2存档3D图标的文件已经全部解析完毕。本篇开始将介绍使用如下工具将3D图标渲染出来，并尽可能接近PS2主机原生</description>
+    </item>
+    
+    <item>
+      <title>解析PS2游戏存档3D图标</title>
+      <link>https://babyno.top/posts/2023/10/parsing-ps2-3d-icon/</link>
+      <pubDate>Wed, 04 Oct 2023 18:00:34 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/10/parsing-ps2-3d-icon/</guid>
+      <description>看到这个图片，对于熟悉PS2的老玩家来说应该不会陌生。它是PS2记忆卡管理界面中的游戏存档3D图标。本篇文章我们将介绍如何从存档文件里解析出</description>
+    </item>
+    
+  </channel>
+</rss>

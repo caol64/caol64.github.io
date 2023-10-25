@@ -2,20 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://caol64.github.io/posts/hello-world/</loc>
-    <lastmod>2023-10-23T05:24:45+00:00</lastmod>
+    <loc>https://babyno.top/categories/</loc>
+    <lastmod>2023-10-20T14:48:31+00:00</lastmod>
   </url><url>
-    <loc>https://caol64.github.io/posts/</loc>
-    <lastmod>2023-10-23T05:24:45+00:00</lastmod>
+    <loc>https://babyno.top/tags/playstation2/</loc>
+    <lastmod>2023-10-20T14:48:31+00:00</lastmod>
   </url><url>
-    <loc>https://caol64.github.io/</loc>
-    <lastmod>2023-10-23T05:24:45+00:00</lastmod>
+    <loc>https://babyno.top/posts/</loc>
+    <lastmod>2023-10-20T14:48:31+00:00</lastmod>
   </url><url>
-    <loc>https://caol64.github.io/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</loc>
-    <lastmod>2023-10-20T14:48:52+08:00</lastmod>
+    <loc>https://babyno.top/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</loc>
+    <lastmod>2023-10-20T14:48:31+00:00</lastmod>
   </url><url>
-    <loc>https://caol64.github.io/categories/</loc>
+    <loc>https://babyno.top/tags/python/</loc>
+    <lastmod>2023-10-20T14:48:31+00:00</lastmod>
   </url><url>
-    <loc>https://caol64.github.io/tags/</loc>
+    <loc>https://babyno.top/tags/</loc>
+    <lastmod>2023-10-20T14:48:31+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/categories/%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2023-10-20T14:48:31+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/</loc>
+    <lastmod>2023-10-20T14:48:31+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/posts/2023/10/rle-algorithm-in-ps2/</loc>
+    <lastmod>2023-10-16T12:30:58+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/tags/opengl/</loc>
+    <lastmod>2023-10-09T17:34:15+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</loc>
+    <lastmod>2023-10-09T17:34:15+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</loc>
+    <lastmod>2023-10-09T17:34:15+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/posts/2023/10/parsing-ps2-3d-icon/</loc>
+    <lastmod>2023-10-04T18:00:34+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/posts/2023/09/exporting-file-from-ps2-memcard/</loc>
+    <lastmod>2023-09-29T17:49:16+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/posts/2023/09/parsing-ps2-memcard-file-system/</loc>
+    <lastmod>2023-09-26T15:15:16+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/posts/2019/03/hello-world/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/archive/</loc>
+  </url><url>
+    <loc>https://babyno.top/search/</loc>
   </url>
 </urlset>

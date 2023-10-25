@@ -2,27 +2,72 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on 路边的阿不</title>
-    <link>https://caol64.github.io/posts/</link>
+    <link>https://babyno.top/posts/</link>
     <description>Recent content in Posts on 路边的阿不</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Oct 2023 05:24:45 +0000</lastBuildDate><atom:link href="https://caol64.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Oct 2023 14:48:31 +0000</lastBuildDate><atom:link href="https://babyno.top/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hello World</title>
-      <link>https://caol64.github.io/posts/hello-world/</link>
-      <pubDate>Mon, 23 Oct 2023 05:24:45 +0000</pubDate>
+      <title>PS2纹理图片编码算法A1B5G5R5</title>
+      <link>https://babyno.top/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</link>
+      <pubDate>Fri, 20 Oct 2023 14:48:31 +0000</pubDate>
       
-      <guid>https://caol64.github.io/posts/hello-world/</guid>
-      <description>spf13-vim is a cross platform distribution of vim plugins and resources for Vim.</description>
+      <guid>https://babyno.top/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</guid>
+      <description>在上一篇文章里我们介绍了PS2使用的图片压缩算法RLE，这次我们再来研究一下它的纹理贴图编码算法——A1B5G5R5。 对于纹理来说，常用的图</description>
     </item>
     
     <item>
-      <title>PS2纹理图片编码算法A1B5G5R5</title>
-      <link>https://caol64.github.io/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</link>
-      <pubDate>Fri, 20 Oct 2023 14:48:52 +0800</pubDate>
+      <title>RLE算法在PS2中的应用</title>
+      <link>https://babyno.top/posts/2023/10/rle-algorithm-in-ps2/</link>
+      <pubDate>Mon, 16 Oct 2023 12:30:58 +0000</pubDate>
       
-      <guid>https://caol64.github.io/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</guid>
-      <description>在上一篇文章里我们介绍了PS2使用的图片压缩算法RLE，这次我们再来研究一下它的纹理贴图编码算法——A1B5G5R5。 对于纹理来说，常用的图</description>
+      <guid>https://babyno.top/posts/2023/10/rle-algorithm-in-ps2/</guid>
+      <description>RLE算法介绍 RLE（Run Length Encoding，行程长度编码）算法，是把文件内容用“重复次数x数据”的形式来表示的压缩方法。比如：有AAAA</description>
+    </item>
+    
+    <item>
+      <title>使用Python和OpenGL渲染PS2存档3D图标</title>
+      <link>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</link>
+      <pubDate>Mon, 09 Oct 2023 17:34:15 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</guid>
+      <description>经过前面一系列文章的铺垫，PS2存档3D图标的文件已经全部解析完毕。本篇开始将介绍使用如下工具将3D图标渲染出来，并尽可能接近PS2主机原生</description>
+    </item>
+    
+    <item>
+      <title>解析PS2游戏存档3D图标</title>
+      <link>https://babyno.top/posts/2023/10/parsing-ps2-3d-icon/</link>
+      <pubDate>Wed, 04 Oct 2023 18:00:34 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/10/parsing-ps2-3d-icon/</guid>
+      <description>看到这个图片，对于熟悉PS2的老玩家来说应该不会陌生。它是PS2记忆卡管理界面中的游戏存档3D图标。本篇文章我们将介绍如何从存档文件里解析出</description>
+    </item>
+    
+    <item>
+      <title>从PS2记忆卡中导出存档文件</title>
+      <link>https://babyno.top/posts/2023/09/exporting-file-from-ps2-memcard/</link>
+      <pubDate>Fri, 29 Sep 2023 17:49:16 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/09/exporting-file-from-ps2-memcard/</guid>
+      <description>上一篇文章中我们解析了PS2存储卡的文件系统，这次直接实战，编写python代码导出指定的游戏存档。本篇文章完整代码可以访问：https:/</description>
+    </item>
+    
+    <item>
+      <title>解析PS2记忆卡文件系统</title>
+      <link>https://babyno.top/posts/2023/09/parsing-ps2-memcard-file-system/</link>
+      <pubDate>Tue, 26 Sep 2023 15:15:16 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/09/parsing-ps2-memcard-file-system/</guid>
+      <description>01 前言 作为一个80后的游戏老玩家，PS2游戏机在我心中一直有着特殊的地位。时至今日，已经过去了20多年，然而，最近我因为模拟器的缘故重新接触</description>
+    </item>
+    
+    <item>
+      <title>Hello World</title>
+      <link>https://babyno.top/posts/2019/03/hello-world/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2019/03/hello-world/</guid>
+      <description>这是一篇测试markdown语法支持度的用例。</description>
     </item>
     
   </channel>
