@@ -282,7 +282,7 @@
 <p>在<code>PS2</code>中，图片文件的前4个字节指示了压缩后文件的大小。接下来的数据按照<code>rle_code</code> + <code>数据块</code>的格式重复排列。需要注意的是，在<code>PS2</code>这里，<code>rle_code</code>和<code>数据块</code>中的每个数据，都是2字节，这点是与其它传统的<code>RLE</code>算法普遍为1字节最大的不同。</p>
 <p><code>rle_code</code>的最高位是标识位，如果这一位是<code>1</code>，则表示后面紧跟着的数据块是“非重复数据”，类似于上面的<code>ABCDE</code>。此时将<code>0x8000</code>减去<code>rle_code</code>的后7位，得到的是<code>数据块</code>的长度。此时只需取出后面紧跟的该长度的<code>数据块</code>即可。</p>
 <p>如果标识位为<code>0</code>，则表示后面紧跟着的数据块是“重复数据”，类似于<code>AAAAA</code>，此时<code>rle_code</code>就是重复次数，只要取出后面紧跟着的一个<code>数据块</code>，重复<code>rle_code</code>次即可。</p>
-<p><img loading="lazy" src="/imgs/posts/2023-10-16-rle-algorithm-in-ps2/1.gif" alt=""  />
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/caol64/caol64.github.io/imgs/posts/2023-10-16-rle-algorithm-in-ps2/1.gif" alt=""  />
 </p>
 <p>伪代码如下：</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">

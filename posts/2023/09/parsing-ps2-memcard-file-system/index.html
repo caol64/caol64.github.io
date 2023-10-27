@@ -302,7 +302,7 @@
         return rect.top + win.pageYOffset;   
     }
 </script>
-  <div class="post-content"><p><img loading="lazy" src="/imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/Playstation_2_Memory_Card-3.jpg" alt=""  />
+  <div class="post-content"><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/caol64/caol64.github.io/imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/Playstation_2_Memory_Card-3.jpg" alt=""  />
 </p>
 <h2 id="01-前言">01 前言<a hidden class="anchor" aria-hidden="true" href="#01-前言">#</a></h2>
 <p>作为一个80后的游戏老玩家，PS2游戏机在我心中一直有着特殊的地位。时至今日，已经过去了20多年，然而，最近我因为模拟器的缘故重新接触到了它。在重温了一段时间游戏后，我突发奇想，能否通过现在的知识来回忆年少时的自己？于是，我开始了这一系列文章的创作，从分析PS2存储卡的文件系统开始，逐步深入的解析其文件存储机制及每个游戏的存档文件。我的目标是，最终通过Python和OpenGL，模拟出游戏存档中经典的3D人物旋转效果，以此来纪念这个曾经陪伴我度过青春时光的经典游戏机。</p>
@@ -342,15 +342,15 @@ PS2存储卡使用的内部芯片，一种非易失性存储设备。</li>
 <p><em><strong>注：这里用标准的8M存储卡举例。</strong></em></p>
 <h3 id="31-数据结构">3.1 数据结构<a hidden class="anchor" aria-hidden="true" href="#31-数据结构">#</a></h3>
 <p>从<code>超级块</code>中可得知<code>页</code>的大小是512字节，<code>簇</code>的大小是2个<code>页</code>。<code>spare area</code>可以根据公式<code>(page_len / 128) * 4</code>得到，是16字节，则文件系统基本数据结构如图：</p>
-<p><img loading="lazy" src="/imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/%E5%AD%98%E5%82%A8%E5%8D%A1-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.jpg" alt=""  />
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/caol64/caol64.github.io/imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/%E5%AD%98%E5%82%A8%E5%8D%A1-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.jpg" alt=""  />
 </p>
 <h3 id="32-逻辑结构">3.2 逻辑结构<a hidden class="anchor" aria-hidden="true" href="#32-逻辑结构">#</a></h3>
 <p>了解了最基本的数据结构，接下来我们划分一下存储卡的逻辑结构。如下图，一块存储卡大致能分为以下几个逻辑区块。（黑白部分本文不涉及，可以忽略。）注意：组成逻辑区块的最小单位是簇。</p>
-<p><img loading="lazy" src="/imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/%E5%AD%98%E5%82%A8%E5%8D%A1-%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.jpg" alt=""  />
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/caol64/caol64.github.io/imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/%E5%AD%98%E5%82%A8%E5%8D%A1-%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.jpg" alt=""  />
 </p>
 <h4 id="超级块">超级块<a hidden class="anchor" aria-hidden="true" href="#超级块">#</a></h4>
 <p>位于整个文件开头（也就是第一个簇）的前<strong>340</strong>个字节，这是文件系统中唯一具有固定位置的部分。下图示意了一个存储卡文件的超级块。</p>
-<p><img loading="lazy" src="/imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/image.png" alt=""  />
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/caol64/caol64.github.io/imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/image.png" alt=""  />
 </p>
 <p><em><strong>注：PS2存储卡的字节序是小端序Little-endian。</strong></em></p>
 <table>
@@ -489,12 +489,12 @@ PS2存储卡使用的内部芯片，一种非易失性存储设备。</li>
 <li>线程y去FAT查找13的下一个簇是7</li>
 <li>不断循环</li>
 </ul>
-<p><img loading="lazy" src="/imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/file-allocation-table-fat1-l.jpg" alt=""  />
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/caol64/caol64.github.io/imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/file-allocation-table-fat1-l.jpg" alt=""  />
 </p>
 <p>图片来源：https://www.slideserve.com/yahto/file-system-implementation</p>
 <h4 id="直接fat">直接FAT<a hidden class="anchor" aria-hidden="true" href="#直接fat">#</a></h4>
 <p>由前文可以得知，直接FAT和间接FAT都是保存在簇里的。簇里的数据必须有一个良好的结构，才能使我们简单的解析成FAT链表。FAT在簇里的结构可以想象成长这样：</p>
-<p><img loading="lazy" src="/imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/%E5%AD%98%E5%82%A8%E5%8D%A1-FAT1.jpg" alt=""  />
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/caol64/caol64.github.io/imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/%E5%AD%98%E5%82%A8%E5%8D%A1-FAT1.jpg" alt=""  />
 </p>
 <p>这是一个矩阵M，行定义为FAT所在的簇，列定义为每个FAT簇里的数据。每个FAT簇，保存的都是4字节32位的整形数组，数量为<code>1024 / 4 = 256</code>个，因此矩阵有256列。FAT一共有多少个簇呢？这点可以在间接FAT的簇中解析出来，我们之后再讲。在这里FAT一共占据了32个簇，因此矩阵有32行。</p>
 <p>M矩阵的大小为<code>32 * 256 = 8192</code>，意味着这个FAT可以管理8192个簇。假设现在要找簇<code>n</code>在矩阵中的位置<code>row</code>和<code>column</code>，可以根据简单的计算得出：</p>
@@ -513,7 +513,7 @@ PS2存储卡使用的内部芯片，一种非易失性存储设备。</li>
 <h4 id="间接fat">间接FAT<a hidden class="anchor" aria-hidden="true" href="#间接fat">#</a></h4>
 <p>前文留了一个问题，为什么FAT占有了32个簇？</p>
 <p>在超级块中有一个字段<code>ifc_list</code>，是一个4字节32位的整形数组，再想象一下上面出现的矩阵。<code>ifc_list</code>是一个只有一行的矩阵，虽然它有32个元素，但只有第一个有值，其值8即间接FAT簇<code>ifc</code>。将簇8的内容按照上文的方法解析出来，再形成一个矩阵，行是<code>ifc_list</code>的个数，理论上是32，但由于只有1个元素，因此这个矩阵的行也为1。矩阵的列依然是256。解析其中的值，可以得到FAT所在的簇为9到40，即32个。</p>
-<p><img loading="lazy" src="/imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/%E5%AD%98%E5%82%A8%E5%8D%A1-FAT.jpg" alt=""  />
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/caol64/caol64.github.io/imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/%E5%AD%98%E5%82%A8%E5%8D%A1-FAT.jpg" alt=""  />
 </p>
 <h4 id="可分配簇">可分配簇<a hidden class="anchor" aria-hidden="true" href="#可分配簇">#</a></h4>
 <p>是一个范围，从<code>alloc_offset</code>开始到<code>alloc_end</code>结束。除去超级块、FAT、保留簇等的位置，所有的游戏存档都位于可分配簇内。</p>
