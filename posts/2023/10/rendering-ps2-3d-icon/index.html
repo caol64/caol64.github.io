@@ -10,7 +10,7 @@
 <meta name="description" content="经过前面一系列文章的铺垫，PS2存档3D图标的文件已经全部解析完毕。本篇开始将介绍使用如下工具将3D图标渲染出来，并尽可能接近PS2主机原生">
 <meta name="author" content="路边的阿不">
 <link rel="canonical" href="https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.101b74140718394728c468e7e8d851a462ecd5f1438e04c9a97243d76a7deb8c.css" integrity="sha256-EBt0FAcYOUcoxGjn6NhRpGLs1fFDjgTJqXJD12p964w=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.eca5bd3966922e55f2a1975074788d9f2efdba20d45a21bc6f8c030170335058.css" integrity="sha256-7KW9OWaSLlXyoZdQdHiNny79uiDUWiG8b4wDAXAzUFg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://babyno.top/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://babyno.top/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://babyno.top/favicon-32x32.png">
@@ -316,9 +316,9 @@
 </ul>
 <h1 id="01-初始化pygame和moderngl">01 初始化<code>PyGame</code>和<code>ModernGL</code><a hidden class="anchor" aria-hidden="true" href="#01-初始化pygame和moderngl">#</a></h1>
 <p>第一步先初始化<code>PyGame</code>，设置窗口大小为<code>640x480</code>，<code>FPS</code>为<code>60</code>。开启<code>OpenGL</code>渲染模式，<code>OpenGL</code>的版本号设置为<code>3.3</code>。</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -329,37 +329,37 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> pygame <span style="color:#ff79c6">as</span> pg
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#111">pygame</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pg</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>pg<span style="color:#ff79c6">.</span>init()
-</span></span><span style="display:flex;"><span>pg<span style="color:#ff79c6">.</span>display<span style="color:#ff79c6">.</span>gl_set_attribute(pg<span style="color:#ff79c6">.</span>GL_CONTEXT_MAJOR_VERSION, <span style="color:#bd93f9">3</span>)
-</span></span><span style="display:flex;"><span>pg<span style="color:#ff79c6">.</span>display<span style="color:#ff79c6">.</span>gl_set_attribute(pg<span style="color:#ff79c6">.</span>GL_CONTEXT_MINOR_VERSION, <span style="color:#bd93f9">3</span>)
-</span></span><span style="display:flex;"><span>pg<span style="color:#ff79c6">.</span>display<span style="color:#ff79c6">.</span>gl_set_attribute(pg<span style="color:#ff79c6">.</span>GL_CONTEXT_PROFILE_MASK, pg<span style="color:#ff79c6">.</span>GL_CONTEXT_PROFILE_CORE)
-</span></span><span style="display:flex;"><span>pg<span style="color:#ff79c6">.</span>display<span style="color:#ff79c6">.</span>set_mode((<span style="color:#bd93f9">640</span>, <span style="color:#bd93f9">480</span>), flags<span style="color:#ff79c6">=</span>pg<span style="color:#ff79c6">.</span>OPENGL <span style="color:#ff79c6">|</span> pg<span style="color:#ff79c6">.</span>DOUBLEBUF)
-</span></span><span style="display:flex;"><span>self<span style="color:#ff79c6">.</span>clock <span style="color:#ff79c6">=</span> pg<span style="color:#ff79c6">.</span>time<span style="color:#ff79c6">.</span>Clock()
-</span></span><span style="display:flex;"><span>self<span style="color:#ff79c6">.</span>clock<span style="color:#ff79c6">.</span>tick(<span style="color:#bd93f9">60</span>)
+</span></span><span style="display:flex;"><span><span style="color:#111">pg</span><span style="color:#f92672">.</span><span style="color:#111">init</span><span style="color:#111">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">pg</span><span style="color:#f92672">.</span><span style="color:#111">display</span><span style="color:#f92672">.</span><span style="color:#111">gl_set_attribute</span><span style="color:#111">(</span><span style="color:#111">pg</span><span style="color:#f92672">.</span><span style="color:#111">GL_CONTEXT_MAJOR_VERSION</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">pg</span><span style="color:#f92672">.</span><span style="color:#111">display</span><span style="color:#f92672">.</span><span style="color:#111">gl_set_attribute</span><span style="color:#111">(</span><span style="color:#111">pg</span><span style="color:#f92672">.</span><span style="color:#111">GL_CONTEXT_MINOR_VERSION</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">pg</span><span style="color:#f92672">.</span><span style="color:#111">display</span><span style="color:#f92672">.</span><span style="color:#111">gl_set_attribute</span><span style="color:#111">(</span><span style="color:#111">pg</span><span style="color:#f92672">.</span><span style="color:#111">GL_CONTEXT_PROFILE_MASK</span><span style="color:#111">,</span> <span style="color:#111">pg</span><span style="color:#f92672">.</span><span style="color:#111">GL_CONTEXT_PROFILE_CORE</span><span style="color:#111">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">pg</span><span style="color:#f92672">.</span><span style="color:#111">display</span><span style="color:#f92672">.</span><span style="color:#111">set_mode</span><span style="color:#111">((</span><span style="color:#ae81ff">640</span><span style="color:#111">,</span> <span style="color:#ae81ff">480</span><span style="color:#111">),</span> <span style="color:#111">flags</span><span style="color:#f92672">=</span><span style="color:#111">pg</span><span style="color:#f92672">.</span><span style="color:#111">OPENGL</span> <span style="color:#f92672">|</span> <span style="color:#111">pg</span><span style="color:#f92672">.</span><span style="color:#111">DOUBLEBUF</span><span style="color:#111">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">clock</span> <span style="color:#f92672">=</span> <span style="color:#111">pg</span><span style="color:#f92672">.</span><span style="color:#111">time</span><span style="color:#f92672">.</span><span style="color:#111">Clock</span><span style="color:#111">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">clock</span><span style="color:#f92672">.</span><span style="color:#111">tick</span><span style="color:#111">(</span><span style="color:#ae81ff">60</span><span style="color:#111">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>接着初始化<code>ModernGL</code>，非常简单，只要创建一个<code>context</code>，开启深度测试和面剔除。</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> moderngl <span style="color:#ff79c6">as</span> mgl
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#111">moderngl</span> <span style="color:#00a8c8">as</span> <span style="color:#111">mgl</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>self<span style="color:#ff79c6">.</span>ctx <span style="color:#ff79c6">=</span> mgl<span style="color:#ff79c6">.</span>create_context()
-</span></span><span style="display:flex;"><span>self<span style="color:#ff79c6">.</span>ctx<span style="color:#ff79c6">.</span>enable(flags<span style="color:#ff79c6">=</span>mgl<span style="color:#ff79c6">.</span>DEPTH_TEST <span style="color:#ff79c6">|</span> mgl<span style="color:#ff79c6">.</span>CULL_FACE)
+</span></span><span style="display:flex;"><span><span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">ctx</span> <span style="color:#f92672">=</span> <span style="color:#111">mgl</span><span style="color:#f92672">.</span><span style="color:#111">create_context</span><span style="color:#111">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">ctx</span><span style="color:#f92672">.</span><span style="color:#111">enable</span><span style="color:#111">(</span><span style="color:#111">flags</span><span style="color:#f92672">=</span><span style="color:#111">mgl</span><span style="color:#f92672">.</span><span style="color:#111">DEPTH_TEST</span> <span style="color:#f92672">|</span> <span style="color:#111">mgl</span><span style="color:#f92672">.</span><span style="color:#111">CULL_FACE</span><span style="color:#111">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="02-获取顶点纹理法线等数据">02 获取顶点、纹理、法线等数据<a hidden class="anchor" aria-hidden="true" href="#02-获取顶点纹理法线等数据">#</a></h1>
 <p>这部分内容在上一篇<a href="">解析PS2游戏存档3D图标</a>有详细描述，就不展开了，这里只贴一下<code>icon.sys</code>的数据结构供参考。</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -384,29 +384,29 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#ff79c6">struct</span> <span style="color:#50fa7b">IconSys</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">char</span> magic[<span style="color:#bd93f9">4</span>];
-</span></span><span style="display:flex;"><span>    uint16 unknown; <span style="color:#6272a4">// ignore
-</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    uint16 subtitle_line_break;
-</span></span><span style="display:flex;"><span>    uint16 unknown; <span style="color:#6272a4">// ignore
-</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    uint32 bg_transparency;
-</span></span><span style="display:flex;"><span>    uint32 bg_color_upper_left[<span style="color:#bd93f9">4</span>];
-</span></span><span style="display:flex;"><span>    uint32 bg_color_upper_right[<span style="color:#bd93f9">4</span>];
-</span></span><span style="display:flex;"><span>    uint32 bg_color_lower_left[<span style="color:#bd93f9">4</span>];
-</span></span><span style="display:flex;"><span>    uint32 bg_color_lower_right[<span style="color:#bd93f9">4</span>];
-</span></span><span style="display:flex;"><span>    float32 light_pos1[<span style="color:#bd93f9">4</span>];
-</span></span><span style="display:flex;"><span>    float32 light_pos2[<span style="color:#bd93f9">4</span>];
-</span></span><span style="display:flex;"><span>    float32 light_pos3[<span style="color:#bd93f9">4</span>];
-</span></span><span style="display:flex;"><span>    float32 light_color1[<span style="color:#bd93f9">4</span>];
-</span></span><span style="display:flex;"><span>    float32 light_color2[<span style="color:#bd93f9">4</span>];
-</span></span><span style="display:flex;"><span>    float32 light_color3[<span style="color:#bd93f9">4</span>];
-</span></span><span style="display:flex;"><span>    float32 ambient[<span style="color:#bd93f9">4</span>];
-</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">char</span> subtitle[<span style="color:#bd93f9">68</span>];
-</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">char</span> icon_file_normal[<span style="color:#bd93f9">64</span>];
-</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">char</span> icon_file_copy[<span style="color:#bd93f9">64</span>];
-</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">char</span> icon_file_delete[<span style="color:#bd93f9">64</span>];
-</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">char</span> zeros[<span style="color:#bd93f9">512</span>]; <span style="color:#6272a4">// ignore
-</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>};
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">struct</span> <span style="color:#75af00">IconSys</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">char</span> <span style="color:#111">magic</span><span style="color:#111">[</span><span style="color:#ae81ff">4</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">uint16</span> <span style="color:#111">unknown</span><span style="color:#111">;</span> <span style="color:#75715e">// ignore
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#111">uint16</span> <span style="color:#111">subtitle_line_break</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">uint16</span> <span style="color:#111">unknown</span><span style="color:#111">;</span> <span style="color:#75715e">// ignore
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#111">uint32</span> <span style="color:#111">bg_transparency</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">uint32</span> <span style="color:#111">bg_color_upper_left</span><span style="color:#111">[</span><span style="color:#ae81ff">4</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">uint32</span> <span style="color:#111">bg_color_upper_right</span><span style="color:#111">[</span><span style="color:#ae81ff">4</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">uint32</span> <span style="color:#111">bg_color_lower_left</span><span style="color:#111">[</span><span style="color:#ae81ff">4</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">uint32</span> <span style="color:#111">bg_color_lower_right</span><span style="color:#111">[</span><span style="color:#ae81ff">4</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">float32</span> <span style="color:#111">light_pos1</span><span style="color:#111">[</span><span style="color:#ae81ff">4</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">float32</span> <span style="color:#111">light_pos2</span><span style="color:#111">[</span><span style="color:#ae81ff">4</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">float32</span> <span style="color:#111">light_pos3</span><span style="color:#111">[</span><span style="color:#ae81ff">4</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">float32</span> <span style="color:#111">light_color1</span><span style="color:#111">[</span><span style="color:#ae81ff">4</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">float32</span> <span style="color:#111">light_color2</span><span style="color:#111">[</span><span style="color:#ae81ff">4</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">float32</span> <span style="color:#111">light_color3</span><span style="color:#111">[</span><span style="color:#ae81ff">4</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">float32</span> <span style="color:#111">ambient</span><span style="color:#111">[</span><span style="color:#ae81ff">4</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">char</span> <span style="color:#111">subtitle</span><span style="color:#111">[</span><span style="color:#ae81ff">68</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">char</span> <span style="color:#111">icon_file_normal</span><span style="color:#111">[</span><span style="color:#ae81ff">64</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">char</span> <span style="color:#111">icon_file_copy</span><span style="color:#111">[</span><span style="color:#ae81ff">64</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">char</span> <span style="color:#111">icon_file_delete</span><span style="color:#111">[</span><span style="color:#ae81ff">64</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">char</span> <span style="color:#111">zeros</span><span style="color:#111">[</span><span style="color:#ae81ff">512</span><span style="color:#111">];</span> <span style="color:#75715e">// ignore
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#111">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="03-坐标系统">03 坐标系统<a hidden class="anchor" aria-hidden="true" href="#03-坐标系统">#</a></h1>
@@ -416,42 +416,42 @@
 <h1 id="04-变换矩阵">04 变换矩阵<a hidden class="anchor" aria-hidden="true" href="#04-变换矩阵">#</a></h1>
 <h2 id="观察矩阵">观察矩阵<a hidden class="anchor" aria-hidden="true" href="#观察矩阵">#</a></h2>
 <p>上图B中，摄像机位置在z轴的负延伸方向，我们稍稍向y轴负方向移动一小段距离，这样可以使视线不是对着图标的脚部，而是稍稍靠上一点，因此将摄像机位置坐标设为<code>(0, -2, -10)</code>。因为要将y轴颠倒，可以直接将摄像机向上的方向设置为y轴的负方向。这样一来<code>lookAt</code>矩阵创建如下：</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>self<span style="color:#ff79c6">.</span>position <span style="color:#ff79c6">=</span> glm<span style="color:#ff79c6">.</span>vec3(<span style="color:#bd93f9">0</span>, <span style="color:#ff79c6">-</span><span style="color:#bd93f9">2</span>, <span style="color:#ff79c6">-</span><span style="color:#bd93f9">10</span>)
-</span></span><span style="display:flex;"><span>self<span style="color:#ff79c6">.</span>up <span style="color:#ff79c6">=</span> glm<span style="color:#ff79c6">.</span>vec3(<span style="color:#bd93f9">0</span>, <span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">0</span>)
-</span></span><span style="display:flex;"><span>self<span style="color:#ff79c6">.</span>view <span style="color:#ff79c6">=</span> glm<span style="color:#ff79c6">.</span>lookAt(self<span style="color:#ff79c6">.</span>position, glm<span style="color:#ff79c6">.</span>vec3(<span style="color:#bd93f9">0</span>, <span style="color:#ff79c6">-</span><span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">0</span>), self<span style="color:#ff79c6">.</span>up)
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">position</span> <span style="color:#f92672">=</span> <span style="color:#111">glm</span><span style="color:#f92672">.</span><span style="color:#111">vec3</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">10</span><span style="color:#111">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">up</span> <span style="color:#f92672">=</span> <span style="color:#111">glm</span><span style="color:#f92672">.</span><span style="color:#111">vec3</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">view</span> <span style="color:#f92672">=</span> <span style="color:#111">glm</span><span style="color:#f92672">.</span><span style="color:#111">lookAt</span><span style="color:#111">(</span><span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">position</span><span style="color:#111">,</span> <span style="color:#111">glm</span><span style="color:#f92672">.</span><span style="color:#111">vec3</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#ae81ff">0</span><span style="color:#111">),</span> <span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">up</span><span style="color:#111">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="投影矩阵">投影矩阵<a hidden class="anchor" aria-hidden="true" href="#投影矩阵">#</a></h2>
 <p>投影矩阵可以用如下公式获得</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>self<span style="color:#ff79c6">.</span>proj <span style="color:#ff79c6">=</span> glm<span style="color:#ff79c6">.</span>perspective(glm<span style="color:#ff79c6">.</span>radians(<span style="color:#bd93f9">50</span>), window_width <span style="color:#ff79c6">/</span> window_height, <span style="color:#bd93f9">0.1</span>, <span style="color:#bd93f9">100</span>)
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">proj</span> <span style="color:#f92672">=</span> <span style="color:#111">glm</span><span style="color:#f92672">.</span><span style="color:#111">perspective</span><span style="color:#111">(</span><span style="color:#111">glm</span><span style="color:#f92672">.</span><span style="color:#111">radians</span><span style="color:#111">(</span><span style="color:#ae81ff">50</span><span style="color:#111">),</span> <span style="color:#111">window_width</span> <span style="color:#f92672">/</span> <span style="color:#111">window_height</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.1</span><span style="color:#111">,</span> <span style="color:#ae81ff">100</span><span style="color:#111">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="模型矩阵">模型矩阵<a hidden class="anchor" aria-hidden="true" href="#模型矩阵">#</a></h2>
 <p>创建模型矩阵的目的是控制模型对象在3D空间中的位置变化，在这里模型对象需要在空间里绕着y轴做360度的旋转。</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4"># 初始化模型矩阵</span>
-</span></span><span style="display:flex;"><span>self<span style="color:#ff79c6">.</span>m_model <span style="color:#ff79c6">=</span> glm<span style="color:#ff79c6">.</span>mat4()
-</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 使模型绕y轴旋转，转过的角度为经过的时间。初始化的180度是为了让模型在开始的时候背对着画面，更接近PS2主机的行为</span>
-</span></span><span style="display:flex;"><span>m_model <span style="color:#ff79c6">=</span> glm<span style="color:#ff79c6">.</span>rotate(self<span style="color:#ff79c6">.</span>m_model, glm<span style="color:#ff79c6">.</span>radians(<span style="color:#bd93f9">180</span>) <span style="color:#ff79c6">+</span> animation_time <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>, glm<span style="color:#ff79c6">.</span>vec3(<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">0</span>))
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 初始化模型矩阵</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">m_model</span> <span style="color:#f92672">=</span> <span style="color:#111">glm</span><span style="color:#f92672">.</span><span style="color:#111">mat4</span><span style="color:#111">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使模型绕y轴旋转，转过的角度为经过的时间。初始化的180度是为了让模型在开始的时候背对着画面，更接近PS2主机的行为</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">m_model</span> <span style="color:#f92672">=</span> <span style="color:#111">glm</span><span style="color:#f92672">.</span><span style="color:#111">rotate</span><span style="color:#111">(</span><span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">m_model</span><span style="color:#111">,</span> <span style="color:#111">glm</span><span style="color:#f92672">.</span><span style="color:#111">radians</span><span style="color:#111">(</span><span style="color:#ae81ff">180</span><span style="color:#111">)</span> <span style="color:#f92672">+</span> <span style="color:#111">animation_time</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#111">glm</span><span style="color:#f92672">.</span><span style="color:#111">vec3</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">0</span><span style="color:#111">))</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="05-创建着色器">05 创建着色器<a hidden class="anchor" aria-hidden="true" href="#05-创建着色器">#</a></h1>
@@ -464,9 +464,9 @@
 </ul>
 <h2 id="背景着色器">背景着色器<a hidden class="anchor" aria-hidden="true" href="#背景着色器">#</a></h2>
 <p>背景着色器比较简单，只要创建一个覆盖整个坐标系的矩形，并且设置在离摄像机最远的那个坐标平面上即可。参考上面的图B，这个平面应该是z轴的0.9999。这个矩形的四个顶点的坐标分别为(-1, 1), (-1, -1), (1, -1), (1, 1)，对应的颜色在<code>icon.sys</code>中可以解析出来。根据这四个顶点和颜色，就可以构建背景VBO及VAO，这里不做过多描述。</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -480,23 +480,23 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#6272a4">// bg.vert</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#version 330 core</span>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#75715e">// bg.vert</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#version 330 core</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec2</span> vertexPos;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec4</span> vertexColor;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec2</span> <span style="color:#111">vertexPos</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">vertexColor</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec3</span> fragColor0;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec3</span> <span style="color:#111">fragColor0</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">void</span> main() {
-</span></span><span style="display:flex;"><span>    fragColor0 <span style="color:#ff79c6">=</span> vertexColor.rgb;
-</span></span><span style="display:flex;"><span>    gl_Position <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">vec4</span>(vertexPos.xy, <span style="color:#bd93f9">0.9999</span>, <span style="color:#bd93f9">1.0</span>);
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">void</span> <span style="color:#111">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">fragColor0</span> <span style="color:#f92672">=</span> <span style="color:#111">vertexColor</span><span style="color:#111">.</span><span style="color:#111">rgb</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">gl_Position</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">vec4</span><span style="color:#111">(</span><span style="color:#111">vertexPos</span><span style="color:#111">.</span><span style="color:#111">xy</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.9999</span><span style="color:#111">,</span> <span style="color:#ae81ff">1.0</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+</div><div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -510,25 +510,25 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#6272a4">// bg.frag</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#version 330 core</span>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#75715e">// bg.frag</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#version 330 core</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec3</span> fragColor0;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec3</span> <span style="color:#111">fragColor0</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec4</span> fragColor;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">fragColor</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> <span style="color:#ff79c6">float</span> alpha0;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#00a8c8">float</span> <span style="color:#111">alpha0</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">void</span> main() {
-</span></span><span style="display:flex;"><span>    fragColor <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">vec4</span>(fragColor0, alpha0);
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">void</span> <span style="color:#111">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">fragColor</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">vec4</span><span style="color:#111">(</span><span style="color:#111">fragColor0</span><span style="color:#111">,</span> <span style="color:#111">alpha0</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="icon着色器">Icon着色器<a hidden class="anchor" aria-hidden="true" href="#icon着色器">#</a></h2>
 <p>Icon着色器会比较复杂，我们先尝试着把Icon顶点渲染出来。还记得每个图标有多个形状吗？形状与动画相关，我们现在只取其中的一个形状组成VBO和VAO。</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -542,23 +542,23 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#6272a4">// icon.vert</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#version 330 core</span>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#75715e">// icon.vert</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#version 330 core</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec4</span> vertexPos;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">vertexPos</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> mat4 proj;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> mat4 view;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> mat4 model;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#111">mat4</span> <span style="color:#111">proj</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#111">mat4</span> <span style="color:#111">view</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#111">mat4</span> <span style="color:#111">model</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">void</span> main() {
-</span></span><span style="display:flex;"><span>    gl_Position <span style="color:#ff79c6">=</span> proj <span style="color:#ff79c6">*</span> view <span style="color:#ff79c6">*</span> model <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">vec4</span>(vertexPos.xyz, <span style="color:#bd93f9">1</span>);
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">void</span> <span style="color:#111">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">gl_Position</span> <span style="color:#f92672">=</span> <span style="color:#111">proj</span> <span style="color:#f92672">*</span> <span style="color:#111">view</span> <span style="color:#f92672">*</span> <span style="color:#111">model</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">vec4</span><span style="color:#111">(</span><span style="color:#111">vertexPos</span><span style="color:#111">.</span><span style="color:#111">xyz</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+</div><div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -568,14 +568,14 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#6272a4">// icon.frag</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#version 330 core</span>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#75715e">// icon.frag</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#version 330 core</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec4</span> fragColor;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">fragColor</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">void</span> main() {
-</span></span><span style="display:flex;"><span>    fragColor <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">vec4</span>(<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">1</span>);
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">void</span> <span style="color:#111">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">fragColor</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">vec4</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>以下是运行代码后的效果：</p>
@@ -583,9 +583,9 @@
 </p>
 <h2 id="添加纹理">添加纹理<a hidden class="anchor" aria-hidden="true" href="#添加纹理">#</a></h2>
 <p>在上面的基础上，引入纹理坐标和纹理数据。</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -606,30 +606,30 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#6272a4">// icon.vert</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#version 330 core</span>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#75715e">// icon.vert</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#version 330 core</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec4</span> vertexPos;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec2</span> texCoord;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec4</span> vertexColor;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">vertexPos</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec2</span> <span style="color:#111">texCoord</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">vertexColor</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec4</span> fragColor0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec2</span> uv0;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">fragColor0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec2</span> <span style="color:#111">uv0</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> mat4 proj;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> mat4 view;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> mat4 model;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#111">mat4</span> <span style="color:#111">proj</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#111">mat4</span> <span style="color:#111">view</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#111">mat4</span> <span style="color:#111">model</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">void</span> main() {
-</span></span><span style="display:flex;"><span>    uv0 <span style="color:#ff79c6">=</span> texCoord;
-</span></span><span style="display:flex;"><span>    fragColor0 <span style="color:#ff79c6">=</span> vertexColor;
-</span></span><span style="display:flex;"><span>    gl_Position <span style="color:#ff79c6">=</span> proj <span style="color:#ff79c6">*</span> view <span style="color:#ff79c6">*</span> model <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">vec4</span>(vertexPos.xyz, <span style="color:#bd93f9">1</span>);
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">void</span> <span style="color:#111">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">uv0</span> <span style="color:#f92672">=</span> <span style="color:#111">texCoord</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">fragColor0</span> <span style="color:#f92672">=</span> <span style="color:#111">vertexColor</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">gl_Position</span> <span style="color:#f92672">=</span> <span style="color:#111">proj</span> <span style="color:#f92672">*</span> <span style="color:#111">view</span> <span style="color:#f92672">*</span> <span style="color:#111">model</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">vec4</span><span style="color:#111">(</span><span style="color:#111">vertexPos</span><span style="color:#111">.</span><span style="color:#111">xyz</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+</div><div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -646,30 +646,30 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#6272a4">// icon.frag</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#version 330 core</span>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#75715e">// icon.frag</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#version 330 core</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec2</span> uv0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec4</span> fragColor0;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec2</span> <span style="color:#111">uv0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">fragColor0</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec4</span> fragColor;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">fragColor</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> <span style="color:#ff79c6">sampler2D</span> texture0;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#00a8c8">sampler2D</span> <span style="color:#111">texture0</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">void</span> main() {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">float</span> alpha <span style="color:#ff79c6">=</span> fragColor0.a;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">vec3</span> color <span style="color:#ff79c6">=</span> fragColor0.rgb <span style="color:#ff79c6">*</span> texture(texture0, uv0).rgb;
-</span></span><span style="display:flex;"><span>    fragColor <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">vec4</span>(color, alpha);
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">void</span> <span style="color:#111">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">float</span> <span style="color:#111">alpha</span> <span style="color:#f92672">=</span> <span style="color:#111">fragColor0</span><span style="color:#111">.</span><span style="color:#111">a</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">vec3</span> <span style="color:#111">color</span> <span style="color:#f92672">=</span> <span style="color:#111">fragColor0</span><span style="color:#111">.</span><span style="color:#111">rgb</span> <span style="color:#f92672">*</span> <span style="color:#111">texture</span><span style="color:#111">(</span><span style="color:#111">texture0</span><span style="color:#111">,</span> <span style="color:#111">uv0</span><span style="color:#111">).</span><span style="color:#111">rgb</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">fragColor</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">vec4</span><span style="color:#111">(</span><span style="color:#111">color</span><span style="color:#111">,</span> <span style="color:#111">alpha</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/4.gif" alt=""  />
 </p>
 <h2 id="添加光照">添加光照<a hidden class="anchor" aria-hidden="true" href="#添加光照">#</a></h2>
 <p>在上面的基础上，引入光源，环境光以及法线数据。</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -695,35 +695,35 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#6272a4">// icon.vert</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#version 330 core</span>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#75715e">// icon.vert</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#version 330 core</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec4</span> vertexPos;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec2</span> texCoord;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec4</span> vertexColor;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec4</span> normal;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">vertexPos</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec2</span> <span style="color:#111">texCoord</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">vertexColor</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">normal</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec4</span> fragColor0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec2</span> uv0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec3</span> normal0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec3</span> fragPos0;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">fragColor0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec2</span> <span style="color:#111">uv0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec3</span> <span style="color:#111">normal0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec3</span> <span style="color:#111">fragPos0</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> mat4 proj;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> mat4 view;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> mat4 model;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#111">mat4</span> <span style="color:#111">proj</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#111">mat4</span> <span style="color:#111">view</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#111">mat4</span> <span style="color:#111">model</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">void</span> main() {
-</span></span><span style="display:flex;"><span>    uv0 <span style="color:#ff79c6">=</span> texCoord;
-</span></span><span style="display:flex;"><span>    fragColor0 <span style="color:#ff79c6">=</span> vertexColor;
-</span></span><span style="display:flex;"><span>    normal0 <span style="color:#ff79c6">=</span> mat3(model) <span style="color:#ff79c6">*</span> normalize(normal.xyz);
-</span></span><span style="display:flex;"><span>    gl_Position <span style="color:#ff79c6">=</span> proj <span style="color:#ff79c6">*</span> view <span style="color:#ff79c6">*</span> model <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">vec4</span>(vertexPos.xyz, <span style="color:#bd93f9">1</span>);
-</span></span><span style="display:flex;"><span>    fragPos0 <span style="color:#ff79c6">=</span> gl_Position.xyz;
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">void</span> <span style="color:#111">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">uv0</span> <span style="color:#f92672">=</span> <span style="color:#111">texCoord</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">fragColor0</span> <span style="color:#f92672">=</span> <span style="color:#111">vertexColor</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">normal0</span> <span style="color:#f92672">=</span> <span style="color:#111">mat3</span><span style="color:#111">(</span><span style="color:#111">model</span><span style="color:#111">)</span> <span style="color:#f92672">*</span> <span style="color:#111">normalize</span><span style="color:#111">(</span><span style="color:#111">normal</span><span style="color:#111">.</span><span style="color:#111">xyz</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">gl_Position</span> <span style="color:#f92672">=</span> <span style="color:#111">proj</span> <span style="color:#f92672">*</span> <span style="color:#111">view</span> <span style="color:#f92672">*</span> <span style="color:#111">model</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">vec4</span><span style="color:#111">(</span><span style="color:#111">vertexPos</span><span style="color:#111">.</span><span style="color:#111">xyz</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">fragPos0</span> <span style="color:#f92672">=</span> <span style="color:#111">gl_Position</span><span style="color:#111">.</span><span style="color:#111">xyz</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+</div><div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -759,40 +759,40 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#6272a4">// icon.frag</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#version 330 core</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#define MAX_NUM_TOTAL_LIGHTS 3</span>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#75715e">// icon.frag</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#version 330 core</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define MAX_NUM_TOTAL_LIGHTS 3</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec2</span> uv0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec4</span> fragColor0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec3</span> normal0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec3</span> fragPos0;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec2</span> <span style="color:#111">uv0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">fragColor0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec3</span> <span style="color:#111">normal0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec3</span> <span style="color:#111">fragPos0</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec4</span> fragColor;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">fragColor</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">struct</span> Light {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">vec4</span> pos;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">vec4</span> color;
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">struct</span> <span style="color:#111">Light</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">vec4</span> <span style="color:#111">pos</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">vec4</span> <span style="color:#111">color</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> <span style="color:#ff79c6">sampler2D</span> texture0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> <span style="color:#ff79c6">vec4</span> ambient;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#00a8c8">sampler2D</span> <span style="color:#111">texture0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">ambient</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> Light lights[MAX_NUM_TOTAL_LIGHTS];
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#111">Light</span> <span style="color:#111">lights</span><span style="color:#111">[</span><span style="color:#111">MAX_NUM_TOTAL_LIGHTS</span><span style="color:#111">];</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">void</span> main() {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">vec3</span> normal <span style="color:#ff79c6">=</span> normalize(normal0);
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">float</span> alpha <span style="color:#ff79c6">=</span> fragColor0.a;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">vec3</span> color <span style="color:#ff79c6">=</span> fragColor0.rgb <span style="color:#ff79c6">*</span> texture(texture0, uv0).rgb;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">vec3</span> diffuse <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">vec3</span>(<span style="color:#bd93f9">0.0</span>, <span style="color:#bd93f9">0.0</span>, <span style="color:#bd93f9">0.0</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> (<span style="color:#ff79c6">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> MAX_NUM_TOTAL_LIGHTS; i<span style="color:#ff79c6">++</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">vec3</span> lightDir <span style="color:#ff79c6">=</span> normalize(lights[i].pos.xyz <span style="color:#ff79c6">-</span> fragPos0);
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">float</span> diff <span style="color:#ff79c6">=</span> max(dot(lightDir, normal), <span style="color:#bd93f9">0.0</span>);
-</span></span><span style="display:flex;"><span>        diffuse <span style="color:#ff79c6">+=</span> diff <span style="color:#ff79c6">*</span> lights[i].color.rgb;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    color <span style="color:#ff79c6">=</span> (ambient.rgb <span style="color:#ff79c6">+</span> diffuse) <span style="color:#ff79c6">*</span> color;
-</span></span><span style="display:flex;"><span>    fragColor <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">vec4</span>(color, alpha);
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">void</span> <span style="color:#111">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">vec3</span> <span style="color:#111">normal</span> <span style="color:#f92672">=</span> <span style="color:#111">normalize</span><span style="color:#111">(</span><span style="color:#111">normal0</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">float</span> <span style="color:#111">alpha</span> <span style="color:#f92672">=</span> <span style="color:#111">fragColor0</span><span style="color:#111">.</span><span style="color:#111">a</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">vec3</span> <span style="color:#111">color</span> <span style="color:#f92672">=</span> <span style="color:#111">fragColor0</span><span style="color:#111">.</span><span style="color:#111">rgb</span> <span style="color:#f92672">*</span> <span style="color:#111">texture</span><span style="color:#111">(</span><span style="color:#111">texture0</span><span style="color:#111">,</span> <span style="color:#111">uv0</span><span style="color:#111">).</span><span style="color:#111">rgb</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">vec3</span> <span style="color:#111">diffuse</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">vec3</span><span style="color:#111">(</span><span style="color:#ae81ff">0.0</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.0</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.0</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">MAX_NUM_TOTAL_LIGHTS</span><span style="color:#111">;</span> <span style="color:#111">i</span><span style="color:#f92672">++</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">vec3</span> <span style="color:#111">lightDir</span> <span style="color:#f92672">=</span> <span style="color:#111">normalize</span><span style="color:#111">(</span><span style="color:#111">lights</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">].</span><span style="color:#111">pos</span><span style="color:#111">.</span><span style="color:#111">xyz</span> <span style="color:#f92672">-</span> <span style="color:#111">fragPos0</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">float</span> <span style="color:#111">diff</span> <span style="color:#f92672">=</span> <span style="color:#111">max</span><span style="color:#111">(</span><span style="color:#111">dot</span><span style="color:#111">(</span><span style="color:#111">lightDir</span><span style="color:#111">,</span> <span style="color:#111">normal</span><span style="color:#111">),</span> <span style="color:#ae81ff">0.0</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">diffuse</span> <span style="color:#f92672">+=</span> <span style="color:#111">diff</span> <span style="color:#f92672">*</span> <span style="color:#111">lights</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">].</span><span style="color:#111">color</span><span style="color:#111">.</span><span style="color:#111">rgb</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">color</span> <span style="color:#f92672">=</span> <span style="color:#111">(</span><span style="color:#111">ambient</span><span style="color:#111">.</span><span style="color:#111">rgb</span> <span style="color:#f92672">+</span> <span style="color:#111">diffuse</span><span style="color:#111">)</span> <span style="color:#f92672">*</span> <span style="color:#111">color</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">fragColor</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">vec4</span><span style="color:#111">(</span><span style="color:#111">color</span><span style="color:#111">,</span> <span style="color:#111">alpha</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/5.gif" alt=""  />
@@ -805,16 +805,16 @@
 <li>anim_speed 动画播放速度</li>
 <li>frame_length / animation_shapes 一个形状包含多少帧</li>
 </ul>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>animation_time <span style="color:#ff79c6">=</span> time<span style="color:#ff79c6">.</span>time() <span style="color:#ff79c6">-</span> self<span style="color:#ff79c6">.</span>start_time
-</span></span><span style="display:flex;"><span>curr_frame <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">int</span>(animation_time <span style="color:#ff79c6">*</span> self<span style="color:#ff79c6">.</span>window<span style="color:#ff79c6">.</span>fps <span style="color:#ff79c6">*</span> self<span style="color:#ff79c6">.</span>icon<span style="color:#ff79c6">.</span>anim_speed) <span style="color:#ff79c6">%</span> self<span style="color:#ff79c6">.</span>icon<span style="color:#ff79c6">.</span>frame_length
-</span></span><span style="display:flex;"><span>curr_shape <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">int</span>(curr_frame <span style="color:#ff79c6">//</span> (self<span style="color:#ff79c6">.</span>icon<span style="color:#ff79c6">.</span>frame_length <span style="color:#ff79c6">/</span> self<span style="color:#ff79c6">.</span>icon<span style="color:#ff79c6">.</span>animation_shapes))
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#111">animation_time</span> <span style="color:#f92672">=</span> <span style="color:#111">time</span><span style="color:#f92672">.</span><span style="color:#111">time</span><span style="color:#111">()</span> <span style="color:#f92672">-</span> <span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">start_time</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">curr_frame</span> <span style="color:#f92672">=</span> <span style="color:#111">int</span><span style="color:#111">(</span><span style="color:#111">animation_time</span> <span style="color:#f92672">*</span> <span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">window</span><span style="color:#f92672">.</span><span style="color:#111">fps</span> <span style="color:#f92672">*</span> <span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">icon</span><span style="color:#f92672">.</span><span style="color:#111">anim_speed</span><span style="color:#111">)</span> <span style="color:#f92672">%</span> <span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">icon</span><span style="color:#f92672">.</span><span style="color:#111">frame_length</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">curr_shape</span> <span style="color:#f92672">=</span> <span style="color:#111">int</span><span style="color:#111">(</span><span style="color:#111">curr_frame</span> <span style="color:#f92672">//</span> <span style="color:#111">(</span><span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">icon</span><span style="color:#f92672">.</span><span style="color:#111">frame_length</span> <span style="color:#f92672">/</span> <span style="color:#111">self</span><span style="color:#f92672">.</span><span style="color:#111">icon</span><span style="color:#f92672">.</span><span style="color:#111">animation_shapes</span><span style="color:#111">))</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/6.gif" alt=""  />
@@ -824,19 +824,19 @@
 <ul>
 <li>tween_factor 计算当前时间戳在整个形状中所占帧的百分比</li>
 </ul>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>curr_frame_in_shape <span style="color:#ff79c6">=</span> curr_frame <span style="color:#ff79c6">%</span> frames_in_shape <span style="color:#ff79c6">/</span> frames_in_shape
-</span></span><span style="display:flex;"><span>tween_factor <span style="color:#ff79c6">=</span> glm<span style="color:#ff79c6">.</span>float32(curr_frame_in_shape)
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#111">curr_frame_in_shape</span> <span style="color:#f92672">=</span> <span style="color:#111">curr_frame</span> <span style="color:#f92672">%</span> <span style="color:#111">frames_in_shape</span> <span style="color:#f92672">/</span> <span style="color:#111">frames_in_shape</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">tween_factor</span> <span style="color:#f92672">=</span> <span style="color:#111">glm</span><span style="color:#f92672">.</span><span style="color:#111">float32</span><span style="color:#111">(</span><span style="color:#111">curr_frame_in_shape</span><span style="color:#111">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+</div><div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -865,38 +865,38 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#6272a4">// icon.vert</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#version 330 core</span>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#75715e">// icon.vert</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#version 330 core</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec4</span> vertexPos;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec2</span> texCoord;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec4</span> vertexColor;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec4</span> nextVertexPos;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec4</span> normal;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">vertexPos</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec2</span> <span style="color:#111">texCoord</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">vertexColor</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">nextVertexPos</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">normal</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec4</span> fragColor0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec2</span> uv0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec3</span> normal0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec3</span> fragPos0;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">fragColor0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec2</span> <span style="color:#111">uv0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec3</span> <span style="color:#111">normal0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec3</span> <span style="color:#111">fragPos0</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> mat4 proj;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> mat4 view;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> mat4 model;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> <span style="color:#ff79c6">float</span> tweenFactor;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#111">mat4</span> <span style="color:#111">proj</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#111">mat4</span> <span style="color:#111">view</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#111">mat4</span> <span style="color:#111">model</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#00a8c8">float</span> <span style="color:#111">tweenFactor</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">void</span> main() {
-</span></span><span style="display:flex;"><span>    uv0 <span style="color:#ff79c6">=</span> texCoord;
-</span></span><span style="display:flex;"><span>    fragColor0 <span style="color:#ff79c6">=</span> vertexColor;
-</span></span><span style="display:flex;"><span>    normal0 <span style="color:#ff79c6">=</span> mat3(model) <span style="color:#ff79c6">*</span> normalize(normal.xyz);
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">vec4</span> basePos <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">vec4</span>(mix(vertexPos.xyz, nextVertexPos.xyz, tweenFactor), <span style="color:#bd93f9">1.0</span>);
-</span></span><span style="display:flex;"><span>    gl_Position <span style="color:#ff79c6">=</span> proj <span style="color:#ff79c6">*</span> view <span style="color:#ff79c6">*</span> model <span style="color:#ff79c6">*</span> basePos;
-</span></span><span style="display:flex;"><span>    fragPos0 <span style="color:#ff79c6">=</span> gl_Position.xyz;
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">void</span> <span style="color:#111">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">uv0</span> <span style="color:#f92672">=</span> <span style="color:#111">texCoord</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">fragColor0</span> <span style="color:#f92672">=</span> <span style="color:#111">vertexColor</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">normal0</span> <span style="color:#f92672">=</span> <span style="color:#111">mat3</span><span style="color:#111">(</span><span style="color:#111">model</span><span style="color:#111">)</span> <span style="color:#f92672">*</span> <span style="color:#111">normalize</span><span style="color:#111">(</span><span style="color:#111">normal</span><span style="color:#111">.</span><span style="color:#111">xyz</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">vec4</span> <span style="color:#111">basePos</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">vec4</span><span style="color:#111">(</span><span style="color:#111">mix</span><span style="color:#111">(</span><span style="color:#111">vertexPos</span><span style="color:#111">.</span><span style="color:#111">xyz</span><span style="color:#111">,</span> <span style="color:#111">nextVertexPos</span><span style="color:#111">.</span><span style="color:#111">xyz</span><span style="color:#111">,</span> <span style="color:#111">tweenFactor</span><span style="color:#111">),</span> <span style="color:#ae81ff">1.0</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">gl_Position</span> <span style="color:#f92672">=</span> <span style="color:#111">proj</span> <span style="color:#f92672">*</span> <span style="color:#111">view</span> <span style="color:#f92672">*</span> <span style="color:#111">model</span> <span style="color:#f92672">*</span> <span style="color:#111">basePos</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">fragPos0</span> <span style="color:#f92672">=</span> <span style="color:#111">gl_Position</span><span style="color:#111">.</span><span style="color:#111">xyz</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+</div><div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -932,40 +932,40 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#6272a4">// icon.frag</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#version 330 core</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#define MAX_NUM_TOTAL_LIGHTS 3</span>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#75715e">// icon.frag</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#version 330 core</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define MAX_NUM_TOTAL_LIGHTS 3</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec2</span> uv0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec4</span> fragColor0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec3</span> normal0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">in</span> <span style="color:#ff79c6">vec3</span> fragPos0;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec2</span> <span style="color:#111">uv0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">fragColor0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec3</span> <span style="color:#111">normal0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">in</span> <span style="color:#00a8c8">vec3</span> <span style="color:#111">fragPos0</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">out</span> <span style="color:#ff79c6">vec4</span> fragColor;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">out</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">fragColor</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">struct</span> Light {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">vec4</span> pos;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">vec4</span> color;
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">struct</span> <span style="color:#111">Light</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">vec4</span> <span style="color:#111">pos</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">vec4</span> <span style="color:#111">color</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> <span style="color:#ff79c6">sampler2D</span> texture0;
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> <span style="color:#ff79c6">vec4</span> ambient;
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#00a8c8">sampler2D</span> <span style="color:#111">texture0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#00a8c8">vec4</span> <span style="color:#111">ambient</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">uniform</span> Light lights[MAX_NUM_TOTAL_LIGHTS];
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">uniform</span> <span style="color:#111">Light</span> <span style="color:#111">lights</span><span style="color:#111">[</span><span style="color:#111">MAX_NUM_TOTAL_LIGHTS</span><span style="color:#111">];</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">void</span> main() {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">vec3</span> normal <span style="color:#ff79c6">=</span> normalize(normal0);
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">float</span> alpha <span style="color:#ff79c6">=</span> fragColor0.a;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">vec3</span> color <span style="color:#ff79c6">=</span> fragColor0.rgb <span style="color:#ff79c6">*</span> texture(texture0, uv0).rgb;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">vec3</span> diffuse <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">vec3</span>(<span style="color:#bd93f9">0.0</span>, <span style="color:#bd93f9">0.0</span>, <span style="color:#bd93f9">0.0</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> (<span style="color:#ff79c6">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> MAX_NUM_TOTAL_LIGHTS; i<span style="color:#ff79c6">++</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">vec3</span> lightDir <span style="color:#ff79c6">=</span> normalize(lights[i].pos.xyz <span style="color:#ff79c6">-</span> fragPos0);
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">float</span> diff <span style="color:#ff79c6">=</span> max(dot(lightDir, normal), <span style="color:#bd93f9">0.0</span>);
-</span></span><span style="display:flex;"><span>        diffuse <span style="color:#ff79c6">+=</span> diff <span style="color:#ff79c6">*</span> lights[i].color.rgb;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    color <span style="color:#ff79c6">=</span> (ambient.rgb <span style="color:#ff79c6">+</span> diffuse) <span style="color:#ff79c6">*</span> color;
-</span></span><span style="display:flex;"><span>    fragColor <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">vec4</span>(color, alpha);
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">void</span> <span style="color:#111">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">vec3</span> <span style="color:#111">normal</span> <span style="color:#f92672">=</span> <span style="color:#111">normalize</span><span style="color:#111">(</span><span style="color:#111">normal0</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">float</span> <span style="color:#111">alpha</span> <span style="color:#f92672">=</span> <span style="color:#111">fragColor0</span><span style="color:#111">.</span><span style="color:#111">a</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">vec3</span> <span style="color:#111">color</span> <span style="color:#f92672">=</span> <span style="color:#111">fragColor0</span><span style="color:#111">.</span><span style="color:#111">rgb</span> <span style="color:#f92672">*</span> <span style="color:#111">texture</span><span style="color:#111">(</span><span style="color:#111">texture0</span><span style="color:#111">,</span> <span style="color:#111">uv0</span><span style="color:#111">).</span><span style="color:#111">rgb</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">vec3</span> <span style="color:#111">diffuse</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">vec3</span><span style="color:#111">(</span><span style="color:#ae81ff">0.0</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.0</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.0</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">MAX_NUM_TOTAL_LIGHTS</span><span style="color:#111">;</span> <span style="color:#111">i</span><span style="color:#f92672">++</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">vec3</span> <span style="color:#111">lightDir</span> <span style="color:#f92672">=</span> <span style="color:#111">normalize</span><span style="color:#111">(</span><span style="color:#111">lights</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">].</span><span style="color:#111">pos</span><span style="color:#111">.</span><span style="color:#111">xyz</span> <span style="color:#f92672">-</span> <span style="color:#111">fragPos0</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">float</span> <span style="color:#111">diff</span> <span style="color:#f92672">=</span> <span style="color:#111">max</span><span style="color:#111">(</span><span style="color:#111">dot</span><span style="color:#111">(</span><span style="color:#111">lightDir</span><span style="color:#111">,</span> <span style="color:#111">normal</span><span style="color:#111">),</span> <span style="color:#ae81ff">0.0</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">diffuse</span> <span style="color:#f92672">+=</span> <span style="color:#111">diff</span> <span style="color:#f92672">*</span> <span style="color:#111">lights</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">].</span><span style="color:#111">color</span><span style="color:#111">.</span><span style="color:#111">rgb</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">color</span> <span style="color:#f92672">=</span> <span style="color:#111">(</span><span style="color:#111">ambient</span><span style="color:#111">.</span><span style="color:#111">rgb</span> <span style="color:#f92672">+</span> <span style="color:#111">diffuse</span><span style="color:#111">)</span> <span style="color:#f92672">*</span> <span style="color:#111">color</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">fragColor</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">vec4</span><span style="color:#111">(</span><span style="color:#111">color</span><span style="color:#111">,</span> <span style="color:#111">alpha</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>最终效果：</p>

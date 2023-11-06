@@ -10,7 +10,7 @@
 <meta name="description" content="01 前言 作为一个80后的游戏老玩家，PS2游戏机在我心中一直有着特殊的地位。时至今日，已经过去了20多年，然而，最近我因为模拟器的缘故重新接触">
 <meta name="author" content="路边的阿不">
 <link rel="canonical" href="https://babyno.top/posts/2023/09/parsing-ps2-memcard-file-system/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.101b74140718394728c468e7e8d851a462ecd5f1438e04c9a97243d76a7deb8c.css" integrity="sha256-EBt0FAcYOUcoxGjn6NhRpGLs1fFDjgTJqXJD12p964w=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.eca5bd3966922e55f2a1975074788d9f2efdba20d45a21bc6f8c030170335058.css" integrity="sha256-7KW9OWaSLlXyoZdQdHiNny79uiDUWiG8b4wDAXAzUFg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://babyno.top/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://babyno.top/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://babyno.top/favicon-32x32.png">
@@ -498,14 +498,14 @@ PS2存储卡使用的内部芯片，一种非易失性存储设备。</li>
 </p>
 <p>这是一个矩阵M，行定义为FAT所在的簇，列定义为每个FAT簇里的数据。每个FAT簇，保存的都是4字节32位的整形数组，数量为<code>1024 / 4 = 256</code>个，因此矩阵有256列。FAT一共有多少个簇呢？这点可以在间接FAT的簇中解析出来，我们之后再讲。在这里FAT一共占据了32个簇，因此矩阵有32行。</p>
 <p>M矩阵的大小为<code>32 * 256 = 8192</code>，意味着这个FAT可以管理8192个簇。假设现在要找簇<code>n</code>在矩阵中的位置<code>row</code>和<code>column</code>，可以根据简单的计算得出：</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>row <span style="color:#ff79c6">=</span> (n <span style="color:#ff79c6">//</span> <span style="color:#bd93f9">256</span>) <span style="color:#ff79c6">%</span> <span style="color:#bd93f9">256</span>
-</span></span><span style="display:flex;"><span>column <span style="color:#ff79c6">=</span> n <span style="color:#ff79c6">%</span> <span style="color:#bd93f9">256</span>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#111">row</span> <span style="color:#f92672">=</span> <span style="color:#111">(</span><span style="color:#111">n</span> <span style="color:#f92672">//</span> <span style="color:#ae81ff">256</span><span style="color:#111">)</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">256</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">column</span> <span style="color:#f92672">=</span> <span style="color:#111">n</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">256</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>既然已经计算出了位置，那就可以取到对应的值了，没错，这个值<code>?</code>就是下一个簇。通过不断循环，直到取到的值为<code>0xFFFFFFFF</code>，表示簇链到结尾了，不需要再查找了。</p>
