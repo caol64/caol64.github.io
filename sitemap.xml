@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://babyno.top/tags/algorithm/</loc>
+    <lastmod>2023-10-20T14:48:31+00:00</lastmod>
+  </url><url>
     <loc>https://babyno.top/categories/</loc>
     <lastmod>2023-10-20T14:48:31+00:00</lastmod>
   </url><url>
@@ -20,7 +23,7 @@
     <loc>https://babyno.top/tags/</loc>
     <lastmod>2023-10-20T14:48:31+00:00</lastmod>
   </url><url>
-    <loc>https://babyno.top/categories/%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90/</loc>
+    <loc>https://babyno.top/categories/%E7%B2%97%E8%8C%B6%E6%B7%A1%E9%A5%AD-%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BC%B4/</loc>
     <lastmod>2023-10-20T14:48:31+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/</loc>
@@ -33,9 +36,6 @@
     <lastmod>2023-10-09T17:34:15+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</loc>
-    <lastmod>2023-10-09T17:34:15+00:00</lastmod>
-  </url><url>
-    <loc>https://babyno.top/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</loc>
     <lastmod>2023-10-09T17:34:15+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/posts/2023/10/parsing-ps2-3d-icon/</loc>

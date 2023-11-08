@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Algorithm on 路边的阿不</title>
+    <link>https://babyno.top/tags/algorithm/</link>
+    <description>Recent content in Algorithm on 路边的阿不</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Oct 2023 14:48:31 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PS2纹理图片编码算法A1B5G5R5</title>
+      <link>https://babyno.top/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</link>
+      <pubDate>Fri, 20 Oct 2023 14:48:31 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</guid>
+      <description>简介 在上一篇文章里我们介绍了PS2使用的图片压缩算法RLE，这次我们再来研究一下它的纹理贴图编码算法——A1B5G5R5。 对于纹理来说，常用</description>
+    </item>
+    
+    <item>
+      <title>RLE算法在PS2中的应用</title>
+      <link>https://babyno.top/posts/2023/10/rle-algorithm-in-ps2/</link>
+      <pubDate>Mon, 16 Oct 2023 12:30:58 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/10/rle-algorithm-in-ps2/</guid>
+      <description>RLE算法介绍 RLE（Run Length Encoding，行程长度编码）算法，是把文件内容用“重复次数x数据”的形式来表示的压缩方法。比如：有AAAA</description>
+    </item>
+    
+  </channel>
+</rss>
