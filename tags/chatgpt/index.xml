@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Blog on 路边的阿不</title>
-    <link>https://babyno.top/tags/blog/</link>
-    <description>Recent content in Blog on 路边的阿不</description>
+    <title>ChatGPT on 路边的阿不</title>
+    <link>https://babyno.top/tags/chatgpt/</link>
+    <description>Recent content in ChatGPT on 路边的阿不</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Nov 2023 11:31:43 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Nov 2023 11:31:43 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/chatgpt/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>用VSCode脚本创建Hugo帖子，ChatGPT小试牛刀</title>
       <link>https://babyno.top/posts/2023/11/create-hugo-post-with-vscode-task-and-chatgpt/</link>
@@ -14,15 +14,6 @@
       
       <guid>https://babyno.top/posts/2023/11/create-hugo-post-with-vscode-task-and-chatgpt/</guid>
       <description>在之前的文章中，我提到我通常使用 VSCode 进行写作。这一次，我想分享一些提高平时写作效率的小技巧。同时，这也是我第一次尝试使用刚刚注册的 ChatGP</description>
-    </item>
-    
-    <item>
-      <title>用Github和Cloudflare自建博客</title>
-      <link>https://babyno.top/posts/2023/11/new-hugo-blog/</link>
-      <pubDate>Wed, 08 Nov 2023 14:23:52 +0000</pubDate>
-      
-      <guid>https://babyno.top/posts/2023/11/new-hugo-blog/</guid>
-      <description>起因 大约在十几年前，我也自己搭建过一个博客，在godaddy买了虚拟主机和一个域名，搭建好LAMP环境，再装上wordpress就开始折腾了</description>
     </item>
     
   </channel>
