@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 路边的阿不</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Nov 2023 11:31:43 +0000</lastBuildDate><atom:link href="https://babyno.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Nov 2023 14:52:18 +0000</lastBuildDate><atom:link href="https://babyno.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ps2mc-browser新功能发布</title>
+      <link>https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/</link>
+      <pubDate>Mon, 20 Nov 2023 14:52:18 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/</guid>
+      <description>ps2mc-browser是一个PS2存档文件查看器，使用OpenGL画布显示存档里的3D动态图标。依赖如下： Python3 WxPython Numpy ModernGL PyGlm Github地址戳这</description>
+    </item>
+    
     <item>
       <title>用VSCode脚本创建Hugo帖子，ChatGPT小试牛刀</title>
       <link>https://babyno.top/posts/2023/11/create-hugo-post-with-vscode-task-and-chatgpt/</link>

@@ -2,37 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://babyno.top/tags/blog/</loc>
-    <lastmod>2023-11-14T11:31:43+00:00</lastmod>
-  </url><url>
     <loc>https://babyno.top/categories/</loc>
+    <lastmod>2023-11-20T14:52:18+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/tags/playstation2/</loc>
+    <lastmod>2023-11-20T14:52:18+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/posts/</loc>
+    <lastmod>2023-11-20T14:52:18+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/</loc>
+    <lastmod>2023-11-20T14:52:18+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/tags/</loc>
+    <lastmod>2023-11-20T14:52:18+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/categories/%E7%B2%97%E8%8C%B6%E6%B7%A1%E9%A5%AD-%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BC%B4/</loc>
+    <lastmod>2023-11-20T14:52:18+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/</loc>
+    <lastmod>2023-11-20T14:52:18+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/tags/blog/</loc>
     <lastmod>2023-11-14T11:31:43+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/tags/chatgpt/</loc>
     <lastmod>2023-11-14T11:31:43+00:00</lastmod>
   </url><url>
-    <loc>https://babyno.top/posts/</loc>
-    <lastmod>2023-11-14T11:31:43+00:00</lastmod>
-  </url><url>
-    <loc>https://babyno.top/tags/</loc>
-    <lastmod>2023-11-14T11:31:43+00:00</lastmod>
-  </url><url>
     <loc>https://babyno.top/posts/2023/11/create-hugo-post-with-vscode-task-and-chatgpt/</loc>
-    <lastmod>2023-11-14T11:31:43+00:00</lastmod>
-  </url><url>
-    <loc>https://babyno.top/categories/%E7%B2%97%E8%8C%B6%E6%B7%A1%E9%A5%AD-%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BC%B4/</loc>
-    <lastmod>2023-11-14T11:31:43+00:00</lastmod>
-  </url><url>
-    <loc>https://babyno.top/</loc>
     <lastmod>2023-11-14T11:31:43+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/posts/2023/11/new-hugo-blog/</loc>
     <lastmod>2023-11-08T14:23:52+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/tags/algorithm/</loc>
-    <lastmod>2023-10-20T14:48:31+00:00</lastmod>
-  </url><url>
-    <loc>https://babyno.top/tags/playstation2/</loc>
     <lastmod>2023-10-20T14:48:31+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</loc>
