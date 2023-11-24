@@ -6,7 +6,16 @@
     <description>Recent content in 粗茶淡饭 代码为伴 on 路边的阿不</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Nov 2023 14:52:18 +0000</lastBuildDate><atom:link href="https://babyno.top/categories/%E7%B2%97%E8%8C%B6%E6%B7%A1%E9%A5%AD-%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BC%B4/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Nov 2023 10:43:16 +0000</lastBuildDate><atom:link href="https://babyno.top/categories/%E7%B2%97%E8%8C%B6%E6%B7%A1%E9%A5%AD-%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BC%B4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>「快捷指令」分享 - 加油记录</title>
+      <link>https://babyno.top/posts/2023/11/shortcuts-sharing-fueling-record/</link>
+      <pubDate>Fri, 24 Nov 2023 10:43:16 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/11/shortcuts-sharing-fueling-record/</guid>
+      <description>今天开始我创建了一个「快捷指令」专题，专门分享自己常用的Apple Shotcuts。我是一个喜欢效率的人，所以能够自动化的工作我都尽量不进行</description>
+    </item>
+    
     <item>
       <title>ps2mc-browser新功能发布</title>
       <link>https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/</link>
@@ -17,7 +26,7 @@
     </item>
     
     <item>
-      <title>用VSCode脚本创建Hugo帖子，ChatGPT小试牛刀</title>
+      <title>用VSCode Task自动化创建博客</title>
       <link>https://babyno.top/posts/2023/11/create-hugo-post-with-vscode-task-and-chatgpt/</link>
       <pubDate>Tue, 14 Nov 2023 11:31:43 +0000</pubDate>
       
