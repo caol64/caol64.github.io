@@ -619,13 +619,11 @@ PS2存储卡使用的内部芯片，一种非易失性存储设备。</li>
   </a>
 </nav>
 
-  </footer><link
-rel="stylesheet"
-href="https://unpkg.com/@waline/client@v2/dist/waline.css"
-/>
-<div id="waline"></div>
+  </footer><div id="waline"></div>
 <script type="module">
-  import { init } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs';
+  import { init } from '/assets/@waline/client';
+
+  import '/assets/@waline/client/dist/waline.css';
 
   init({
     el: '#waline',
