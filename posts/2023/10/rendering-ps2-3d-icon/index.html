@@ -304,8 +304,9 @@
         return rect.top + win.pageYOffset;   
     }
 </script>
-  <div class="post-content"><p><img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/1.jpg" alt=""  />
-</p>
+  <div class="post-content"><p><a href="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/1.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/1.jpg" alt=""  />
+</a></p>
 <p>经过前面一系列文章的铺垫，PS2存档3D图标的文件已经全部解析完毕。本篇开始将介绍使用如下工具将3D图标渲染出来，并尽可能接近PS2主机原生的效果。</p>
 <ul>
 <li>Python3</li>
@@ -411,8 +412,9 @@
 </div>
 </div><h2 id="03-坐标系统">03 坐标系统<a hidden class="anchor" aria-hidden="true" href="#03-坐标系统">#</a></h2>
 <p>这里以右手系统创建坐标系，但是原始的顶点是y轴颠倒的，如下图A。因此我们之后的工作将在转换后的图B坐标系下进行。
+<a href="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-%E5%9D%90%E6%A0%87%E7%B3%BB.jpg"  data-lightbox="image-1" >
 <img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-%E5%9D%90%E6%A0%87%E7%B3%BB.jpg" alt=""  />
-</p>
+</a></p>
 <h2 id="04-变换矩阵">04 变换矩阵<a hidden class="anchor" aria-hidden="true" href="#04-变换矩阵">#</a></h2>
 <h3 id="观察矩阵">观察矩阵<a hidden class="anchor" aria-hidden="true" href="#观察矩阵">#</a></h3>
 <p>上图B中，摄像机位置在z轴的负延伸方向，我们稍稍向y轴负方向移动一小段距离，这样可以使视线不是对着图标的脚部，而是稍稍靠上一点，因此将摄像机位置坐标设为<code>(0, -2, -10)</code>。因为要将y轴颠倒，可以直接将摄像机向上的方向设置为y轴的负方向。这样一来<code>lookAt</code>矩阵创建如下：</p>
@@ -583,8 +585,9 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>以下是运行代码后的效果：</p>
-<p><img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/3.gif" alt=""  />
-</p>
+<p><a href="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/3.gif"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/3.gif" alt=""  />
+</a></p>
 <h3 id="添加纹理">添加纹理<a hidden class="anchor" aria-hidden="true" href="#添加纹理">#</a></h3>
 <p>在上面的基础上，引入纹理坐标和纹理数据。</p>
 <div class="highlight"><div class="chroma">
@@ -667,8 +670,9 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/4.gif" alt=""  />
-</p>
+</div><p><a href="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/4.gif"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/4.gif" alt=""  />
+</a></p>
 <h3 id="添加光照">添加光照<a hidden class="anchor" aria-hidden="true" href="#添加光照">#</a></h3>
 <p>在上面的基础上，引入光源，环境光以及法线数据。</p>
 <div class="highlight"><div class="chroma">
@@ -799,8 +803,9 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/5.gif" alt=""  />
-</p>
+</div><p><a href="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/5.gif"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/5.gif" alt=""  />
+</a></p>
 <h3 id="动画效果">动画效果<a hidden class="anchor" aria-hidden="true" href="#动画效果">#</a></h3>
 <p>动画效果是让着色器按照时间渲染不同形状的顶点数据。我们可以设计一个计时器和一个计数器，以确定当前时间应该渲染哪个形状的顶点。</p>
 <ul>
@@ -823,8 +828,9 @@
 </span></span><span class="line"><span class="cl"><span class="n">curr_shape</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">curr_frame</span> <span class="o">//</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">icon</span><span class="o">.</span><span class="n">frame_length</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">icon</span><span class="o">.</span><span class="n">animation_shapes</span><span class="p">))</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/6.gif" alt=""  />
-</p>
+</div><p><a href="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/6.gif"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/6.gif" alt=""  />
+</a></p>
 <h3 id="使动画平滑过渡">使动画平滑过渡<a hidden class="anchor" aria-hidden="true" href="#使动画平滑过渡">#</a></h3>
 <p>使动画平滑过渡需要使用着色器的顶点插值技术。我们在发送着色器顶点的时候，将当前形状和下一个形状的顶点数据同时发送。这样再根据时间因子，着色器会自动计算两个形状之间的顶点。</p>
 <ul>
@@ -975,8 +981,9 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>最终效果：</p>
-<p><img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/7.gif" alt=""  />
-</p>
+<p><a href="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/7.gif"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-09-rendering-ps2-3d-icon/7.gif" alt=""  />
+</a></p>
 <h2 id="06-尾声">06 尾声<a hidden class="anchor" aria-hidden="true" href="#06-尾声">#</a></h2>
 <p>所有代码均可在 <a href="https://github.com/caol64/ps2mc-browser">https://github.com/caol64/ps2mc-browser</a> 下载到。在我的第一篇文章中，我也提到了这个系列的创作初衷：为了纪念逝去的青春，以及对技术永不磨灭的热情。在此收尾，也算还了年少时的一个梦想。</p>
 <h2 id="07-参考文献">07 参考文献<a hidden class="anchor" aria-hidden="true" href="#07-参考文献">#</a></h2>
@@ -1040,7 +1047,9 @@ href="/assets/@waline/client/dist/waline.css"
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
-</a>
+</a><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="/assets/lightbox/lightbox.min.css" rel="stylesheet" />
+<script src="/assets/lightbox/lightbox.min.js"></script>
 <script>
     var _hmt = _hmt || [];
     (function() {

@@ -314,8 +314,9 @@
         return rect.top + win.pageYOffset;   
     }
 </script>
-  <div class="post-content"><p><img loading="lazy" src="/imgs/posts/2023-10-04-parsing-ps2-3d-icon/1.gif" alt=""  />
-</p>
+  <div class="post-content"><p><a href="/imgs/posts/2023-10-04-parsing-ps2-3d-icon/1.gif"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-04-parsing-ps2-3d-icon/1.gif" alt=""  />
+</a></p>
 <p>看到这个图片，对于熟悉PS2的老玩家来说应该不会陌生。它是PS2记忆卡管理界面中的游戏存档3D图标。本篇文章我们将介绍如何从存档文件里解析出这个活动的小人。</p>
 <h2 id="01-解析目标">01 解析目标<a hidden class="anchor" aria-hidden="true" href="#01-解析目标">#</a></h2>
 <p>A：我们能从存档文件中解析到什么？</p>
@@ -452,8 +453,9 @@
 </tbody>
 </table>
 <p>注1：游戏标题<code>sub_title</code>显示为2行，该值即为在标题的第几个字节换行，如图：</p>
-<p><img loading="lazy" src="/imgs/posts/2023-10-04-parsing-ps2-3d-icon/1.jpg" alt=""  />
-</p>
+<p><a href="/imgs/posts/2023-10-04-parsing-ps2-3d-icon/1.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-04-parsing-ps2-3d-icon/1.jpg" alt=""  />
+</a></p>
 <p>注2：每个游戏存档可以对应3个图标<code>icon</code>文件，分别在不同场景显示。</p>
 <p>可以看到<code>icon.sys</code>文件里主要提供了背景、光照等数据，另外一个比较重要的部分是3d图标所在的文件名。</p>
 <h2 id="03-解析icon文件">03 解析<code>icon</code>文件<a hidden class="anchor" aria-hidden="true" href="#03-解析icon文件">#</a></h2>
@@ -559,8 +561,9 @@
 <h3 id="33-顶点段">3.3 顶点段<a hidden class="anchor" aria-hidden="true" href="#33-顶点段">#</a></h3>
 <p>PS2 图标中的多边形总是由三个顶点形成的三角形组成。由于顶点是按一定规律排列的，因此只需按照规律读取顶点数据，就能轻松构建多边形。利用<code>OpenGL</code>或类似工具渲染这些数据，就能得到一个漂亮的图标线框。</p>
 <p>“顶点段”包含图标中所有顶点的数据。每个顶点数据包含一组顶点坐标、法线坐标、纹理坐标以及一组<code>RGBA</code>数据，因此，拥有<code>m</code>个顶点和 <code>n</code>个形状的“顶点段”数据结构如下：</p>
-<p><img loading="lazy" src="/imgs/posts/2023-10-04-parsing-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-Vertex.jpg" alt=""  />
-</p>
+<p><a href="/imgs/posts/2023-10-04-parsing-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-Vertex.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-04-parsing-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-Vertex.jpg" alt=""  />
+</a></p>
 <h4 id="顶点坐标">顶点坐标<a hidden class="anchor" aria-hidden="true" href="#顶点坐标">#</a></h4>
 <p>每个顶点坐标占用8字节，结构如下：</p>
 <table>
@@ -655,8 +658,9 @@
 <h3 id="34-动画段">3.4 动画段<a hidden class="anchor" aria-hidden="true" href="#34-动画段">#</a></h3>
 <p>很遗憾关于“动画段”里的大部分内容，我还没完全搞懂含义。不过不用太在意，利用“顶点坐标插值”，仍然可以完成动画动作。</p>
 <p>以下是“动画段”的数据结构：</p>
-<p><img loading="lazy" src="/imgs/posts/2023-10-04-parsing-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-Animation.jpg" alt=""  />
-</p>
+<p><a href="/imgs/posts/2023-10-04-parsing-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-Animation.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-04-parsing-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-Animation.jpg" alt=""  />
+</a></p>
 <p>“动画段”包含“动画头”和若干“动画帧”，每个“动画帧”包含若干“关键帧”。</p>
 <h4 id="动画头">动画头<a hidden class="anchor" aria-hidden="true" href="#动画头">#</a></h4>
 <p>“动画头”结构如下：</p>
@@ -784,8 +788,9 @@
 <h4 id="压缩纹理">压缩纹理<a hidden class="anchor" aria-hidden="true" href="#压缩纹理">#</a></h4>
 <p>压缩纹理使用非常简单的<code>RLE</code>算法进行压缩。第一个<code>u32</code>是压缩纹理数据的大小。其后的数据始终为<code>u16</code>的<code>rle_code</code>和<code>rle_data</code>交替出现，直到结束。
 <code>rle_data</code>有两个变量：<code>data</code>数量<code>x</code>和重复次数<code>y</code>。<code>rle_code</code>作为计数器存在，如果小于<code>0xFF00</code>，则<code>x = 1</code>，<code>y = rle_code</code>；如果大于等于<code>0xFF00</code>，则<code>x = (0x10000 - rle_code)</code>，<code>y = 1</code>。如下图。</p>
-<p><img loading="lazy" src="/imgs/posts/2023-10-04-parsing-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-RLE.jpg" alt=""  />
-</p>
+<p><a href="/imgs/posts/2023-10-04-parsing-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-RLE.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-04-parsing-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-RLE.jpg" alt=""  />
+</a></p>
 <p>将压缩纹理解压后，再根据上一节的内容即可转换为<code>RGB24</code>或<code>RGBA32</code>的图片。</p>
 <h2 id="04-结尾">04 结尾<a hidden class="anchor" aria-hidden="true" href="#04-结尾">#</a></h2>
 <p>至此为止图标的相关文件已经解析完毕了，万事俱备只欠东风，下一篇我们即将开始渲染模式，使用<code>PyGame</code>和<code>ModernGL</code>将渲染动画显示出来。</p>
@@ -847,7 +852,9 @@ href="/assets/@waline/client/dist/waline.css"
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
-</a>
+</a><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="/assets/lightbox/lightbox.min.css" rel="stylesheet" />
+<script src="/assets/lightbox/lightbox.min.js"></script>
 <script>
     var _hmt = _hmt || [];
     (function() {

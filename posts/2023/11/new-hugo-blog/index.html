@@ -356,8 +356,9 @@
 <blockquote>
 <p>如果你选择<code>Hugo</code>，下面这个地方的设置要注意</p>
 <p><code>Build and deployment</code>设置中<code>workflow</code>选择<code>Deploy static content to Pages</code>，由<code>Hugo</code>本地编译静态资源，可以大大提升<code>Github Pages</code>的部署速度。</p>
-<p><img loading="lazy" src="/imgs/posts/2023-11-08-new-hugo-blog/%e6%88%aa%e5%b1%8f2023-11-09%2011.32.58.webp" alt=""  />
-</p>
+<p><a href="/imgs/posts/2023-11-08-new-hugo-blog/%e6%88%aa%e5%b1%8f2023-11-09%2011.32.58.webp"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-11-08-new-hugo-blog/%e6%88%aa%e5%b1%8f2023-11-09%2011.32.58.webp" alt=""  />
+</a></p>
 </blockquote>
 <p>下面说一下域名的两种玩法。</p>
 <p>第一种玩法是博客使用<code>github</code>分配的域名，比如<code>xxx.github.io</code>，好处是真的是纯免费了，连域名都不花钱了。坏处是<code>github.io</code>在国内访问速度非常不稳定。这种玩法适合新手或者对博客要求不高的朋友。</p>
@@ -367,11 +368,13 @@
 <p>第一步，使用<code>Cloudflare</code>的<code>DNS</code>解析。如果你的域名不是在<code>Cloudflare</code>购买的，需要先将域名注册商那里的<code>DNS</code>解析服务器换成<code>Cloudflare</code>的，比如腾讯：
 <img src="/imgs/posts/2023-11-08-new-hugo-blog/截屏2023-11-09 11.56.25.webp" width="60%" ></p>
 <p>第二步，使用<code>dig</code>命令查看<code>Github Pages</code>分配给你的域名的真实ip地址：
+<a href="/imgs/posts/2023-11-08-new-hugo-blog/%e6%88%aa%e5%b1%8f2023-11-09%2012.04.03.webp"  data-lightbox="image-1" >
 <img loading="lazy" src="/imgs/posts/2023-11-08-new-hugo-blog/%e6%88%aa%e5%b1%8f2023-11-09%2012.04.03.webp" alt=""  />
-</p>
+</a></p>
 <p>第三步，在<code>Cloudflare</code>控制台创建你的域名指向上述ip地址的<code>DNS</code>解析<code>A记录</code>：
+<a href="/imgs/posts/2023-11-08-new-hugo-blog/%e6%88%aa%e5%b1%8f2023-11-09%2012.12.49.webp"  data-lightbox="image-1" >
 <img loading="lazy" src="/imgs/posts/2023-11-08-new-hugo-blog/%e6%88%aa%e5%b1%8f2023-11-09%2012.12.49.webp" alt=""  />
-</p>
+</a></p>
 <blockquote>
 <p>嫌第二步和第三步麻烦的话，可以直接使用一条<code>CNAME</code>记录指向你的<code>github.io</code>域名，效果是一样的。</p>
 </blockquote>
@@ -610,12 +613,14 @@
 <p>顺带一说，由于<code>jsdelivr</code>的不稳定，我选择了<code>cloudflare</code>的<code>cdn</code>：https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.esm.min.mjs</p>
 <h3 id="显示文章toc">显示文章TOC<a hidden class="anchor" aria-hidden="true" href="#显示文章toc">#</a></h3>
 <p><code>TOC</code>就是侧边栏等文章大纲，如果不喜欢主题自带的<code>TOC</code>样式，可以自己定义。网上教程很多，不再赘述。比如下图：</p>
-<p><img loading="lazy" src="/imgs/posts/2023-11-08-new-hugo-blog/%e6%88%aa%e5%b1%8f2023-11-09%2014.31.59.webp" alt=""  />
-</p>
+<p><a href="/imgs/posts/2023-11-08-new-hugo-blog/%e6%88%aa%e5%b1%8f2023-11-09%2014.31.59.webp"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-11-08-new-hugo-blog/%e6%88%aa%e5%b1%8f2023-11-09%2014.31.59.webp" alt=""  />
+</a></p>
 <h2 id="最后">最后<a hidden class="anchor" aria-hidden="true" href="#最后">#</a></h2>
 <p>到此为止，基本能满足我的需求了。最后放一张平时写文章时的图：
+<a href="/imgs/posts/2023-11-08-new-hugo-blog/%e6%88%aa%e5%b1%8f2023-11-09%2014.39.11.webp"  data-lightbox="image-1" >
 <img loading="lazy" src="/imgs/posts/2023-11-08-new-hugo-blog/%e6%88%aa%e5%b1%8f2023-11-09%2014.39.11.webp" alt=""  />
-</p>
+</a></p>
 <p>我通常使用<code>VSCode</code>编写文章，实时预览<code>Markdown</code>格式非常方便。为了让图片在<code>VSCode</code>和网页上都能正常显示，我在项目的根目录下创建了一个名为<code>imgs</code>的软链接，指向<code>static/imgs</code>。这是因为<code>Hugo</code>在编译时会自动将<code>static</code>目录下的文件复制到网站的根目录下，所以使用绝对路径<code>/imgs/</code>可以在不同预览方式下找到文件。</p>
 <p>我还创建了一个名为<code>public</code>的软链接，指向我的<code>Github Pages</code>仓库。当我完成文章的编写并使用<code>Hugo</code>进行编译时，它会自动将输出文件复制到<code>public</code>目录，即我的<code>Github Pages</code>仓库。最后，我使用<code>git</code>命令将更改推送到远程仓库，从而完成了网站的发布。</p>
 <p>最后欢迎大家访问我新建的小站：<a href="https://babyno.top">路边的阿不</a>。</p>
@@ -676,7 +681,9 @@ href="/assets/@waline/client/dist/waline.css"
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
-</a>
+</a><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="/assets/lightbox/lightbox.min.css" rel="stylesheet" />
+<script src="/assets/lightbox/lightbox.min.js"></script>
 <script>
     var _hmt = _hmt || [];
     (function() {

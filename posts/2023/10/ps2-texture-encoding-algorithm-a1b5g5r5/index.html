@@ -278,18 +278,22 @@
 <p>在<a href="../rle-algorithm-in-ps2/">上一篇文章</a>里我们介绍了<code>PS2</code>使用的图片压缩算法<code>RLE</code>，这次我们再来研究一下它的纹理贴图编码算法——<code>A1B5G5R5</code>。</p>
 <p>对于纹理来说，常用的图片编码格式如<code>jpg</code>或<code>png</code>都不适合。因为图片是由<code>GPU</code>读取并进行渲染的，你总不能送过去一张<code>jpg</code>图片，让<code>GPU</code>要读取其中一个像素的时候，先把整个图片解码吧？因此最理想的图片格式是未经压缩的位图格式，可以根据像素点坐标直接获取<code>RGB</code>数据。今天要介绍的<code>A1B5G5R5</code>正是这种编码格式之一。</p>
 <h2 id="分析">分析<a hidden class="anchor" aria-hidden="true" href="#分析">#</a></h2>
-<p><img loading="lazy" src="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/3.jpg" alt=""  />
-</p>
+<p><a href="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/3.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/3.jpg" alt=""  />
+</a></p>
 <p>上面两张纹理图片是从<code>PS2</code>存档中提取出来的，它们以<code>位图</code>的形式储存，像素数量为<code>128x128</code>。</p>
 <p>标准的<code>32位</code>位图，每个像素占用<code>4字节</code>数据，分别储存了<code>RGBA</code>四个通道的数据。因此上面两个纹理图片的图片大小为<code>128x128x4</code>字节。<code>32位RGBA</code>每像素数据结构如下：</p>
-<p><img loading="lazy" src="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/RGBA.jpg" alt=""  />
-</p>
+<p><a href="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/RGBA.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/RGBA.jpg" alt=""  />
+</a></p>
 <p>对于<code>A1B5G5R5</code>编码来说，每个像素占用<code>2字节</code>数据，其中<code>alpha通道</code>占用<code>1位</code>，其它3种颜色各占<code>5位</code>。每像素数据结构如下：</p>
-<p><img loading="lazy" src="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/A1B5G5R5.jpg" alt=""  />
-</p>
+<p><a href="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/A1B5G5R5.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/A1B5G5R5.jpg" alt=""  />
+</a></p>
 <p>将<code>A1B5G5R5</code>解码为<code>32位RGBA</code>可以用下图的方法进行。</p>
-<p><img loading="lazy" src="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/decode.jpg" alt=""  />
-</p>
+<p><a href="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/decode.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/decode.jpg" alt=""  />
+</a></p>
 <p>伪代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -314,8 +318,9 @@
 </div><p>很明显可以看到，将<code>32位</code>的<code>RGBA</code>图片编码成<code>16位</code>的<code>A1B5G5R5</code>，会丢失每种色彩的最后3个<code>bit</code>数据，是一种有损编码格式，但带来的好处是压缩比2:1，图片缩小了一半。再配合上一篇讲到的<code>RLE</code>编码，可以进一步缩小图片大小。</p>
 <h2 id="最后">最后<a hidden class="anchor" aria-hidden="true" href="#最后">#</a></h2>
 <p>最后放上上面两个纹理图片渲染后的效果，有小伙伴还记得这两个游戏吗？</p>
-<p><img loading="lazy" src="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/4.jpg" alt=""  />
-</p>
+<p><a href="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/4.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/4.jpg" alt=""  />
+</a></p>
 
 
   </div>
@@ -370,7 +375,9 @@ href="/assets/@waline/client/dist/waline.css"
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
-</a>
+</a><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="/assets/lightbox/lightbox.min.css" rel="stylesheet" />
+<script src="/assets/lightbox/lightbox.min.js"></script>
 <script>
     var _hmt = _hmt || [];
     (function() {
