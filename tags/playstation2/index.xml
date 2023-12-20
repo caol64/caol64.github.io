@@ -6,16 +6,7 @@
     <description>Recent content in Playstation2 on 路边的阿不</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Nov 2023 14:52:18 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/playstation2/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>ps2mc-browser新功能发布</title>
-      <link>https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/</link>
-      <pubDate>Mon, 20 Nov 2023 14:52:18 +0000</pubDate>
-      
-      <guid>https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/</guid>
-      <description>ps2mc-browser是一个PS2存档文件查看器，使用OpenGL画布显示存档里的3D动态图标。依赖如下： Python3 WxPython Numpy ModernGL PyGlm Github地址戳这</description>
-    </item>
-    
+    <lastBuildDate>Fri, 20 Oct 2023 14:48:31 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/playstation2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PS2纹理图片编码算法A1B5G5R5</title>
       <link>https://babyno.top/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</link>
@@ -35,30 +26,12 @@
     </item>
     
     <item>
-      <title>使用Python和OpenGL渲染PS2存档3D图标</title>
-      <link>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</link>
-      <pubDate>Mon, 09 Oct 2023 17:34:15 +0000</pubDate>
-      
-      <guid>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</guid>
-      <description>经过前面一系列文章的铺垫，PS2存档3D图标的文件已经全部解析完毕。本篇开始将介绍使用如下工具将3D图标渲染出来，并尽可能接近PS2主机原生</description>
-    </item>
-    
-    <item>
       <title>解析PS2游戏存档3D图标</title>
       <link>https://babyno.top/posts/2023/10/parsing-ps2-3d-icon/</link>
       <pubDate>Wed, 04 Oct 2023 18:00:34 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/10/parsing-ps2-3d-icon/</guid>
       <description>看到这个图片，对于熟悉PS2的老玩家来说应该不会陌生。它是PS2记忆卡管理界面中的游戏存档3D图标。本篇文章我们将介绍如何从存档文件里解析出</description>
-    </item>
-    
-    <item>
-      <title>从PS2记忆卡中导出存档文件</title>
-      <link>https://babyno.top/posts/2023/09/exporting-file-from-ps2-memcard/</link>
-      <pubDate>Fri, 29 Sep 2023 17:49:16 +0000</pubDate>
-      
-      <guid>https://babyno.top/posts/2023/09/exporting-file-from-ps2-memcard/</guid>
-      <description>上一篇文章中我们解析了PS2存储卡的文件系统，这次直接实战，编写python代码导出指定的游戏存档。本篇文章完整代码可以访问：ps2mc-b</description>
     </item>
     
     <item>

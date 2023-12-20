@@ -5,10 +5,19 @@
     <loc>https://babyno.top/categories/</loc>
     <lastmod>2023-12-20T12:07:17+00:00</lastmod>
   </url><url>
+    <loc>https://babyno.top/tags/opengl/</loc>
+    <lastmod>2023-12-20T12:07:17+00:00</lastmod>
+  </url><url>
     <loc>https://babyno.top/posts/</loc>
     <lastmod>2023-12-20T12:07:17+00:00</lastmod>
   </url><url>
+    <loc>https://babyno.top/tags/ps2mc-browser/</loc>
+    <lastmod>2023-12-20T12:07:17+00:00</lastmod>
+  </url><url>
     <loc>https://babyno.top/posts/2023/12/ps2mc-browsers-shader-introduction/</loc>
+    <lastmod>2023-12-20T12:07:17+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/tags/</loc>
     <lastmod>2023-12-20T12:07:17+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/categories/%E7%B2%97%E8%8C%B6%E6%B7%A1%E9%A5%AD-%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BC%B4/</loc>
@@ -23,31 +32,31 @@
     <loc>https://babyno.top/tags/shortcuts/</loc>
     <lastmod>2023-12-14T15:55:11+00:00</lastmod>
   </url><url>
-    <loc>https://babyno.top/tags/</loc>
-    <lastmod>2023-12-14T15:55:11+00:00</lastmod>
-  </url><url>
     <loc>https://babyno.top/posts/2023/11/shortcuts-sharing-fueling-record/</loc>
     <lastmod>2023-11-24T10:43:16+00:00</lastmod>
-  </url><url>
-    <loc>https://babyno.top/tags/playstation2/</loc>
-    <lastmod>2023-11-20T14:52:18+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/</loc>
     <lastmod>2023-11-20T14:52:18+00:00</lastmod>
   </url><url>
-    <loc>https://babyno.top/tags/blog/</loc>
+    <loc>https://babyno.top/tags/chatgpt/</loc>
     <lastmod>2023-11-14T11:31:43+00:00</lastmod>
   </url><url>
-    <loc>https://babyno.top/tags/chatgpt/</loc>
+    <loc>https://babyno.top/tags/vscode/</loc>
     <lastmod>2023-11-14T11:31:43+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/posts/2023/11/create-hugo-post-with-vscode-task-and-chatgpt/</loc>
     <lastmod>2023-11-14T11:31:43+00:00</lastmod>
   </url><url>
+    <loc>https://babyno.top/tags/cloudflare/</loc>
+    <lastmod>2023-11-08T14:23:52+00:00</lastmod>
+  </url><url>
     <loc>https://babyno.top/posts/2023/11/new-hugo-blog/</loc>
     <lastmod>2023-11-08T14:23:52+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/tags/algorithm/</loc>
+    <lastmod>2023-10-20T14:48:31+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/tags/playstation2/</loc>
     <lastmod>2023-10-20T14:48:31+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</loc>
@@ -58,9 +67,6 @@
   </url><url>
     <loc>https://babyno.top/posts/2023/10/rle-algorithm-in-ps2/</loc>
     <lastmod>2023-10-16T12:30:58+00:00</lastmod>
-  </url><url>
-    <loc>https://babyno.top/tags/opengl/</loc>
-    <lastmod>2023-10-09T17:34:15+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</loc>
     <lastmod>2023-10-09T17:34:15+00:00</lastmod>
