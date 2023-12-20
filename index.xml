@@ -6,7 +6,16 @@
     <description>Recent content on 路边的阿不</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Dec 2023 15:55:11 +0000</lastBuildDate><atom:link href="https://babyno.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Dec 2023 12:07:17 +0000</lastBuildDate><atom:link href="https://babyno.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ps2mc-browser的着色器代码分析</title>
+      <link>https://babyno.top/posts/2023/12/ps2mc-browsers-shader-introduction/</link>
+      <pubDate>Wed, 20 Dec 2023 12:07:17 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/12/ps2mc-browsers-shader-introduction/</guid>
+      <description>如何将多边形的顶点和纹理渲染成缤纷多彩的画面呢？我们需要通过一个窗口，窥探其中的奥秘，它就是OpenGL着色器。今天我们就要聊聊ps2mc-</description>
+    </item>
+    
     <item>
       <title>Base64编码在「Apple快捷指令」中的妙用</title>
       <link>https://babyno.top/posts/2023/12/the-wonders-of-base64-encoding-in-apple-shortcuts/</link>
