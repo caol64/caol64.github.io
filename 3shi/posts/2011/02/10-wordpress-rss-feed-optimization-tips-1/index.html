@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>10个优化WordPress RSS Feed的技巧(1) | 3shi天下</title>
+<meta name="keywords" content="rss feed">
+<meta name="description" content="像你所知道的，RSS Feed对于大多数人的互联网生活，已经是必不可少的部分。由于其方便和效率，越来越受关注，甚至追捧。特别是WordPres">
+<meta name="author" content="3shi">
+<link rel="canonical" href="https://babyno.top/3shi/posts/2011/02/10-wordpress-rss-feed-optimization-tips-1/">
+<link crossorigin="anonymous" href="/3shi/assets/css/stylesheet.12891501283130addd65d5c9aa3af45b949edff3f949a53c8f890319a805b26b.css" integrity="sha256-EokVASgxMK3dZdXJqjr0W5Se3/P5SaU8j4kDGagFsms=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://babyno.top/3shi/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://babyno.top/3shi/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://babyno.top/3shi/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://babyno.top/3shi/apple-touch-icon.png">
+<link rel="mask-icon" href="https://babyno.top/3shi/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="10个优化WordPress RSS Feed的技巧(1)" />
+<meta property="og:description" content="像你所知道的，RSS Feed对于大多数人的互联网生活，已经是必不可少的部分。由于其方便和效率，越来越受关注，甚至追捧。特别是WordPres" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://babyno.top/3shi/posts/2011/02/10-wordpress-rss-feed-optimization-tips-1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2011-02-19T13:02:51+00:00" />
+<meta property="article:modified_time" content="2011-02-19T13:02:51+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="10个优化WordPress RSS Feed的技巧(1)"/>
+<meta name="twitter:description" content="像你所知道的，RSS Feed对于大多数人的互联网生活，已经是必不可少的部分。由于其方便和效率，越来越受关注，甚至追捧。特别是WordPres"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://babyno.top/3shi/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "10个优化WordPress RSS Feed的技巧(1)",
+      "item": "https://babyno.top/3shi/posts/2011/02/10-wordpress-rss-feed-optimization-tips-1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "10个优化WordPress RSS Feed的技巧(1)",
+  "name": "10个优化WordPress RSS Feed的技巧(1)",
+  "description": "像你所知道的，RSS Feed对于大多数人的互联网生活，已经是必不可少的部分。由于其方便和效率，越来越受关注，甚至追捧。特别是WordPres",
+  "keywords": [
+    "rss feed"
+  ],
+  "articleBody": "像你所知道的，RSS Feed对于大多数人的互联网生活，已经是必不可少的部分。由于其方便和效率，越来越受关注，甚至追捧。特别是WordPress非常重视这一点。比如提交到WordPress官方主题目录的主题，都需要在明显的地方显示RSS Feed图标。所以，今天，介绍一下来自Smashing Magazine的《10 Useful RSS-Tricks and Hacks For WordPress》吧，给你10个优化WordPress Feed的方法。\n1. 控制文章RSS的输出时间 出现问题: 你有没有过发表一篇文章，但立即发现有错误要改。可是RSS已经输出，而让读者看到错误的信息?\n对，我想有的。我自己也经常出现这样的问题，特别是文章内容里面需要涉及到代码。\n解决方法:\n把下面的代码拷贝到你主题的function.php文件，如果没有的话，新建一个以function.php为命的文件，然后把这些复制进去;\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 function publish_later_on_feed($where) { global $wpdb; if ( is_feed() ) { // timestamp in WP-format $now = gmdate(\"Y-m-d H:i:s\"); // value for wait; + device $wait = \"5\"; // integer // http://dev.mysql.com/doc/refman/5.0/en/date-and-time-functions.html#function_timestampdiff $device = \"MINUTE\"; //MINUTE, HOUR, DAY, WEEK, MONTH, YEAR // add SQL-sytax to default $where $where .= \" AND TIMESTAMPDIFF($device, $wpdb-\u003eposts.post_date_gmt, \"$now\") \u003e $wait \"; } return $where; } add_filter(\"posts_where\", \"publish_later_on_feed\"); 代码功能:\n上面的代码会让你的文章迟5分钟输出Feed。如果你想改变迟延的时间，修改代码中的$wait = ’5′，5代表5分钟。\n相关资源：\nPublish your feed later 2. 重定向你的WordPress Feeds到FeedBurner 出现问题: 新手在使用WP的时候，通常不会使用RSS\nFeed的Feedburner的烧制服务。而当他开始使用的时候，别人已经订阅了原始的Feed，并且这个Feed地址通常与服务商提供的网址不同。另外的问题是，你经常换主题吗?\n如果是，我想你也会对每次都需把 bloginfo(‘rss2_url’) 换成自己的feed地址而感到烦。\n解决方法:\n解决这些问题的方法就是，利用服务器的重定向功能。\n新建（修改）在一个.htaccess文件，上传到服务器中WP的根目录；\n编辑.htaccess文件，把下面的代码复制到里面去，当然，可别忘了把地址修改成你自己的:\n1 2 3 4 5 6 RewriteEngine on RewriteCond %{HTTP_USER_AGENT} !FeedBurner [NC] RewriteCond %{HTTP_USER_AGENT} !FeedValidator [NC] RewriteRule ^feed/?([_0-9a-z-]+)?/?$ http://feeds.feedburner.com/wprecipes [R=302,NC,L] 保存文件，完成! 代码功能: 每次有个点击\nhttp://www.youblog/feed或者其他你博客的Feed地址的时候，将会自动转到你设定的地址中去。这可以使你会不失去任何一个订阅者。并且，即使你两天换一个主题，也不用再担心没有及时修改Feed地址。\n相关资源:\nRedirect WordPress feeds to FeedBurner via htaccess (Redux)\nHow to: redirect WordPress RSS feeds to FeedBurner with .htaccess\n3. 插入广告(或其他东西) 到你的RSS Feed 出现问题: 利用RSS Feed来增加收入已经成为一个非常普通的行为。但FeedBurner只能插入Google\nAdsense。可是你又不知道如何插入别的广告或者内容。\n解决方法:\n嘿嘿，这是可以解决的问题。你可以为你的Rss读者提供只能在Feed中见到的内容，比如一个WP主题。 你面要做的是，按下面的步骤做一篇:\n编辑functions.php，当然，像上面说的到，如果没有，新建一个；\n把下面的代码复制进这个文件:\n1 2 3 4 5 6 7 8 \u003c?php function insertAds($content) { $content = $content.\"",
+  "wordCount" : "1803",
+  "inLanguage": "en",
+  "datePublished": "2011-02-19T13:02:51Z",
+  "dateModified": "2011-02-19T13:02:51Z",
+  "author":{
+    "@type": "Person",
+    "name": "3shi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://babyno.top/3shi/posts/2011/02/10-wordpress-rss-feed-optimization-tips-1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "3shi天下",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://babyno.top/3shi/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://babyno.top/3shi/" accesskey="h" title="3shi天下 (Alt + H)">3shi天下</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://babyno.top/3shi/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top" title="阿不">
+                    <span>阿不</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://babyno.top/3shi/">Home</a>&nbsp;»&nbsp;<a href="https://babyno.top/3shi/posts/">Posts</a></div>
+    <h1 class="post-title">
+      10个优化WordPress RSS Feed的技巧(1)
+    </h1>
+    <div class="post-meta"><span title='2011-02-19 13:02:51 +0000 UTC'>2011-02-19</span>&nbsp;·&nbsp;3shi
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#1-%e6%8e%a7%e5%88%b6%e6%96%87%e7%ab%a0rss%e7%9a%84%e8%be%93%e5%87%ba%e6%97%b6%e9%97%b4" aria-label="1. 控制文章RSS的输出时间">1. 控制文章RSS的输出时间</a></li>
+                    <li>
+                        <a href="#2-%e9%87%8d%e5%ae%9a%e5%90%91%e4%bd%a0%e7%9a%84wordpress-feeds%e5%88%b0feedburner" aria-label="2. 重定向你的WordPress Feeds到FeedBurner">2. 重定向你的WordPress Feeds到FeedBurner</a></li>
+                    <li>
+                        <a href="#3-%e6%8f%92%e5%85%a5%e5%b9%bf%e5%91%8a%e6%88%96%e5%85%b6%e4%bb%96%e4%b8%9c%e8%a5%bf-%e5%88%b0%e4%bd%a0%e7%9a%84rss-feed" aria-label="3. 插入广告(或其他东西) 到你的RSS Feed">3. 插入广告(或其他东西) 到你的RSS Feed</a></li>
+                    <li>
+                        <a href="#4-%e8%ae%a9%e5%9b%be%e7%89%87%e5%9c%a8rss-feed%e4%b8%ad%e6%98%be%e7%a4%ba%e5%ae%9a%e4%b9%89%e6%a0%b7%e5%bc%8f" aria-label="4. 让图片在RSS Feed中显示定义样式">4. 让图片在RSS Feed中显示定义样式</a></li>
+                    <li>
+                        <a href="#5-%e4%b8%ba%e4%bd%a0%e7%9a%84%e8%af%bb%e8%80%85%e6%8f%90%e4%be%9b%e6%af%8f%e7%af%87%e6%96%87%e7%ab%a0%e7%9a%84rss-feed" aria-label="5. 为你的读者提供每篇文章的RSS Feed">5. 为你的读者提供每篇文章的RSS Feed</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+  <div class="post-content"><p>像你所知道的，RSS Feed对于大多数人的互联网生活，已经是必不可少的部分。由于其方便和效率，越来越受关注，甚至追捧。特别是WordPress非常重视这一点。比如提交到WordPress官方主题目录的主题，都需要在明显的地方显示RSS Feed图标。所以，今天，介绍一下来自Smashing Magazine的《<a href="http://www.smashingmagazine.com/2008/12/02/10-useful-rss-hacks-for-wordpress/">10 Useful RSS-Tricks and Hacks For WordPress</a>》吧，给你10个优化WordPress Feed的方法。</p>
+<h2 id="1-控制文章rss的输出时间">1. 控制文章RSS的输出时间<a hidden class="anchor" aria-hidden="true" href="#1-控制文章rss的输出时间">#</a></h2>
+<p><a href="http://farm4.static.flickr.com/3153/3081716502_82dcf3ab08_o.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="http://farm4.static.flickr.com/3153/3081716502_82dcf3ab08_o.jpg" alt="sm8.jpg"  />
+</a></p>
+<p><strong>出现问题:</strong> 你有没有过发表一篇文章，但立即发现有错误要改。可是RSS已经输出，而让读者看到错误的信息?</p>
+<p>对，我想有的。我自己也经常出现这样的问题，特别是文章内容里面需要涉及到代码。</p>
+<p><strong>解决方法:</strong></p>
+<p>把下面的代码拷贝到你主题的function.php文件，如果没有的话，新建一个以function.php为命的文件，然后把这些复制进去;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">publish_later_on_feed</span><span class="p">(</span><span class="nv">$where</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">global</span> <span class="nv">$wpdb</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span> <span class="nx">is_feed</span><span class="p">()</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// timestamp in WP-format
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$now</span> <span class="o">=</span> <span class="nx">gmdate</span><span class="p">(</span><span class="s2">&#34;Y-m-d H:i:s&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// value for wait; + device
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$wait</span> <span class="o">=</span> <span class="s2">&#34;5&#34;</span><span class="p">;</span> <span class="c1">// integer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// http://dev.mysql.com/doc/refman/5.0/en/date-and-time-functions.html#function_timestampdiff
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$device</span> <span class="o">=</span> <span class="s2">&#34;MINUTE&#34;</span><span class="p">;</span> <span class="c1">//MINUTE, HOUR, DAY, WEEK, MONTH, YEAR
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// add SQL-sytax to default $where
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$where</span> <span class="o">.=</span> <span class="s2">&#34; AND TIMESTAMPDIFF(</span><span class="si">$device</span><span class="s2">, </span><span class="si">$wpdb-&gt;posts</span><span class="s2">.post_date_gmt, &#34;</span><span class="nv">$now</span><span class="s2">&#34;) &gt; </span><span class="si">$wait</span><span class="s2"> &#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nv">$where</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">add_filter</span><span class="p">(</span><span class="s2">&#34;posts_where&#34;</span><span class="p">,</span> <span class="s2">&#34;publish_later_on_feed&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>代码功能:</strong></p>
+<p>上面的代码会让你的文章迟5分钟输出Feed。如果你想改变迟延的时间，修改代码中的$wait = ’5′，5代表5分钟。</p>
+<p>相关资源：</p>
+<ul>
+<li><a href="http://wpengineer.com/publish-the-feed-later/">Publish your feed later</a></li>
+</ul>
+<h2 id="2-重定向你的wordpress-feeds到feedburner">2. 重定向你的WordPress Feeds到FeedBurner<a hidden class="anchor" aria-hidden="true" href="#2-重定向你的wordpress-feeds到feedburner">#</a></h2>
+<p><a href="http://farm4.static.flickr.com/3058/3080878111_8fa5ac613d_o.png"  data-lightbox="image-1" >
+<img loading="lazy" src="http://farm4.static.flickr.com/3058/3080878111_8fa5ac613d_o.png" alt="sm1.png"  />
+</a></p>
+<p><strong>出现问题:</strong> 新手在使用WP的时候，通常不会使用RSS</p>
+<p>Feed的Feedburner的烧制服务。而当他开始使用的时候，别人已经订阅了原始的Feed，并且这个Feed地址通常与服务商提供的网址不同。另外的问题是，你经常换主题吗?</p>
+<p>如果是，我想你也会对每次都需把 <em>bloginfo(‘rss2_url’)</em> 换成自己的feed地址而感到烦。</p>
+<p><strong>解决方法:</strong></p>
+<p>解决这些问题的方法就是，利用服务器的重定向功能。</p>
+<ol>
+<li>
+<p>新建（修改）在一个.htaccess文件，上传到服务器中WP的根目录；</p>
+</li>
+<li>
+<p>编辑.htaccess文件，把下面的代码复制到里面去，当然，可别忘了把地址修改成你自己的:</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;ifModule mod_rewrite.c&gt;
+</span></span><span class="line"><span class="cl">RewriteEngine on
+</span></span><span class="line"><span class="cl">RewriteCond %{HTTP_USER_AGENT} !FeedBurner [NC]
+</span></span><span class="line"><span class="cl">RewriteCond %{HTTP_USER_AGENT} !FeedValidator [NC]
+</span></span><span class="line"><span class="cl">RewriteRule ^feed/?([_0-9a-z-]+)?/?$ http://feeds.feedburner.com/wprecipes [R=302,NC,L]
+</span></span><span class="line"><span class="cl">&lt;/ifModule&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>保存文件，完成!</li>
+</ol>
+<p><strong>代码功能:</strong> 每次有个点击</p>
+<p><em><a href="http://www.youblog/feed">http://www.youblog/feed</a>或者其他你博客的Feed地址的时候，将会自动转到你设定的地址中去。这可以使你会不失去任何一个订阅者。并且，即使你两天换一个主题，也不用再担心没有及时修改Feed地址。</em></p>
+<p>相关资源:</p>
+<ul>
+<li>
+<p><a href="http://perishablepress.com/press/2008/03/25/redirect-wordpress-feeds-to-feedburner-via-htaccess-redux/">Redirect WordPress feeds to FeedBurner via htaccess (Redux)</a></p>
+</li>
+<li>
+<p><a href="http://www.wprecipes.com/how-to-redirect-wordpress-rss-feeds-to-feedburner-with-htaccess">How to: redirect WordPress RSS feeds to FeedBurner with .htaccess</a></p>
+</li>
+</ul>
+<h2 id="3-插入广告或其他东西-到你的rss-feed">3. 插入广告(或其他东西) 到你的RSS Feed<a hidden class="anchor" aria-hidden="true" href="#3-插入广告或其他东西-到你的rss-feed">#</a></h2>
+<p><a href="http://farm4.static.flickr.com/3091/3080878411_ed95913f69_o.png"  data-lightbox="image-1" >
+<img loading="lazy" src="http://farm4.static.flickr.com/3091/3080878411_ed95913f69_o.png" alt="sm2.png"  />
+</a></p>
+<p><strong>出现问题:</strong> 利用RSS Feed来增加收入已经成为一个非常普通的行为。但FeedBurner只能插入Google</p>
+<p>Adsense。可是你又不知道如何插入别的广告或者内容。</p>
+<p><strong>解决方法:</strong></p>
+<p>嘿嘿，这是可以解决的问题。你可以为你的Rss读者提供只能在Feed中见到的内容，比如一个WP主题。 你面要做的是，按下面的步骤做一篇:</p>
+<ol>
+<li>
+<p>编辑functions.php，当然，像上面说的到，如果没有，新建一个；</p>
+</li>
+<li>
+<p>把下面的代码复制进这个文件:</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">insertAds</span><span class="p">(</span><span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">$content</span> <span class="o">=</span> <span class="nv">$content</span><span class="o">.</span><span class="s2">&#34;&lt;hr /&gt;&lt;a  href=&#34;</span><span class="nx">http</span><span class="o">://</span><span class="nx">www</span><span class="o">.</span><span class="nx">wprecipes</span><span class="o">.</span><span class="nx">com</span><span class="s2">&#34;&gt;Have you visited WpRecipes  today?&lt;/a&gt;&lt;hr /&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nv">$content</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">add_filter</span><span class="p">(</span><span class="s2">&#34;the_excerpt_rss&#34;</span><span class="p">,</span> <span class="s2">&#34;insertAds&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">add_filter</span><span class="p">(</span><span class="s2">&#34;the_content_rss&#34;</span><span class="p">,</span> <span class="s2">&#34;insertAds&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>保存它，这就能显示了在你的RSS feed中啦!</li>
+</ol>
+<p>另外，如果上面有代码没有起作用，有可能是插件冲突，或者其他问题引起的，可以尝试一下另一个相似的方法：<a href="http://myfairland.net/insert-something-in-the-rss-feed/">不用插件实现在RSS Feed中插入其他内容</a>。</p>
+<p><strong>代码功能:</strong></p>
+<p>这功能也可以通过修改内核来实现。不过，这并不是一个好方法。因为在每次升级的时候，会有麻烦。利用上面的方法，使用WP中的 <em>add_filter()</em></p>
+<p>功能，这样会更方便修改。</p>
+<p>相关资源:</p>
+<ul>
+<li>
+<p><a href="http://www.wprecipes.com/how-to-insert-ads-on-your-rss-feed">How to: insert ads in your RSS feed</a></p>
+</li>
+<li>
+<p><a href="http://www.webinventif.fr/wordpress-ajouter-du-contenu-dans-son-flux/">WordPress, ajouter du contenu dans son flux RSS !</a></p>
+</li>
+</ul>
+<h2 id="4-让图片在rss-feed中显示定义样式">4. 让图片在RSS Feed中显示定义样式<a hidden class="anchor" aria-hidden="true" href="#4-让图片在rss-feed中显示定义样式">#</a></h2>
+<p><a href="http://farm4.static.flickr.com/3254/3081717682_10e35036d7_o.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="http://farm4.static.flickr.com/3254/3081717682_10e35036d7_o.jpg" alt="sm6.jpg"  />
+</a></p>
+<p><strong>出现问题:</strong> 你努力地把文章变得漂亮起来，图文并茂，不过，当然文章出现在RSS Feed阅读器中的时候，却不幸地显示得非常难看。</p>
+<p><strong>解决方法:</strong></p>
+<p>这个问题的事实就是作者把图片放在文本内行: <a href="http://farm4.static.flickr.com/3184/3080879057_3da412f6d0_o.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="http://farm4.static.flickr.com/3184/3080879057_3da412f6d0_o.jpg" alt="inline-image.jpg"  />
+</a></p>
+<p>解决这个问题就是修改你的CSS文件，使你的图片显示block值，而WP中内置了 &quot; <em>center</em> &ldquo;这个类，比如:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;http://78.46.108.98/images/wordpress-rss-hacks/myimage.jpg&#34;</span> <span class="nx">alt</span><span class="o">=</span><span class="s2">&#34;This is my image&#34;</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&#34;center&#34;</span> <span class="o">/&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>相关资源:</p>
+<ul>
+<li><a href="http://www.pearsonified.com/2007/06/how-to-format-images-for-feed-readers.php">How to format images for feed readers</a></li>
+</ul>
+<h2 id="5-为你的读者提供每篇文章的rss-feed">5. 为你的读者提供每篇文章的RSS Feed<a hidden class="anchor" aria-hidden="true" href="#5-为你的读者提供每篇文章的rss-feed">#</a></h2>
+<p><a href="http://farm4.static.flickr.com/3277/3081718190_fc3bcd859d_o.png"  data-lightbox="image-1" >
+<img loading="lazy" src="http://farm4.static.flickr.com/3277/3081718190_fc3bcd859d_o.png" alt="sm9.png"  />
+</a></p>
+<p><strong>出现问题:</strong> 当一篇文章有很多评论的时候，每个评者都很有可能无法及时得到评论的通知。事实上，很多主流的博客程序，都会提供单篇文章的评论RSS Feed。</p>
+<p><strong>解决方法:</strong> Well, this recipe isn’t really a hack or anything: to provide an RSS feed for the comments in a particular post, just call the <em>comment_rss_link()</em> function:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">comments_rss_link</span><span class="p">(</span><span class="s2">&#34;&amp;raquo; Comments RSS Feed&#34;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>相关资源:</p>
+<ul>
+<li><a href="http://www.wprecipes.com/wordpress-how-to-provide-rss-feed-for-each-post-comments">WordPress how to: provide an RSS feed for the comments in each post</a></li>
+</ul>
+<p><strong>本文转载自：<a href="http://sofish.de/789">http://sofish.de/789</a>，感谢原作者。</strong></p>
+
+
+  </div>
+
+  
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://babyno.top/3shi/tags/rss-feed/">rss feed</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://babyno.top/3shi/posts/2011/02/10-wordpress-rss-feed-optimization-tips-2/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>10个优化WordPress RSS Feed的技巧(2)</span>
+  </a>
+  <a class="next" href="https://babyno.top/3shi/posts/2011/02/lantern-festival/">
+    <span class="title">Next »</span>
+    <br>
+    <span>中国传统节日-元宵节</span>
+  </a>
+</nav>
+
+  </footer><link
+rel="stylesheet"
+href="/assets/@waline/client/dist/waline.css"
+/>
+<div id="waline"></div>
+<script type="module">
+  import { init } from '/assets/@waline/client/dist/waline.mjs';
+
+  init({
+    el: '#waline',
+    serverURL: 'https://comments.babyno.top/',
+    search: false
+  });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://babyno.top/3shi/">3shi天下</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?3538691f85f2d2e74e734e6ad2c07251";
+    var s = document.getElementsByTagName("script");
+    var lastScript = s[s.length - 1];
+    if (lastScript.nextSibling) {
+      lastScript.parentNode.insertBefore(hm, lastScript.nextSibling);
+    } else {
+      lastScript.parentNode.appendChild(hm);
+    }
+  })();
+</script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GS1HVS967Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GS1HVS967Y');
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

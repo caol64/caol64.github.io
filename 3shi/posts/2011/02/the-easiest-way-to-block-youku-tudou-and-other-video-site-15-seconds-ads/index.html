@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>屏蔽优酷、土豆等视频网站15秒广告的最全最简单方法 | 3shi天下</title>
+<meta name="keywords" content="">
+<meta name="description" content="亲自测试了下确实可以完全屏蔽广告！所以发出来大家分享下。 原理是改hosts的！ 第一步：找到C:WINDOWSsystem32driverse">
+<meta name="author" content="3shi">
+<link rel="canonical" href="https://babyno.top/3shi/posts/2011/02/the-easiest-way-to-block-youku-tudou-and-other-video-site-15-seconds-ads/">
+<link crossorigin="anonymous" href="/3shi/assets/css/stylesheet.12891501283130addd65d5c9aa3af45b949edff3f949a53c8f890319a805b26b.css" integrity="sha256-EokVASgxMK3dZdXJqjr0W5Se3/P5SaU8j4kDGagFsms=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://babyno.top/3shi/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://babyno.top/3shi/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://babyno.top/3shi/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://babyno.top/3shi/apple-touch-icon.png">
+<link rel="mask-icon" href="https://babyno.top/3shi/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="屏蔽优酷、土豆等视频网站15秒广告的最全最简单方法" />
+<meta property="og:description" content="亲自测试了下确实可以完全屏蔽广告！所以发出来大家分享下。 原理是改hosts的！ 第一步：找到C:WINDOWSsystem32driverse" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://babyno.top/3shi/posts/2011/02/the-easiest-way-to-block-youku-tudou-and-other-video-site-15-seconds-ads/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2011-02-27T09:33:41+00:00" />
+<meta property="article:modified_time" content="2011-02-27T09:33:41+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="屏蔽优酷、土豆等视频网站15秒广告的最全最简单方法"/>
+<meta name="twitter:description" content="亲自测试了下确实可以完全屏蔽广告！所以发出来大家分享下。 原理是改hosts的！ 第一步：找到C:WINDOWSsystem32driverse"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://babyno.top/3shi/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "屏蔽优酷、土豆等视频网站15秒广告的最全最简单方法",
+      "item": "https://babyno.top/3shi/posts/2011/02/the-easiest-way-to-block-youku-tudou-and-other-video-site-15-seconds-ads/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "屏蔽优酷、土豆等视频网站15秒广告的最全最简单方法",
+  "name": "屏蔽优酷、土豆等视频网站15秒广告的最全最简单方法",
+  "description": "亲自测试了下确实可以完全屏蔽广告！所以发出来大家分享下。 原理是改hosts的！ 第一步：找到C:WINDOWSsystem32driverse",
+  "keywords": [
+    
+  ],
+  "articleBody": "亲自测试了下确实可以完全屏蔽广告！所以发出来大家分享下。 原理是改hosts的！\n第一步：找到C:WINDOWSsystem32driversetc里面的hosts文件,双击打开，选用记事本打开。\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 #优酷 127.0.0.1 atm.youku.com 127.0.0.1 Fvid.atm.youku.com 127.0.0.1 html.atm.youku.com 127.0.0.1 valb.atm.youku.com 127.0.0.1 valf.atm.youku.com 127.0.0.1 valo.atm.youku.com 127.0.0.1 valp.atm.youku.com 127.0.0.1 lstat.youku.com 127.0.0.1 speed.lstat.youku.com 127.0.0.1 urchin.lstat.youku.com 127.0.0.1 stat.youku.com 127.0.0.1 static.lstat.youku.com 127.0.0.1 valc.atm.youku.com 127.0.0.1 vid.atm.youku.com 127.0.0.1 walp.atm.youku.com #百度： 127.0.0.1 a.baidu.com 127.0.0.1 baidutv.baidu.com 127.0.0.1 bar.baidu.com 127.0.0.1 c.baidu.com 127.0.0.1 cjhq.baidu.com 127.0.0.1 cpro.baidu.com 127.0.0.1 drmcmm.baidu.com 127.0.0.1 e.baidu.com 127.0.0.1 eiv.baidu.com 127.0.0.1 hc.baidu.com 127.0.0.1 hm.baidu.com 127.0.0.1 ma.baidu.com 127.0.0.1 nsclick.baidu.com 127.0.0.1 spcode.baidu.com 127.0.0.1 tk.baidu.com 127.0.0.1 union.baidu.com 127.0.0.1 ucstat.baidu.com 127.0.0.1 utility.baidu.com 127.0.0.1 utk.baidu.com 127.0.0.1 focusbaiduafp.allyes.com #奇艺 127.0.0.1 afp.qiyi.com 127.0.0.1 focusbaiduafp.allyes.com #CNTV 127.0.0.1 a.cctv.com 127.0.0.1 a.cntv.cn 127.0.0.1 ad.cctv.com 127.0.0.1 d.cntv.cn 127.0.0.1 adguanggao.eee114.com 127.0.0.1 cctv.adsunion.com #新浪视频 127.0.0.1 dcads.sina.com.cn #pptv 127.0.0.1 pp2.pptv.com #乐视 127.0.0.1 pro.letv.com #搜狐高清 127.0.0.1 images.sohu.com @HostsX 国内站点广告/视频类网站 #CNTV 127.0.0.1 a.cctv.com 127.0.0.1 a.cntv.cn 127.0.0.1 ad.cctv.com 127.0.0.1 d.cntv.cn 127.0.0.1 adguanggao.eee114.com 127.0.0.1 cctv.adsunion.com #我乐网 127.0.0.1 acs.56.com 127.0.0.1 acs.agent.56.com 127.0.0.1 acs.agent.v-56.com 127.0.0.1 bill.agent.56.com 127.0.0.1 bill.agent.v-56.com 127.0.0.1 stat.56.com 127.0.0.1 stat2.corp.56.com 127.0.0.1 union.56.com 127.0.0.1 uvimage.56.com 127.0.0.1 v16.56.com #6间房 127.0.0.1 pole.6rooms.com 127.0.0.1 shrek.6.cn 127.0.0.1 simba.6.cn 127.0.0.1 union.6.cn #土豆网 127.0.0.1 adextensioncontrol.tudou.com 127.0.0.1 iwstat.tudou.com 127.0.0.1 nstat.tudou.com 127.0.0.1 stats.tudou.com 127.0.0.1 *.p2v.tudou.com* 127.0.0.1 at-img1.tdimg.com 127.0.0.1 at-img2.tdimg.com 127.0.0.1 at-img3.tdimg.com 127.0.0.1 adplay.tudou.com 127.0.0.1 adcontrol.tudou.com 127.0.0.1 stat.tudou.com #酷6网 127.0.0.1 1.allyes.com.cn 127.0.0.1 analytics.ku6.com 127.0.0.1 gug.ku6cdn.com 127.0.0.1 ku6.allyes.com 127.0.0.1 ku6afp.allyes.com 127.0.0.1 pq.stat.ku6.com 127.0.0.1 st.vq.ku6.cn 127.0.0.1 stat0.888.ku6.com 127.0.0.1 stat1.888.ku6.com 127.0.0.1 stat2.888.ku6.com 127.0.0.1 stat3.888.ku6.com 127.0.0.1 static.ku6.com 127.0.0.1 v0.stat.ku6.com 127.0.0.1 v1.stat.ku6.com 127.0.0.1 v2.stat.ku6.com 127.0.0.1 v3.stat.ku6.com #激动网 127.0.0.1 86file.megajoy.com 127.0.0.1 86get.joy.cn 127.0.0.1 86log.joy.cn #天线视频 127.0.0.1 casting.openv.com 127.0.0.1 m.openv.tv 127.0.0.1 uniclick.openv.com #迅雷看看屏蔽： 127.0.0.1 mcfg.sandai.net 127.0.0.1 biz5.sandai.net 127.0.0.1 server1.adpolestar.net 127.0.0.1 advstat.xunlei.com 127.0.0.1 mpv.sandai.net 然后就可以痛痛快快的看视频了！\n转载自JC Boy\n原文地址：http://www.jcboy.info/2011/02/pingbiyoukutudoudengshipinwangzhan15miaoguanggaodezuiquanzuijiandanfangfa.htm\n",
+  "wordCount" : "633",
+  "inLanguage": "en",
+  "datePublished": "2011-02-27T09:33:41Z",
+  "dateModified": "2011-02-27T09:33:41Z",
+  "author":{
+    "@type": "Person",
+    "name": "3shi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://babyno.top/3shi/posts/2011/02/the-easiest-way-to-block-youku-tudou-and-other-video-site-15-seconds-ads/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "3shi天下",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://babyno.top/3shi/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://babyno.top/3shi/" accesskey="h" title="3shi天下 (Alt + H)">3shi天下</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://babyno.top/3shi/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top" title="阿不">
+                    <span>阿不</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://babyno.top/3shi/">Home</a>&nbsp;»&nbsp;<a href="https://babyno.top/3shi/posts/">Posts</a></div>
+    <h1 class="post-title">
+      屏蔽优酷、土豆等视频网站15秒广告的最全最简单方法
+    </h1>
+    <div class="post-meta"><span title='2011-02-27 09:33:41 +0000 UTC'>2011-02-27</span>&nbsp;·&nbsp;3shi
+
+</div>
+  </header> 
+  <div class="post-content"><p>亲自测试了下确实可以完全屏蔽广告！所以发出来大家分享下。 原理是改hosts的！</p>
+<p>第一步：找到C:WINDOWSsystem32driversetc里面的hosts文件,双击打开，选用记事本打开。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#优酷
+</span></span><span class="line"><span class="cl">127.0.0.1 atm.youku.com
+</span></span><span class="line"><span class="cl">127.0.0.1 Fvid.atm.youku.com
+</span></span><span class="line"><span class="cl">127.0.0.1 html.atm.youku.com
+</span></span><span class="line"><span class="cl">127.0.0.1 valb.atm.youku.com
+</span></span><span class="line"><span class="cl">127.0.0.1 valf.atm.youku.com
+</span></span><span class="line"><span class="cl">127.0.0.1 valo.atm.youku.com
+</span></span><span class="line"><span class="cl">127.0.0.1 valp.atm.youku.com
+</span></span><span class="line"><span class="cl">127.0.0.1 lstat.youku.com
+</span></span><span class="line"><span class="cl">127.0.0.1 speed.lstat.youku.com
+</span></span><span class="line"><span class="cl">127.0.0.1 urchin.lstat.youku.com
+</span></span><span class="line"><span class="cl">127.0.0.1 stat.youku.com
+</span></span><span class="line"><span class="cl">127.0.0.1 static.lstat.youku.com
+</span></span><span class="line"><span class="cl">127.0.0.1 valc.atm.youku.com
+</span></span><span class="line"><span class="cl">127.0.0.1 vid.atm.youku.com
+</span></span><span class="line"><span class="cl">127.0.0.1 walp.atm.youku.com
+</span></span><span class="line"><span class="cl">#百度：
+</span></span><span class="line"><span class="cl">127.0.0.1 a.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 baidutv.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 bar.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 c.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 cjhq.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 cpro.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 drmcmm.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 e.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 eiv.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 hc.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 hm.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 ma.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 nsclick.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 spcode.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 tk.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 union.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 ucstat.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 utility.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 utk.baidu.com
+</span></span><span class="line"><span class="cl">127.0.0.1 focusbaiduafp.allyes.com
+</span></span><span class="line"><span class="cl">#奇艺
+</span></span><span class="line"><span class="cl">127.0.0.1 afp.qiyi.com
+</span></span><span class="line"><span class="cl">127.0.0.1 focusbaiduafp.allyes.com
+</span></span><span class="line"><span class="cl">#CNTV
+</span></span><span class="line"><span class="cl">127.0.0.1 a.cctv.com
+</span></span><span class="line"><span class="cl">127.0.0.1 a.cntv.cn
+</span></span><span class="line"><span class="cl">127.0.0.1 ad.cctv.com
+</span></span><span class="line"><span class="cl">127.0.0.1 d.cntv.cn
+</span></span><span class="line"><span class="cl">127.0.0.1 adguanggao.eee114.com
+</span></span><span class="line"><span class="cl">127.0.0.1 cctv.adsunion.com
+</span></span><span class="line"><span class="cl">#新浪视频
+</span></span><span class="line"><span class="cl">127.0.0.1 dcads.sina.com.cn
+</span></span><span class="line"><span class="cl">#pptv
+</span></span><span class="line"><span class="cl">127.0.0.1 pp2.pptv.com
+</span></span><span class="line"><span class="cl">#乐视
+</span></span><span class="line"><span class="cl">127.0.0.1 pro.letv.com
+</span></span><span class="line"><span class="cl">#搜狐高清
+</span></span><span class="line"><span class="cl">127.0.0.1 images.sohu.com
+</span></span><span class="line"><span class="cl">@HostsX 国内站点广告/视频类网站
+</span></span><span class="line"><span class="cl">#CNTV
+</span></span><span class="line"><span class="cl">127.0.0.1 a.cctv.com
+</span></span><span class="line"><span class="cl">127.0.0.1 a.cntv.cn
+</span></span><span class="line"><span class="cl">127.0.0.1 ad.cctv.com
+</span></span><span class="line"><span class="cl">127.0.0.1 d.cntv.cn
+</span></span><span class="line"><span class="cl">127.0.0.1 adguanggao.eee114.com
+</span></span><span class="line"><span class="cl">127.0.0.1 cctv.adsunion.com
+</span></span><span class="line"><span class="cl">#我乐网
+</span></span><span class="line"><span class="cl">127.0.0.1 acs.56.com
+</span></span><span class="line"><span class="cl">127.0.0.1 acs.agent.56.com
+</span></span><span class="line"><span class="cl">127.0.0.1 acs.agent.v-56.com
+</span></span><span class="line"><span class="cl">127.0.0.1 bill.agent.56.com
+</span></span><span class="line"><span class="cl">127.0.0.1 bill.agent.v-56.com
+</span></span><span class="line"><span class="cl">127.0.0.1 stat.56.com
+</span></span><span class="line"><span class="cl">127.0.0.1 stat2.corp.56.com
+</span></span><span class="line"><span class="cl">127.0.0.1 union.56.com
+</span></span><span class="line"><span class="cl">127.0.0.1 uvimage.56.com
+</span></span><span class="line"><span class="cl">127.0.0.1 v16.56.com
+</span></span><span class="line"><span class="cl">#6间房
+</span></span><span class="line"><span class="cl">127.0.0.1 pole.6rooms.com
+</span></span><span class="line"><span class="cl">127.0.0.1 shrek.6.cn
+</span></span><span class="line"><span class="cl">127.0.0.1 simba.6.cn
+</span></span><span class="line"><span class="cl">127.0.0.1 union.6.cn
+</span></span><span class="line"><span class="cl">#土豆网
+</span></span><span class="line"><span class="cl">127.0.0.1 adextensioncontrol.tudou.com
+</span></span><span class="line"><span class="cl">127.0.0.1 iwstat.tudou.com
+</span></span><span class="line"><span class="cl">127.0.0.1 nstat.tudou.com
+</span></span><span class="line"><span class="cl">127.0.0.1 stats.tudou.com
+</span></span><span class="line"><span class="cl">127.0.0.1 *.p2v.tudou.com*
+</span></span><span class="line"><span class="cl">127.0.0.1 at-img1.tdimg.com
+</span></span><span class="line"><span class="cl">127.0.0.1 at-img2.tdimg.com
+</span></span><span class="line"><span class="cl">127.0.0.1 at-img3.tdimg.com
+</span></span><span class="line"><span class="cl">127.0.0.1 adplay.tudou.com
+</span></span><span class="line"><span class="cl">127.0.0.1 adcontrol.tudou.com
+</span></span><span class="line"><span class="cl">127.0.0.1 stat.tudou.com
+</span></span><span class="line"><span class="cl">#酷6网
+</span></span><span class="line"><span class="cl">127.0.0.1 1.allyes.com.cn
+</span></span><span class="line"><span class="cl">127.0.0.1 analytics.ku6.com
+</span></span><span class="line"><span class="cl">127.0.0.1 gug.ku6cdn.com
+</span></span><span class="line"><span class="cl">127.0.0.1 ku6.allyes.com
+</span></span><span class="line"><span class="cl">127.0.0.1 ku6afp.allyes.com
+</span></span><span class="line"><span class="cl">127.0.0.1 pq.stat.ku6.com
+</span></span><span class="line"><span class="cl">127.0.0.1 st.vq.ku6.cn
+</span></span><span class="line"><span class="cl">127.0.0.1 stat0.888.ku6.com
+</span></span><span class="line"><span class="cl">127.0.0.1 stat1.888.ku6.com
+</span></span><span class="line"><span class="cl">127.0.0.1 stat2.888.ku6.com
+</span></span><span class="line"><span class="cl">127.0.0.1 stat3.888.ku6.com
+</span></span><span class="line"><span class="cl">127.0.0.1 static.ku6.com
+</span></span><span class="line"><span class="cl">127.0.0.1 v0.stat.ku6.com
+</span></span><span class="line"><span class="cl">127.0.0.1 v1.stat.ku6.com
+</span></span><span class="line"><span class="cl">127.0.0.1 v2.stat.ku6.com
+</span></span><span class="line"><span class="cl">127.0.0.1 v3.stat.ku6.com
+</span></span><span class="line"><span class="cl">#激动网
+</span></span><span class="line"><span class="cl">127.0.0.1 86file.megajoy.com
+</span></span><span class="line"><span class="cl">127.0.0.1 86get.joy.cn
+</span></span><span class="line"><span class="cl">127.0.0.1 86log.joy.cn
+</span></span><span class="line"><span class="cl">#天线视频
+</span></span><span class="line"><span class="cl">127.0.0.1 casting.openv.com
+</span></span><span class="line"><span class="cl">127.0.0.1 m.openv.tv
+</span></span><span class="line"><span class="cl">127.0.0.1 uniclick.openv.com
+</span></span><span class="line"><span class="cl">#迅雷看看屏蔽：
+</span></span><span class="line"><span class="cl">127.0.0.1 mcfg.sandai.net
+</span></span><span class="line"><span class="cl">127.0.0.1 biz5.sandai.net
+</span></span><span class="line"><span class="cl">127.0.0.1 server1.adpolestar.net
+</span></span><span class="line"><span class="cl">127.0.0.1 advstat.xunlei.com
+</span></span><span class="line"><span class="cl">127.0.0.1 mpv.sandai.net
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后就可以痛痛快快的看视频了！</p>
+<p>转载自JC Boy</p>
+<p>原文地址：<a href="http://www.jcboy.info/2011/02/pingbiyoukutudoudengshipinwangzhan15miaoguanggaodezuiquanzuijiandanfangfa.htm">http://www.jcboy.info/2011/02/pingbiyoukutudoudengshipinwangzhan15miaoguanggaodezuiquanzuijiandanfangfa.htm</a></p>
+
+
+  </div>
+
+  
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://babyno.top/3shi/posts/2011/02/what-is-sitemap/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Sitemap是什么?</span>
+  </a>
+  <a class="next" href="https://babyno.top/3shi/posts/2011/02/10-promises-to-my-dog/">
+    <span class="title">Next »</span>
+    <br>
+    <span>电影里感人至深的动物主角系列之六《狗狗与我的十个约定》</span>
+  </a>
+</nav>
+
+  </footer><link
+rel="stylesheet"
+href="/assets/@waline/client/dist/waline.css"
+/>
+<div id="waline"></div>
+<script type="module">
+  import { init } from '/assets/@waline/client/dist/waline.mjs';
+
+  init({
+    el: '#waline',
+    serverURL: 'https://comments.babyno.top/',
+    search: false
+  });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://babyno.top/3shi/">3shi天下</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?3538691f85f2d2e74e734e6ad2c07251";
+    var s = document.getElementsByTagName("script");
+    var lastScript = s[s.length - 1];
+    if (lastScript.nextSibling) {
+      lastScript.parentNode.insertBefore(hm, lastScript.nextSibling);
+    } else {
+      lastScript.parentNode.appendChild(hm);
+    }
+  })();
+</script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GS1HVS967Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GS1HVS967Y');
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>googlebot on 3shi天下</title>
+    <link>https://babyno.top/3shi/tags/googlebot/</link>
+    <description>Recent content in googlebot on 3shi天下</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 31 Jan 2011 14:05:27 +0000</lastBuildDate><atom:link href="https://babyno.top/3shi/tags/googlebot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>不登录浏览需要登录才能浏览的论坛页面</title>
+      <link>https://babyno.top/3shi/posts/2011/01/view-forum-page-without-sign-in/</link>
+      <pubDate>Mon, 31 Jan 2011 14:05:27 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/01/view-forum-page-without-sign-in/</guid>
+      <description>注意：本方法不能保证对所有的论坛都有效，但是操作很方便，大家可以尝试一下。 经常会碰到一些论坛，在浏览某些版面帖子的时候会遇到如下的提示： 您无</description>
+    </item>
+    
+  </channel>
+</rss>

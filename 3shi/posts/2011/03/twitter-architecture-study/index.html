@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Twitter架构学习 | 3shi天下</title>
+<meta name="keywords" content="twitter, architecture">
+<meta name="description" content="Twitter是目前为止最大的Ruby on Rails应用，几个月间页面点击由0增长到几百万，现在的Twitter比今年月快了10000%。 平台">
+<meta name="author" content="3shi">
+<link rel="canonical" href="https://babyno.top/3shi/posts/2011/03/twitter-architecture-study/">
+<link crossorigin="anonymous" href="/3shi/assets/css/stylesheet.12891501283130addd65d5c9aa3af45b949edff3f949a53c8f890319a805b26b.css" integrity="sha256-EokVASgxMK3dZdXJqjr0W5Se3/P5SaU8j4kDGagFsms=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://babyno.top/3shi/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://babyno.top/3shi/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://babyno.top/3shi/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://babyno.top/3shi/apple-touch-icon.png">
+<link rel="mask-icon" href="https://babyno.top/3shi/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Twitter架构学习" />
+<meta property="og:description" content="Twitter是目前为止最大的Ruby on Rails应用，几个月间页面点击由0增长到几百万，现在的Twitter比今年月快了10000%。 平台" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://babyno.top/3shi/posts/2011/03/twitter-architecture-study/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2011-03-10T21:59:37+00:00" />
+<meta property="article:modified_time" content="2011-03-10T21:59:37+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Twitter架构学习"/>
+<meta name="twitter:description" content="Twitter是目前为止最大的Ruby on Rails应用，几个月间页面点击由0增长到几百万，现在的Twitter比今年月快了10000%。 平台"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://babyno.top/3shi/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Twitter架构学习",
+      "item": "https://babyno.top/3shi/posts/2011/03/twitter-architecture-study/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Twitter架构学习",
+  "name": "Twitter架构学习",
+  "description": "Twitter是目前为止最大的Ruby on Rails应用，几个月间页面点击由0增长到几百万，现在的Twitter比今年月快了10000%。 平台",
+  "keywords": [
+    "twitter", "architecture"
+  ],
+  "articleBody": " Twitter是目前为止最大的Ruby on Rails应用，几个月间页面点击由0增长到几百万，现在的Twitter比今年月快了10000%。\n平台\nRuby on Rails\nErlang\nMySQL\nMongrel\nMunin\nNagios\nGoogle Analytics\nAWStats\nMemcached\n状态\n成千上万的用户，真实数量保密\n每秒钟600请求\n每秒钟平均200-300个连接，峰值为800个连接\nMySQL每秒钟处理2，400个请求\n180个Rails实例，使用Mongrel作为Web服务器\n1个MySQL服务器(one big 8 core box)和1个slave用于只读的统计和报告\n30+进程用于处理其余的工作\n8台Sun X4100s\nRails在200毫秒内处理一个请求\n花费在数据库里的平均时间是50-100毫秒\n超过16GB的memcached\n架构\n遇到非常常见的伸缩性问题\n最初Twitter没有监听，没有图，没有统计，这让解决问题非常困难。后来添加了Munin和Nagios。在Solaris上使用工具有点困难，虽然有Google Analytics但是页面没有loading所以它没什么用\n大量使用memcached作缓存 -例如，如果获得一个count非常慢，你可以将count在1毫秒内扔入memcached -获取朋友的状态是很复杂的，这有安全等其他问题，所以朋友的状态更新后扔在缓存里而不是做一个查询。不会接触到数据库 -ActiveRecord对象很大所以没有被缓存。Twitter将critical的属性存储在一个哈希里并且当访问时迟加载 -90%的请求为API请求。所以在前端不做任何page和fragment缓存。页面非常时间敏感所以效率不高，但Twitter缓存了API请求\n消息 -大量使用消息。生产者生产消息并放入队列，然后分发给消费者。Twitter主要的功能是作为不同形式(SMS，Web，IM等等)之间的消息桥 -使用DRb，这意味着分布式Ruby。有一个库允许你通过TCP/IP从远程Ruby对象发送和接收消息，但是它有点脆弱 -移到Rinda，它是使用tuplespace模型的一个分享队列，但是队列是持久的，当失败时消息会丢失 -尝试了Erlang -移到Starling，用Ruby写的一个分布式队列 -分布式队列通过将它们写入硬盘用来挽救系统崩溃。其他大型网站也使用这种简单的方式\nSMS通过使用第三方网关的API来处理，它非常昂贵\n部署 -Twitter做了一次review并推出新的mongrel服务器，还没有优雅的方式 -如果mongrel服务器替换了则一个内部错误抛给用户 -所以的服务器一次杀死。没有使用rolling blackout方式因为消息队列状态保持在mongrel里，这将导致剩余的mongrel被堵塞\n误用 -系统经常宕机，因为人们疯狂的添加任何人为朋友，24小时内有9000个朋友，这将让站点崩溃 -构建工具来检测这些问题，这样你可以找到何时何地发生这些错误 -无情的删除这些用户\n分区 -将来计划分区，目前还没有。当前所做的改变已经足够 -分区的计划基于时间，而不是用户，因为大部分请求都是本地的 -由于memoization分区会很难。Twitter不能保证只读的操作真的为只读，有可能写入一个只读的slave，这很糟糕\nTwitter的API流量是Twitter站点的10倍 -Twitter所做的最重要的事情就是API -保持服务简单允许开发人员在Twitter的基础组织上构建一些比Twitter自己所想到的更好的主意。例如，Twitterrific是一个使用Twitter优美的方式\n学到的东西\n和社区交流。不要隐藏并尝试自己解决所有问题。如果你提问，有许多聪明的人士愿意帮忙\n将你的伸缩计划当成一个商业计划，聚集一帮顾问来帮助你\n自己构建它。Twitter花费大量时间来尝试其他人的似乎可以工作的解决方案，但是失败了。自己构建一些东西会更好，这样你至少可以控制它并且构建你需要的特性\n在用户的限度上构建。人们可能尝试弄垮你的系统。提高理由的限度和检测机制来保护你的系统不被杀死\n不要让数据库成为首要瓶颈，并不是所有东西都需要一个很大的join，缓存数据，考虑其他创造性的方式来获得结果。一个好例子在里Twitter, Rails, Hammers, and 11,000 Nails per Second谈到\n让你的应用一开始就很容易分区。这样你会一直有一种方式来伸缩你的系统\n认知你的系统是很慢的，马上添加报告来跟踪问题\n优化数据库 -索引所有东西，Rails不会为你做这件事 -解释你的查询是怎样运行的，索引可能不是按你想像的去做 -大量的非常规化。例如，Twitter一起存储用户ID和朋友ID，这预防了大量的开销昂贵的join\n缓存所有东西，个别的ActiveRecord对象目前没有被缓存。目前查找已经足够快\n测试一切 -你想知道当你部署时一起工作正常 -Twitter现在有一个完整的test suite。所以当缓存失效时Twitter可以在go live之前找到问题\n使用异常提示和异常日志来获得立即的错误提示，这样你可以发现正确的方式\n不要做傻事 -伸缩改变了傻东西 -尝试一次加载3000个朋友到内存中可能带来服务器崩溃，但是当只有4个朋友时它工作的很好\n大部分性能不是来自语言，而是来自应用设计\n通过创建一个API来让你的站点开放服务。Twitter的API是它成功的一个大原因。它允许用户创建一个扩展和生态系统。你可以从不做你的用户可以做的工作，这样你就不会有创造性。所以开发你的系统并且让其他人将他们的应用与你的应用集成变容易\n原文地址：http://hideto.javaeye.com/blog/130044\n",
+  "wordCount" : "2241",
+  "inLanguage": "en",
+  "datePublished": "2011-03-10T21:59:37Z",
+  "dateModified": "2011-03-10T21:59:37Z",
+  "author":{
+    "@type": "Person",
+    "name": "3shi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://babyno.top/3shi/posts/2011/03/twitter-architecture-study/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "3shi天下",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://babyno.top/3shi/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://babyno.top/3shi/" accesskey="h" title="3shi天下 (Alt + H)">3shi天下</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://babyno.top/3shi/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top" title="阿不">
+                    <span>阿不</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://babyno.top/3shi/">Home</a>&nbsp;»&nbsp;<a href="https://babyno.top/3shi/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Twitter架构学习
+    </h1>
+    <div class="post-meta"><span title='2011-03-10 21:59:37 +0000 UTC'>2011-03-10</span>&nbsp;·&nbsp;3shi
+
+</div>
+  </header> 
+  <div class="post-content"><p><a href="http://img.3shi.net/icon/128x128/icontexto-inside-twitter.png"  data-lightbox="image-1" >
+<img loading="lazy" src="http://img.3shi.net/icon/128x128/icontexto-inside-twitter.png" alt="Twitter"  />
+</a></p>
+<p>Twitter是目前为止最大的Ruby on Rails应用，几个月间页面点击由0增长到几百万，现在的Twitter比今年月快了10000%。</p>
+<p><strong>平台</strong></p>
+<ul>
+<li>
+<p>Ruby on Rails</p>
+</li>
+<li>
+<p>Erlang</p>
+</li>
+<li>
+<p>MySQL</p>
+</li>
+<li>
+<p>Mongrel</p>
+</li>
+<li>
+<p>Munin</p>
+</li>
+<li>
+<p>Nagios</p>
+</li>
+<li>
+<p>Google Analytics</p>
+</li>
+<li>
+<p>AWStats</p>
+</li>
+<li>
+<p>Memcached</p>
+</li>
+</ul>
+<p><strong>状态</strong></p>
+<ul>
+<li>
+<p>成千上万的用户，真实数量保密</p>
+</li>
+<li>
+<p>每秒钟600请求</p>
+</li>
+<li>
+<p>每秒钟平均200-300个连接，峰值为800个连接</p>
+</li>
+<li>
+<p>MySQL每秒钟处理2，400个请求</p>
+</li>
+<li>
+<p>180个Rails实例，使用Mongrel作为Web服务器</p>
+</li>
+<li>
+<p>1个MySQL服务器(one big 8 core box)和1个slave用于只读的统计和报告</p>
+</li>
+<li>
+<p>30+进程用于处理其余的工作</p>
+</li>
+<li>
+<p>8台Sun X4100s</p>
+</li>
+<li>
+<p>Rails在200毫秒内处理一个请求</p>
+</li>
+<li>
+<p>花费在数据库里的平均时间是50-100毫秒</p>
+</li>
+<li>
+<p>超过16GB的memcached</p>
+</li>
+</ul>
+<p><strong>架构</strong></p>
+<ul>
+<li>
+<p>遇到非常常见的伸缩性问题</p>
+</li>
+<li>
+<p>最初Twitter没有监听，没有图，没有统计，这让解决问题非常困难。后来添加了Munin和Nagios。在Solaris上使用工具有点困难，虽然有Google Analytics但是页面没有loading所以它没什么用</p>
+</li>
+<li>
+<p>大量使用memcached作缓存 -例如，如果获得一个count非常慢，你可以将count在1毫秒内扔入memcached -获取朋友的状态是很复杂的，这有安全等其他问题，所以朋友的状态更新后扔在缓存里而不是做一个查询。不会接触到数据库 -ActiveRecord对象很大所以没有被缓存。Twitter将critical的属性存储在一个哈希里并且当访问时迟加载 -90%的请求为API请求。所以在前端不做任何page和fragment缓存。页面非常时间敏感所以效率不高，但Twitter缓存了API请求</p>
+</li>
+<li>
+<p>消息 -大量使用消息。生产者生产消息并放入队列，然后分发给消费者。Twitter主要的功能是作为不同形式(SMS，Web，IM等等)之间的消息桥 -使用DRb，这意味着分布式Ruby。有一个库允许你通过TCP/IP从远程Ruby对象发送和接收消息，但是它有点脆弱 -移到Rinda，它是使用tuplespace模型的一个分享队列，但是队列是持久的，当失败时消息会丢失 -尝试了Erlang -移到Starling，用Ruby写的一个分布式队列 -分布式队列通过将它们写入硬盘用来挽救系统崩溃。其他大型网站也使用这种简单的方式</p>
+</li>
+<li>
+<p>SMS通过使用第三方网关的API来处理，它非常昂贵</p>
+</li>
+<li>
+<p>部署 -Twitter做了一次review并推出新的mongrel服务器，还没有优雅的方式 -如果mongrel服务器替换了则一个内部错误抛给用户 -所以的服务器一次杀死。没有使用rolling blackout方式因为消息队列状态保持在mongrel里，这将导致剩余的mongrel被堵塞</p>
+</li>
+<li>
+<p>误用 -系统经常宕机，因为人们疯狂的添加任何人为朋友，24小时内有9000个朋友，这将让站点崩溃 -构建工具来检测这些问题，这样你可以找到何时何地发生这些错误 -无情的删除这些用户</p>
+</li>
+<li>
+<p>分区 -将来计划分区，目前还没有。当前所做的改变已经足够 -分区的计划基于时间，而不是用户，因为大部分请求都是本地的 -由于memoization分区会很难。Twitter不能保证只读的操作真的为只读，有可能写入一个只读的slave，这很糟糕</p>
+</li>
+<li>
+<p>Twitter的API流量是Twitter站点的10倍 -Twitter所做的最重要的事情就是API -保持服务简单允许开发人员在Twitter的基础组织上构建一些比Twitter自己所想到的更好的主意。例如，Twitterrific是一个使用Twitter优美的方式</p>
+</li>
+</ul>
+<p><strong>学到的东西</strong></p>
+<ul>
+<li>
+<p>和社区交流。不要隐藏并尝试自己解决所有问题。如果你提问，有许多聪明的人士愿意帮忙</p>
+</li>
+<li>
+<p>将你的伸缩计划当成一个商业计划，聚集一帮顾问来帮助你</p>
+</li>
+<li>
+<p>自己构建它。Twitter花费大量时间来尝试其他人的似乎可以工作的解决方案，但是失败了。自己构建一些东西会更好，这样你至少可以控制它并且构建你需要的特性</p>
+</li>
+<li>
+<p>在用户的限度上构建。人们可能尝试弄垮你的系统。提高理由的限度和检测机制来保护你的系统不被杀死</p>
+</li>
+<li>
+<p>不要让数据库成为首要瓶颈，并不是所有东西都需要一个很大的join，缓存数据，考虑其他创造性的方式来获得结果。一个好例子在里<a href="http://www.mooseyard.com/Jens/2007/04/twitter-rails-hammers-and-11000-nails-per-second/">Twitter, Rails, Hammers, and 11,000 Nails per Second</a>谈到</p>
+</li>
+<li>
+<p>让你的应用一开始就很容易分区。这样你会一直有一种方式来伸缩你的系统</p>
+</li>
+<li>
+<p>认知你的系统是很慢的，马上添加报告来跟踪问题</p>
+</li>
+<li>
+<p>优化数据库 -索引所有东西，Rails不会为你做这件事 -解释你的查询是怎样运行的，索引可能不是按你想像的去做 -大量的非常规化。例如，Twitter一起存储用户ID和朋友ID，这预防了大量的开销昂贵的join</p>
+</li>
+<li>
+<p>缓存所有东西，个别的ActiveRecord对象目前没有被缓存。目前查找已经足够快</p>
+</li>
+<li>
+<p>测试一切 -你想知道当你部署时一起工作正常 -Twitter现在有一个完整的test suite。所以当缓存失效时Twitter可以在go live之前找到问题</p>
+</li>
+<li>
+<p>使用异常提示和异常日志来获得立即的错误提示，这样你可以发现正确的方式</p>
+</li>
+<li>
+<p>不要做傻事 -伸缩改变了傻东西 -尝试一次加载3000个朋友到内存中可能带来服务器崩溃，但是当只有4个朋友时它工作的很好</p>
+</li>
+<li>
+<p>大部分性能不是来自语言，而是来自应用设计</p>
+</li>
+<li>
+<p>通过创建一个API来让你的站点开放服务。Twitter的API是它成功的一个大原因。它允许用户创建一个扩展和生态系统。你可以从不做你的用户可以做的工作，这样你就不会有创造性。所以开发你的系统并且让其他人将他们的应用与你的应用集成变容易</p>
+</li>
+</ul>
+<p>原文地址：<a href="http://hideto.javaeye.com/blog/130044">http://hideto.javaeye.com/blog/130044</a></p>
+
+
+  </div>
+
+  
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://babyno.top/3shi/tags/twitter/">twitter</a></li>
+      <li><a href="https://babyno.top/3shi/tags/architecture/">architecture</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://babyno.top/3shi/posts/2011/03/recalling-myspace-architecture-rough-road/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>回顾MySpace架构的坎坷之路</span>
+  </a>
+  <a class="next" href="https://babyno.top/3shi/posts/2011/03/facebook-architecture-study/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Facebook 架构学习</span>
+  </a>
+</nav>
+
+  </footer><link
+rel="stylesheet"
+href="/assets/@waline/client/dist/waline.css"
+/>
+<div id="waline"></div>
+<script type="module">
+  import { init } from '/assets/@waline/client/dist/waline.mjs';
+
+  init({
+    el: '#waline',
+    serverURL: 'https://comments.babyno.top/',
+    search: false
+  });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://babyno.top/3shi/">3shi天下</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?3538691f85f2d2e74e734e6ad2c07251";
+    var s = document.getElementsByTagName("script");
+    var lastScript = s[s.length - 1];
+    if (lastScript.nextSibling) {
+      lastScript.parentNode.insertBefore(hm, lastScript.nextSibling);
+    } else {
+      lastScript.parentNode.appendChild(hm);
+    }
+  })();
+</script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GS1HVS967Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GS1HVS967Y');
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

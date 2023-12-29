@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>码农 on 3shi天下</title>
+    <link>https://babyno.top/3shi/categories/%E7%A0%81%E5%86%9C/</link>
+    <description>Recent content in 码农 on 3shi天下</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Oct 2011 23:22:52 +0000</lastBuildDate><atom:link href="https://babyno.top/3shi/categories/%E7%A0%81%E5%86%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>利用Google Docs Viewer将在线文档嵌入网页</title>
+      <link>https://babyno.top/3shi/posts/2011/10/embed-google-docs-viewer-in-your-website/</link>
+      <pubDate>Fri, 14 Oct 2011 23:22:52 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/10/embed-google-docs-viewer-in-your-website/</guid>
+      <description>如果你有一个pdf文档，或者微软word，excel，ppt文档，想直接嵌在网页里，让读者无需安装adobe reader或者MS office</description>
+    </item>
+    
+    <item>
+      <title>2011年最佳代码</title>
+      <link>https://babyno.top/3shi/posts/2011/08/best-code-of-2011/</link>
+      <pubDate>Tue, 09 Aug 2011 08:48:14 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/08/best-code-of-2011/</guid>
+      <description>最近好忙啊，好久没有更新博客了，其实也是懒，反省…… 最近外面可不太平，突然在其它地方看到这段代码，为之一振。 ` try { if(you.believe(it) || !you.believe(it) ) { I.believe(it); } } catch(Exception ex) { throw new</description>
+    </item>
+    
+    <item>
+      <title>如何选择开源许可证</title>
+      <link>https://babyno.top/3shi/posts/2011/05/how-to-choose-open-source-license/</link>
+      <pubDate>Wed, 04 May 2011 14:24:29 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/05/how-to-choose-open-source-license/</guid>
+      <description>如何为代码选择开源许可证，这是一个问题。 世界上的开源许可证，大概有上百种。很少有人搞得清楚它们的区别。即使在最流行的六种&amp;mdash;-GP</description>
+    </item>
+    
+    <item>
+      <title>mysql技巧：in语句排序</title>
+      <link>https://babyno.top/3shi/posts/2011/04/mysql-skill-in-statement-ordering/</link>
+      <pubDate>Tue, 12 Apr 2011 13:06:18 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/04/mysql-skill-in-statement-ordering/</guid>
+      <description>今天遇到了一个问题，有一个sql语句： 1 2 3 select * from table where id IN (9,8,7,6,5,4,3,2,1); 我希望的结果是id按照9,8,7,6,5,4,3,2,1的顺序排序，也就是按照i</description>
+    </item>
+    
+    <item>
+      <title>绿色版tomcat安装成windows服务</title>
+      <link>https://babyno.top/3shi/posts/2011/03/install-green-version-tomcat-to-windows-service/</link>
+      <pubDate>Mon, 28 Mar 2011 09:01:46 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/03/install-green-version-tomcat-to-windows-service/</guid>
+      <description>首先请到tomcat官网上下载最新版本的tomcat，注意下载的版本是“Windows zip”。 如果你已经在系统环境变量里添加了&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>JVM的堆 (Heap) 和非堆 (Non-heap) 内存</title>
+      <link>https://babyno.top/3shi/posts/2011/03/jvms-heap-and-non-heap-memory/</link>
+      <pubDate>Sun, 20 Mar 2011 10:23:30 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/03/jvms-heap-and-non-heap-memory/</guid>
+      <description>堆 (Heap) 和非堆 (Non-heap) 内存 按照官方的说法： “Java 虚拟机具有一个堆，堆是运行时数据区域，所有类实例和数组的内存均从此处分配。堆是在 Java 虚拟机启动时创建</description>
+    </item>
+    
+    <item>
+      <title>MySQL性能优化的最佳20&#43;条经验</title>
+      <link>https://babyno.top/3shi/posts/2011/03/top-20-mysql-best-practices/</link>
+      <pubDate>Tue, 15 Mar 2011 20:25:42 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/03/top-20-mysql-best-practices/</guid>
+      <description>今天，数据库的操作越来越成为整个应用的性能瓶颈了，这点对于Web应用尤其明显。关于数据库的性能，这并不只是DBA才需要担心的事，而这更是我们</description>
+    </item>
+    
+    <item>
+      <title>右键进入dos命令行界面</title>
+      <link>https://babyno.top/3shi/posts/2011/03/quickly-into-dos-command-line/</link>
+      <pubDate>Sat, 05 Mar 2011 22:24:01 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/03/quickly-into-dos-command-line/</guid>
+      <description>很多人都很喜欢在CMD命令行下来操作计算机，我也是其中之一。如何快速打开CMD并且定位到指定的路径呢？很多优化软件（比如优化大师）都提供了往</description>
+    </item>
+    
+    <item>
+      <title>如何制作绿色软件（以Navicat为例）</title>
+      <link>https://babyno.top/3shi/posts/2011/03/how-to-make-green-software-navicat-for-example/</link>
+      <pubDate>Sat, 05 Mar 2011 22:10:35 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/03/how-to-make-green-software-navicat-for-example/</guid>
+      <description>现在什么都流行绿色，不仅包括食品，也包括计算机软件。超市中的食品只要沾上“绿色”两个字，价格嗖的一下子就上去了，那叫一个高啊！而绿色软件，相</description>
+    </item>
+    
+    <item>
+      <title>雅虎给出的34条网站加速方法</title>
+      <link>https://babyno.top/3shi/posts/2011/03/yahoo-given-34-web-acceleration/</link>
+      <pubDate>Sat, 05 Mar 2011 21:46:32 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/03/yahoo-given-34-web-acceleration/</guid>
+      <description>1.Minimize HTTP Requests 减少HTTP请求 图片、 css、script、flash等等这些都会增加http请求数，减少这些元素的数量就能减少响应时间。把多个JS、</description>
+    </item>
+    
+    <item>
+      <title>httpclient之post请求乱码</title>
+      <link>https://babyno.top/3shi/posts/2011/02/how-to-set-httpclient-charset/</link>
+      <pubDate>Mon, 28 Feb 2011 16:13:10 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/02/how-to-set-httpclient-charset/</guid>
+      <description>1 2 3 private static final String CONTENT_CHARSET = &amp;#34;UTF-8&amp;#34;; // 指定字符编码 HttpClient client = new HttpClient(); client.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, CONTENT_CHARSET);</description>
+    </item>
+    
+    <item>
+      <title>屏蔽优酷、土豆等视频网站15秒广告的最全最简单方法</title>
+      <link>https://babyno.top/3shi/posts/2011/02/the-easiest-way-to-block-youku-tudou-and-other-video-site-15-seconds-ads/</link>
+      <pubDate>Sun, 27 Feb 2011 09:33:41 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/02/the-easiest-way-to-block-youku-tudou-and-other-video-site-15-seconds-ads/</guid>
+      <description>亲自测试了下确实可以完全屏蔽广告！所以发出来大家分享下。 原理是改hosts的！ 第一步：找到C:WINDOWSsystem32driverse</description>
+    </item>
+    
+    <item>
+      <title>Google Reader快捷键</title>
+      <link>https://babyno.top/3shi/posts/2011/02/google-reader-keyboard-shortcuts/</link>
+      <pubDate>Mon, 21 Feb 2011 12:58:10 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/02/google-reader-keyboard-shortcuts/</guid>
+      <description>快捷键 定义 作用 导航 j/k item down/up 下一个条目/上一个条目 空格/shift+空格 page down/up 向下翻一页/向上翻一页 n/p scan down/up 列表显示模式下，选择下一个条目/上一个条</description>
+    </item>
+    
+    <item>
+      <title>win7下绿色版java关联jar文件</title>
+      <link>https://babyno.top/3shi/posts/2011/02/java-associate-jar-file/</link>
+      <pubDate>Tue, 15 Feb 2011 21:40:17 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/02/java-associate-jar-file/</guid>
+      <description>安装版的java会自动关联jar文件，如果是可执行的jar文件，双击就可以运行。可是，如何才能让绿色版的java也像安装版的一样呢？假设ja</description>
+    </item>
+    
+    <item>
+      <title>mysql-noinstall版的配置和精简</title>
+      <link>https://babyno.top/3shi/posts/2011/02/configure-and-streamline-mysql-noinstall/</link>
+      <pubDate>Tue, 15 Feb 2011 21:17:42 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/02/configure-and-streamline-mysql-noinstall/</guid>
+      <description>1.准备工作 下载mysql的最新免安装版本mysql-noinstall-5.1.53-win32.zip，解压缩到相关目录，如：d:/my</description>
+    </item>
+    
+    <item>
+      <title>mysql错误：You can&amp;quot;t specify target table &amp;quot;x&amp;quot; for update in FROM clause</title>
+      <link>https://babyno.top/3shi/posts/2011/02/mysql-error-1093/</link>
+      <pubDate>Mon, 14 Feb 2011 14:04:57 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/02/mysql-error-1093/</guid>
+      <description>以上错误在mysql官方是这样说明的： You can use a subquery for assignment within an UPDATE statement because subqueries are legal in UPDATE and DELETE statements as well as in SELECT statements. However, you cannot use the same table (in this case, table t1) for both the subquery FROM clause and the update target. 大意为</description>
+    </item>
+    
+    <item>
+      <title>不登录浏览需要登录才能浏览的论坛页面</title>
+      <link>https://babyno.top/3shi/posts/2011/01/view-forum-page-without-sign-in/</link>
+      <pubDate>Mon, 31 Jan 2011 14:05:27 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/01/view-forum-page-without-sign-in/</guid>
+      <description>注意：本方法不能保证对所有的论坛都有效，但是操作很方便，大家可以尝试一下。 经常会碰到一些论坛，在浏览某些版面帖子的时候会遇到如下的提示： 您无</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>优酷视频真实地址解析 | 3shi天下</title>
+<meta name="keywords" content="youku">
+<meta name="description" content="优酷的视频下载有以下几个特点： 地址动态生成，每次请求返回的地址都不一样。 有效时间短，得到的下载地址大约只有1小时的有效时间。 视频地址经过加密">
+<meta name="author" content="3shi">
+<link rel="canonical" href="https://babyno.top/3shi/posts/2011/03/analyze-youku-video-address/">
+<link crossorigin="anonymous" href="/3shi/assets/css/stylesheet.12891501283130addd65d5c9aa3af45b949edff3f949a53c8f890319a805b26b.css" integrity="sha256-EokVASgxMK3dZdXJqjr0W5Se3/P5SaU8j4kDGagFsms=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://babyno.top/3shi/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://babyno.top/3shi/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://babyno.top/3shi/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://babyno.top/3shi/apple-touch-icon.png">
+<link rel="mask-icon" href="https://babyno.top/3shi/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="优酷视频真实地址解析" />
+<meta property="og:description" content="优酷的视频下载有以下几个特点： 地址动态生成，每次请求返回的地址都不一样。 有效时间短，得到的下载地址大约只有1小时的有效时间。 视频地址经过加密" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://babyno.top/3shi/posts/2011/03/analyze-youku-video-address/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2011-03-23T17:11:15+00:00" />
+<meta property="article:modified_time" content="2011-03-23T17:11:15+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="优酷视频真实地址解析"/>
+<meta name="twitter:description" content="优酷的视频下载有以下几个特点： 地址动态生成，每次请求返回的地址都不一样。 有效时间短，得到的下载地址大约只有1小时的有效时间。 视频地址经过加密"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://babyno.top/3shi/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "优酷视频真实地址解析",
+      "item": "https://babyno.top/3shi/posts/2011/03/analyze-youku-video-address/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "优酷视频真实地址解析",
+  "name": "优酷视频真实地址解析",
+  "description": "优酷的视频下载有以下几个特点： 地址动态生成，每次请求返回的地址都不一样。 有效时间短，得到的下载地址大约只有1小时的有效时间。 视频地址经过加密",
+  "keywords": [
+    "youku"
+  ],
+  "articleBody": " 优酷的视频下载有以下几个特点：\n地址动态生成，每次请求返回的地址都不一样。\n有效时间短，得到的下载地址大约只有1小时的有效时间。\n视频地址经过加密，需在客户（用户）端进行解密。\n长视频会被分割成多段短视频。\n对视频下载没有限制，即用户A得到的下载地址，用户B也可以下载。\n先来看一下解析后的视频地址：\nhttp://f.youku.com/player/getFlvPath/sid/130086939328910582812_00/st/flv/fileid/03000201004D8858360BD1047C4F5FF471CDD7-C742-8D74-3EED-90A9EF54EEC1?K=de1515a31372faac182698bc\n以上三段红色部分分别代表sid、fileid和key。\n我们来分析一下这个地址，除了固定的部分以外，整个地址由sid、fileid和key三部分组成，下面我们逐一来分析如何解析这三个值。\n以普通的优酷视频播放地址为例，\nhttp://v.youku.com/v_show/id_XMjUyODAzNDg0.html\n把其中的红色部分复制出来，拼在\nhttp://v.youku.com/player/getPlayList/VideoIDS/\n后面，得到\nhttp://v.youku.com/player/getPlayList/VideoIDS/XMjUyODAzNDg0\n访问该地址得到json格式的字符串，其中我们感兴趣的内容是：\n\"seed\":6302, \"key1\":\"bd7c3d19\", \"key2\":\"de1515a31372faac\", \"fileid\":\"13\\*18\\*13\\*13\\*13\\*11\\*13\\*42\\*13\\*13\\*39\\*44\\*41\\*41\\*47\\*41\\*18\\*29\\*13\\*60\\*44\\*42\\*13\\*39\\*17\\*33\\*39\\*56\\*47\\*56\\*56\\*39\\*17\\*42\\*33\\*44\\*44\\*17\\*54\\*33\\*17\\*39\\*11\\*54\\*41\\*44\\*17\\*39\\*54\\*18\\*55\\*55\\*44\\*54\\*38\\*13\\*57\\*38\\*55\\*56\\*47\\*39\\*55\\*55\\*33\\*42\\*\", 我们的解析工作需要用到上面的这些内容。这里要说明一下，因为地址是动态生成的，每次请求返回的结果都不一样，所以你看到的和上面是不一样的，但是不影响解析的过程。\n生成sid\nsid是一个随机数，我们可以这样获得\n1 2 3 4 5 private String genSid() { int i1 = (int) (1000 + Math.floor(Math.random() * 999)); int i2 = (int) (1000 + Math.floor(Math.random() * 9000)); return System.currentTimeMillis() + \"\" + i1 + \"\" + i2; } 假设返回\"130086939328910582812\"。\n生成fileid\n优酷返回的fileid已经做了加密工作，好在并不难解，利用上面得到的fileid和seed\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 private String getFileID(String fileid, double seed) { String mixed = getFileIDMixString(seed); String[] ids = fileid.split(\"\\*\"); StringBuilder realId = new StringBuilder(); int idx; for (int i = 0; i \u003c ids.length; i++) { idx = Integer.parseInt(ids[i]); realId.append(mixed.charAt(idx)); } return realId.toString(); } private String getFileIDMixString(double seed) { StringBuilder mixed = new StringBuilder(); StringBuilder source = new StringBuilder( \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/\\:._-1234567890\"); int index, len = source.length(); for (int i = 0; i \u003c len; ++i) { seed = (seed * 211 + 30031) % 65536; index = (int) Math.floor(seed / 65536 * source.length()); mixed.append(source.charAt(index)); source.deleteCharAt(index); } return mixed.toString(); } 假设返回\"03000201004D8858360BD1047C4F5FF471CDD7-C742-8D74-3EED-90A9EF54EEC1\"。\n生成key\n利用上面得到的key1和key2\n1 2 3 4 5 private String genKey(String key1, String key2) { int key = Long.valueOf(key1, 16).intValue(); key ^= 0xA55AA5A5; return key2 + Long.toHexString(key); } 假设返回\"de1515a31372faac182698bc\"。\n好了，把sid，fileid，key合并起来，就可以得到一开始的下载地址了。\n接下来就是分段视频的问题了，如果一个视频分成几段，在返回的json对象中可以找到类似的内容：\n1 2 3 \"segs\":{ \"mp4\":[{\"no\":\"0\",\"size\":\"39095085\",\"seconds\":\"426\"},{\"no\":\"1\",\"size\":\"22114342\",\"seconds\":\"426\"},{\"no\":\"2\",\"size\":\"23296715\",\"seconds\":\"424\"},{\"no\":\"3\",\"size\":\"18003234\",\"seconds\":\"426\"},{\"no\":\"4\",\"size\":\"31867294\",\"seconds\":\"423\"},{\"no\":\"5\",\"size\":\"14818514\",\"seconds\":\"248\"}], \"flv\":[{\"no\":\"0\",\"size\":\"19739080\",\"seconds\":\"425\"},{\"no\":\"1\",\"size\":\"11506385\",\"seconds\":\"426\"},{\"no\":\"2\",\"size\":\"11821267\",\"seconds\":\"426\"},{\"no\":\"3\",\"size\":\"8988612\",\"seconds\":\"426\"},{\"no\":\"4\",\"size\":\"16078739\",\"seconds\":\"425\"},{\"no\":\"5\",\"size\":\"7634043\",\"seconds\":\"245\"}]} 很明显，该视频分成了6段，而且有mp4和flv两种格式的视频。还记得一开始的视频地址中的蓝色部分吗，我们只要修改那一部分的数字就可以了，比如第二段，就把蓝色部分换成01（两个都要换），注意这是16进制的。\n如果想下载mp4格式的，只要把下载地址中的/flv/换成/mp4/，当然你要确定该视频有mp4格式。 update:\n鉴于很多人要php格式的，顺便在这里发一下，对应代码如下：\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 function getSid() { $sid = time().(rand(0,9000)+10000); return $sid; } function getkey($key1,$key2){ $a = hexdec($key1); $b = $a ^ 0xA55AA5A5; $b = dechex($b); return $key2.$b; } function getfileid($fileId,$seed) { $mixed = getMixString($seed); $ids = explode(\"*\",$fileId); unset($ids[count($ids)-1]); $realId = \"\"; for ($i=0;$i \u003c count($ids);++$i) { $idx = $ids[$i]; $realId .= substr($mixed,$idx,1); } return $realId; } function getMixString($seed) { $mixed = \"\"; $source = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/\\:._-1234567890\"; $len = strlen($source); for($i=0;$i\u003c $len;++$i){ $seed = ($seed * 211 + 30031) % 65536; $index = ($seed / 65536 * strlen($source)); $c = substr($source,$index,1); $mixed .= $c; $source = str_replace($c, \"\",$source); } return $mixed; } 另一个要注意的地方，上面提到的分段视频，从第11段开始是16进制的0A，注意是大写的，后面依次类推。\nupdate2: 热心网友秀天下提供的c#版代码如下，在此表示感谢，希望有更多网友翻译成各种版本：\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 private String genSid() { int i1 = (int)(1000 + Math.Floor((double)(new Random().Next(999)))); int i2 = (int)(1000 + Math.Floor((double)(new Random().Next(9000)))); TimeSpan ts = new TimeSpan(System.DateTime.UtcNow.Ticks - new DateTime(1970, 1, 1, 0, 0, 0).Ticks); return Convert.ToInt64(ts.TotalMilliseconds).ToString() + \"\" + i1 + \"\" + i2; } private String getFileID(String fileid, double seed) { String mixed = getFileIDMixString(seed); String[] ids = fileid.Split(\"*\"); StringBuilder realId = new StringBuilder(); int idx; for (int i = 0; i \u003c ids.Length - 1; i++) { idx = int.Parse(ids[i]); realId.Append(mixed[idx]); } return realId.ToString(); } private String getFileIDMixString(double seed) { StringBuilder mixed = new StringBuilder(); StringBuilder source = new StringBuilder(\"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/\\:._-1234567890\"); int index, len = source.Length; for (int i = 0; i \u003c len; ++i) { seed = (seed * 211 + 30031) % 65536; index = (int)Math.Floor(seed / 65536 * source.Length); mixed.Append(source[index]); source.Remove(index, 1); } return mixed.ToString(); } private String genKey(String key1, String key2) { int key = Convert.ToInt32(key1, 16); var tempkey = key ^ 0xA55AA5A5; return key2 + Convert.ToString(tempkey, 16).Substring(8); } update3:\n有热心网友提供python版了，感谢EmiNarcissus：\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 import time import random import math def createSid(): nowTime = int(time.time() * 1000) random1 = random.randint(1000,1998) random2 = random.randint(1000,9999) return \"%d%d%d\" %(nowTime,random1,random2) def getFileIDMixString(seed): mixed=[] source=list(\"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/:._-1234567890\") seed=float(seed) for i in range(len(source)): seed = (seed * 211 + 30031 ) % 65536 index = math.floor(seed / 65536 * len(source) ) mixed.append(source[int(index)]) source.remove(source[int(index)]) #return \"\".join(mixed) return mixed def getFileId(fileId,seed): mixed=getFileIDMixString(seed) ids=fileId.split(\"*\") realId=[] for ch in ids: realId.append(mixed[int(ch)]) return \"\".join(realId) if __name__ == \"__main__\": #print createSid() #print getFileIDMixString(4528) fileId=\"3*31*3*3*3*61*3*13*3*3*36*17*48*21*17*55*31*17*61*31*14*14*3*3*36*13*67*31*31*10*21*32*58*31*13*14*3*48*15*13*10*48*55*15*55*10*36*31*15*31*61*10*67*15*3*61*17*13*13*14*11*36*48*21*36*10\" seed=4528 print getFileId(fileId,seed) ",
+  "wordCount" : "1674",
+  "inLanguage": "en",
+  "datePublished": "2011-03-23T17:11:15Z",
+  "dateModified": "2011-03-23T17:11:15Z",
+  "author":{
+    "@type": "Person",
+    "name": "3shi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://babyno.top/3shi/posts/2011/03/analyze-youku-video-address/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "3shi天下",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://babyno.top/3shi/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://babyno.top/3shi/" accesskey="h" title="3shi天下 (Alt + H)">3shi天下</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://babyno.top/3shi/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top" title="阿不">
+                    <span>阿不</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://babyno.top/3shi/">Home</a>&nbsp;»&nbsp;<a href="https://babyno.top/3shi/posts/">Posts</a></div>
+    <h1 class="post-title">
+      优酷视频真实地址解析
+    </h1>
+    <div class="post-meta"><span title='2011-03-23 17:11:15 +0000 UTC'>2011-03-23</span>&nbsp;·&nbsp;3shi
+
+</div>
+  </header> 
+  <div class="post-content"><p><a href="http://img.3shi.net/preview/youku.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="http://img.3shi.net/preview/youku.jpg" alt=""  />
+</a></p>
+<p>优酷的视频下载有以下几个特点：</p>
+<ol>
+<li>
+<p>地址动态生成，每次请求返回的地址都不一样。</p>
+</li>
+<li>
+<p>有效时间短，得到的下载地址大约只有1小时的有效时间。</p>
+</li>
+<li>
+<p>视频地址经过加密，需在客户（用户）端进行解密。</p>
+</li>
+<li>
+<p>长视频会被分割成多段短视频。</p>
+</li>
+<li>
+<p>对视频下载没有限制，即用户A得到的下载地址，用户B也可以下载。</p>
+</li>
+</ol>
+<p>先来看一下解析后的视频地址：</p>
+<blockquote>
+</blockquote>
+<blockquote>
+<p><a href="http://f.youku.com/player/getFlvPath/sid/">http://f.youku.com/player/getFlvPath/sid/</a><span style="color: #ff0000;">130086939328910582812</span>_<span style="color: #ff0000;">00</span>/st/flv/fileid/03000201004D8858360BD1047C4F5FF471CDD7-C742-8D74-3EED-90A9EF54EEC1?K=<span style="color: #ff0000;">de1515a31372faac182698bc</span></p>
+</blockquote>
+<p>以上三段红色部分分别代表sid、fileid和key。</p>
+<p>我们来分析一下这个地址，除了固定的部分以外，整个地址由sid、fileid和key三部分组成，下面我们逐一来分析如何解析这三个值。</p>
+<p>以普通的优酷视频播放地址为例，</p>
+<blockquote>
+<p><a href="http://v.youku.com/v_show/id">http://v.youku.com/v_show/id</a>_<span style="color: #ff0000;">XMjUyODAzNDg0</span>.html</p>
+</blockquote>
+<p>把其中的红色部分复制出来，拼在</p>
+<blockquote>
+<p><a href="http://v.youku.com/player/getPlayList/VideoIDS/">http://v.youku.com/player/getPlayList/VideoIDS/</a></p>
+</blockquote>
+<p>后面，得到</p>
+<blockquote>
+<p><a href="http://v.youku.com/player/getPlayList/VideoIDS/XMjUyODAzNDg0">http://v.youku.com/player/getPlayList/VideoIDS/XMjUyODAzNDg0</a></p>
+</blockquote>
+<p>访问该地址得到json格式的字符串，其中我们感兴趣的内容是：</p>
+<blockquote>
+<pre><code>&quot;seed&quot;:6302,
+&quot;key1&quot;:&quot;bd7c3d19&quot;,
+&quot;key2&quot;:&quot;de1515a31372faac&quot;,
+&quot;fileid&quot;:&quot;13\*18\*13\*13\*13\*11\*13\*42\*13\*13\*39\*44\*41\*41\*47\*41\*18\*29\*13\*60\*44\*42\*13\*39\*17\*33\*39\*56\*47\*56\*56\*39\*17\*42\*33\*44\*44\*17\*54\*33\*17\*39\*11\*54\*41\*44\*17\*39\*54\*18\*55\*55\*44\*54\*38\*13\*57\*38\*55\*56\*47\*39\*55\*55\*33\*42\*&quot;,
+</code></pre>
+</blockquote>
+<p>我们的解析工作需要用到上面的这些内容。这里要说明一下，因为地址是动态生成的，每次请求返回的结果都不一样，所以你看到的和上面是不一样的，但是不影响解析的过程。</p>
+<p><strong>生成sid</strong></p>
+<p>sid是一个随机数，我们可以这样获得</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">String</span> <span class="nf">genSid</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">i1</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">(</span><span class="mi">1000</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="mi">999</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">i2</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">(</span><span class="mi">1000</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="mi">9000</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;&#34;</span> <span class="o">+</span> <span class="n">i1</span> <span class="o">+</span> <span class="s">&#34;&#34;</span> <span class="o">+</span> <span class="n">i2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>假设返回&quot;130086939328910582812&quot;。</p>
+<p><strong>生成fileid</strong></p>
+<p>优酷返回的fileid已经做了加密工作，好在并不难解，利用上面得到的fileid和seed</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">String</span> <span class="nf">getFileID</span><span class="o">(</span><span class="n">String</span> <span class="n">fileid</span><span class="o">,</span> <span class="kt">double</span> <span class="n">seed</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">String</span> <span class="n">mixed</span> <span class="o">=</span> <span class="n">getFileIDMixString</span><span class="o">(</span><span class="n">seed</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">String</span><span class="o">[]</span> <span class="n">ids</span> <span class="o">=</span> <span class="n">fileid</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;\*&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">StringBuilder</span> <span class="n">realId</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">idx</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ids</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">idx</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">ids</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">realId</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">mixed</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">idx</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">realId</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">String</span> <span class="nf">getFileIDMixString</span><span class="o">(</span><span class="kt">double</span> <span class="n">seed</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">StringBuilder</span> <span class="n">mixed</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">StringBuilder</span> <span class="n">source</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/\:._-1234567890&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">len</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">seed</span> <span class="o">=</span> <span class="o">(</span><span class="n">seed</span> <span class="o">*</span> <span class="mi">211</span> <span class="o">+</span> <span class="mi">30031</span><span class="o">)</span> <span class="o">%</span> <span class="mi">65536</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">index</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">seed</span> <span class="o">/</span> <span class="mi">65536</span> <span class="o">*</span> <span class="n">source</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mixed</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">source</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">index</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">source</span><span class="o">.</span><span class="na">deleteCharAt</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">mixed</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>假设返回&quot;03000201004D8858360BD1047C4F5FF471CDD7-C742-8D74-3EED-90A9EF54EEC1&quot;。</p>
+<p><strong>生成key</strong></p>
+<p>利用上面得到的key1和key2</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">String</span> <span class="nf">genKey</span><span class="o">(</span><span class="n">String</span> <span class="n">key1</span><span class="o">,</span> <span class="n">String</span> <span class="n">key2</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">Long</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">key1</span><span class="o">,</span> <span class="mi">16</span><span class="o">).</span><span class="na">intValue</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">key</span> <span class="o">^=</span> <span class="mi">0</span><span class="n">xA55AA5A5</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">key2</span> <span class="o">+</span> <span class="n">Long</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>假设返回&quot;de1515a31372faac182698bc&quot;。</p>
+<p>好了，把sid，fileid，key合并起来，就可以得到一开始的下载地址了。</p>
+<p>接下来就是分段视频的问题了，如果一个视频分成几段，在返回的json对象中可以找到类似的内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;segs&#34;</span><span class="err">:</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&#34;mp4&#34;</span><span class="p">:[{</span><span class="nt">&#34;no&#34;</span><span class="p">:</span><span class="s2">&#34;0&#34;</span><span class="p">,</span><span class="nt">&#34;size&#34;</span><span class="p">:</span><span class="s2">&#34;39095085&#34;</span><span class="p">,</span><span class="nt">&#34;seconds&#34;</span><span class="p">:</span><span class="s2">&#34;426&#34;</span><span class="p">},{</span><span class="nt">&#34;no&#34;</span><span class="p">:</span><span class="s2">&#34;1&#34;</span><span class="p">,</span><span class="nt">&#34;size&#34;</span><span class="p">:</span><span class="s2">&#34;22114342&#34;</span><span class="p">,</span><span class="nt">&#34;seconds&#34;</span><span class="p">:</span><span class="s2">&#34;426&#34;</span><span class="p">},{</span><span class="nt">&#34;no&#34;</span><span class="p">:</span><span class="s2">&#34;2&#34;</span><span class="p">,</span><span class="nt">&#34;size&#34;</span><span class="p">:</span><span class="s2">&#34;23296715&#34;</span><span class="p">,</span><span class="nt">&#34;seconds&#34;</span><span class="p">:</span><span class="s2">&#34;424&#34;</span><span class="p">},{</span><span class="nt">&#34;no&#34;</span><span class="p">:</span><span class="s2">&#34;3&#34;</span><span class="p">,</span><span class="nt">&#34;size&#34;</span><span class="p">:</span><span class="s2">&#34;18003234&#34;</span><span class="p">,</span><span class="nt">&#34;seconds&#34;</span><span class="p">:</span><span class="s2">&#34;426&#34;</span><span class="p">},{</span><span class="nt">&#34;no&#34;</span><span class="p">:</span><span class="s2">&#34;4&#34;</span><span class="p">,</span><span class="nt">&#34;size&#34;</span><span class="p">:</span><span class="s2">&#34;31867294&#34;</span><span class="p">,</span><span class="nt">&#34;seconds&#34;</span><span class="p">:</span><span class="s2">&#34;423&#34;</span><span class="p">},{</span><span class="nt">&#34;no&#34;</span><span class="p">:</span><span class="s2">&#34;5&#34;</span><span class="p">,</span><span class="nt">&#34;size&#34;</span><span class="p">:</span><span class="s2">&#34;14818514&#34;</span><span class="p">,</span><span class="nt">&#34;seconds&#34;</span><span class="p">:</span><span class="s2">&#34;248&#34;</span><span class="p">}],</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&#34;flv&#34;</span><span class="p">:[{</span><span class="nt">&#34;no&#34;</span><span class="p">:</span><span class="s2">&#34;0&#34;</span><span class="p">,</span><span class="nt">&#34;size&#34;</span><span class="p">:</span><span class="s2">&#34;19739080&#34;</span><span class="p">,</span><span class="nt">&#34;seconds&#34;</span><span class="p">:</span><span class="s2">&#34;425&#34;</span><span class="p">},{</span><span class="nt">&#34;no&#34;</span><span class="p">:</span><span class="s2">&#34;1&#34;</span><span class="p">,</span><span class="nt">&#34;size&#34;</span><span class="p">:</span><span class="s2">&#34;11506385&#34;</span><span class="p">,</span><span class="nt">&#34;seconds&#34;</span><span class="p">:</span><span class="s2">&#34;426&#34;</span><span class="p">},{</span><span class="nt">&#34;no&#34;</span><span class="p">:</span><span class="s2">&#34;2&#34;</span><span class="p">,</span><span class="nt">&#34;size&#34;</span><span class="p">:</span><span class="s2">&#34;11821267&#34;</span><span class="p">,</span><span class="nt">&#34;seconds&#34;</span><span class="p">:</span><span class="s2">&#34;426&#34;</span><span class="p">},{</span><span class="nt">&#34;no&#34;</span><span class="p">:</span><span class="s2">&#34;3&#34;</span><span class="p">,</span><span class="nt">&#34;size&#34;</span><span class="p">:</span><span class="s2">&#34;8988612&#34;</span><span class="p">,</span><span class="nt">&#34;seconds&#34;</span><span class="p">:</span><span class="s2">&#34;426&#34;</span><span class="p">},{</span><span class="nt">&#34;no&#34;</span><span class="p">:</span><span class="s2">&#34;4&#34;</span><span class="p">,</span><span class="nt">&#34;size&#34;</span><span class="p">:</span><span class="s2">&#34;16078739&#34;</span><span class="p">,</span><span class="nt">&#34;seconds&#34;</span><span class="p">:</span><span class="s2">&#34;425&#34;</span><span class="p">},{</span><span class="nt">&#34;no&#34;</span><span class="p">:</span><span class="s2">&#34;5&#34;</span><span class="p">,</span><span class="nt">&#34;size&#34;</span><span class="p">:</span><span class="s2">&#34;7634043&#34;</span><span class="p">,</span><span class="nt">&#34;seconds&#34;</span><span class="p">:</span><span class="s2">&#34;245&#34;</span><span class="p">}]}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>很明显，该视频分成了6段，而且有mp4和flv两种格式的视频。还记得一开始的视频地址中的蓝色部分吗，我们只要修改那一部分的数字就可以了，比如第二段，就把蓝色部分换成01（两个都要换），注意这是16进制的。</p>
+<p>如果想下载mp4格式的，只要把下载地址中的/flv/换成/mp4/，当然你要确定该视频有mp4格式。 update:</p>
+<p>鉴于很多人要php格式的，顺便在这里发一下，对应代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">getSid</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$sid</span> <span class="o">=</span> <span class="nx">time</span><span class="p">()</span><span class="o">.</span><span class="p">(</span><span class="nx">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9000</span><span class="p">)</span><span class="o">+</span><span class="mi">10000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$sid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">getkey</span><span class="p">(</span><span class="nv">$key1</span><span class="p">,</span><span class="nv">$key2</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$a</span> <span class="o">=</span> <span class="nx">hexdec</span><span class="p">(</span><span class="nv">$key1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$b</span> <span class="o">=</span> <span class="nv">$a</span> <span class="o">^</span> <span class="mh">0xA55AA5A5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$b</span> <span class="o">=</span> <span class="nx">dechex</span><span class="p">(</span><span class="nv">$b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$key2</span><span class="o">.</span><span class="nv">$b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">getfileid</span><span class="p">(</span><span class="nv">$fileId</span><span class="p">,</span><span class="nv">$seed</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$mixed</span> <span class="o">=</span> <span class="nx">getMixString</span><span class="p">(</span><span class="nv">$seed</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$ids</span> <span class="o">=</span> <span class="nx">explode</span><span class="p">(</span><span class="s2">&#34;*&#34;</span><span class="p">,</span><span class="nv">$fileId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">unset</span><span class="p">(</span><span class="nv">$ids</span><span class="p">[</span><span class="nx">count</span><span class="p">(</span><span class="nv">$ids</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$realId</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span> <span class="o">&lt;</span> <span class="nx">count</span><span class="p">(</span><span class="nv">$ids</span><span class="p">);</span><span class="o">++</span><span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$idx</span> <span class="o">=</span> <span class="nv">$ids</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$realId</span> <span class="o">.=</span> <span class="nx">substr</span><span class="p">(</span><span class="nv">$mixed</span><span class="p">,</span><span class="nv">$idx</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$realId</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">getMixString</span><span class="p">(</span><span class="nv">$seed</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$mixed</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$source</span> <span class="o">=</span> <span class="s2">&#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/\:._-1234567890&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span> <span class="nv">$len</span><span class="p">;</span><span class="o">++</span><span class="nv">$i</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$seed</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$seed</span> <span class="o">*</span> <span class="mi">211</span> <span class="o">+</span> <span class="mi">30031</span><span class="p">)</span> <span class="o">%</span> <span class="mi">65536</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$index</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$seed</span> <span class="o">/</span> <span class="mi">65536</span> <span class="o">*</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$source</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$c</span> <span class="o">=</span> <span class="nx">substr</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span><span class="nv">$index</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$mixed</span> <span class="o">.=</span> <span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$source</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span><span class="nv">$c</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span><span class="nv">$source</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$mixed</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>另一个要注意的地方，上面提到的分段视频，从第11段开始是16进制的0A，注意是大写的，后面依次类推。</p>
+<p>update2: 热心网友秀天下提供的c#版代码如下，在此表示感谢，希望有更多网友翻译成各种版本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">String</span> <span class="n">genSid</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i1</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="m">1000</span> <span class="p">+</span> <span class="n">Math</span><span class="p">.</span><span class="n">Floor</span><span class="p">((</span><span class="kt">double</span><span class="p">)(</span><span class="k">new</span> <span class="n">Random</span><span class="p">().</span><span class="n">Next</span><span class="p">(</span><span class="m">999</span><span class="p">))));</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i2</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="m">1000</span> <span class="p">+</span> <span class="n">Math</span><span class="p">.</span><span class="n">Floor</span><span class="p">((</span><span class="kt">double</span><span class="p">)(</span><span class="k">new</span> <span class="n">Random</span><span class="p">().</span><span class="n">Next</span><span class="p">(</span><span class="m">9000</span><span class="p">))));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">TimeSpan</span> <span class="n">ts</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TimeSpan</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">.</span><span class="n">Ticks</span> <span class="p">-</span> <span class="k">new</span> <span class="n">DateTime</span><span class="p">(</span><span class="m">1970</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">).</span><span class="n">Ticks</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToInt64</span><span class="p">(</span><span class="n">ts</span><span class="p">.</span><span class="n">TotalMilliseconds</span><span class="p">).</span><span class="n">ToString</span><span class="p">()</span> <span class="p">+</span> <span class="s">&#34;&#34;</span> <span class="p">+</span> <span class="n">i1</span> <span class="p">+</span> <span class="s">&#34;&#34;</span> <span class="p">+</span> <span class="n">i2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">String</span> <span class="n">getFileID</span><span class="p">(</span><span class="n">String</span> <span class="n">fileid</span><span class="p">,</span> <span class="kt">double</span> <span class="n">seed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">mixed</span> <span class="p">=</span> <span class="n">getFileIDMixString</span><span class="p">(</span><span class="n">seed</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span><span class="p">[]</span> <span class="n">ids</span> <span class="p">=</span> <span class="n">fileid</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="s">&#34;*&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">StringBuilder</span> <span class="n">realId</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">ids</span><span class="p">.</span><span class="n">Length</span> <span class="p">-</span> <span class="m">1</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">idx</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">ids</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">realId</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="n">mixed</span><span class="p">[</span><span class="n">idx</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">realId</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">String</span> <span class="n">getFileIDMixString</span><span class="p">(</span><span class="kt">double</span> <span class="n">seed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">StringBuilder</span> <span class="n">mixed</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">StringBuilder</span> <span class="n">source</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="s">&#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/\:._-1234567890&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="n">len</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="p">++</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">seed</span> <span class="p">=</span> <span class="p">(</span><span class="n">seed</span> <span class="p">*</span> <span class="m">211</span> <span class="p">+</span> <span class="m">30031</span><span class="p">)</span> <span class="p">%</span> <span class="m">65536</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">index</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">Math</span><span class="p">.</span><span class="n">Floor</span><span class="p">(</span><span class="n">seed</span> <span class="p">/</span> <span class="m">65536</span> <span class="p">*</span> <span class="n">source</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mixed</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="n">source</span><span class="p">[</span><span class="n">index</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">source</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">mixed</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">String</span> <span class="n">genKey</span><span class="p">(</span><span class="n">String</span> <span class="n">key1</span><span class="p">,</span> <span class="n">String</span> <span class="n">key2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">key</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToInt32</span><span class="p">(</span><span class="n">key1</span><span class="p">,</span> <span class="m">16</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">tempkey</span> <span class="p">=</span> <span class="n">key</span> <span class="p">^</span> <span class="m">0xA55AA5A5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">key2</span> <span class="p">+</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="n">tempkey</span><span class="p">,</span> <span class="m">16</span><span class="p">).</span><span class="n">Substring</span><span class="p">(</span><span class="m">8</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>update3:</p>
+<p>有热心网友提供python版了，感谢EmiNarcissus：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">math</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">createSid</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nowTime</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">random1</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1998</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">random2</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">9999</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s2">&#34;</span><span class="si">%d%d%d</span><span class="s2">&#34;</span> <span class="o">%</span><span class="p">(</span><span class="n">nowTime</span><span class="p">,</span><span class="n">random1</span><span class="p">,</span><span class="n">random2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">getFileIDMixString</span><span class="p">(</span><span class="n">seed</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mixed</span><span class="o">=</span><span class="p">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">source</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">&#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/:._-1234567890&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">seed</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">seed</span> <span class="o">=</span> <span class="p">(</span><span class="n">seed</span> <span class="o">*</span> <span class="mi">211</span> <span class="o">+</span> <span class="mi">30031</span> <span class="p">)</span> <span class="o">%</span> <span class="mi">65536</span>
+</span></span><span class="line"><span class="cl">        <span class="n">index</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">seed</span> <span class="o">/</span> <span class="mi">65536</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="p">)</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mixed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">source</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">source</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">source</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#return &#34;&#34;.join(mixed)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">mixed</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">getFileId</span><span class="p">(</span><span class="n">fileId</span><span class="p">,</span><span class="n">seed</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mixed</span><span class="o">=</span><span class="n">getFileIDMixString</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ids</span><span class="o">=</span><span class="n">fileId</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&#34;*&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">realId</span><span class="o">=</span><span class="p">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">realId</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mixed</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">ch</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">realId</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#print createSid()</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#print getFileIDMixString(4528)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fileId</span><span class="o">=</span><span class="s2">&#34;3*31*3*3*3*61*3*13*3*3*36*17*48*21*17*55*31*17*61*31*14*14*3*3*36*13*67*31*31*10*21*32*58*31*13*14*3*48*15*13*10*48*55*15*55*10*36*31*15*31*61*10*67*15*3*61*17*13*13*14*11*36*48*21*36*10&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">seed</span><span class="o">=</span><span class="mi">4528</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span> <span class="n">getFileId</span><span class="p">(</span><span class="n">fileId</span><span class="p">,</span><span class="n">seed</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+
+  </div>
+
+  
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://babyno.top/3shi/tags/youku/">youku</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://babyno.top/3shi/posts/2011/03/analyze-tudou-video-address/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>土豆视频真实地址解析</span>
+  </a>
+  <a class="next" href="https://babyno.top/3shi/posts/2011/03/white-fang/">
+    <span class="title">Next »</span>
+    <br>
+    <span>电影里感人至深的动物主角系列之《雪地黄金犬》</span>
+  </a>
+</nav>
+
+  </footer><link
+rel="stylesheet"
+href="/assets/@waline/client/dist/waline.css"
+/>
+<div id="waline"></div>
+<script type="module">
+  import { init } from '/assets/@waline/client/dist/waline.mjs';
+
+  init({
+    el: '#waline',
+    serverURL: 'https://comments.babyno.top/',
+    search: false
+  });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://babyno.top/3shi/">3shi天下</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?3538691f85f2d2e74e734e6ad2c07251";
+    var s = document.getElementsByTagName("script");
+    var lastScript = s[s.length - 1];
+    if (lastScript.nextSibling) {
+      lastScript.parentNode.insertBefore(hm, lastScript.nextSibling);
+    } else {
+      lastScript.parentNode.appendChild(hm);
+    }
+  })();
+</script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GS1HVS967Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GS1HVS967Y');
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Google架构学习 | 3shi天下</title>
+<meta name="keywords" content="google, architecture">
+<meta name="description" content="Google是伸缩性的王者。Google一直的目标就是构建高性能高伸缩性的基础组织来支持它们的产品。 平台 Linux 大量语言：Python，Java，">
+<meta name="author" content="3shi">
+<link rel="canonical" href="https://babyno.top/3shi/posts/2011/04/google-architecture-study/">
+<link crossorigin="anonymous" href="/3shi/assets/css/stylesheet.12891501283130addd65d5c9aa3af45b949edff3f949a53c8f890319a805b26b.css" integrity="sha256-EokVASgxMK3dZdXJqjr0W5Se3/P5SaU8j4kDGagFsms=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://babyno.top/3shi/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://babyno.top/3shi/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://babyno.top/3shi/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://babyno.top/3shi/apple-touch-icon.png">
+<link rel="mask-icon" href="https://babyno.top/3shi/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Google架构学习" />
+<meta property="og:description" content="Google是伸缩性的王者。Google一直的目标就是构建高性能高伸缩性的基础组织来支持它们的产品。 平台 Linux 大量语言：Python，Java，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://babyno.top/3shi/posts/2011/04/google-architecture-study/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2011-04-22T11:08:26+00:00" />
+<meta property="article:modified_time" content="2011-04-22T11:08:26+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Google架构学习"/>
+<meta name="twitter:description" content="Google是伸缩性的王者。Google一直的目标就是构建高性能高伸缩性的基础组织来支持它们的产品。 平台 Linux 大量语言：Python，Java，"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://babyno.top/3shi/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Google架构学习",
+      "item": "https://babyno.top/3shi/posts/2011/04/google-architecture-study/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Google架构学习",
+  "name": "Google架构学习",
+  "description": "Google是伸缩性的王者。Google一直的目标就是构建高性能高伸缩性的基础组织来支持它们的产品。 平台 Linux 大量语言：Python，Java，",
+  "keywords": [
+    "google", "architecture"
+  ],
+  "articleBody": " Google是伸缩性的王者。Google一直的目标就是构建高性能高伸缩性的基础组织来支持它们的产品。\n平台 Linux\n大量语言：Python，Java，C++\n这里面有什么？\n状态 在2006年大约有450,000台廉价服务器\n在2005年Google索引了80亿Web页面，现在没有人知道数目\n目前在Google有超过200个GFS集群。一个集群可以有1000或者甚至5000台机器。成千上万的机器从运行着5000000000000000字节存储的GFS集群获取数据，集群总的读写吞吐量可以达到每秒40兆字节\n目前在Google有6000个MapReduce程序，而且每个月都写成百个新程序\nBigTable伸缩存储几十亿的URL，几百千千兆的卫星图片和几亿用户的参数选择\n堆栈 Google形象化它们的基础组织为三层架构：\n产品：搜索，广告，email，地图，视频，聊天，博客\n分布式系统基础组织：GFS，MapReduce和BigTable\n计算平台：一群不同的数据中心里的机器\n确保公司里的人们部署起来开销很小\n花费更多的钱在避免丢失日志数据的硬件上，其他类型的数据则花费较少\n可信赖的存储机制GFS(Google File System) 可信赖的伸缩性存储是任何程序的核心需求。GFS就是Google的核心存储平台\nGoogle File System - 大型分布式结构化日志文件系统，Google在里面扔了大量的数据\n为什么构建GFS而不是利用已有的东西？因为可以自己控制一切并且这个平台与别的不一样，Google需要： -跨数据中心的高可靠性 -成千上万的网络节点的伸缩性 -大读写带宽的需求 -支持大块的数据，可能为上千兆字节 -高效的跨节点操作分发来减少瓶颈\n系统有Master和Chunk服务器 -Master服务器在不同的数据文件里保持元数据。数据以64MB为单位存储在文件系统中。客户端与Master服务器交流来在文件上做元数据操作并且找到包\n含用户需要数据的那些Chunk服务器 -Chunk服务器在硬盘上存储实际数据。每个Chunk服务器跨越3个不同的Chunk服务器备份以创建冗余来避免服务器崩溃。一旦被Master服务器指明，客户端程序就会直接从Chunk服务器读取文件\n一个上线的新程序可以使用已有的GFS集群或者可以制作自己的GFS集群\n关键点在于有足够的基础组织来让人们对自己的程序有所选择，GFS可以调整来适应个别程序的需求\n使用MapReduce来处理数据 现在你已经有了一个很好的存储系统，你该怎样处理如此多的数据呢？比如你有许多TB的数据存储在1000台机器上。数据库不能伸缩或者伸缩到这种级别花费极大，这就是MapReduce出现的原因\nMapReduce是一个处理和生成大量数据集的编程模型和相关实现。用户指定一个map方法来处理一个键/值对来生成一个中间的键/值对，还有一个reduce方法来合并所有关联到同样的中间键的中间值。许多真实世界的任务都可以使用这种模型来表现。以这种风格来写的程序会自动并行的在一个大量机器的集群里运行。运行时系统照顾输入数据划分、程序在机器集之间执行的调度、机器失败处理和必需的内部机器交流等细节。这允许程序员没有多少并行和分布式系统的经验就可以很容易使用一个大型分布式系统资源\n为什么使用MapReduce？ -跨越大量机器分割任务的好方式 -处理机器失败 -可以与不同类型的程序工作，例如搜索和广告。几乎任何程序都有map和reduce类型的操作。你可以预先计算有用的数据、查询字数统计、对TB的数据排序等等\nMapReduce系统有三种不同类型的服务器 -Master服务器分配用户任务到Map和Reduce服务器。它也跟踪任务的状态 -Map服务器接收用户输入并在其基础上处理map操作。结果写入中间文件 -Reduce服务器接收Map服务器产生的中间文件并在其基础上处理reduce操作\n例如，你想在所有Web页面里的字数。你将存储在GFS里的所有页面抛入MapReduce。这将在成千上万台机器上同时进行并且所有的调整、工作调度、失败处理和数据传输将自动完成 -步骤类似于：GFS -\u003e Map -\u003e Shuffle -\u003e Reduction -\u003e Store Results back into GFS -在MapReduce里一个map操作将一些数据映射到另一个中，产生一个键值对，在我们的例子里就是字和字数 -Shuffling操作聚集键类型 -Reduction操作计算所有键值对的综合并产生最终的结果\nGoogle索引操作管道有大约20个不同的map和reduction。\n程序可以非常小，如20到50行代码\n一个问题是掉队者。掉队者是一个比其他程序慢的计算，它阻塞了其他程序。掉队者可能因为缓慢的IO或者临时的CPU不能使用而发生。解决方案是运行多个同样的计算并且当一个完成后杀死所有其他的\n数据在Map和Reduce服务器之间传输时被压缩了。这可以节省带宽和I/O。\n在BigTable里存储结构化数据 BigTable是一个大伸缩性、错误容忍、自管理的系统，它包含千千兆的内存和1000000000000000的存储。它可以每秒钟处理百万的读写\nBigTable是一个构建于GFS之上的分布式哈希机制。它不是关系型数据库。它不支持join或者SQL类型查询\n它提供查询机制来通过键访问结构化数据。GFS存储存储不透明的数据而许多程序需求有结构化数据\n商业数据库不能达到这种级别的伸缩性并且不能在成千上万台机器上工作\n通过控制它们自己的低级存储系统Google得到更多的控制权来改进它们的系统。例如，如果它们想让跨数据中心的操作更简单这个特性，它们可以内建它\n系统运行时机器可以自由的增删而整个系统保持工作\n每个数据条目存储在一个格子里，它可以通过一个行key和列key或者时间戳来访问\n每一行存储在一个或多个tablet中。一个tablet是一个64KB块的数据序列并且格式为SSTable\nBigTable有三种类型的服务器： -Master服务器分配tablet服务器，它跟踪tablet在哪里并且如果需要则重新分配任务 -Tablet服务器为tablet处理读写请求。当tablet超过大小限制(通常是100MB-200MB)时它们拆开tablet。当一个Tablet服务器失败时，则100个Tablet服务器各自挑选一个新的tablet然后系统恢复。 -Lock服务器形成一个分布式锁服务。像打开一个tablet来写、Master调整和访问控制检查等都需要互斥\n一个locality组可以用来在物理上将相关的数据存储在一起来得到更好的locality选择\ntablet尽可能的缓存在RAM里\n硬件 当你有很多机器时你怎样组织它们来使得使用和花费有效？\n使用非常廉价的硬件\nA 1,000-fold computer power increase can be had for a 33 times lower cost if you you use a failure-prone infrastructure rather than an infrastructure built on highly reliable components. You must build reliability on top of unreliability for this strategy to work.\nLinux，in-house rack design，PC主板，低端存储\nPrice per wattage on performance basis isn\"t getting better. Have huge power and cooling issues\n使用一些collocation和Google自己的数据中心\n其他 迅速更改而不是等待QA\n库是构建程序的卓越方式\n一些程序作为服务提供\n一个基础组织处理程序的版本，这样它们可以发布而不用害怕会破坏什么东西\nGoogle将来的方向 支持地理位置分布的集群\n为所有数据创建一个单独的全局名字空间。当前的数据由集群分离\n更多和更好的自动化数据迁移和计算\n解决当使用网络划分来做广阔区域的备份时的一致性问题(例如保持服务即使一个集群离线维护或由于一些损耗问题)\n学到的东西 基础组织是有竞争性的优势。特别是对Google而言。Google可以很快很廉价的推出新服务，并且伸缩性其他人很难达到。许多公司采取完全不同的方式。许多公司认为基础组织开销太大。Google认为自己是一个系统工程公司，这是一个新的看待软件构建的方式\n跨越多个数据中心仍然是一个未解决的问题。大部分网站都是一个或者最多两个数据中心。我们不得不承认怎样在一些数据中心之间完整的分布网站是很需要技巧的\n如果你自己没有时间从零开始重新构建所有这些基础组织你可以看看Hadoop。Hadoop是这里很多同样的主意的一个开源实现\n平台的一个优点是初级开发人员可以在平台的基础上快速并且放心的创建健全的程序。如果每个项目都需要发明同样的分布式基础组织的轮子，那么你将陷入困境因为知道怎样完成这项工作的人相对较少\n协同工作不一直是掷骰子。通过让系统中的所有部分一起工作则一个部分的改进将帮助所有的部分。改进文件系统则每个人从中受益而且是透明的。如果每个项目使用不同的文件系统则在整个堆栈中享受不到持续增加的改进\n构建自管理系统让你没必要让系统关机。这允许你更容易在服务器之间平衡资源、动态添加更大的容量、让机器离线和优雅的处理升级\n创建可进化的基础组织，并行的执行消耗时间的操作并采取较好的方案\n不要忽略学院。学院有许多没有转变为产品的好主意。Most of what Google has done has prior art, just not prior large scale deployment.\n考虑压缩。当你有许多CPU而IO有限时压缩是一个好的选择。\n转载自：http://hideto.iteye.com/blog/130815\n英文原文：http://highscalability.com/google-architecture\n",
+  "wordCount" : "3698",
+  "inLanguage": "en",
+  "datePublished": "2011-04-22T11:08:26Z",
+  "dateModified": "2011-04-22T11:08:26Z",
+  "author":{
+    "@type": "Person",
+    "name": "3shi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://babyno.top/3shi/posts/2011/04/google-architecture-study/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "3shi天下",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://babyno.top/3shi/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://babyno.top/3shi/" accesskey="h" title="3shi天下 (Alt + H)">3shi天下</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://babyno.top/3shi/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top" title="阿不">
+                    <span>阿不</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://babyno.top/3shi/">Home</a>&nbsp;»&nbsp;<a href="https://babyno.top/3shi/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Google架构学习
+    </h1>
+    <div class="post-meta"><span title='2011-04-22 11:08:26 +0000 UTC'>2011-04-22</span>&nbsp;·&nbsp;3shi
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e5%b9%b3%e5%8f%b0" aria-label="平台">平台</a></li>
+                    <li>
+                        <a href="#%e7%8a%b6%e6%80%81" aria-label="状态"><strong>状态</strong></a></li>
+                    <li>
+                        <a href="#%e5%a0%86%e6%a0%88" aria-label="堆栈"><strong>堆栈</strong></a></li>
+                    <li>
+                        <a href="#%e5%8f%af%e4%bf%a1%e8%b5%96%e7%9a%84%e5%ad%98%e5%82%a8%e6%9c%ba%e5%88%b6gfsgoogle-file-system" aria-label="可信赖的存储机制GFS(Google File System)"><strong>可信赖的存储机制GFS(Google File System)</strong></a></li>
+                    <li>
+                        <a href="#%e4%bd%bf%e7%94%a8mapreduce%e6%9d%a5%e5%a4%84%e7%90%86%e6%95%b0%e6%8d%ae" aria-label="使用MapReduce来处理数据"><strong>使用MapReduce来处理数据</strong></a></li>
+                    <li>
+                        <a href="#%e5%9c%a8bigtable%e9%87%8c%e5%ad%98%e5%82%a8%e7%bb%93%e6%9e%84%e5%8c%96%e6%95%b0%e6%8d%ae" aria-label="在BigTable里存储结构化数据"><strong>在BigTable里存储结构化数据</strong></a></li>
+                    <li>
+                        <a href="#%e7%a1%ac%e4%bb%b6" aria-label="硬件"><strong>硬件</strong></a></li>
+                    <li>
+                        <a href="#%e5%85%b6%e4%bb%96" aria-label="其他"><strong>其他</strong></a></li>
+                    <li>
+                        <a href="#google%e5%b0%86%e6%9d%a5%e7%9a%84%e6%96%b9%e5%90%91" aria-label="Google将来的方向"><strong>Google将来的方向</strong></a></li>
+                    <li>
+                        <a href="#%e5%ad%a6%e5%88%b0%e7%9a%84%e4%b8%9c%e8%a5%bf" aria-label="学到的东西">学到的东西</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+  <div class="post-content"><p><a href="http://img.3shi.net/icon/128x128/icontexto-inside-google.png"  data-lightbox="image-1" >
+<img loading="lazy" src="http://img.3shi.net/icon/128x128/icontexto-inside-google.png" alt="google"  />
+</a></p>
+<p>Google是伸缩性的王者。Google一直的目标就是构建高性能高伸缩性的基础组织来支持它们的产品。</p>
+<h2 id="平台">平台<a hidden class="anchor" aria-hidden="true" href="#平台">#</a></h2>
+<ul>
+<li>
+<p>Linux</p>
+</li>
+<li>
+<p>大量语言：Python，Java，C++</p>
+</li>
+</ul>
+<p>这里面有什么？</p>
+<h2 id="状态"><strong>状态</strong><a hidden class="anchor" aria-hidden="true" href="#状态">#</a></h2>
+<ol>
+<li>
+<p>在2006年大约有450,000台廉价服务器</p>
+</li>
+<li>
+<p>在2005年Google索引了80亿Web页面，现在没有人知道数目</p>
+</li>
+<li>
+<p>目前在Google有超过200个GFS集群。一个集群可以有1000或者甚至5000台机器。成千上万的机器从运行着5000000000000000字节存储的GFS集群获取数据，集群总的读写吞吐量可以达到每秒40兆字节</p>
+</li>
+<li>
+<p>目前在Google有6000个MapReduce程序，而且每个月都写成百个新程序</p>
+</li>
+<li>
+<p>BigTable伸缩存储几十亿的URL，几百千千兆的卫星图片和几亿用户的参数选择</p>
+</li>
+</ol>
+<h2 id="堆栈"><strong>堆栈</strong><a hidden class="anchor" aria-hidden="true" href="#堆栈">#</a></h2>
+<p>Google形象化它们的基础组织为三层架构：</p>
+<ol>
+<li>
+<p>产品：搜索，广告，email，地图，视频，聊天，博客</p>
+</li>
+<li>
+<p>分布式系统基础组织：GFS，MapReduce和BigTable</p>
+</li>
+<li>
+<p>计算平台：一群不同的数据中心里的机器</p>
+</li>
+<li>
+<p>确保公司里的人们部署起来开销很小</p>
+</li>
+<li>
+<p>花费更多的钱在避免丢失日志数据的硬件上，其他类型的数据则花费较少</p>
+</li>
+</ol>
+<h2 id="可信赖的存储机制gfsgoogle-file-system"><strong>可信赖的存储机制GFS(Google File System)</strong><a hidden class="anchor" aria-hidden="true" href="#可信赖的存储机制gfsgoogle-file-system">#</a></h2>
+<ol>
+<li>
+<p>可信赖的伸缩性存储是任何程序的核心需求。GFS就是Google的核心存储平台</p>
+</li>
+<li>
+<p>Google File System - 大型分布式结构化日志文件系统，Google在里面扔了大量的数据</p>
+</li>
+<li>
+<p>为什么构建GFS而不是利用已有的东西？因为可以自己控制一切并且这个平台与别的不一样，Google需要： -跨数据中心的高可靠性 -成千上万的网络节点的伸缩性 -大读写带宽的需求 -支持大块的数据，可能为上千兆字节 -高效的跨节点操作分发来减少瓶颈</p>
+</li>
+<li>
+<p>系统有Master和Chunk服务器 -Master服务器在不同的数据文件里保持元数据。数据以64MB为单位存储在文件系统中。客户端与Master服务器交流来在文件上做元数据操作并且找到包</p>
+</li>
+<li>
+<p>含用户需要数据的那些Chunk服务器 -Chunk服务器在硬盘上存储实际数据。每个Chunk服务器跨越3个不同的Chunk服务器备份以创建冗余来避免服务器崩溃。一旦被Master服务器指明，客户端程序就会直接从Chunk服务器读取文件</p>
+</li>
+<li>
+<p>一个上线的新程序可以使用已有的GFS集群或者可以制作自己的GFS集群</p>
+</li>
+<li>
+<p>关键点在于有足够的基础组织来让人们对自己的程序有所选择，GFS可以调整来适应个别程序的需求</p>
+</li>
+</ol>
+<h2 id="使用mapreduce来处理数据"><strong>使用MapReduce来处理数据</strong><a hidden class="anchor" aria-hidden="true" href="#使用mapreduce来处理数据">#</a></h2>
+<ol>
+<li>
+<p>现在你已经有了一个很好的存储系统，你该怎样处理如此多的数据呢？比如你有许多TB的数据存储在1000台机器上。数据库不能伸缩或者伸缩到这种级别花费极大，这就是MapReduce出现的原因</p>
+</li>
+<li>
+<p>MapReduce是一个处理和生成大量数据集的编程模型和相关实现。用户指定一个map方法来处理一个键/值对来生成一个中间的键/值对，还有一个reduce方法来合并所有关联到同样的中间键的中间值。许多真实世界的任务都可以使用这种模型来表现。以这种风格来写的程序会自动并行的在一个大量机器的集群里运行。运行时系统照顾输入数据划分、程序在机器集之间执行的调度、机器失败处理和必需的内部机器交流等细节。这允许程序员没有多少并行和分布式系统的经验就可以很容易使用一个大型分布式系统资源</p>
+</li>
+<li>
+<p>为什么使用MapReduce？ -跨越大量机器分割任务的好方式 -处理机器失败 -可以与不同类型的程序工作，例如搜索和广告。几乎任何程序都有map和reduce类型的操作。你可以预先计算有用的数据、查询字数统计、对TB的数据排序等等</p>
+</li>
+<li>
+<p>MapReduce系统有三种不同类型的服务器 -Master服务器分配用户任务到Map和Reduce服务器。它也跟踪任务的状态 -Map服务器接收用户输入并在其基础上处理map操作。结果写入中间文件 -Reduce服务器接收Map服务器产生的中间文件并在其基础上处理reduce操作</p>
+</li>
+<li>
+<p>例如，你想在所有Web页面里的字数。你将存储在GFS里的所有页面抛入MapReduce。这将在成千上万台机器上同时进行并且所有的调整、工作调度、失败处理和数据传输将自动完成 -步骤类似于：GFS -&gt; Map -&gt; Shuffle -&gt; Reduction -&gt; Store Results back into GFS -在MapReduce里一个map操作将一些数据映射到另一个中，产生一个键值对，在我们的例子里就是字和字数 -Shuffling操作聚集键类型 -Reduction操作计算所有键值对的综合并产生最终的结果</p>
+</li>
+<li>
+<p>Google索引操作管道有大约20个不同的map和reduction。</p>
+</li>
+<li>
+<p>程序可以非常小，如20到50行代码</p>
+</li>
+<li>
+<p>一个问题是掉队者。掉队者是一个比其他程序慢的计算，它阻塞了其他程序。掉队者可能因为缓慢的IO或者临时的CPU不能使用而发生。解决方案是运行多个同样的计算并且当一个完成后杀死所有其他的</p>
+</li>
+<li>
+<p>数据在Map和Reduce服务器之间传输时被压缩了。这可以节省带宽和I/O。</p>
+</li>
+</ol>
+<h2 id="在bigtable里存储结构化数据"><strong>在BigTable里存储结构化数据</strong><a hidden class="anchor" aria-hidden="true" href="#在bigtable里存储结构化数据">#</a></h2>
+<ol>
+<li>
+<p>BigTable是一个大伸缩性、错误容忍、自管理的系统，它包含千千兆的内存和1000000000000000的存储。它可以每秒钟处理百万的读写</p>
+</li>
+<li>
+<p>BigTable是一个构建于GFS之上的分布式哈希机制。它不是关系型数据库。它不支持join或者SQL类型查询</p>
+</li>
+<li>
+<p>它提供查询机制来通过键访问结构化数据。GFS存储存储不透明的数据而许多程序需求有结构化数据</p>
+</li>
+<li>
+<p>商业数据库不能达到这种级别的伸缩性并且不能在成千上万台机器上工作</p>
+</li>
+<li>
+<p>通过控制它们自己的低级存储系统Google得到更多的控制权来改进它们的系统。例如，如果它们想让跨数据中心的操作更简单这个特性，它们可以内建它</p>
+</li>
+<li>
+<p>系统运行时机器可以自由的增删而整个系统保持工作</p>
+</li>
+<li>
+<p>每个数据条目存储在一个格子里，它可以通过一个行key和列key或者时间戳来访问</p>
+</li>
+<li>
+<p>每一行存储在一个或多个tablet中。一个tablet是一个64KB块的数据序列并且格式为SSTable</p>
+</li>
+<li>
+<p>BigTable有三种类型的服务器： -Master服务器分配tablet服务器，它跟踪tablet在哪里并且如果需要则重新分配任务 -Tablet服务器为tablet处理读写请求。当tablet超过大小限制(通常是100MB-200MB)时它们拆开tablet。当一个Tablet服务器失败时，则100个Tablet服务器各自挑选一个新的tablet然后系统恢复。 -Lock服务器形成一个分布式锁服务。像打开一个tablet来写、Master调整和访问控制检查等都需要互斥</p>
+</li>
+<li>
+<p>一个locality组可以用来在物理上将相关的数据存储在一起来得到更好的locality选择</p>
+</li>
+<li>
+<p>tablet尽可能的缓存在RAM里</p>
+</li>
+</ol>
+<h2 id="硬件"><strong>硬件</strong><a hidden class="anchor" aria-hidden="true" href="#硬件">#</a></h2>
+<ol>
+<li>
+<p>当你有很多机器时你怎样组织它们来使得使用和花费有效？</p>
+</li>
+<li>
+<p>使用非常廉价的硬件</p>
+</li>
+<li>
+<p>A 1,000-fold computer power increase can be had for a 33 times lower cost if you you use a failure-prone infrastructure rather than an infrastructure built on highly reliable components. You must build reliability on top of unreliability for this strategy to work.</p>
+</li>
+<li>
+<p>Linux，in-house rack design，PC主板，低端存储</p>
+</li>
+<li>
+<p>Price per wattage on performance basis isn&quot;t getting better. Have huge power and cooling issues</p>
+</li>
+<li>
+<p>使用一些collocation和Google自己的数据中心</p>
+</li>
+</ol>
+<h2 id="其他"><strong>其他</strong><a hidden class="anchor" aria-hidden="true" href="#其他">#</a></h2>
+<ol>
+<li>
+<p>迅速更改而不是等待QA</p>
+</li>
+<li>
+<p>库是构建程序的卓越方式</p>
+</li>
+<li>
+<p>一些程序作为服务提供</p>
+</li>
+<li>
+<p>一个基础组织处理程序的版本，这样它们可以发布而不用害怕会破坏什么东西</p>
+</li>
+</ol>
+<h2 id="google将来的方向"><strong>Google将来的方向</strong><a hidden class="anchor" aria-hidden="true" href="#google将来的方向">#</a></h2>
+<ol>
+<li>
+<p>支持地理位置分布的集群</p>
+</li>
+<li>
+<p>为所有数据创建一个单独的全局名字空间。当前的数据由集群分离</p>
+</li>
+<li>
+<p>更多和更好的自动化数据迁移和计算</p>
+</li>
+<li>
+<p>解决当使用网络划分来做广阔区域的备份时的一致性问题(例如保持服务即使一个集群离线维护或由于一些损耗问题)</p>
+</li>
+</ol>
+<h2 id="学到的东西">学到的东西<a hidden class="anchor" aria-hidden="true" href="#学到的东西">#</a></h2>
+<ol>
+<li>
+<p>基础组织是有竞争性的优势。特别是对Google而言。Google可以很快很廉价的推出新服务，并且伸缩性其他人很难达到。许多公司采取完全不同的方式。许多公司认为基础组织开销太大。Google认为自己是一个系统工程公司，这是一个新的看待软件构建的方式</p>
+</li>
+<li>
+<p>跨越多个数据中心仍然是一个未解决的问题。大部分网站都是一个或者最多两个数据中心。我们不得不承认怎样在一些数据中心之间完整的分布网站是很需要技巧的</p>
+</li>
+<li>
+<p>如果你自己没有时间从零开始重新构建所有这些基础组织你可以看看Hadoop。Hadoop是这里很多同样的主意的一个开源实现</p>
+</li>
+<li>
+<p>平台的一个优点是初级开发人员可以在平台的基础上快速并且放心的创建健全的程序。如果每个项目都需要发明同样的分布式基础组织的轮子，那么你将陷入困境因为知道怎样完成这项工作的人相对较少</p>
+</li>
+<li>
+<p>协同工作不一直是掷骰子。通过让系统中的所有部分一起工作则一个部分的改进将帮助所有的部分。改进文件系统则每个人从中受益而且是透明的。如果每个项目使用不同的文件系统则在整个堆栈中享受不到持续增加的改进</p>
+</li>
+<li>
+<p>构建自管理系统让你没必要让系统关机。这允许你更容易在服务器之间平衡资源、动态添加更大的容量、让机器离线和优雅的处理升级</p>
+</li>
+<li>
+<p>创建可进化的基础组织，并行的执行消耗时间的操作并采取较好的方案</p>
+</li>
+<li>
+<p>不要忽略学院。学院有许多没有转变为产品的好主意。Most of what Google has done has prior art, just not prior large scale deployment.</p>
+</li>
+<li>
+<p>考虑压缩。当你有许多CPU而IO有限时压缩是一个好的选择。</p>
+</li>
+</ol>
+<p>转载自：<a href="http://hideto.iteye.com/blog/130815">http://hideto.iteye.com/blog/130815</a></p>
+<p>英文原文：<a href="http://highscalability.com/google-architecture">http://highscalability.com/google-architecture</a></p>
+
+
+  </div>
+
+  
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://babyno.top/3shi/tags/google/">google</a></li>
+      <li><a href="https://babyno.top/3shi/tags/architecture/">architecture</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://babyno.top/3shi/posts/2011/04/national-geographic-great-migrations/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>科教频道纪录片《大迁徙》下载</span>
+  </a>
+  <a class="next" href="https://babyno.top/3shi/posts/2011/04/the-earth-seen-from-up-above/">
+    <span class="title">Next »</span>
+    <br>
+    <span>《俯瞰地球》精美图片欣赏</span>
+  </a>
+</nav>
+
+  </footer><link
+rel="stylesheet"
+href="/assets/@waline/client/dist/waline.css"
+/>
+<div id="waline"></div>
+<script type="module">
+  import { init } from '/assets/@waline/client/dist/waline.mjs';
+
+  init({
+    el: '#waline',
+    serverURL: 'https://comments.babyno.top/',
+    search: false
+  });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://babyno.top/3shi/">3shi天下</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?3538691f85f2d2e74e734e6ad2c07251";
+    var s = document.getElementsByTagName("script");
+    var lastScript = s[s.length - 1];
+    if (lastScript.nextSibling) {
+      lastScript.parentNode.insertBefore(hm, lastScript.nextSibling);
+    } else {
+      lastScript.parentNode.appendChild(hm);
+    }
+  })();
+</script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GS1HVS967Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GS1HVS967Y');
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>yahoo on 3shi天下</title>
+    <link>https://babyno.top/3shi/tags/yahoo/</link>
+    <description>Recent content in yahoo on 3shi天下</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 05 Mar 2011 21:46:32 +0000</lastBuildDate><atom:link href="https://babyno.top/3shi/tags/yahoo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>雅虎给出的34条网站加速方法</title>
+      <link>https://babyno.top/3shi/posts/2011/03/yahoo-given-34-web-acceleration/</link>
+      <pubDate>Sat, 05 Mar 2011 21:46:32 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/03/yahoo-given-34-web-acceleration/</guid>
+      <description>1.Minimize HTTP Requests 减少HTTP请求 图片、 css、script、flash等等这些都会增加http请求数，减少这些元素的数量就能减少响应时间。把多个JS、</description>
+    </item>
+    
+  </channel>
+</rss>

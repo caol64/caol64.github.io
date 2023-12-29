@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Facebook 架构学习 | 3shi天下</title>
+<meta name="keywords" content="facebook, architecture">
+<meta name="description" content="设计原则 尽可能的使用开源软件，并且在需要优化的时候进行优化 Unix 哲学。包括，模块化原则；整合化原则；清晰化原则等 任何组件具备扩展性 最小化故障影响">
+<meta name="author" content="3shi">
+<link rel="canonical" href="https://babyno.top/3shi/posts/2011/03/facebook-architecture-study/">
+<link crossorigin="anonymous" href="/3shi/assets/css/stylesheet.12891501283130addd65d5c9aa3af45b949edff3f949a53c8f890319a805b26b.css" integrity="sha256-EokVASgxMK3dZdXJqjr0W5Se3/P5SaU8j4kDGagFsms=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://babyno.top/3shi/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://babyno.top/3shi/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://babyno.top/3shi/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://babyno.top/3shi/apple-touch-icon.png">
+<link rel="mask-icon" href="https://babyno.top/3shi/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Facebook 架构学习" />
+<meta property="og:description" content="设计原则 尽可能的使用开源软件，并且在需要优化的时候进行优化 Unix 哲学。包括，模块化原则；整合化原则；清晰化原则等 任何组件具备扩展性 最小化故障影响" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://babyno.top/3shi/posts/2011/03/facebook-architecture-study/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2011-03-10T21:22:03+00:00" />
+<meta property="article:modified_time" content="2011-03-10T21:22:03+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Facebook 架构学习"/>
+<meta name="twitter:description" content="设计原则 尽可能的使用开源软件，并且在需要优化的时候进行优化 Unix 哲学。包括，模块化原则；整合化原则；清晰化原则等 任何组件具备扩展性 最小化故障影响"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://babyno.top/3shi/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Facebook 架构学习",
+      "item": "https://babyno.top/3shi/posts/2011/03/facebook-architecture-study/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Facebook 架构学习",
+  "name": "Facebook 架构学习",
+  "description": "设计原则 尽可能的使用开源软件，并且在需要优化的时候进行优化 Unix 哲学。包括，模块化原则；整合化原则；清晰化原则等 任何组件具备扩展性 最小化故障影响",
+  "keywords": [
+    "facebook", "architecture"
+  ],
+  "articleBody": " 设计原则\n尽可能的使用开源软件，并且在需要优化的时候进行优化\nUnix 哲学。包括，模块化原则；整合化原则；清晰化原则等\n任何组件具备扩展性\n最小化故障影响\n简化，简化，简化！\n架构概览\nFacebook 是 LAMP 的坚定支持者，也差不多是用 LAMP (或许用 LAM2P 更适合) 实现的最大的动态站点。\n基础组件加上服务，中间用自己实现的一些工具进行粘合。其中关于运维细节的事情基本不会说出来的，这是很多公司的软实力所在。\nPHP 经验\n参见《Facebook 的 PHP 性能与扩展性》\nMySQL 经验\n主要用于做 Key-Value 类型的存储操作，数据随机分布在多台逻辑实例上，访问多数基于全局 ID 。\n逻辑实例分散在多台物理主机上(超过1800台)，负载均衡在物理层进行。\n不做读复制。\n尽量不做逻辑数据迁移(成本太高)。\n不做 JOIN 操作 (豆瓣在 QCon 上也阐述了这一点)。数据是随机分布的，关联操作反而带来了极大的复杂度。\n对于数据访问，主要的操作集中在最新的数据上，针对这部分做优化，旧的数据进行归档。\n在中心 DB 绝不存储非静态数据。\n使用服务或者 Memcached 进行全局查询。\nMemcached 经验\n参见我以前的笔记：Facebook 的 Memcached扩展经验。\nFacebook 对Memcached 做了不小的改进。另外，顺便说一下，前两天 Memcached 刚在 1.2.7 发布几天之后又发布了新版本 1.2.8，修正了一些问题。\n一个比较有价值的是关于个人页面数据的获取的描述。这个就完全是需要做单页面 Benchmark 的细致活儿了，可能还需要产品经理能够理解工程师的\"抵抗\"。\n获取个人信息数据：通过Cache，隐性通过用户所在的 DB 获取(基于 User-ID 获知 DB)\n获取朋友连接信息：通过Cache，否则的话通过DB(基于 User-ID 获知 DB)\n并行抓取每个朋友的 10个照片相册 ID ，从Cache抓取，如果失效，再从 DB 抓取(基于相册 ID)\n并行抓取最近相册中的照片数据\n运行PHP 把整个业务逻辑跑出来\n返回数据给用户\n然后是对 Facebook 非 LAMP 体系的东西做了一番介绍，基本上也开源了。最后参考两个架构图。\nFacebook NewsFeed 的架构示意图\nFacebook 搜索功能的架构示意图\n管中窥豹，盲人摸象而已。 作者: Fenng |\n原文地址：http://www.dbanotes.net/arch/facebook_arch_note.html\n",
+  "wordCount" : "865",
+  "inLanguage": "en",
+  "datePublished": "2011-03-10T21:22:03Z",
+  "dateModified": "2011-03-10T21:22:03Z",
+  "author":{
+    "@type": "Person",
+    "name": "3shi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://babyno.top/3shi/posts/2011/03/facebook-architecture-study/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "3shi天下",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://babyno.top/3shi/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://babyno.top/3shi/" accesskey="h" title="3shi天下 (Alt + H)">3shi天下</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://babyno.top/3shi/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top" title="阿不">
+                    <span>阿不</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://babyno.top/3shi/">Home</a>&nbsp;»&nbsp;<a href="https://babyno.top/3shi/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Facebook 架构学习
+    </h1>
+    <div class="post-meta"><span title='2011-03-10 21:22:03 +0000 UTC'>2011-03-10</span>&nbsp;·&nbsp;3shi
+
+</div>
+  </header> 
+  <div class="post-content"><p><a href="http://img.3shi.net/icon/128x128/icontexto-inside-facebook.png"  data-lightbox="image-1" >
+<img loading="lazy" src="http://img.3shi.net/icon/128x128/icontexto-inside-facebook.png" alt="Facebook"  />
+</a></p>
+<p><strong>设计原则</strong></p>
+<ul>
+<li>
+<p>尽可能的使用开源软件，并且在需要优化的时候进行优化</p>
+</li>
+<li>
+<p>Unix 哲学。包括，模块化原则；整合化原则；清晰化原则等</p>
+</li>
+<li>
+<p>任何组件具备扩展性</p>
+</li>
+<li>
+<p>最小化故障影响</p>
+</li>
+<li>
+<p>简化，简化，简化！</p>
+</li>
+</ul>
+<p><strong>架构概览</strong></p>
+<p>Facebook 是 LAMP 的坚定支持者，也差不多是用 LAMP (或许用 LAM2P 更适合) 实现的最大的动态站点。</p>
+<p><a href="http://www.dbanotes.net/Images/565x391xFacebook,P20Arch,P20Overview.png.pagespeed.ic.tGOXAsG-u0.png"  data-lightbox="image-1" >
+<img loading="lazy" src="http://www.dbanotes.net/Images/565x391xFacebook,P20Arch,P20Overview.png.pagespeed.ic.tGOXAsG-u0.png" alt="Facebook Arch Overview.png"  />
+</a></p>
+<p>基础组件加上服务，中间用自己实现的一些工具进行粘合。其中关于运维细节的事情基本不会说出来的，这是很多公司的软实力所在。</p>
+<p><strong>PHP 经验</strong></p>
+<p>参见<a href="http://www.dbanotes.net/arch/facebook_php.html">《Facebook 的 PHP 性能与扩展性》</a></p>
+<p><strong>MySQL 经验</strong></p>
+<ul>
+<li>
+<p>主要用于做 Key-Value 类型的存储操作，数据随机分布在多台逻辑实例上，访问多数基于全局 ID 。</p>
+</li>
+<li>
+<p>逻辑实例分散在多台物理主机上(超过1800台)，负载均衡在物理层进行。</p>
+</li>
+<li>
+<p>不做读复制。</p>
+</li>
+<li>
+<p>尽量不做逻辑数据迁移(成本太高)。</p>
+</li>
+<li>
+<p>不做 JOIN 操作 (<a href="http://www.dbanotes.net/arch/douban_arch.html">豆瓣在 QCon</a> 上也阐述了这一点)。数据是随机分布的，关联操作反而带来了极大的复杂度。</p>
+</li>
+<li>
+<p>对于数据访问，主要的操作集中在最新的数据上，针对这部分做优化，旧的数据进行归档。</p>
+</li>
+<li>
+<p>在中心 DB 绝不存储非静态数据。</p>
+</li>
+<li>
+<p>使用服务或者 Memcached 进行全局查询。</p>
+</li>
+</ul>
+<p><strong>Memcached 经验</strong></p>
+<p>参见我以前的笔记：<a href="http://www.dbanotes.net/arch/facebook_memcached_scaling.html">Facebook 的 Memcached扩展经验</a>。</p>
+<p>Facebook 对Memcached 做了不小的改进。另外，顺便说一下，前两天 Memcached 刚在 1.2.7 发布几天之后又发布了新版本 1.2.8，修正了一些问题。</p>
+<p>一个比较有价值的是关于个人页面数据的获取的描述。这个就完全是需要做单页面 Benchmark 的细致活儿了，可能还需要产品经理能够理解工程师的&quot;抵抗&quot;。</p>
+<ul>
+<li>
+<p>获取个人信息数据：通过Cache，隐性通过用户所在的 DB 获取(基于 User-ID 获知 DB)</p>
+</li>
+<li>
+<p>获取朋友连接信息：通过Cache，否则的话通过DB(基于 User-ID 获知 DB)</p>
+</li>
+<li>
+<p>并行抓取每个朋友的 10个照片相册 ID ，从Cache抓取，如果失效，再从 DB 抓取(基于相册 ID)</p>
+</li>
+<li>
+<p>并行抓取最近相册中的照片数据</p>
+</li>
+<li>
+<p>运行PHP 把整个业务逻辑跑出来</p>
+</li>
+<li>
+<p>返回数据给用户</p>
+</li>
+</ul>
+<p>然后是对 Facebook 非 LAMP 体系的东西做了一番介绍，基本上也开源了。最后参考两个架构图。</p>
+<p><strong>Facebook NewsFeed 的架构示意图</strong></p>
+<p><a href="http://www.dbanotes.net/Images/565x330xFacebook_NewsFeed_Arch.png.pagespeed.ic.ZeiadBhO2t.png"  data-lightbox="image-1" >
+<img loading="lazy" src="http://www.dbanotes.net/Images/565x330xFacebook_NewsFeed_Arch.png.pagespeed.ic.ZeiadBhO2t.png" alt="Facebook_NewsFeed_Arch.png"  />
+</a></p>
+<p><strong>Facebook 搜索功能的架构示意图</strong></p>
+<p><a href="http://www.dbanotes.net/Images/Facebook_Search_Arch.png.pagespeed.ce.ua9TY6W6rH.png"  data-lightbox="image-1" >
+<img loading="lazy" src="http://www.dbanotes.net/Images/Facebook_Search_Arch.png.pagespeed.ce.ua9TY6W6rH.png" alt="Facebook_Search_Arch.png"  />
+</a></p>
+<p>管中窥豹，盲人摸象而已。 作者: <a href="http://www.dbanotes.net/">Fenng</a> |</p>
+<p>原文地址：<a href="http://www.dbanotes.net/arch/facebook_arch_note.html">http://www.dbanotes.net/arch/facebook_arch_note.html</a></p>
+
+
+  </div>
+
+  
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://babyno.top/3shi/tags/facebook/">facebook</a></li>
+      <li><a href="https://babyno.top/3shi/tags/architecture/">architecture</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://babyno.top/3shi/posts/2011/03/twitter-architecture-study/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Twitter架构学习</span>
+  </a>
+  <a class="next" href="https://babyno.top/3shi/posts/2011/03/world-cup-football-designs-1930-2010-balls/">
+    <span class="title">Next »</span>
+    <br>
+    <span>历届世界杯比赛用球欣赏（1930 - 2010）</span>
+  </a>
+</nav>
+
+  </footer><link
+rel="stylesheet"
+href="/assets/@waline/client/dist/waline.css"
+/>
+<div id="waline"></div>
+<script type="module">
+  import { init } from '/assets/@waline/client/dist/waline.mjs';
+
+  init({
+    el: '#waline',
+    serverURL: 'https://comments.babyno.top/',
+    search: false
+  });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://babyno.top/3shi/">3shi天下</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?3538691f85f2d2e74e734e6ad2c07251";
+    var s = document.getElementsByTagName("script");
+    var lastScript = s[s.length - 1];
+    if (lastScript.nextSibling) {
+      lastScript.parentNode.insertBefore(hm, lastScript.nextSibling);
+    } else {
+      lastScript.parentNode.appendChild(hm);
+    }
+  })();
+</script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GS1HVS967Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GS1HVS967Y');
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

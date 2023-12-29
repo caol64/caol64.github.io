@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>facebook on 3shi天下</title>
+    <link>https://babyno.top/3shi/tags/facebook/</link>
+    <description>Recent content in facebook on 3shi天下</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Jun 2011 20:29:36 +0000</lastBuildDate><atom:link href="https://babyno.top/3shi/tags/facebook/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Facebook的服务器架构</title>
+      <link>https://babyno.top/3shi/posts/2011/06/facebooks-server-architecture/</link>
+      <pubDate>Tue, 14 Jun 2011 20:29:36 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/06/facebooks-server-architecture/</guid>
+      <description>导读：毫无疑问，作为全球最领先的社交网络，Facebook的高性能集群系统承担了海量数据的处理，它的服务器架构一直为业界众人所关注。CSDN</description>
+    </item>
+    
+    <item>
+      <title>Facebook的系统架构</title>
+      <link>https://babyno.top/3shi/posts/2011/05/facebooks-architecture/</link>
+      <pubDate>Tue, 03 May 2011 09:49:24 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/05/facebooks-architecture/</guid>
+      <description>来源 ：http://www.quora.com/What-is-Facebooks-architecture （由Micha?l Figuièr</description>
+    </item>
+    
+    <item>
+      <title>Facebook 网站所使用的开源软件一览表</title>
+      <link>https://babyno.top/3shi/posts/2011/04/list-of-open-source-software-used-in-facebook/</link>
+      <pubDate>Thu, 28 Apr 2011 13:13:40 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/04/list-of-open-source-software-used-in-facebook/</guid>
+      <description>Facebook 是全球首屈一指的社交网络平台，该网站采用了很多开源软件，Facebook 采用的编程语言包括：Java,Ruby, PHP, Python, Objective-C</description>
+    </item>
+    
+    <item>
+      <title>Facebook 架构学习</title>
+      <link>https://babyno.top/3shi/posts/2011/03/facebook-architecture-study/</link>
+      <pubDate>Thu, 10 Mar 2011 21:22:03 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/03/facebook-architecture-study/</guid>
+      <description>设计原则 尽可能的使用开源软件，并且在需要优化的时候进行优化 Unix 哲学。包括，模块化原则；整合化原则；清晰化原则等 任何组件具备扩展性 最小化故障影响</description>
+    </item>
+    
+    <item>
+      <title>Facebook的数据库设计</title>
+      <link>https://babyno.top/3shi/posts/2011/02/facebook-database-design/</link>
+      <pubDate>Tue, 01 Feb 2011 09:20:21 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/02/facebook-database-design/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

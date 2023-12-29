@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>wordpress on 3shi天下</title>
+    <link>https://babyno.top/3shi/tags/wordpress/</link>
+    <description>Recent content in wordpress on 3shi天下</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 11 Jul 2011 08:42:07 +0000</lastBuildDate><atom:link href="https://babyno.top/3shi/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10 款用于提升 WordPress 性能的插件</title>
+      <link>https://babyno.top/3shi/posts/2011/07/10-excellent-wordpress-plugins-to-imrpove-wordpress-performance/</link>
+      <pubDate>Mon, 11 Jul 2011 08:42:07 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/07/10-excellent-wordpress-plugins-to-imrpove-wordpress-performance/</guid>
+      <description>WordPress 已经成为最受欢迎的博客以及网站内容管理系统（没有之一），WordPress 最强大的在于其庞大的开发者社区，为 WP 开发出很多的插件，本文向大家</description>
+    </item>
+    
+    <item>
+      <title>给wordpress加上QapTcha验证</title>
+      <link>https://babyno.top/3shi/posts/2011/05/add-qaptcha-to-wordpress/</link>
+      <pubDate>Thu, 05 May 2011 15:12:16 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/05/add-qaptcha-to-wordpress/</guid>
+      <description>大家可能注意到了，小博在评论的地方加上了QapTcha作为验证码来抵御垃圾评论，几天下来，效果显著，目前为止新增垃圾评论数量为0。在这里跟大</description>
+    </item>
+    
+    <item>
+      <title>WordPress同步新浪、腾讯、网易微博及豆瓣插件推荐</title>
+      <link>https://babyno.top/3shi/posts/2011/05/wordpress-plugin-social-medias-connect/</link>
+      <pubDate>Mon, 02 May 2011 13:26:46 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/05/wordpress-plugin-social-medias-connect/</guid>
+      <description>插件名称： Social Medias Connect 插件作者： qiqiboy 插件地址： wordpress官方下载页面WordPress Download | 作者博客发布页面插件发布页面 插件描述： 提供word</description>
+    </item>
+    
+    <item>
+      <title>wordpress实现同步到facebook、twitter、buzz等多个社交网站</title>
+      <link>https://babyno.top/3shi/posts/2011/05/wordpress-synchronized-to-social-networking-sites/</link>
+      <pubDate>Mon, 02 May 2011 11:40:03 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/05/wordpress-synchronized-to-social-networking-sites/</guid>
+      <description>linksalpha 是个具有可以同步到多个社交网站的工具，它有收费的也有可以免费的，不过当然是选免费的咯，免费的可以连接facebook ,twitter,linkedin,myspace ,window live等等社交网</description>
+    </item>
+    
+    <item>
+      <title>WordPress的6款自动同步其他博客的插件</title>
+      <link>https://babyno.top/3shi/posts/2011/05/6-auto-synch-plugins-wordpress-to-other-blogs/</link>
+      <pubDate>Mon, 02 May 2011 11:27:13 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/05/6-auto-synch-plugins-wordpress-to-other-blogs/</guid>
+      <description>有些朋友在独立WP之外，也会在其他BSP上开设个人博客，或为与友交流，或为赢得点击，或为SEO，凡此种种。手动往返粘贴同一篇文章，效率低下且</description>
+    </item>
+    
+    <item>
+      <title>图解WordPress主题(模板)架构</title>
+      <link>https://babyno.top/3shi/posts/2011/02/wordpress-theme-anatomy/</link>
+      <pubDate>Wed, 23 Feb 2011 12:59:57 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/02/wordpress-theme-anatomy/</guid>
+      <description>Yoast.com制作了一幅讲解Wordpress主题架构的图，非常清晰的剖析了Wordpress的主题模板结构，原图为英文，下面翻译成中文</description>
+    </item>
+    
+    <item>
+      <title>WordPress文章ID不连续的解决方法</title>
+      <link>https://babyno.top/3shi/posts/2011/02/wordpress-article-id-discontinuous-solution/</link>
+      <pubDate>Wed, 16 Feb 2011 21:39:09 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/02/wordpress-article-id-discontinuous-solution/</guid>
+      <description>以下在3.0版本经过测试。 WordPress的AutoSave、Revisions和AutoDraft功能，对于大多数用户来说是一个鸡肋，是</description>
+    </item>
+    
+    <item>
+      <title>wordpress伪静态化apache的设置</title>
+      <link>https://babyno.top/3shi/posts/2011/02/wordpress-permalinks-apache-configuration/</link>
+      <pubDate>Thu, 10 Feb 2011 14:03:57 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/02/wordpress-permalinks-apache-configuration/</guid>
+      <description>首先确定apache服务器已经安装并支持mod_rewrite模块。 登录wordpress后台，“设置”-“固定链接”，然后选择你希望的固定</description>
+    </item>
+    
+    <item>
+      <title>WordPress的Pingback和Trackback</title>
+      <link>https://babyno.top/3shi/posts/2011/02/what-is-pingback-and-trackback-in-wordpress/</link>
+      <pubDate>Thu, 10 Feb 2011 12:47:28 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/02/what-is-pingback-and-trackback-in-wordpress/</guid>
+      <description>编辑文章时常看到 允许这个页面接受trackbacks 和 pingbacks 选项，一直搞不懂是干嘛的。前两天有朋友引用了我的文章，然后我这里文章的评论里就出现了</description>
+    </item>
+    
+  </channel>
+</rss>

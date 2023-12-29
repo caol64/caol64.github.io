@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>绿色软件 on 3shi天下</title>
+    <link>https://babyno.top/3shi/tags/%E7%BB%BF%E8%89%B2%E8%BD%AF%E4%BB%B6/</link>
+    <description>Recent content in 绿色软件 on 3shi天下</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 28 Mar 2011 09:01:46 +0000</lastBuildDate><atom:link href="https://babyno.top/3shi/tags/%E7%BB%BF%E8%89%B2%E8%BD%AF%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>绿色版tomcat安装成windows服务</title>
+      <link>https://babyno.top/3shi/posts/2011/03/install-green-version-tomcat-to-windows-service/</link>
+      <pubDate>Mon, 28 Mar 2011 09:01:46 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/03/install-green-version-tomcat-to-windows-service/</guid>
+      <description>首先请到tomcat官网上下载最新版本的tomcat，注意下载的版本是“Windows zip”。 如果你已经在系统环境变量里添加了&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>如何制作绿色软件（以Navicat为例）</title>
+      <link>https://babyno.top/3shi/posts/2011/03/how-to-make-green-software-navicat-for-example/</link>
+      <pubDate>Sat, 05 Mar 2011 22:10:35 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/03/how-to-make-green-software-navicat-for-example/</guid>
+      <description>现在什么都流行绿色，不仅包括食品，也包括计算机软件。超市中的食品只要沾上“绿色”两个字，价格嗖的一下子就上去了，那叫一个高啊！而绿色软件，相</description>
+    </item>
+    
+    <item>
+      <title>win7下绿色版java关联jar文件</title>
+      <link>https://babyno.top/3shi/posts/2011/02/java-associate-jar-file/</link>
+      <pubDate>Tue, 15 Feb 2011 21:40:17 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/02/java-associate-jar-file/</guid>
+      <description>安装版的java会自动关联jar文件，如果是可执行的jar文件，双击就可以运行。可是，如何才能让绿色版的java也像安装版的一样呢？假设ja</description>
+    </item>
+    
+    <item>
+      <title>mysql-noinstall版的配置和精简</title>
+      <link>https://babyno.top/3shi/posts/2011/02/configure-and-streamline-mysql-noinstall/</link>
+      <pubDate>Tue, 15 Feb 2011 21:17:42 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/02/configure-and-streamline-mysql-noinstall/</guid>
+      <description>1.准备工作 下载mysql的最新免安装版本mysql-noinstall-5.1.53-win32.zip，解压缩到相关目录，如：d:/my</description>
+    </item>
+    
+  </channel>
+</rss>

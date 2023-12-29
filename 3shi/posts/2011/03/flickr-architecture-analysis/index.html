@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Flickr网站架构分析 | 3shi天下</title>
+<meta name="keywords" content="flickr, architecture">
+<meta name="description" content="Flickr.com 是网上最受欢迎的照片共享网站之一，还记得那位给Windows Vista拍摄壁纸的Hamad Darwish吗？他就是将照片上传到Flickr">
+<meta name="author" content="3shi">
+<link rel="canonical" href="https://babyno.top/3shi/posts/2011/03/flickr-architecture-analysis/">
+<link crossorigin="anonymous" href="/3shi/assets/css/stylesheet.12891501283130addd65d5c9aa3af45b949edff3f949a53c8f890319a805b26b.css" integrity="sha256-EokVASgxMK3dZdXJqjr0W5Se3/P5SaU8j4kDGagFsms=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://babyno.top/3shi/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://babyno.top/3shi/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://babyno.top/3shi/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://babyno.top/3shi/apple-touch-icon.png">
+<link rel="mask-icon" href="https://babyno.top/3shi/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Flickr网站架构分析" />
+<meta property="og:description" content="Flickr.com 是网上最受欢迎的照片共享网站之一，还记得那位给Windows Vista拍摄壁纸的Hamad Darwish吗？他就是将照片上传到Flickr" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://babyno.top/3shi/posts/2011/03/flickr-architecture-analysis/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2011-03-10T22:38:07+00:00" />
+<meta property="article:modified_time" content="2011-03-10T22:38:07+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Flickr网站架构分析"/>
+<meta name="twitter:description" content="Flickr.com 是网上最受欢迎的照片共享网站之一，还记得那位给Windows Vista拍摄壁纸的Hamad Darwish吗？他就是将照片上传到Flickr"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://babyno.top/3shi/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Flickr网站架构分析",
+      "item": "https://babyno.top/3shi/posts/2011/03/flickr-architecture-analysis/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Flickr网站架构分析",
+  "name": "Flickr网站架构分析",
+  "description": "Flickr.com 是网上最受欢迎的照片共享网站之一，还记得那位给Windows Vista拍摄壁纸的Hamad Darwish吗？他就是将照片上传到Flickr",
+  "keywords": [
+    "flickr", "architecture"
+  ],
+  "articleBody": " Flickr.com 是网上最受欢迎的照片共享网站之一，还记得那位给Windows Vista拍摄壁纸的Hamad Darwish吗？他就是将照片上传到Flickr，后而被微软看中成为Vista壁纸御用摄影师。\nFlickr.com 是最初由位于温哥华的Ludicorp公司开发设计并于2004年2月正式发布的，由于大量应用了WEB 2.0技术，注重用户体验，使得其迅速获得了大量的用户，2007年11月，Flickr迎来了第20亿张照片，一年后，这个数字就达到了30亿，并且还\n在以加速度增长。 2005年3月，雅虎公司以3千500万美元收购了Ludicorp公司和Flickr.com。虽然Flickr并不是最大的照片共享网站（Facebook以超过100亿张照片排名第一），但这笔收购仍然被认为是WEB 2.0浪潮中最精明的收购，因为仅仅一年后，Google就以16亿美元的高价收购了YouTube，而2007年10月，微软斥资2.4亿美元收购 Facebook 1.6%股份，此举使Facebook估值高达150亿美元。估计Ludicorp公司的创始人Stewart Butterfield和Caterina Fake夫妇现在还在后悔吧。 在2005年温哥华PHP协会的简报以及随后的一系列会议上，Flickr的架构师Cal Henderson公开了大部分Flickr所使用的后台技术，使得我们能有机会来分享和研究其在构建可扩展Web站点的经验。\n本文大部分资料来自互联网和自己的一点点心得，欢迎大家参与讨论，要是能够起到抛砖引玉的作用，本人将不胜荣幸。\nFlickr整体框架图\n在讨论Flickr\n网站架构之前，让我们先来看一组统计数据（数据来源：April 2007 MySQL Conf and Expo和Flickr网站）\n每天多达40亿次的查询请求\nsquid总计约有3500万张照片（硬盘+内存）\nsquid内存中约有200万张照片\n总计有大约4亿7000万张照片，每张图片又生成不同尺寸大小的4－5份图片\n每秒38，000次Memcached请求 (Memcached总共存储了1200万对象)\n超过2 PB 存储，其中数据库12TB\n每天新增图片超过 40万（周日峰值超过200万，约1.5TB)\n超过8百50万注册用户\n超过1千万的唯一标签（tags)\n响应4万个照片访问请求\n处理10万个缓存操作\n运行13万个数据库查询\n这张是Flickr的网站架构图，我们这里只作一些简要的描述，具体的分析请静待后续文章。\nPair of ServerIron\"s做负载均衡方案\nSquid Caches 代理，用于缓存静态的HTML和照片\nNet App公司的Filer, NAS存储设备，用于存储照片\nPHP App Servers － 运行REDHAT LINUX,Apache上的PHP应用，Flickr网站的主体是大约6万行PHP代码 － 没有使用PHP session, 应用是stateless,便于扩展，并避免PHP Server故障所带来的Session失效。 － 每个页面有大约27～35个查询（不知道为什么这么设计，个人觉得没有必要） － 另有专门的Apache Web Farm 服务于静态文件（HTML和照片）的访问\nStorage Manager 运行私有的，适用于海量文件存储的Flickr File System\nDual Tree Central Database － MySQL 数据库，存放用户表，记录的信息是用户主键以及此用户对以的数据库Shard区，从中心用户表中查出用户数据所在位置，然后直接从目标Shard中取出数据。 － “Dual Tree\"架构是”Master－Master\"和“Master-Slave\"的有效结合，双Master 避免了“单点故障”，Master－Slave又提高了读取速度，因为用户表的操作90％以上是读。\nMaster-master shards － MySQL 数据库，存储实际的用户数据和照片的元数据（Meta Data)，每个Shard 大约40万个用户，120GB 数据。每个用户的所有数据存放在同一个shard中。 － Shard中的每一个server的负载只是其可最大负载的50％，这样在需要的时候可以Online停掉一半的server进行升级或维护而不影响系统性能。 － 为了避免跨Shard查询所带来的性能影响，一些数据有在不同的Shard有两份拷贝，比如用户对照片的评论，通过事务来保证其同步。\nMemcached Cluster 中间层缓存服务器，用于缓存数据库的SQL查询结果等。\nBig Search Engine - 复制部分Shard数据（Owner’s single tag）到Search Engine Farm以响应实时的全文检索。 - 其他全文检索请求利用Yahoo的搜索引擎处理（Flickr是Yahoo旗下的公司 ）\n服务器的硬件配置： - Intel或AMD 64位CPU，16GB RAM - 6-disk 15K RPM RAID-10. - 2U boxes.\n服务器数量：(数据来源：April 2008 MySQL Conference \u0026 Expo) 166 DB servers, 244 web servers(不知道是否包括 squid server？), 14 Memcached servers\n数据库最初的扩展-Replication\n也许有人不相信，不过Flickr确实是从一台服务器起步的，即Apache/PHP和MySQL是运行在同一台服务器上的，很快MySQL服务器就独立了出来，成了双服务器架构。随着用户和访问量的快速增长，MySQL数据库开始承受越来越大的压力，成为应用瓶颈，导致网站应用响应速度变慢,MySQL的扩展问题就摆在了Flickr的技术团队面前。\n不幸的是，在当时，他们的选择并不多。一般来说，数据库的扩展无外是两条路，Scale-Up和Scale-Out,所谓Scale-Up，简单的说就是，在同一台机器内增加CPU,内存等硬件来增加数据库系统的处理能力，一般不需要修改应用程序；而Scale-Out,就是我们通常所说的数据库集群方式， 即通过增加运行数据库服务器的数量来提高系统整体的能力，而应用程序则一般需要进行相应的修改。\n在常见的商业数据库中，Oracle具有很强的 Scale-Up的能力，很早就能够支持几十个甚至数百个CPU，运行大型关键业务应用；而微软的SQL SERVER，早期受Wintel架构所限，以Scale-Out著称，但自从几年前突破了Wintel体系架构8路CPU的的限制，Scale-Up的能力一路突飞猛进，最近更是发布了SQL 2008在Windows 2008 R2版运行256个CPU核心(core)的测试结果，开始挑战Oracle的高端市场。\n而MySQL，直到今年4月，在最终采纳了GOOGLE公司贡献的SMP性能增强的代码后，发布了MySQL5.4后，才开始支持16路CPU的X86系统和64路CPU的CMT系统(基于Sun UltraSPARC 的系统）。\n从另一方面来说，Scale-Up受软硬件体系的限制，不可能无限增加ＣＰＵ和内存，相反Scale-Out却是可以\"几乎\"无限的扩展,以Google为例，２006年Google一共有超过４５万台服务器（谁能告诉我现在他们有多少？！）；而且大型ＳＭＰ服务器的价格远远超过普通的双路服务器，对于很多刚刚起步或是业务增长很难预测的网站来说，不可能也没必要一次性投资购买大型的硬件设备，因而虽然Scale-Out会随着服务器数量的增多而带来管理，部署和维护的成本急剧上升，但确是大多数大型网站当然也包括Flickr的唯一选择。\n经过统计，Flickr的技术人员发现，查询即SELECT语句的数量要远远大于添加，更新和删除的数量，比例达到了大约13：1甚至更多，所以他们采用了“Master-Slave”的复制模式，即所有的“写”操作都在发生在“Master\"，然后”异步“复制到一台或多台“Slave\"上，而所有的”读“操作都转到”Slave\"上运行，这样随着“读”交易量的增加，只需增加Slave服务器 就可以了。\n让我们来看一下应用系统应该如何修改来适应这样的架构，除了”读/写“分离外，对于”读“操作最基本的要求是：1）应用程序能够在多个”Slave“上进行负载均分；2）当一个或多个”slave\"出现故障时，应用程序能自动尝试下一个“slave”，如果全部“Slave\"失效，则返回错误。\nFlickr曾经考虑过的方案是在Web应用和”Slave“群之间加入一个硬件或软件的”Load Balancer“，如下图\n这样的好处是应用所需的改动最小，因为对于应用来说，所有的读操作都是通过一个虚拟的Slave来进行，添加和删除“Slave\"服务器对应用透 明，Load Balancer实现对各个Slave服务器状态的监控并将出现故障的Slave从可用节点列表里删除，并可以实现一些复杂的负载分担策略，比如新买的服务器处理能力要高过Slave群中其他的老机器，那么我们可以给这个机器多分配一些负载以最有效的利用资源。一个简单的利用Apache proxy_balancer_module的例子如下：\n1 2 3 4 5 6 7 8 9 10 11 。。。。。。。。。。。。。。 LoadModule proxy_module modules/mod_proxy.so LoadModule proxy_balancer_module modules/mod_proxy_balancer.so LoadModule proxy_http_module modules/mod_proxy_http.so 。。。。。。。。。。。。。。。。。。。。 BalancerMember \"http://slave1:8008/App\" loadfactor=4 BalancerMember \"http://slave2:8008/App\" loadfactor=3 BalancerMember \"http://slave3:8008/App\" loadfactor=3 .................... ///slave load ratio 4:3:3. 最终，Flickr采用了一种非常“轻量”但有效的“简易”PHP实现，基本的代码只有10几行：\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 function db_connect($hosts, $user, $pass){ shuffle($hosts); //shuffle()是PHP函数，作用是将数组中每个元素的顺序随机打乱。 foreach($hosts as $host){ debug(\"Trying to connect to $host...\"); $dbh = @mysql_connect($host, $user, $pass, 1); if ($dbh){ debug(\"Connected to $host!\"); return $dbh; } debug(\"Failed to connect to $host!\"); } debug(\"Failed to connect to all hosts in list - giving up!\"); return 0; } 在上述代码中，如果需要对特定的Slave赋予更高的负载，只要在$hosts中多出现一次或多次就可以了。这段代码只要稍稍改进，就可以实现更复杂的功能，如当connect失败时自动将host从hosts列表中去除等。\n“Master”-“Slave\"模式的缺点是它并没有对于“写\"操作提供扩展能力，而且存在单点故障，即一旦Master故障，整个网站将丧失“更新”的能力。解决的办法采用“Master”-“Master\"模式，即两台服务器互为”Master“-“Slave”,这样不仅”读/写“能力扩展了一倍，而且有效避免了”单点故障“，结合已有的“Master”-“Slave”,整个数据库的架构就变成了下面的”双树“结构，\n。\n“双树”架构并没有支撑太久的时间，大概6个月后，随着用户的激增，系统再一次达到了极限，不仅”写”操作成为了瓶颈，而且“异步复制\"也由于”Slave“服务器过于繁忙而出现了严重的滞后而造成读数据的不一致。\n那么，能不能在现有架构加以解决，比如说增加新的”Master“服务器和考虑采用”同步复制“呢？答案是否定的，在Master超过两台的设置中，只能采用”闭环链“的方式进行复制，在大数据量的生产环境中，很容易造成在任意时刻没有一个Master或Slave节点是具有全部最新数据的（有点类似于”人一次也不能踏进同一条河“？），这样很难保障数据的一致性，而且一旦其中一个Master出现故障，将中断整个复制链；而对于”同步复制“，当然这是消除”复制滞后“的最好办法，不过在当时MySQL的同步复制还远没有成熟到可以运用在投产环境中。 Flickr网站的架构，需要一次大的变化来解决长期持续扩展的问题。\nShard - 大型网站数据库扩展的终极武器？\n2005年７月，另一位大牛(MySQL 2005、2006年度 “Application of the Year Award\"获得者)Dathan Pattishall加入了Flickr团队。一个星期之内，Dathan解决了Flickr数据库40%的问题，更重要的是，他为Flickr引进了Shard架构，从而使Flickr网站具备了真正“线性”Scale-Out的增长能力，并一直沿用至今，取得了巨大的成功。\nShard主要是为了解决传统数据库Master/Slave模式下单一Master数据库的“写”瓶颈而出现的，简单的说Shard就是将一个大表分割成多个小表，每个小表存储在不同机器的数据库上，从而将负载分散到多个机器并行处理而极大的提高整个系统的“写”扩展能力。相比传统方式，由于每个数据库都相对较小，不仅读写操作更快，甚至可以将整个小数据库缓存到内存中，而且每个小数据库的备份，恢复也变得相对容易，同时由于分散了风险，单个小数据库的故障不会影响其他的数据库，使整个系统的可靠性也得到了显著的提高。\n对于大多数网站来说，以用户为单位进行Shard分割是最合适不过的，常见的分割方法有按地域（比如邮编），按Key值（比如Hash用户ID),这些方法可以简单的通过应用配置文件或算法来实现，一般不需要另外的数据库，缺点是一旦业务增加，需要再次分割Shard时要修改现有的应用算法和重新计算所有的Shard KEY值；而最为灵活的做法是以“目录”服务为基础的分割，即在Shard之前加一个中央数据库（Global Lookup Cluster），应用要先根据用户主键值查询中央数据库，获得用户数据所在的Shard，随后的操作再转向Shard所在数据库，例如下图：\n而应用的主要修改在于要添加一个Lookup访问层，例如将以下的代码：\n1 2 3 string connectionString = @\"Driver={MySQL};SERVER=dbserver;DATABASE=CustomerDB;\"; OdbcConnection conn = new OdbcConnection(connectionString); conn.Open(); 变为：\n1 2 3 string connectionString = GetDatabaseFor(customerId); OdbcConnection conn = new OdbcConnection(connectionString); conn.Open(); GetDatabaseFor()函数完成根据用户ID获取Shard connectionString的作用。 对应我们前面所提到过的Flickr架构\nDual\nTree Central Database就是中央数据库，存放用户表，记录的信息是用户主键以及此用户对以的数据库Shard区；而Master-Master Shards就是一个个的Shard用户数据库，存储实际的用户数据和照片的元数据（Meta Data)。 Flickr Shard的设计我们在Flickr网站架构研究（１）中已经总结过了，在此不再赘述。我们在此谈一下Shard架构的主要问题和Flickr的解决办法：１）Shard只适用于不需要join操作的表，因为跨Shard join操作的开销太大，解决的办法是将一个用户的所有数据全部存放在同一个Shard里，对于一些传统方式下需要跨Shard查询的数据，只能采取冗余的方法，比如Shard1的用户A对Shard2的用户B的照片进行了评论，那么这条评论将同时存放在Shard1和Shard2中。这样就存在一个数据一致性的问题，常规的做法是用数据库事务(Transaction)、”两阶段提交“(2 phase commit)来解决，但做过两阶段提交（2PC）应用的都知道，2PC的效率相对较差，而且实际上也不能100%保证数据的完整性和一致性；另外，一旦由于其中一个Shard故障而提交失败回滚，用户只能放弃或再试一遍，用户体验较差。Flickr对于数据一致性的解决方案是Queue（Flickr用PHP开发了一个强大的Queue系统，将所有可以异步的任务都用Queue来实现，每天处理高达１千万以上的任务。）,事实上当用户A对用户B的照片进行评论时，他并不关心这条评论什么时候出现在用户B的界面上，即将这条评论添加到用户B的交易是可以异步的，允许一定的迟延，通过Queue处理，既保证了数据的一致性，又缩短了用户端的相应时间，提高了系统性能。２）Shard的另一个主要问题Rebalancing,既当现有Shard的负载达到一定的阀值，如何将现有数据再次分割，Flickr目前的方式依然是手工的，既人工来确定哪些用户需要迁移，然后运行一个后台程序进行数据迁移，迁移的过程用户账户将被锁住。（据说Google做到了完全自动的Rebalancing,本着”萨大“坑里不再挖坑的原则，如果有机会的话，留到下一个系列再研究吧）\nMemcached的应用和争论\n大家应该已经注意到，Flickr为中央数据库配置了Memcached作为数据库缓存，接下来的问题是，为什么用Memcached?为什么Shard不需要Memcached?Memcached和Master,Slave的关系怎样？笔者将试图回答这些问题供大家参考，网上的相关争论很多，有些问题尚未有定论。\nMemecached是一个高性能的，分布式的，开源的内存对象缓存系统，顾名思义，它的主要目的是将经常读取的对象放入内存以提高整个系统，尤其是数据库的扩展能力。Memcached的主要结构是两个Hash Table,Server端的HashTable以key-value pair的方式存放对象值，而Client端的HashTable的则决定某一对象存放在哪一个Memcached Server.举个例子说，后台有３个Memecached Server,A、B、C,Client1需要将一个对象名为”userid123456“，值为“鲁丁\"的存入，经过Client1的Hash计算，“userid123456\"的值应该放入Memcached ServerB,而这之后，Client2需要读取\"userid123456\"的值，经过同样的Hash计算，得出\"userid123456\"的值如果存在的话应该在Memcached ServerB，并从中取出。最妙的是Server之间彼此是完全独立的，完全不知道对方的存在，没有一个类似与Master或Admin Server的存在，增加和减少Server只需在Client端\"注册\"并重新Hash就可以了。\nMemcached作为数据库缓存的作用主要在于减轻甚至消除高负载数据库情况下频繁读取所带来的Disk I/O瓶颈，相对于数据库自身的缓存来说，具有以下优点：１）Memecached的缓存是分布式的，而数据库的缓存只限于本机；２）Memcached 缓存的是对象，可以是经过复杂运算和查询的最终结果，并且不限于数据，可以是任何小于１MB的对象，比如html文件等；而数据库缓存是以\"row\"为单位的，一旦\"row\"中的任何数据更新，整个“row\"将进行可能是对应用来说不必要的更新；３）Memcached的存取是轻量的，而数据库的则相对较重，在低负载的情况下，一对一的比较,Memcached的性能未必能超过数据库，而在高负载的情况下则优势明显。\nMemcached并不适用于更新频繁的数据，因为频繁更新的数据导致大量的Memcached更新和较低的缓冲命中率，这可能也是为什么Shard没有集成它的原因；Memcached更多的是扩展了数据库的”读“操作，这一点上它和Slave的作用有重叠，以至于有人争论说应该让\"Relication\"回到它最初的目的”Online Backup\"数据库上，而通过Memcached来提供数据库的“读”扩展。（当然也有人说，考虑到Memcached的对应用带来的复杂性，还是慎用。）\n然而，在体系架构中增加Memecached并不是没有代价的，现有的应用要做适当的修改来同步Memcached和数据库中的数据，同时Memcached不提供任何冗余和“failover”功能，这些复杂的控制都需要应用来实现。基本的应用逻辑如下：\n对于读操作：\n1 2 3 4 5 $data = memcached_fetch( $id ); return $data if $data $data = db_fetch( $id ); memcached_store( $id, $data ); return $data; 对于写操作：\n1 2 db_store( $id, $data ); memcached_store( $id, $data ); 我们看到在每一次数据更新都需要更新Memcached，而且数据库或Memcached任何一点写错误应用就可能取得“过期”的数据而得到错误的结果，如何保证数据库和Memcached的同步呢？\n复制滞后和同步问题的解决\n我们知道复制滞后的主要原因是数据库负载过大而造成异步复制的延迟，Shard架构有效的分散了系统负载，从而大大减轻了这一现象，但是并不能从根本上消除，解决这一问题还是要靠良好的应用设计。\n当用户访问并更新Shard数据时，Flickr采用了将用户“粘”到某一机器的做法，\n1 2 $id = intval(substr($user_id, -10)); $id % $count_of_hosts_in_shard 即同一用户每次登录的所有操作其实都是在Shard中的一个Master上运行的，这样即使复制到Slave，也就是另一台Master的时候有延时，也不会对用户有影响，除非是用户刚刚更新，尚未复制而这台Master就出现故障了，不过这种几率应该很小吧。\n对于Central Database的复制滞后和同步问题，Flickr采用了一种复杂的“Write Through Cache\"的机制来处理：\n“Write Through Cache\"就是将所有的数据库”写“操作都先写入”Cache”，然后由Cache统一去更新数据库的各个Node,“Write Through Cache\"维护每一个Node的更新状态，当有读请求时，即将请求转向状态为”已同步“的Node，这样即避免了复制滞后和Memcached的同步问题，但缺点是其实现极为复杂，“Write Throug Cache\"层的代码需要考虑和实现所有”journal”,“Transaction“，“failover”，和“recovery\"这些数据库已经实现的功能，另外还要考虑自身的\"failover\"问题。我没有找到有关具体实现的说明，只能猜测这一部分的处理可能也是直接利用或是实现了类似于Flickr的Queue系统吧。\n文章来源：http://www.itivy.com/ivy/archive/2011/3/7/634351294385186067.html\n",
+  "wordCount" : "8639",
+  "inLanguage": "en",
+  "datePublished": "2011-03-10T22:38:07Z",
+  "dateModified": "2011-03-10T22:38:07Z",
+  "author":{
+    "@type": "Person",
+    "name": "3shi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://babyno.top/3shi/posts/2011/03/flickr-architecture-analysis/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "3shi天下",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://babyno.top/3shi/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://babyno.top/3shi/" accesskey="h" title="3shi天下 (Alt + H)">3shi天下</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://babyno.top/3shi/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top" title="阿不">
+                    <span>阿不</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://babyno.top/3shi/">Home</a>&nbsp;»&nbsp;<a href="https://babyno.top/3shi/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Flickr网站架构分析
+    </h1>
+    <div class="post-meta"><span title='2011-03-10 22:38:07 +0000 UTC'>2011-03-10</span>&nbsp;·&nbsp;3shi
+
+</div>
+  </header> 
+  <div class="post-content"><p><a href="http://img.3shi.net/icon/128x128/icontexto-inside-flickr.png"  data-lightbox="image-1" >
+<img loading="lazy" src="http://img.3shi.net/icon/128x128/icontexto-inside-flickr.png" alt="Flickr"  />
+</a></p>
+<p>Flickr.com 是网上最受欢迎的照片共享网站之一，还记得那位给Windows Vista拍摄壁纸的Hamad Darwish吗？他就是将照片上传到Flickr，后而被微软看中成为Vista壁纸御用摄影师。</p>
+<p>Flickr.com 是最初由位于温哥华的Ludicorp公司开发设计并于2004年2月正式发布的，由于大量应用了WEB 2.0技术，注重用户体验，使得其迅速获得了大量的用户，2007年11月，Flickr迎来了第20亿张照片，一年后，这个数字就达到了30亿，并且还</p>
+<p>在以加速度增长。 2005年3月，雅虎公司以3千500万美元收购了Ludicorp公司和Flickr.com。虽然Flickr并不是最大的照片共享网站（Facebook以超过100亿张照片排名第一），但这笔收购仍然被认为是WEB 2.0浪潮中最精明的收购，因为仅仅一年后，Google就以16亿美元的高价收购了YouTube，而2007年10月，微软斥资2.4亿美元收购 Facebook 1.6%股份，此举使Facebook估值高达150亿美元。估计Ludicorp公司的创始人Stewart Butterfield和Caterina Fake夫妇现在还在后悔吧。 在2005年温哥华PHP协会的简报以及随后的一系列会议上，Flickr的架构师Cal Henderson公开了大部分Flickr所使用的后台技术，使得我们能有机会来分享和研究其在构建可扩展Web站点的经验。</p>
+<p>本文大部分资料来自互联网和自己的一点点心得，欢迎大家参与讨论，要是能够起到抛砖引玉的作用，本人将不胜荣幸。</p>
+<p><strong>Flickr整体框架图</strong></p>
+<p><a href="http://www.itivy.com/Upload/EditorImage/20110307210356_4476.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="http://www.itivy.com/Upload/EditorImage/20110307210356_4476.jpg" alt=""  />
+</a> 在讨论Flickr</p>
+<p>网站架构之前，让我们先来看一组统计数据（数据来源：April 2007 MySQL Conf and Expo和Flickr网站）</p>
+<ol>
+<li>
+<p>每天多达40亿次的查询请求</p>
+</li>
+<li>
+<p>squid总计约有3500万张照片（硬盘+内存）</p>
+</li>
+<li>
+<p>squid内存中约有200万张照片</p>
+</li>
+<li>
+<p>总计有大约4亿7000万张照片，每张图片又生成不同尺寸大小的4－5份图片</p>
+</li>
+<li>
+<p>每秒38，000次Memcached请求 (Memcached总共存储了1200万对象)</p>
+</li>
+<li>
+<p>超过2 PB 存储，其中数据库12TB</p>
+</li>
+<li>
+<p>每天新增图片超过 40万（周日峰值超过200万，约1.5TB)</p>
+</li>
+<li>
+<p>超过8百50万注册用户</p>
+</li>
+<li>
+<p>超过1千万的唯一标签（tags)</p>
+</li>
+<li>
+<p>响应4万个照片访问请求</p>
+</li>
+<li>
+<p>处理10万个缓存操作</p>
+</li>
+<li>
+<p>运行13万个数据库查询</p>
+</li>
+</ol>
+<p>这张是Flickr的网站架构图，我们这里只作一些简要的描述，具体的分析请静待后续文章。</p>
+<p><a href="http://farm4.static.flickr.com/3494/3804744387_b00a875869.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="http://farm4.static.flickr.com/3494/3804744387_b00a875869.jpg" alt="点看全图"  />
+</a></p>
+<ol>
+<li>
+<p>Pair of ServerIron&quot;s做负载均衡方案</p>
+</li>
+<li>
+<p>Squid Caches 代理，用于缓存静态的HTML和照片</p>
+</li>
+<li>
+<p>Net App公司的Filer, NAS存储设备，用于存储照片</p>
+</li>
+<li>
+<p>PHP App Servers － 运行REDHAT LINUX,Apache上的PHP应用，Flickr网站的主体是大约6万行PHP代码 － 没有使用PHP session, 应用是stateless,便于扩展，并避免PHP Server故障所带来的Session失效。 － 每个页面有大约27～35个查询（不知道为什么这么设计，个人觉得没有必要） － 另有专门的Apache Web Farm 服务于静态文件（HTML和照片）的访问</p>
+</li>
+<li>
+<p>Storage Manager 运行私有的，适用于海量文件存储的Flickr File System</p>
+</li>
+<li>
+<p>Dual Tree Central Database － MySQL 数据库，存放用户表，记录的信息是用户主键以及此用户对以的数据库Shard区，从中心用户表中查出用户数据所在位置，然后直接从目标Shard中取出数据。 － “Dual Tree&quot;架构是”Master－Master&quot;和“Master-Slave&quot;的有效结合，双Master 避免了“单点故障”，Master－Slave又提高了读取速度，因为用户表的操作90％以上是读。</p>
+</li>
+<li>
+<p>Master-master shards － MySQL 数据库，存储实际的用户数据和照片的元数据（Meta Data)，每个Shard 大约40万个用户，120GB 数据。每个用户的所有数据存放在同一个shard中。 － Shard中的每一个server的负载只是其可最大负载的50％，这样在需要的时候可以Online停掉一半的server进行升级或维护而不影响系统性能。 － 为了避免跨Shard查询所带来的性能影响，一些数据有在不同的Shard有两份拷贝，比如用户对照片的评论，通过事务来保证其同步。</p>
+</li>
+<li>
+<p>Memcached Cluster 中间层缓存服务器，用于缓存数据库的SQL查询结果等。</p>
+</li>
+<li>
+<p>Big Search Engine - 复制部分Shard数据（Owner’s single tag）到Search Engine Farm以响应实时的全文检索。 - 其他全文检索请求利用Yahoo的搜索引擎处理（Flickr是Yahoo旗下的公司<a href="http://www.ccthere.com/bbsIMG/UBBicon/em07.gif"  data-lightbox="image-1" >
+<img loading="lazy" src="http://www.ccthere.com/bbsIMG/UBBicon/em07.gif" alt="F"  />
+</a>）</p>
+</li>
+<li>
+<p>服务器的硬件配置： - Intel或AMD 64位CPU，16GB RAM - 6-disk 15K RPM RAID-10. - 2U boxes.</p>
+</li>
+<li>
+<p>服务器数量：(数据来源：April 2008 MySQL Conference &amp; Expo) 166 DB servers, 244 web servers(不知道是否包括 squid server？), 14 Memcached servers</p>
+</li>
+</ol>
+<p><strong>数据库最初的扩展-Replication</strong></p>
+<p>也许有人不相信，不过Flickr确实是从一台服务器起步的，即Apache/PHP和MySQL是运行在同一台服务器上的，很快MySQL服务器就独立了出来，成了双服务器架构。随着用户和访问量的快速增长，MySQL数据库开始承受越来越大的压力，成为应用瓶颈，导致网站应用响应速度变慢,MySQL的扩展问题就摆在了Flickr的技术团队面前。</p>
+<p>不幸的是，在当时，他们的选择并不多。一般来说，数据库的扩展无外是两条路，Scale-Up和Scale-Out,所谓Scale-Up，简单的说就是，在同一台机器内增加CPU,内存等硬件来增加数据库系统的处理能力，一般不需要修改应用程序；而Scale-Out,就是我们通常所说的数据库集群方式， 即通过增加运行数据库服务器的数量来提高系统整体的能力，而应用程序则一般需要进行相应的修改。</p>
+<p>在常见的商业数据库中，Oracle具有很强的 Scale-Up的能力，很早就能够支持几十个甚至数百个CPU，运行大型关键业务应用；而微软的SQL SERVER，早期受Wintel架构所限，以Scale-Out著称，但自从几年前突破了Wintel体系架构8路CPU的的限制，Scale-Up的能力一路突飞猛进，最近更是发布了SQL 2008在Windows 2008 R2版运行256个CPU核心(core)的测试结果，开始挑战Oracle的高端市场。</p>
+<p>而MySQL，直到今年4月，在最终采纳了GOOGLE公司贡献的SMP性能增强的代码后，发布了MySQL5.4后，才开始支持16路CPU的X86系统和64路CPU的CMT系统(基于Sun UltraSPARC 的系统）。</p>
+<p>从另一方面来说，Scale-Up受软硬件体系的限制，不可能无限增加ＣＰＵ和内存，相反Scale-Out却是可以&quot;几乎&quot;无限的扩展,以Google为例，２006年Google一共有超过４５万台服务器（谁能告诉我现在他们有多少？！）；而且大型ＳＭＰ服务器的价格远远超过普通的双路服务器，对于很多刚刚起步或是业务增长很难预测的网站来说，不可能也没必要一次性投资购买大型的硬件设备，因而虽然Scale-Out会随着服务器数量的增多而带来管理，部署和维护的成本急剧上升，但确是大多数大型网站当然也包括Flickr的唯一选择。</p>
+<p>经过统计，Flickr的技术人员发现，查询即SELECT语句的数量要远远大于添加，更新和删除的数量，比例达到了大约13：1甚至更多，所以他们采用了“Master-Slave”的复制模式，即所有的“写”操作都在发生在“Master&quot;，然后”异步“复制到一台或多台“Slave&quot;上，而所有的”读“操作都转到”Slave&quot;上运行，这样随着“读”交易量的增加，只需增加Slave服务器 就可以了。</p>
+<p><a href="http://farm4.static.flickr.com/3537/3827511075_46f2b25e17.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="http://farm4.static.flickr.com/3537/3827511075_46f2b25e17.jpg" alt="点看全图"  />
+</a></p>
+<p>让我们来看一下应用系统应该如何修改来适应这样的架构，除了”读/写“分离外，对于”读“操作最基本的要求是：1）应用程序能够在多个”Slave“上进行负载均分；2）当一个或多个”slave&quot;出现故障时，应用程序能自动尝试下一个“slave”，如果全部“Slave&quot;失效，则返回错误。</p>
+<p>Flickr曾经考虑过的方案是在Web应用和”Slave“群之间加入一个硬件或软件的”Load Balancer“，如下图</p>
+<p><a href="http://farm3.static.flickr.com/2426/3827511153_4521cd291c.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="http://farm3.static.flickr.com/2426/3827511153_4521cd291c.jpg" alt="点看全图"  />
+</a></p>
+<p>这样的好处是应用所需的改动最小，因为对于应用来说，所有的读操作都是通过一个虚拟的Slave来进行，添加和删除“Slave&quot;服务器对应用透 明，Load Balancer实现对各个Slave服务器状态的监控并将出现故障的Slave从可用节点列表里删除，并可以实现一些复杂的负载分担策略，比如新买的服务器处理能力要高过Slave群中其他的老机器，那么我们可以给这个机器多分配一些负载以最有效的利用资源。一个简单的利用Apache proxy_balancer_module的例子如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">。。。。。。。。。。。。。。
+</span></span><span class="line"><span class="cl">LoadModule proxy_module modules/mod_proxy.so
+</span></span><span class="line"><span class="cl">LoadModule proxy_balancer_module modules/mod_proxy_balancer.so
+</span></span><span class="line"><span class="cl">LoadModule proxy_http_module modules/mod_proxy_http.so
+</span></span><span class="line"><span class="cl">。。。。。。。。。。。。。。。。。。。。
+</span></span><span class="line"><span class="cl">&lt;proxy balancer://mycluster&gt;
+</span></span><span class="line"><span class="cl">BalancerMember &#34;http://slave1:8008/App&#34;   loadfactor=4
+</span></span><span class="line"><span class="cl">BalancerMember &#34;http://slave2:8008/App&#34;   loadfactor=3
+</span></span><span class="line"><span class="cl">BalancerMember &#34;http://slave3:8008/App&#34;   loadfactor=3
+</span></span><span class="line"><span class="cl">....................
+</span></span><span class="line"><span class="cl">///slave load ratio 4:3:3.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最终，Flickr采用了一种非常“轻量”但有效的“简易”PHP实现，基本的代码只有10几行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">db_connect</span><span class="p">(</span><span class="nv">$hosts</span><span class="p">,</span> <span class="nv">$user</span><span class="p">,</span> <span class="nv">$pass</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">shuffle</span><span class="p">(</span><span class="nv">$hosts</span><span class="p">);</span>     <span class="c1">//shuffle()是PHP函数，作用是将数组中每个元素的顺序随机打乱。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">foreach</span><span class="p">(</span><span class="nv">$hosts</span> <span class="k">as</span> <span class="nv">$host</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">debug</span><span class="p">(</span><span class="s2">&#34;Trying to connect to </span><span class="si">$host</span><span class="s2">...&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$dbh</span> <span class="o">=</span> <span class="o">@</span><span class="nx">mysql_connect</span><span class="p">(</span><span class="nv">$host</span><span class="p">,</span> <span class="nv">$user</span><span class="p">,</span> <span class="nv">$pass</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$dbh</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">debug</span><span class="p">(</span><span class="s2">&#34;Connected to </span><span class="si">$host</span><span class="s2">!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nv">$dbh</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">debug</span><span class="p">(</span><span class="s2">&#34;Failed to connect to </span><span class="si">$host</span><span class="s2">!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">debug</span><span class="p">(</span><span class="s2">&#34;Failed to connect to all hosts in list - giving up!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在上述代码中，如果需要对特定的Slave赋予更高的负载，只要在$hosts中多出现一次或多次就可以了。这段代码只要稍稍改进，就可以实现更复杂的功能，如当connect失败时自动将host从hosts列表中去除等。</p>
+<p>“Master”-&ldquo;Slave&quot;模式的缺点是它并没有对于“写&quot;操作提供扩展能力，而且存在单点故障，即一旦Master故障，整个网站将丧失“更新”的能力。解决的办法采用“Master&rdquo;-&ldquo;Master&quot;模式，即两台服务器互为”Master“-&ldquo;Slave&rdquo;,这样不仅”读/写“能力扩展了一倍，而且有效避免了”单点故障“，结合已有的“Master&rdquo;-&ldquo;Slave&rdquo;,整个数据库的架构就变成了下面的”双树“结构，</p>
+<p><a href="http://farm3.static.flickr.com/2480/3828501137_ab973b9218.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="http://farm3.static.flickr.com/2480/3828501137_ab973b9218.jpg" alt="点看全图"  />
+</a>。</p>
+<p>“双树”架构并没有支撑太久的时间，大概6个月后，随着用户的激增，系统再一次达到了极限，不仅”写”操作成为了瓶颈，而且“异步复制&quot;也由于”Slave“服务器过于繁忙而出现了严重的滞后而造成读数据的不一致。</p>
+<p>那么，能不能在现有架构加以解决，比如说增加新的”Master“服务器和考虑采用”同步复制“呢？答案是否定的，在Master超过两台的设置中，只能采用”闭环链“的方式进行复制，在大数据量的生产环境中，很容易造成在任意时刻没有一个Master或Slave节点是具有全部最新数据的（有点类似于”人一次也不能踏进同一条河“？），这样很难保障数据的一致性，而且一旦其中一个Master出现故障，将中断整个复制链；而对于”同步复制“，当然这是消除”复制滞后“的最好办法，不过在当时MySQL的同步复制还远没有成熟到可以运用在投产环境中。 Flickr网站的架构，需要一次大的变化来解决长期持续扩展的问题。</p>
+<p><strong>Shard - 大型网站数据库扩展的终极武器？</strong></p>
+<p>2005年７月，另一位大牛(MySQL 2005、2006年度 &ldquo;Application of the Year Award&quot;获得者)Dathan Pattishall加入了Flickr团队。一个星期之内，Dathan解决了Flickr数据库40%的问题，更重要的是，他为Flickr引进了Shard架构，从而使Flickr网站具备了真正“线性”Scale-Out的增长能力，并一直沿用至今，取得了巨大的成功。</p>
+<p>Shard主要是为了解决传统数据库Master/Slave模式下单一Master数据库的“写”瓶颈而出现的，简单的说Shard就是将一个大表分割成多个小表，每个小表存储在不同机器的数据库上，从而将负载分散到多个机器并行处理而极大的提高整个系统的“写”扩展能力。相比传统方式，由于每个数据库都相对较小，不仅读写操作更快，甚至可以将整个小数据库缓存到内存中，而且每个小数据库的备份，恢复也变得相对容易，同时由于分散了风险，单个小数据库的故障不会影响其他的数据库，使整个系统的可靠性也得到了显著的提高。</p>
+<p>对于大多数网站来说，以用户为单位进行Shard分割是最合适不过的，常见的分割方法有按地域（比如邮编），按Key值（比如Hash用户ID),这些方法可以简单的通过应用配置文件或算法来实现，一般不需要另外的数据库，缺点是一旦业务增加，需要再次分割Shard时要修改现有的应用算法和重新计算所有的Shard KEY值；而最为灵活的做法是以“目录”服务为基础的分割，即在Shard之前加一个中央数据库（Global Lookup Cluster），应用要先根据用户主键值查询中央数据库，获得用户数据所在的Shard，随后的操作再转向Shard所在数据库，例如下图：</p>
+<p><a href="http://farm3.static.flickr.com/2655/3848761804_8c61428c54.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="http://farm3.static.flickr.com/2655/3848761804_8c61428c54.jpg" alt="点看全图"  />
+</a></p>
+<p>而应用的主要修改在于要添加一个Lookup访问层，例如将以下的代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">string</span> <span class="n">connectionString</span> <span class="p">=</span> <span class="s">@&#34;Driver={MySQL};SERVER=dbserver;DATABASE=CustomerDB;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">OdbcConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="k">new</span> <span class="n">OdbcConnection</span><span class="p">(</span><span class="n">connectionString</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>变为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">string</span> <span class="n">connectionString</span> <span class="p">=</span> <span class="n">GetDatabaseFor</span><span class="p">(</span><span class="n">customerId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">OdbcConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="k">new</span> <span class="n">OdbcConnection</span><span class="p">(</span><span class="n">connectionString</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>GetDatabaseFor()函数完成根据用户ID获取Shard connectionString的作用。 对应我们前面所提到过的Flickr架构</p>
+<p><a href="http://farm3.static.flickr.com/2656/3847981051_5e923b07bb.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="http://farm3.static.flickr.com/2656/3847981051_5e923b07bb.jpg" alt="点看全图"  />
+</a> Dual</p>
+<p>Tree Central Database就是中央数据库，存放用户表，记录的信息是用户主键以及此用户对以的数据库Shard区；而Master-Master Shards就是一个个的Shard用户数据库，存储实际的用户数据和照片的元数据（Meta Data)。 Flickr Shard的设计我们在Flickr网站架构研究（１）中已经总结过了，在此不再赘述。我们在此谈一下Shard架构的主要问题和Flickr的解决办法：１）Shard只适用于不需要join操作的表，因为跨Shard join操作的开销太大，解决的办法是将一个用户的所有数据全部存放在同一个Shard里，对于一些传统方式下需要跨Shard查询的数据，只能采取冗余的方法，比如Shard1的用户A对Shard2的用户B的照片进行了评论，那么这条评论将同时存放在Shard1和Shard2中。这样就存在一个数据一致性的问题，常规的做法是用数据库事务(Transaction)、”两阶段提交“(2 phase commit)来解决，但做过两阶段提交（2PC）应用的都知道，2PC的效率相对较差，而且实际上也不能100%保证数据的完整性和一致性；另外，一旦由于其中一个Shard故障而提交失败回滚，用户只能放弃或再试一遍，用户体验较差。Flickr对于数据一致性的解决方案是Queue（Flickr用PHP开发了一个强大的Queue系统，将所有可以异步的任务都用Queue来实现，每天处理高达１千万以上的任务。）,事实上当用户A对用户B的照片进行评论时，他并不关心这条评论什么时候出现在用户B的界面上，即将这条评论添加到用户B的交易是可以异步的，允许一定的迟延，通过Queue处理，既保证了数据的一致性，又缩短了用户端的相应时间，提高了系统性能。２）Shard的另一个主要问题Rebalancing,既当现有Shard的负载达到一定的阀值，如何将现有数据再次分割，Flickr目前的方式依然是手工的，既人工来确定哪些用户需要迁移，然后运行一个后台程序进行数据迁移，迁移的过程用户账户将被锁住。（据说Google做到了完全自动的Rebalancing,本着”萨大“坑里不再挖坑的原则，如果有机会的话，留到下一个系列再研究吧）</p>
+<p><strong>Memcached的应用和争论</strong></p>
+<p>大家应该已经注意到，Flickr为中央数据库配置了Memcached作为数据库缓存，接下来的问题是，为什么用Memcached?为什么Shard不需要Memcached?Memcached和Master,Slave的关系怎样？笔者将试图回答这些问题供大家参考，网上的相关争论很多，有些问题尚未有定论。</p>
+<p>Memecached是一个高性能的，分布式的，开源的内存对象缓存系统，顾名思义，它的主要目的是将经常读取的对象放入内存以提高整个系统，尤其是数据库的扩展能力。Memcached的主要结构是两个Hash Table,Server端的HashTable以key-value pair的方式存放对象值，而Client端的HashTable的则决定某一对象存放在哪一个Memcached Server.举个例子说，后台有３个Memecached Server,A、B、C,Client1需要将一个对象名为”userid123456“，值为“鲁丁&quot;的存入，经过Client1的Hash计算，&ldquo;userid123456&quot;的值应该放入Memcached ServerB,而这之后，Client2需要读取&quot;userid123456&quot;的值，经过同样的Hash计算，得出&quot;userid123456&quot;的值如果存在的话应该在Memcached ServerB，并从中取出。最妙的是Server之间彼此是完全独立的，完全不知道对方的存在，没有一个类似与Master或Admin Server的存在，增加和减少Server只需在Client端&quot;注册&quot;并重新Hash就可以了。</p>
+<p>Memcached作为数据库缓存的作用主要在于减轻甚至消除高负载数据库情况下频繁读取所带来的Disk I/O瓶颈，相对于数据库自身的缓存来说，具有以下优点：１）Memecached的缓存是分布式的，而数据库的缓存只限于本机；２）Memcached 缓存的是对象，可以是经过复杂运算和查询的最终结果，并且不限于数据，可以是任何小于１MB的对象，比如html文件等；而数据库缓存是以&quot;row&quot;为单位的，一旦&quot;row&quot;中的任何数据更新，整个“row&quot;将进行可能是对应用来说不必要的更新；３）Memcached的存取是轻量的，而数据库的则相对较重，在低负载的情况下，一对一的比较,Memcached的性能未必能超过数据库，而在高负载的情况下则优势明显。</p>
+<p>Memcached并不适用于更新频繁的数据，因为频繁更新的数据导致大量的Memcached更新和较低的缓冲命中率，这可能也是为什么Shard没有集成它的原因；Memcached更多的是扩展了数据库的”读“操作，这一点上它和Slave的作用有重叠，以至于有人争论说应该让&quot;Relication&quot;回到它最初的目的”Online Backup&quot;数据库上，而通过Memcached来提供数据库的“读”扩展。（当然也有人说，考虑到Memcached的对应用带来的复杂性，还是慎用。）</p>
+<p>然而，在体系架构中增加Memecached并不是没有代价的，现有的应用要做适当的修改来同步Memcached和数据库中的数据，同时Memcached不提供任何冗余和“failover”功能，这些复杂的控制都需要应用来实现。基本的应用逻辑如下：</p>
+<p>对于读操作：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$data</span> <span class="o">=</span> <span class="nx">memcached_fetch</span><span class="p">(</span> <span class="nv">$id</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="nv">$data</span> <span class="k">if</span> <span class="nv">$data</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$data</span> <span class="o">=</span> <span class="nx">db_fetch</span><span class="p">(</span> <span class="nv">$id</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">memcached_store</span><span class="p">(</span> <span class="nv">$id</span><span class="p">,</span> <span class="nv">$data</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="nv">$data</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对于写操作：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">db_store</span><span class="p">(</span> <span class="nv">$id</span><span class="p">,</span> <span class="nv">$data</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">memcached_store</span><span class="p">(</span> <span class="nv">$id</span><span class="p">,</span> <span class="nv">$data</span> <span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们看到在每一次数据更新都需要更新Memcached，而且数据库或Memcached任何一点写错误应用就可能取得“过期”的数据而得到错误的结果，如何保证数据库和Memcached的同步呢？</p>
+<p><strong><strong>复制滞后和同步问题的解决</strong></strong></p>
+<p>我们知道复制滞后的主要原因是数据库负载过大而造成异步复制的延迟，Shard架构有效的分散了系统负载，从而大大减轻了这一现象，但是并不能从根本上消除，解决这一问题还是要靠良好的应用设计。</p>
+<p>当用户访问并更新Shard数据时，Flickr采用了将用户“粘”到某一机器的做法，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$id</span> <span class="o">=</span> <span class="nx">intval</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$user_id</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$id</span> <span class="o">%</span> <span class="nv">$count_of_hosts_in_shard</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>即同一用户每次登录的所有操作其实都是在Shard中的一个Master上运行的，这样即使复制到Slave，也就是另一台Master的时候有延时，也不会对用户有影响，除非是用户刚刚更新，尚未复制而这台Master就出现故障了，不过这种几率应该很小吧。</p>
+<p>对于Central Database的复制滞后和同步问题，Flickr采用了一种复杂的“Write Through Cache&quot;的机制来处理：</p>
+<p><a href="http://farm4.static.flickr.com/3193/3828309008_aa0a183229.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="http://farm4.static.flickr.com/3193/3828309008_aa0a183229.jpg" alt="点看全图"  />
+</a></p>
+<p>&ldquo;Write Through Cache&quot;就是将所有的数据库”写“操作都先写入”Cache&rdquo;，然后由Cache统一去更新数据库的各个Node,“Write Through Cache&quot;维护每一个Node的更新状态，当有读请求时，即将请求转向状态为”已同步“的Node，这样即避免了复制滞后和Memcached的同步问题，但缺点是其实现极为复杂，“Write Throug Cache&quot;层的代码需要考虑和实现所有”journal&rdquo;,&ldquo;Transaction“，“failover”，和“recovery&quot;这些数据库已经实现的功能，另外还要考虑自身的&quot;failover&quot;问题。我没有找到有关具体实现的说明，只能猜测这一部分的处理可能也是直接利用或是实现了类似于Flickr的Queue系统吧。</p>
+<p>文章来源：<a href="http://www.itivy.com/ivy/archive/2011/3/7/634351294385186067.html">http://www.itivy.com/ivy/archive/2011/3/7/634351294385186067.html</a></p>
+
+
+  </div>
+
+  
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://babyno.top/3shi/tags/flickr/">flickr</a></li>
+      <li><a href="https://babyno.top/3shi/tags/architecture/">architecture</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://babyno.top/3shi/posts/2011/03/plentyoffish-another-legend-of-dot-net-website/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>PlentyOfFish.com .NET网站的又一传奇</span>
+  </a>
+  <a class="next" href="https://babyno.top/3shi/posts/2011/03/youtube-architecture-study/">
+    <span class="title">Next »</span>
+    <br>
+    <span>YouTube架构学习</span>
+  </a>
+</nav>
+
+  </footer><link
+rel="stylesheet"
+href="/assets/@waline/client/dist/waline.css"
+/>
+<div id="waline"></div>
+<script type="module">
+  import { init } from '/assets/@waline/client/dist/waline.mjs';
+
+  init({
+    el: '#waline',
+    serverURL: 'https://comments.babyno.top/',
+    search: false
+  });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://babyno.top/3shi/">3shi天下</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?3538691f85f2d2e74e734e6ad2c07251";
+    var s = document.getElementsByTagName("script");
+    var lastScript = s[s.length - 1];
+    if (lastScript.nextSibling) {
+      lastScript.parentNode.insertBefore(hm, lastScript.nextSibling);
+    } else {
+      lastScript.parentNode.appendChild(hm);
+    }
+  })();
+</script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GS1HVS967Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GS1HVS967Y');
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

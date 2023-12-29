@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>rss feed on 3shi天下</title>
+    <link>https://babyno.top/3shi/tags/rss-feed/</link>
+    <description>Recent content in rss feed on 3shi天下</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 19 Feb 2011 13:11:50 +0000</lastBuildDate><atom:link href="https://babyno.top/3shi/tags/rss-feed/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10个优化WordPress RSS Feed的技巧(2)</title>
+      <link>https://babyno.top/3shi/posts/2011/02/10-wordpress-rss-feed-optimization-tips-2/</link>
+      <pubDate>Sat, 19 Feb 2011 13:11:50 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/02/10-wordpress-rss-feed-optimization-tips-2/</guid>
+      <description>在上一篇文章中，我介绍了10个优化WordPress RSS Feed的技巧的前5个技巧。相对上5个技巧的实用，下面这些更多体现的是细节的完善。有一</description>
+    </item>
+    
+    <item>
+      <title>10个优化WordPress RSS Feed的技巧(1)</title>
+      <link>https://babyno.top/3shi/posts/2011/02/10-wordpress-rss-feed-optimization-tips-1/</link>
+      <pubDate>Sat, 19 Feb 2011 13:02:51 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/02/10-wordpress-rss-feed-optimization-tips-1/</guid>
+      <description>像你所知道的，RSS Feed对于大多数人的互联网生活，已经是必不可少的部分。由于其方便和效率，越来越受关注，甚至追捧。特别是WordPres</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>免费使用EC2，S3及其它AWS服务 | 3shi天下</title>
+<meta name="keywords" content="aws">
+<meta name="description" content="上一篇介绍了EC2服务和它的价格，可以看出EC2的价格不菲，作为个人建站还是有点不太适合。好在Amazon在这方面还是比较大气，只要你注册了">
+<meta name="author" content="3shi">
+<link rel="canonical" href="https://babyno.top/3shi/posts/2011/12/use-ec2-s3-aws-for-free/">
+<link crossorigin="anonymous" href="/3shi/assets/css/stylesheet.12891501283130addd65d5c9aa3af45b949edff3f949a53c8f890319a805b26b.css" integrity="sha256-EokVASgxMK3dZdXJqjr0W5Se3/P5SaU8j4kDGagFsms=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://babyno.top/3shi/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://babyno.top/3shi/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://babyno.top/3shi/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://babyno.top/3shi/apple-touch-icon.png">
+<link rel="mask-icon" href="https://babyno.top/3shi/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="免费使用EC2，S3及其它AWS服务" />
+<meta property="og:description" content="上一篇介绍了EC2服务和它的价格，可以看出EC2的价格不菲，作为个人建站还是有点不太适合。好在Amazon在这方面还是比较大气，只要你注册了" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://babyno.top/3shi/posts/2011/12/use-ec2-s3-aws-for-free/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2011-12-04T16:58:45+00:00" />
+<meta property="article:modified_time" content="2011-12-04T16:58:45+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="免费使用EC2，S3及其它AWS服务"/>
+<meta name="twitter:description" content="上一篇介绍了EC2服务和它的价格，可以看出EC2的价格不菲，作为个人建站还是有点不太适合。好在Amazon在这方面还是比较大气，只要你注册了"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://babyno.top/3shi/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "免费使用EC2，S3及其它AWS服务",
+      "item": "https://babyno.top/3shi/posts/2011/12/use-ec2-s3-aws-for-free/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "免费使用EC2，S3及其它AWS服务",
+  "name": "免费使用EC2，S3及其它AWS服务",
+  "description": "上一篇介绍了EC2服务和它的价格，可以看出EC2的价格不菲，作为个人建站还是有点不太适合。好在Amazon在这方面还是比较大气，只要你注册了",
+  "keywords": [
+    "aws"
+  ],
+  "articleBody": "上一篇介绍了EC2服务和它的价格，可以看出EC2的价格不菲，作为个人建站还是有点不太适合。好在Amazon在这方面还是比较大气，只要你注册了EC2服务，就立即获赠一年的AWS相关服务的免费使用（记时从你注册即开始，即时你不创建EC2\nInstance）。\n网上有很多注册EC2和创建Instance的教程，我这里就不再赘述了，这里跟大家分享一下免费的午餐到底包含哪些内容，好让大家知道AWS里那么多服务，我哪些可以免费使用，哪些使用了就会被收费。\n官方是这样说的：\nAWS Free Usage Tier (Per Month):\n750 hours of Amazon EC2 Linux Micro Instance usage (613 MB of memory and 32-bit and 64-bit platform support) –\nenough hours to run continuously each month*\n750 hours of an [Elastic Load Balancer](http://aws.amazon.com/elasticloadbalancing/) plus 15 GB data\nprocessing*\n10 GB of [Amazon Elastic Block Storage](http://aws.amazon.com/ebs “EBS”), plus 1 million I/Os and 1 GB of snapshot storage*\n5 GB of Amazon S3 standard storage, 20,000 Get Requests, and 2,000 Put Requests*\n15 GB of bandwidth out aggregated across all AWS services* 25 Amazon SimpleDB Machine Hours and 1 GB of Storage**\n100,000 Requests of [Amazon Simple Queue Service](http://aws.amazon.com/sqs “SQS”)**\n100,000 Requests, 100,000 HTTP notifications and 1,000 email notifications for [Amazon Simple Notification\nService](http://aws.amazon.com/sns “SNS”)**\n10 Amazon Cloudwatch metrics, 10 alarms, and 1,000,000 API requests**\nIn addition to these services, the [AWS Management\nConsole](http://aws.amazon.com/console) is available at no charge to help you\nbuild and manage your application on AWS.\n大致意思是这样的\n每月：\n750小时(也就是比24*31还多一点)的EC2 Linux Micro Instance (613MB内存, 32位/64位系统) 750小时的Elastic Load Balancer, 15GB数据处理 10GB Elastic Block Storage存储, 100万次I/O, 1GB snapshot存储, 1万次snapshot Get请求, 1千次snapshot Put请求\n5GB S3存储空间, 2万次Get请求, 2千次Put请求 15GB互联网数据传输，包括所有的AWS服务（EC2，S3等），注意这里只包括流出流量，流入流量免费 25主机小时的SimpleDB和1GB存储 10万次的Simple Queue Service请求 10万次的Simple Notification Service请求, 10万次HTTP通知, 以及1千次电子邮件通知 10个Cloudwatch指标，10次警报，和100万API请求 注意一下存储空间和流量，如果超了就要被收费了。 以下来自网络：\n免费服务在报告中显示为 “ under monthly free tier “，没有的话表明您无法享受free\ntier服务，需要付费。我的Micro instance已经免费稳定运行128小时。 图片中各项的意思是：\n当前ec2 micro instance运行的时间总计；\n费用，free tier的话，没有任何费用；\nEC2 EBS硬盘使用情况；\nEBS IO数目，free tier限额为100万次/月，足够了；\nEBS snapshot请求数，free tier限额为1万次读/月，图例中用掉2560次，应该是instance第一次启动造成的，常规运行无需任何snapshot请求，如果您经常重建instance，则此项可能会超出使用限额；\n如果您被收费，可能是因为：\n您不是AWS新用户；\n您用一张信用卡绑定了多个AWS账户；\n您用了Windows的instance，EC2 free tier只对 linux AMI免费，有部分linux AMI也会收费；\n您超出了free tier的限制：10GB EBS硬盘， 30GB流量（15GB in，15GB out）等 现在in已经免费了，只有15GB out；\n您分配了固定IP，但未绑定到运行中的instance上，被惩罚收费；\n其它…\n如果您已经被收费又不清楚具体原因，可以停用AWS服务。\n",
+  "wordCount" : "1257",
+  "inLanguage": "en",
+  "datePublished": "2011-12-04T16:58:45Z",
+  "dateModified": "2011-12-04T16:58:45Z",
+  "author":{
+    "@type": "Person",
+    "name": "3shi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://babyno.top/3shi/posts/2011/12/use-ec2-s3-aws-for-free/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "3shi天下",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://babyno.top/3shi/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://babyno.top/3shi/" accesskey="h" title="3shi天下 (Alt + H)">3shi天下</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://babyno.top/3shi/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top" title="阿不">
+                    <span>阿不</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://babyno.top/3shi/">Home</a>&nbsp;»&nbsp;<a href="https://babyno.top/3shi/posts/">Posts</a></div>
+    <h1 class="post-title">
+      免费使用EC2，S3及其它AWS服务
+    </h1>
+    <div class="post-meta"><span title='2011-12-04 16:58:45 +0000 UTC'>2011-12-04</span>&nbsp;·&nbsp;3shi
+
+</div>
+  </header> 
+  <div class="post-content"><p>上一篇介绍了EC2服务和它的价格，可以看出EC2的价格不菲，作为个人建站还是有点不太适合。好在Amazon在这方面还是比较大气，只要你注册了EC2服务，就立即获赠一年的AWS相关服务的免费使用（记时从你注册即开始，即时你不创建EC2</p>
+<p>Instance）。</p>
+<p>网上有很多注册EC2和创建Instance的教程，我这里就不再赘述了，这里跟大家分享一下免费的午餐到底包含哪些内容，好让大家知道AWS里那么多服务，我哪些可以免费使用，哪些使用了就会被收费。</p>
+<p>官方是这样说的：</p>
+<blockquote>
+<p><strong>AWS Free Usage Tier (Per Month):</strong></p>
+</blockquote>
+<blockquote>
+</blockquote>
+<blockquote>
+<ul>
+<li>750 hours of <a href="http://aws.amazon.com/ec2">Amazon EC2</a> Linux Micro</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Instance usage (613 MB of memory and 32-bit and 64-bit platform support) –</p>
+</blockquote>
+<blockquote>
+<p>enough hours to run continuously each month*</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>750 hours of an [Elastic Load</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Balancer](<a href="http://aws.amazon.com/elasticloadbalancing/">http://aws.amazon.com/elasticloadbalancing/</a>) plus 15 GB data</p>
+</blockquote>
+<blockquote>
+<p>processing*</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>10 GB of [Amazon Elastic Block Storage](<a href="http://aws.amazon.com/ebs">http://aws.amazon.com/ebs</a></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>&ldquo;EBS&rdquo;), plus 1 million I/Os and 1 GB of snapshot storage*</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>5 GB of <a href="http://aws.amazon.com/s3">Amazon S3</a> standard storage, 20,000</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Get Requests, and 2,000 Put Requests*</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>15 GB of bandwidth out aggregated across all AWS services*</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>25 <a href="http://aws.amazon.com/simpledb">Amazon SimpleDB</a> Machine Hours and 1</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>GB of Storage**</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>100,000 Requests of [Amazon Simple Queue</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Service](<a href="http://aws.amazon.com/sqs">http://aws.amazon.com/sqs</a> &ldquo;SQS&rdquo;)**</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>100,000 Requests, 100,000 HTTP notifications and 1,000 email</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>notifications for [Amazon Simple Notification</p>
+</blockquote>
+<blockquote>
+<p>Service](<a href="http://aws.amazon.com/sns">http://aws.amazon.com/sns</a> &ldquo;SNS&rdquo;)**</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>10 <a href="http://aws.amazon.com/cloudwatch">Amazon Cloudwatch</a> metrics, 10</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>alarms, and 1,000,000 API requests**</p>
+</blockquote>
+<blockquote>
+</blockquote>
+<p>In addition to these services, the [AWS Management</p>
+<p>Console](<a href="http://aws.amazon.com/console">http://aws.amazon.com/console</a>) is available at no charge to help you</p>
+<p>build and manage your application on AWS.</p>
+<p>大致意思是这样的</p>
+<blockquote>
+<p>每月：</p>
+</blockquote>
+<blockquote>
+</blockquote>
+<blockquote>
+<ul>
+<li>750小时(也就是比24*31还多一点)的EC2 Linux Micro Instance (613MB内存, 32位/64位系统)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>750小时的Elastic Load Balancer, 15GB数据处理</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>10GB Elastic Block Storage存储, 100万次I/O, 1GB snapshot存储, 1万次snapshot</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Get请求, 1千次snapshot Put请求</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>5GB S3存储空间, 2万次Get请求, 2千次Put请求</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>15GB互联网数据传输，包括所有的AWS服务（EC2，S3等），注意这里只包括流出流量，流入流量免费</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>25主机小时的SimpleDB和1GB存储</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>10万次的Simple Queue Service请求</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>10万次的Simple Notification Service请求, 10万次HTTP通知, 以及1千次电子邮件通知</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>10个Cloudwatch指标，10次警报，和100万API请求</li>
+</ul>
+</blockquote>
+<blockquote>
+</blockquote>
+<p>注意一下存储空间和流量，如果超了就要被收费了。 以下来自网络：</p>
+<p><a href="http://farm8.staticflickr.com/7152/6451461197_74881a44d5_z.jpg"><a href="http://farm8.staticflickr.com/7152/6451461197_74881a44d5.jpg"  data-lightbox="image-1" >
+<img loading="lazy" src="http://farm8.staticflickr.com/7152/6451461197_74881a44d5.jpg" alt=""  />
+</a></a></p>
+<p>免费服务在报告中显示为 “ <strong>under monthly free tier</strong> “，没有的话表明您无法享受free</p>
+<p>tier服务，需要付费。我的Micro instance已经免费稳定运行128小时。 图片中各项的意思是：</p>
+<ol>
+<li>
+<p>当前ec2 micro instance运行的时间总计；</p>
+</li>
+<li>
+<p>费用，free tier的话，没有任何费用；</p>
+</li>
+<li>
+<p>EC2 EBS硬盘使用情况；</p>
+</li>
+<li>
+<p>EBS IO数目，free tier限额为100万次/月，足够了；</p>
+</li>
+<li>
+<p>EBS snapshot请求数，free tier限额为1万次读/月，图例中用掉2560次，应该是instance第一次启动造成的，常规运行无需任何snapshot请求，如果您经常重建instance，则此项可能会超出使用限额；</p>
+</li>
+</ol>
+<p>如果您被收费，可能是因为：</p>
+<ul>
+<li>
+<p>您不是AWS新用户；</p>
+</li>
+<li>
+<p>您用一张信用卡绑定了多个AWS账户；</p>
+</li>
+<li>
+<p>您用了Windows的instance，EC2 free tier只对 linux AMI免费，有部分linux AMI也会收费；</p>
+</li>
+<li>
+<p>您超出了free tier的限制：10GB EBS硬盘， <del>30GB流量（15GB in，15GB out）等</del> 现在in已经免费了，只有15GB out；</p>
+</li>
+<li>
+<p>您分配了固定IP，但未绑定到运行中的instance上，被惩罚收费；</p>
+</li>
+<li>
+<p>其它…</p>
+</li>
+</ul>
+<p>如果您已经被收费又不清楚具体原因，可以停用AWS服务。</p>
+
+
+  </div>
+
+  
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://babyno.top/3shi/tags/aws/">aws</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://babyno.top/3shi/posts/2011/12/dubai-metro-without-a-driver/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>迪拜地铁美图欣赏</span>
+  </a>
+  <a class="next" href="https://babyno.top/3shi/posts/2011/12/introduction-to-amazon-ec2/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Amazon EC2简介</span>
+  </a>
+</nav>
+
+  </footer><link
+rel="stylesheet"
+href="/assets/@waline/client/dist/waline.css"
+/>
+<div id="waline"></div>
+<script type="module">
+  import { init } from '/assets/@waline/client/dist/waline.mjs';
+
+  init({
+    el: '#waline',
+    serverURL: 'https://comments.babyno.top/',
+    search: false
+  });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://babyno.top/3shi/">3shi天下</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?3538691f85f2d2e74e734e6ad2c07251";
+    var s = document.getElementsByTagName("script");
+    var lastScript = s[s.length - 1];
+    if (lastScript.nextSibling) {
+      lastScript.parentNode.insertBefore(hm, lastScript.nextSibling);
+    } else {
+      lastScript.parentNode.appendChild(hm);
+    }
+  })();
+</script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GS1HVS967Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GS1HVS967Y');
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

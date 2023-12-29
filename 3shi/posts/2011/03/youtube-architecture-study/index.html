@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>YouTube架构学习 | 3shi天下</title>
+<meta name="keywords" content="youtube, architecture">
+<meta name="description" content="YouTube发展迅速，每天超过1亿的视频点击量，但只有很少人在维护站点和确保伸缩性。 平台 Apache Python Linux(SuSe) MySQL psyco，一个动态的Python到C的编">
+<meta name="author" content="3shi">
+<link rel="canonical" href="https://babyno.top/3shi/posts/2011/03/youtube-architecture-study/">
+<link crossorigin="anonymous" href="/3shi/assets/css/stylesheet.12891501283130addd65d5c9aa3af45b949edff3f949a53c8f890319a805b26b.css" integrity="sha256-EokVASgxMK3dZdXJqjr0W5Se3/P5SaU8j4kDGagFsms=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://babyno.top/3shi/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://babyno.top/3shi/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://babyno.top/3shi/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://babyno.top/3shi/apple-touch-icon.png">
+<link rel="mask-icon" href="https://babyno.top/3shi/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="YouTube架构学习" />
+<meta property="og:description" content="YouTube发展迅速，每天超过1亿的视频点击量，但只有很少人在维护站点和确保伸缩性。 平台 Apache Python Linux(SuSe) MySQL psyco，一个动态的Python到C的编" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://babyno.top/3shi/posts/2011/03/youtube-architecture-study/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2011-03-10T22:22:38+00:00" />
+<meta property="article:modified_time" content="2011-03-10T22:22:38+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="YouTube架构学习"/>
+<meta name="twitter:description" content="YouTube发展迅速，每天超过1亿的视频点击量，但只有很少人在维护站点和确保伸缩性。 平台 Apache Python Linux(SuSe) MySQL psyco，一个动态的Python到C的编"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://babyno.top/3shi/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "YouTube架构学习",
+      "item": "https://babyno.top/3shi/posts/2011/03/youtube-architecture-study/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "YouTube架构学习",
+  "name": "YouTube架构学习",
+  "description": "YouTube发展迅速，每天超过1亿的视频点击量，但只有很少人在维护站点和确保伸缩性。 平台 Apache Python Linux(SuSe) MySQL psyco，一个动态的Python到C的编",
+  "keywords": [
+    "youtube", "architecture"
+  ],
+  "articleBody": " YouTube发展迅速，每天超过1亿的视频点击量，但只有很少人在维护站点和确保伸缩性。\n平台\nApache\nPython\nLinux(SuSe)\nMySQL\npsyco，一个动态的Python到C的编译器\nlighttpd代替Apache做视频查看\n状态\n支持每天超过1亿的视频点击量\n成立于2005年2月\n于2006年3月达到每天3千万的视频点击量\n于2006年7月达到每天1亿的视频点击量\n2个系统管理员，2个伸缩性软件架构师\n2个软件开发工程师，2个网络工程师，1个DBA\n处理飞速增长的流量\n1 2 3 4 5 6 while (true) { identify_and_fix_bottlenecks(); drink(); sleep(); notice_new_bottleneck(); } 每天运行该循环多次\nWeb服务器\nNetScaler用于负载均衡和静态内容缓存\n使用mod_fast_cgi运行Apache\n使用一个Python应用服务器来处理请求的路由\n应用服务器与多个数据库和其他信息源交互来获取数据和格式化html页面\n一般可以通过添加更多的机器来在Web层提高伸缩性\nPython的Web层代码通常不是性能瓶颈，大部分时间阻塞在RPC\nPython允许快速而灵活的开发和部署\n通常每个页面服务少于100毫秒的时间\n使用psyco(一个类似于JIT编译器的动态的Python到C的编译器)来优化内部循环\n对于像加密等密集型CPU活动，使用C扩展\n对于一些开销昂贵的块使用预先生成并缓存的html\n数据库里使用行级缓存\n缓存完整的Python对象\n有些数据被计算出来并发送给各个程序，所以这些值缓存在本地内存中。这是个使用不当的策略。应用服务器里最快的缓存将预先计算的值发送给所有服务器也花不了多少时间。只需弄一个代理来监听更改，预计算，然后发送。\n视频服务\n花费包括带宽，硬件和能源消耗\n每个视频由一个迷你集群来host，每个视频被超过一台机器持有\n使用一个集群意味着： -更多的硬盘来持有内容意味着更快的速度 -failover。如果一台机器出故障了，另外的机器可以继续服务 -在线备份\n使用lighttpd作为Web服务器来提供视频服务： -Apache开销太大 -使用epoll来等待多个fds -从单进程配置转变为多进程配置来处理更多的连接\n大部分流行的内容移到CDN： -CDN在多个地方备份内容，这样内容离用户更近的机会就会更高 -CDN机器经常内存不足，因为内容太流行以致很少有内容进出内存的颠簸\n不太流行的内容(每天1-20浏览次数)在许多colo站点使用YouTube服务器 -长尾效应。一个视频可以有多个播放，但是许多视频正在播放。随机硬盘块被访问 -在这种情况下缓存不会很好，所以花钱在更多的缓存上可能没太大意义。 -调节RAID控制并注意其他低级问题 -调节每台机器上的内存，不要太多也不要太少\n视频服务关键点\n保持简单和廉价\n保持简单网络路径，在内容和用户间不要有太多设备\n使用常用硬件，昂贵的硬件很难找到帮助文档\n使用简单而常见的工具，使用构建在Linux里或之上的大部分工具\n很好的处理随机查找(SATA，tweaks)\n缩略图服务\n做到高效令人惊奇的难\n每个视频大概4张缩略图，所以缩略图比视频多很多\n缩略图仅仅host在几个机器上\n持有一些小东西所遇到的问题：\nOS级别的大量的硬盘查找和inode和页面缓存问题 单目录文件限制，特别是Ext3，后来移到多分层的结构。内核2.6的最近改进可能让Ext3允许大目录，但在一个文件系统里存储大量文件不是个好主意 每秒大量的请求，因为Web页面可能在页面上显示60个缩略图 在这种高负载下Apache表现的非常糟糕 在Apache前端使用squid，这种方式工作了一段时间，但是由于负载继续增加而以失败告终。它让每秒300个请求变为20个 尝试使用lighttpd但是由于使用单线程它陷于困境。遇到多进程的问题，因为它们各自保持自己单独的缓存 如此多的图片以致一台新机器只能接管24小时 重启机器需要6-10小时来缓存 为了解决所有这些问题YouTube开始使用Google的BigTable，一个分布式数据存储：\n避免小文件问题，因为它将文件收集到一起 快，错误容忍 更低的延迟，因为它使用分布式多级缓存，该缓存与多个不同collocation站点工作 更多信息参考Google Architecture，GoogleTalk Architecture和BigTable 数据库\n早期\n使用MySQL来存储元数据，如用户，tags和描述 使用一整个10硬盘的RAID 10来存储数据 依赖于信用卡所以YouTube租用硬件 YouTube经过一个常见的革命：单服务器，然后单master和多read slaves，然后数据库分区，然后sharding方式 痛苦与备份延迟。master数据库是多线程的并且运行在一个大机器上所以它可以处理许多工作，slaves是单线程的并且通常运行在小一些的服务器上并且备份是异步的，所以slaves会远远落后于master 更新引起缓存失效，硬盘的慢I/O导致慢备份 使用备份架构需要花费大量的money来获得增加的写性能 YouTube的一个解决方案是通过把数据分成两个集群来将传输分出优先次序：一个视频查看池和一个一般的集群 后期\n数据库分区 分成shards，不同的用户指定到不同的shards 扩散读写 -更好的缓存位置意味着更少的IO 导致硬件减少30% 备份延迟降低到0 现在可以任意提升数据库的伸缩性 数据中心策略\n依赖于信用卡，所以最初只能使用受管主机提供商\n受管主机提供商不能提供伸缩性，不能控制硬件或使用良好的网络协议\nYouTube改为使用colocation arrangement。现在YouTube可以自定义所有东西并且协定自己的契约\n使用5到6个数据中心加CDN\n视频来自任意的数据中心，不是最近的匹配或其他什么。如果一个视频足够流行则移到CDN\n依赖于视频带宽而不是真正的延迟。可以来自任何colo\n图片延迟很严重，特别是当一个页面有60张图片时\n使用BigTable将图片备份到不同的数据中心，代码查看谁是最近的\n学到的东西\nStall for time。创造性和风险性的技巧让你在短期内解决问题而同时你会发现长期的解决方案\nProioritize。找出你的服务中核心的东西并对你的资源分出优先级别\nPick your battles。别怕将你的核心服务分出去。YouTube使用CDN来分布它们最流行的内容。创建自己的网络将花费太多时间和太多money\nKeep it simple！简单允许你更快的重新架构来回应问题\nShard。Sharding帮助隔离存储，CPU，内存和IO，不仅仅是获得更多的写性能\nConstant iteration on bottlenecks：\n软件：DB，缓存 OS：硬盘I/O 硬件：内存，RAID You succeed as a team。拥有一个跨越条律的了解整个系统并知道系统内部是什么样的团队，如安装打印机，安装机器，安装网络等等的人。With a good team all things are possible。\n原文地址：http://hideto.javaeye.com/blog/129726\n",
+  "wordCount" : "2758",
+  "inLanguage": "en",
+  "datePublished": "2011-03-10T22:22:38Z",
+  "dateModified": "2011-03-10T22:22:38Z",
+  "author":{
+    "@type": "Person",
+    "name": "3shi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://babyno.top/3shi/posts/2011/03/youtube-architecture-study/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "3shi天下",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://babyno.top/3shi/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://babyno.top/3shi/" accesskey="h" title="3shi天下 (Alt + H)">3shi天下</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://babyno.top/3shi/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top/3shi/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://babyno.top" title="阿不">
+                    <span>阿不</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://babyno.top/3shi/">Home</a>&nbsp;»&nbsp;<a href="https://babyno.top/3shi/posts/">Posts</a></div>
+    <h1 class="post-title">
+      YouTube架构学习
+    </h1>
+    <div class="post-meta"><span title='2011-03-10 22:22:38 +0000 UTC'>2011-03-10</span>&nbsp;·&nbsp;3shi
+
+</div>
+  </header> 
+  <div class="post-content"><p><a href="http://img.3shi.net/icon/128x128/icontexto-inside-youtube.png"  data-lightbox="image-1" >
+<img loading="lazy" src="http://img.3shi.net/icon/128x128/icontexto-inside-youtube.png" alt="YouTube"  />
+</a></p>
+<p>YouTube发展迅速，每天超过1亿的视频点击量，但只有很少人在维护站点和确保伸缩性。</p>
+<p><strong>平台</strong></p>
+<ul>
+<li>
+<p>Apache</p>
+</li>
+<li>
+<p>Python</p>
+</li>
+<li>
+<p>Linux(SuSe)</p>
+</li>
+<li>
+<p>MySQL</p>
+</li>
+<li>
+<p>psyco，一个动态的Python到C的编译器</p>
+</li>
+<li>
+<p>lighttpd代替Apache做视频查看</p>
+</li>
+</ul>
+<p><strong>状态</strong></p>
+<ul>
+<li>
+<p>支持每天超过1亿的视频点击量</p>
+</li>
+<li>
+<p>成立于2005年2月</p>
+</li>
+<li>
+<p>于2006年3月达到每天3千万的视频点击量</p>
+</li>
+<li>
+<p>于2006年7月达到每天1亿的视频点击量</p>
+</li>
+<li>
+<p>2个系统管理员，2个伸缩性软件架构师</p>
+</li>
+<li>
+<p>2个软件开发工程师，2个网络工程师，1个DBA</p>
+</li>
+</ul>
+<p><strong>处理飞速增长的流量</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">identify_and_fix_bottlenecks</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">drink</span><span class="o">();</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">sleep</span><span class="o">();</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">notice_new_bottleneck</span><span class="o">();</span> 
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>每天运行该循环多次</p>
+<p><strong>Web服务器</strong></p>
+<ul>
+<li>
+<p>NetScaler用于负载均衡和静态内容缓存</p>
+</li>
+<li>
+<p>使用mod_fast_cgi运行Apache</p>
+</li>
+<li>
+<p>使用一个Python应用服务器来处理请求的路由</p>
+</li>
+<li>
+<p>应用服务器与多个数据库和其他信息源交互来获取数据和格式化html页面</p>
+</li>
+<li>
+<p>一般可以通过添加更多的机器来在Web层提高伸缩性</p>
+</li>
+<li>
+<p>Python的Web层代码通常不是性能瓶颈，大部分时间阻塞在RPC</p>
+</li>
+<li>
+<p>Python允许快速而灵活的开发和部署</p>
+</li>
+<li>
+<p>通常每个页面服务少于100毫秒的时间</p>
+</li>
+<li>
+<p>使用psyco(一个类似于JIT编译器的动态的Python到C的编译器)来优化内部循环</p>
+</li>
+<li>
+<p>对于像加密等密集型CPU活动，使用C扩展</p>
+</li>
+<li>
+<p>对于一些开销昂贵的块使用预先生成并缓存的html</p>
+</li>
+<li>
+<p>数据库里使用行级缓存</p>
+</li>
+<li>
+<p>缓存完整的Python对象</p>
+</li>
+<li>
+<p>有些数据被计算出来并发送给各个程序，所以这些值缓存在本地内存中。这是个使用不当的策略。应用服务器里最快的缓存将预先计算的值发送给所有服务器也花不了多少时间。只需弄一个代理来监听更改，预计算，然后发送。</p>
+</li>
+</ul>
+<p><strong>视频服务</strong></p>
+<ul>
+<li>
+<p>花费包括带宽，硬件和能源消耗</p>
+</li>
+<li>
+<p>每个视频由一个迷你集群来host，每个视频被超过一台机器持有</p>
+</li>
+<li>
+<p>使用一个集群意味着： -更多的硬盘来持有内容意味着更快的速度 -failover。如果一台机器出故障了，另外的机器可以继续服务 -在线备份</p>
+</li>
+<li>
+<p>使用lighttpd作为Web服务器来提供视频服务： -Apache开销太大 -使用epoll来等待多个fds -从单进程配置转变为多进程配置来处理更多的连接</p>
+</li>
+<li>
+<p>大部分流行的内容移到CDN： -CDN在多个地方备份内容，这样内容离用户更近的机会就会更高 -CDN机器经常内存不足，因为内容太流行以致很少有内容进出内存的颠簸</p>
+</li>
+<li>
+<p>不太流行的内容(每天1-20浏览次数)在许多colo站点使用YouTube服务器 -长尾效应。一个视频可以有多个播放，但是许多视频正在播放。随机硬盘块被访问 -在这种情况下缓存不会很好，所以花钱在更多的缓存上可能没太大意义。 -调节RAID控制并注意其他低级问题 -调节每台机器上的内存，不要太多也不要太少</p>
+</li>
+</ul>
+<p><strong>视频服务关键点</strong></p>
+<ul>
+<li>
+<p>保持简单和廉价</p>
+</li>
+<li>
+<p>保持简单网络路径，在内容和用户间不要有太多设备</p>
+</li>
+<li>
+<p>使用常用硬件，昂贵的硬件很难找到帮助文档</p>
+</li>
+<li>
+<p>使用简单而常见的工具，使用构建在Linux里或之上的大部分工具</p>
+</li>
+<li>
+<p>很好的处理随机查找(SATA，tweaks)</p>
+</li>
+</ul>
+<p><strong>缩略图服务</strong></p>
+<ul>
+<li>
+<p>做到高效令人惊奇的难</p>
+</li>
+<li>
+<p>每个视频大概4张缩略图，所以缩略图比视频多很多</p>
+</li>
+<li>
+<p>缩略图仅仅host在几个机器上</p>
+</li>
+<li>
+<p>持有一些小东西所遇到的问题：</p>
+<ul>
+<li>OS级别的大量的硬盘查找和inode和页面缓存问题</li>
+<li>单目录文件限制，特别是Ext3，后来移到多分层的结构。内核2.6的最近改进可能让Ext3允许大目录，但在一个文件系统里存储大量文件不是个好主意</li>
+<li>每秒大量的请求，因为Web页面可能在页面上显示60个缩略图</li>
+<li>在这种高负载下Apache表现的非常糟糕</li>
+<li>在Apache前端使用squid，这种方式工作了一段时间，但是由于负载继续增加而以失败告终。它让每秒300个请求变为20个</li>
+<li>尝试使用lighttpd但是由于使用单线程它陷于困境。遇到多进程的问题，因为它们各自保持自己单独的缓存</li>
+<li>如此多的图片以致一台新机器只能接管24小时</li>
+<li>重启机器需要6-10小时来缓存</li>
+</ul>
+</li>
+<li>
+<p>为了解决所有这些问题YouTube开始使用Google的BigTable，一个分布式数据存储：</p>
+<ul>
+<li>避免小文件问题，因为它将文件收集到一起</li>
+<li>快，错误容忍</li>
+<li>更低的延迟，因为它使用分布式多级缓存，该缓存与多个不同collocation站点工作</li>
+<li>更多信息参考<a href="http://highscalability.com/google-architecture">Google Architecture</a>，<a href="http://highscalability.com/googletalk-architecture">GoogleTalk Architecture</a>和<a href="http://highscalability.com/tags/bigtable">BigTable</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>数据库</strong></p>
+<ul>
+<li>
+<p>早期</p>
+<ul>
+<li>使用MySQL来存储元数据，如用户，tags和描述</li>
+<li>使用一整个10硬盘的RAID 10来存储数据</li>
+<li>依赖于信用卡所以YouTube租用硬件</li>
+<li>YouTube经过一个常见的革命：单服务器，然后单master和多read slaves，然后数据库分区，然后sharding方式</li>
+<li>痛苦与备份延迟。master数据库是多线程的并且运行在一个大机器上所以它可以处理许多工作，slaves是单线程的并且通常运行在小一些的服务器上并且备份是异步的，所以slaves会远远落后于master</li>
+<li>更新引起缓存失效，硬盘的慢I/O导致慢备份</li>
+<li>使用备份架构需要花费大量的money来获得增加的写性能</li>
+<li>YouTube的一个解决方案是通过把数据分成两个集群来将传输分出优先次序：一个视频查看池和一个一般的集群</li>
+</ul>
+</li>
+<li>
+<p>后期</p>
+<ul>
+<li>数据库分区</li>
+<li>分成shards，不同的用户指定到不同的shards</li>
+<li>扩散读写 -更好的缓存位置意味着更少的IO</li>
+<li>导致硬件减少30%</li>
+<li>备份延迟降低到0</li>
+<li>现在可以任意提升数据库的伸缩性</li>
+</ul>
+</li>
+</ul>
+<p><strong>数据中心策略</strong></p>
+<ul>
+<li>
+<p>依赖于信用卡，所以最初只能使用受管主机提供商</p>
+</li>
+<li>
+<p>受管主机提供商不能提供伸缩性，不能控制硬件或使用良好的网络协议</p>
+</li>
+<li>
+<p>YouTube改为使用colocation arrangement。现在YouTube可以自定义所有东西并且协定自己的契约</p>
+</li>
+<li>
+<p>使用5到6个数据中心加CDN</p>
+</li>
+<li>
+<p>视频来自任意的数据中心，不是最近的匹配或其他什么。如果一个视频足够流行则移到CDN</p>
+</li>
+<li>
+<p>依赖于视频带宽而不是真正的延迟。可以来自任何colo</p>
+</li>
+<li>
+<p>图片延迟很严重，特别是当一个页面有60张图片时</p>
+</li>
+<li>
+<p>使用BigTable将图片备份到不同的数据中心，代码查看谁是最近的</p>
+</li>
+</ul>
+<p><strong>学到的东西</strong></p>
+<ul>
+<li>
+<p>Stall for time。创造性和风险性的技巧让你在短期内解决问题而同时你会发现长期的解决方案</p>
+</li>
+<li>
+<p>Proioritize。找出你的服务中核心的东西并对你的资源分出优先级别</p>
+</li>
+<li>
+<p>Pick your battles。别怕将你的核心服务分出去。YouTube使用CDN来分布它们最流行的内容。创建自己的网络将花费太多时间和太多money</p>
+</li>
+<li>
+<p>Keep it simple！简单允许你更快的重新架构来回应问题</p>
+</li>
+<li>
+<p>Shard。Sharding帮助隔离存储，CPU，内存和IO，不仅仅是获得更多的写性能</p>
+</li>
+<li>
+<p>Constant iteration on bottlenecks：</p>
+<ul>
+<li>软件：DB，缓存</li>
+<li>OS：硬盘I/O</li>
+<li>硬件：内存，RAID</li>
+</ul>
+</li>
+<li>
+<p>You succeed as a team。拥有一个跨越条律的了解整个系统并知道系统内部是什么样的团队，如安装打印机，安装机器，安装网络等等的人。With a good team all things are possible。</p>
+</li>
+</ul>
+<p>原文地址：<a href="http://hideto.javaeye.com/blog/129726">http://hideto.javaeye.com/blog/129726</a></p>
+
+
+  </div>
+
+  
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://babyno.top/3shi/tags/youtube/">youtube</a></li>
+      <li><a href="https://babyno.top/3shi/tags/architecture/">architecture</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://babyno.top/3shi/posts/2011/03/flickr-architecture-analysis/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Flickr网站架构分析</span>
+  </a>
+  <a class="next" href="https://babyno.top/3shi/posts/2011/03/recalling-myspace-architecture-rough-road/">
+    <span class="title">Next »</span>
+    <br>
+    <span>回顾MySpace架构的坎坷之路</span>
+  </a>
+</nav>
+
+  </footer><link
+rel="stylesheet"
+href="/assets/@waline/client/dist/waline.css"
+/>
+<div id="waline"></div>
+<script type="module">
+  import { init } from '/assets/@waline/client/dist/waline.mjs';
+
+  init({
+    el: '#waline',
+    serverURL: 'https://comments.babyno.top/',
+    search: false
+  });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://babyno.top/3shi/">3shi天下</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?3538691f85f2d2e74e734e6ad2c07251";
+    var s = document.getElementsByTagName("script");
+    var lastScript = s[s.length - 1];
+    if (lastScript.nextSibling) {
+      lastScript.parentNode.insertBefore(hm, lastScript.nextSibling);
+    } else {
+      lastScript.parentNode.appendChild(hm);
+    }
+  })();
+</script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GS1HVS967Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GS1HVS967Y');
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

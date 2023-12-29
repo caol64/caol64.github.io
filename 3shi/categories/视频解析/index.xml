@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>视频解析 on 3shi天下</title>
+    <link>https://babyno.top/3shi/categories/%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90/</link>
+    <description>Recent content in 视频解析 on 3shi天下</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 06 Apr 2011 17:04:55 +0000</lastBuildDate><atom:link href="https://babyno.top/3shi/categories/%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>酷6视频真实地址解析</title>
+      <link>https://babyno.top/3shi/posts/2011/04/analyze-ku6-video-address/</link>
+      <pubDate>Wed, 06 Apr 2011 17:04:55 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/04/analyze-ku6-video-address/</guid>
+      <description>前面说了优酷，土豆，乐视的视频解析，今天来说说酷6的。 酷6的标准视频播放地址是： http://v.ku6.com/show/MTLTMI-01HSyBRh7.html 把红色部分复制出来，拼装成 http://v.ku6.com/fetchVideo4Player/MTLTMI-01HSyBRh7.html 访问该地址，又返回了一个jso</description>
+    </item>
+    
+    <item>
+      <title>乐视视频真实地址解析</title>
+      <link>https://babyno.top/3shi/posts/2011/04/analyze-letv-video-address/</link>
+      <pubDate>Sat, 02 Apr 2011 13:01:30 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/04/analyze-letv-video-address/</guid>
+      <description>乐视网有付费视频和免费视频，本文所讨论的是免费视频的地址解析。相对于优酷，土豆，乐视对视频地址的限制很少，仅仅限制了国外ip的访问。 乐视的标</description>
+    </item>
+    
+    <item>
+      <title>土豆视频真实地址解析</title>
+      <link>https://babyno.top/3shi/posts/2011/03/analyze-tudou-video-address/</link>
+      <pubDate>Thu, 24 Mar 2011 11:12:39 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/03/analyze-tudou-video-address/</guid>
+      <description>土豆的视频下载有以下几个特点： 地址动态生成，每次请求返回的地址都不一样。 长视频会被分割成多段短视频。 对视频下载有一些限制，下载地址只对与请求</description>
+    </item>
+    
+    <item>
+      <title>优酷视频真实地址解析</title>
+      <link>https://babyno.top/3shi/posts/2011/03/analyze-youku-video-address/</link>
+      <pubDate>Wed, 23 Mar 2011 17:11:15 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/03/analyze-youku-video-address/</guid>
+      <description>优酷的视频下载有以下几个特点： 地址动态生成，每次请求返回的地址都不一样。 有效时间短，得到的下载地址大约只有1小时的有效时间。 视频地址经过加密</description>
+    </item>
+    
+    <item>
+      <title>最简单下载土豆优酷等网站视频的方法</title>
+      <link>https://babyno.top/3shi/posts/2011/03/the-easiest-way-to-download-from-tudou-youku/</link>
+      <pubDate>Tue, 01 Mar 2011 20:58:36 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/03/the-easiest-way-to-download-from-tudou-youku/</guid>
+      <description>今天给大家推荐一个在线分析视频网站下载地址的网站——flvcd，号称支持81个视频网站。 打开链接：http://www.flvcd.com/</description>
+    </item>
+    
+  </channel>
+</rss>

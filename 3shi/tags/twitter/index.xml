@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>twitter on 3shi天下</title>
+    <link>https://babyno.top/3shi/tags/twitter/</link>
+    <description>Recent content in twitter on 3shi天下</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 10 Mar 2011 22:53:28 +0000</lastBuildDate><atom:link href="https://babyno.top/3shi/tags/twitter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Twitter 的架构扩展-100倍性能提升</title>
+      <link>https://babyno.top/3shi/posts/2011/03/scaling-twitter-making-twitter-10000-percent-faster/</link>
+      <pubDate>Thu, 10 Mar 2011 22:53:28 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/03/scaling-twitter-making-twitter-10000-percent-faster/</guid>
+      <description>Twitter 是我最近一段时间用的最多的网络服务之一.还记得刚开始有段时间发消息速度那叫一个慢. 难得的是 Twitter 的开发者在用户激增的情况下性能提升的不错, 据说</description>
+    </item>
+    
+    <item>
+      <title>Twitter架构学习</title>
+      <link>https://babyno.top/3shi/posts/2011/03/twitter-architecture-study/</link>
+      <pubDate>Thu, 10 Mar 2011 21:59:37 +0000</pubDate>
+      
+      <guid>https://babyno.top/3shi/posts/2011/03/twitter-architecture-study/</guid>
+      <description>Twitter是目前为止最大的Ruby on Rails应用，几个月间页面点击由0增长到几百万，现在的Twitter比今年月快了10000%。 平台</description>
+    </item>
+    
+  </channel>
+</rss>
