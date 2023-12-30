@@ -96,8 +96,8 @@
   "keywords": [
     "aws"
   ],
-  "articleBody": "AWS（Amazon Web\nServices亚马逊网络服务），若以2006年3月13日Amazon发布S3服务开始计算，AWS已经有5年半了。经过这么多年的工程与应用，现在AWS的基础设施功能已经相当丰富，能满足构建超大互联网应用的大多数需求，提供的开发工具、文档、社区和支持也还不错。AWS的服务简述如下：\n一、基础设施服务 AWS共提供14类28项服务，大致可分为计算、存储、应用架构、特定应用、管理这五大类： 1、计算类服务\nEC2：虚拟机实例，有标准型、大内存、高运算能力、带10G网络的HPC、GPU等多种类型、Win/Linux OS、主流WEB、应用服务器、数据库。可自动按需伸缩。本机没有持久化的存储\nElastic MapReduce：MapReduce型分析，基于Hadoop，支持Hive/Pig。能处理EC2和S3中的数据\n2、存储类服务\nS3：海量文件存储。分高可靠和低可靠两类。\nSimpleDB：高可伸缩的简单结构化数据存储，支持极大数据量。强一致和最终一致可选。条件更新\nRDS：打包好的MySQL服务，做好备份和软件维护\nEBS：可低EC2实例使用的块设备\nElastiCache：Memcached缓存服务。分布式自行管理。\nImport/Export：在AWS和存储设备（如盘阵）间导入导出数据\nSQS：高可靠的消息队列服务，消息可保存14天。\n3、应用架构类服务\nCloud Front：CDN服务，支持静态文件和流媒体。全球20个点\nSNS：基于topic的消息订阅与推送服务，支持HTTP/EMail\nSES：发邮件服务\nElastic Load Balancing：将请求负载均衡到EC2实例\nVPC：虚拟私有云。网络/子网/IP/路由表等可配置\nRoute 53：DNS服务\n4、特定应用类服务\nFPS/DevPay：计费服务（不是AWS计费，是指应用借助于这个来向用户计费）\nGovCloud：面向政府应用，提供更好的安全性\n5、管理类服务\nCloudWatch：功能丰富的性能监控服务 二、开发者服务 AWS面向开发者提供的工具包、SDK、文档、社区和技术支持等服务也是比较多的，相对于Google App\nEngine和微软Azure来说感觉要丰富不少。主要有：\nJava、PHP、Python、Ruby、Android/iOS、Windows .Net共7大平台功能丰富的SDK\nEclipse和Visual Studio插件，包含应用模板、应用部署与调试等功能\n比较齐备的开发文档、Tutorial、教学视频，丰富的Sample Code\n比较活跃的开发者论坛（每天100帖左右，比GAE的论坛要活跃一些）\n按月付费的一对一技术支持服务\n三、数据中心分布 目前AWS在全球共有6个Region，美国有3个，还有3个分别在爱尔兰、新加坡和东京。每个Region可能有不只一个\nAvailability Zone。但并不是每个Region都支持所有服务，像S3这样的老又畅销的服务似乎所有Region都支持，但\nSimpleDB就不是每个Region都支持。CloudFront CDN在全球有20个点，其中最近新增的一个是在拉美。 四、市场及应用情况\n2010年营收据估计约5亿美元（不是官方数据，因为规模还是相对太小上不了财报，只是估计），据分析师预计2012年营收将达10亿美元。第二季度末S3管理的文件数达到4490亿。AWS客户多数是互联网应用。著名的应用案例有：\nZynga：底层完全由AWS支持\nDropbox：用S3存文件数据\nFoursquare：用S3和Elastic MapReduce作日志分析\n其它： NASA(美国航空航天局)、美国国务院、西门子、辉瑞、纳斯达克股票交易所\n看起来经过5年的慢慢培育，AWS的市场逐步放量了。其中主要的应该是S3和EC2的用户，像Dropbox这样的大用户可能就几百亿个文件。\n",
-  "wordCount" : "1545",
+  "articleBody": "AWS（Amazon Web Services亚马逊网络服务），若以2006年3月13日Amazon发布S3服务开始计算，AWS已经有5年半了。经过这么多年的工程与应用，现在AWS的基础设施功能已经相当丰富，能满足构建超大互联网应用的大多数需求，提供的开发工具、文档、社区和支持也还不错。AWS的服务简述如下：\n一、基础设施服务\nAWS共提供14类28项服务，大致可分为计算、存储、应用架构、特定应用、管理这五大类：\n1、计算类服务\nEC2：虚拟机实例，有标准型、大内存、高运算能力、带10G网络的HPC、GPU等多种类型、Win/Linux OS、主流WEB、应用服务器、数据库。可自动按需伸缩。本机没有持久化的存储\nElastic MapReduce：MapReduce型分析，基于Hadoop，支持Hive/Pig。能处理EC2和S3中的数据\n2、存储类服务\nS3：海量文件存储。分高可靠和低可靠两类。\nSimpleDB：高可伸缩的简单结构化数据存储，支持极大数据量。强一致和最终一致可选。条件更新\nRDS：打包好的MySQL服务，做好备份和软件维护\nEBS：可低EC2实例使用的块设备\nElastiCache：Memcached缓存服务。分布式自行管理。\nImport/Export：在AWS和存储设备（如盘阵）间导入导出数据\nSQS：高可靠的消息队列服务，消息可保存14天。\n3、应用架构类服务\nCloud Front：CDN服务，支持静态文件和流媒体。全球20个点\nSNS：基于topic的消息订阅与推送服务，支持HTTP/EMail\nSES：发邮件服务\nElastic Load Balancing：将请求负载均衡到EC2实例\nVPC：虚拟私有云。网络/子网/IP/路由表等可配置\nRoute 53：DNS服务\n4、特定应用类服务\nFPS/DevPay：计费服务（不是AWS计费，是指应用借助于这个来向用户计费）\nGovCloud：面向政府应用，提供更好的安全性\n5、管理类服务\nCloudWatch：功能丰富的性能监控服务 二、开发者服务\nAWS面向开发者提供的工具包、SDK、文档、社区和技术支持等服务也是比较多的，相对于Google App Engine和微软Azure来说感觉要丰富不少。主要有：\nJava、PHP、Python、Ruby、Android/iOS、Windows .Net共7大平台功能丰富的SDK\nEclipse和Visual Studio插件，包含应用模板、应用部署与调试等功能\n比较齐备的开发文档、Tutorial、教学视频，丰富的Sample Code\n比较活跃的开发者论坛（每天100帖左右，比GAE的论坛要活跃一些）\n按月付费的一对一技术支持服务\n三、数据中心分布\n目前AWS在全球共有6个Region，美国有3个，还有3个分别在爱尔兰、新加坡和东京。每个Region可能有不只一个Availability Zone。但并不是每个Region都支持所有服务，像S3这样的老又畅销的服务似乎所有Region都支持，但SimpleDB就不是每个Region都支持。CloudFront CDN在全球有20个点，其中最近新增的一个是在拉美。\n四、市场及应用情况\n2010年营收据估计约5亿美元（不是官方数据，因为规模还是相对太小上不了财报，只是估计），据分析师预计2012年营收将达10亿美元。第二季度末S3管理的文件数达到4490亿。AWS客户多数是互联网应用。著名的应用案例有：\nZynga：底层完全由AWS支持\nDropbox：用S3存文件数据\nFoursquare：用S3和Elastic MapReduce作日志分析\n其它： NASA(美国航空航天局)、美国国务院、西门子、辉瑞、纳斯达克股票交易所\n看起来经过5年的慢慢培育，AWS的市场逐步放量了。其中主要的应该是S3和EC2的用户，像Dropbox这样的大用户可能就几百亿个文件。\n",
+  "wordCount" : "1556",
   "inLanguage": "en",
   "datePublished": "2011-12-03T21:51:14Z",
   "dateModified": "2011-12-03T21:51:14Z",
@@ -207,9 +207,10 @@
 
 </div>
   </header> 
-  <div class="post-content"><p>AWS（Amazon Web</p>
-<p>Services亚马逊网络服务），若以2006年3月13日Amazon发布S3服务开始计算，AWS已经有5年半了。经过这么多年的工程与应用，现在AWS的基础设施功能已经相当丰富，能满足构建超大互联网应用的大多数需求，提供的开发工具、文档、社区和支持也还不错。AWS的服务简述如下：</p>
-<p><strong>一、基础设施服务</strong> AWS共提供14类28项服务，大致可分为计算、存储、应用架构、特定应用、管理这五大类： 1、计算类服务</p>
+  <div class="post-content"><p>AWS（Amazon Web Services亚马逊网络服务），若以2006年3月13日Amazon发布S3服务开始计算，AWS已经有5年半了。经过这么多年的工程与应用，现在AWS的基础设施功能已经相当丰富，能满足构建超大互联网应用的大多数需求，提供的开发工具、文档、社区和支持也还不错。AWS的服务简述如下：</p>
+<p><strong>一、基础设施服务</strong></p>
+<p>AWS共提供14类28项服务，大致可分为计算、存储、应用架构、特定应用、管理这五大类：</p>
+<p>1、计算类服务</p>
 <ul>
 <li>
 <p>EC2：虚拟机实例，有标准型、大内存、高运算能力、带10G网络的HPC、GPU等多种类型、Win/Linux OS、主流WEB、应用服务器、数据库。可自动按需伸缩。本机没有持久化的存储</p>
@@ -276,8 +277,8 @@
 <ul>
 <li>CloudWatch：功能丰富的性能监控服务</li>
 </ul>
-<p><strong>二、开发者服务</strong> AWS面向开发者提供的工具包、SDK、文档、社区和技术支持等服务也是比较多的，相对于Google App</p>
-<p>Engine和微软Azure来说感觉要丰富不少。主要有：</p>
+<p><strong>二、开发者服务</strong></p>
+<p>AWS面向开发者提供的工具包、SDK、文档、社区和技术支持等服务也是比较多的，相对于Google App Engine和微软Azure来说感觉要丰富不少。主要有：</p>
 <ul>
 <li>
 <p>Java、PHP、Python、Ruby、Android/iOS、Windows .Net共7大平台功能丰富的SDK</p>
@@ -295,9 +296,9 @@
 <p>按月付费的一对一技术支持服务</p>
 </li>
 </ul>
-<p><strong>三、数据中心分布</strong> 目前AWS在全球共有6个Region，美国有3个，还有3个分别在爱尔兰、新加坡和东京。每个Region可能有不只一个</p>
-<p>Availability Zone。但并不是每个Region都支持所有服务，像S3这样的老又畅销的服务似乎所有Region都支持，但</p>
-<p>SimpleDB就不是每个Region都支持。CloudFront CDN在全球有20个点，其中最近新增的一个是在拉美。 <strong>四、市场及应用情况</strong></p>
+<p><strong>三、数据中心分布</strong></p>
+<p>目前AWS在全球共有6个Region，美国有3个，还有3个分别在爱尔兰、新加坡和东京。每个Region可能有不只一个Availability Zone。但并不是每个Region都支持所有服务，像S3这样的老又畅销的服务似乎所有Region都支持，但SimpleDB就不是每个Region都支持。CloudFront CDN在全球有20个点，其中最近新增的一个是在拉美。</p>
+<p><strong>四、市场及应用情况</strong></p>
 <p>2010年营收据估计约5亿美元（不是官方数据，因为规模还是相对太小上不了财报，只是估计），据分析师预计2012年营收将达10亿美元。第二季度末S3管理的文件数达到4490亿。AWS客户多数是互联网应用。著名的应用案例有：</p>
 <ul>
 <li>

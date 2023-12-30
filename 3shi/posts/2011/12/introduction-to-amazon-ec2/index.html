@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>Amazon EC2简介 | 3shi天下</title>
 <meta name="keywords" content="aws">
-<meta name="description" content="Amazon Elastic Compute Cloud（亚马逊弹性云计算），简称ec2，是由亚马逊公司提供的web服务，是一个让用户可以租用云电脑运行所需应用的系统。EC2借由提">
+<meta name="description" content="Amazon Elastic Compute Cloud（亚马逊弹性云计算），简称ec2，是由亚马逊公司提供的web服务，是一个让用户可以租用云电脑运行所需应用的系统。 EC2借由提">
 <meta name="author" content="3shi">
 <link rel="canonical" href="https://babyno.top/3shi/posts/2011/12/introduction-to-amazon-ec2/">
 <link crossorigin="anonymous" href="/3shi/assets/css/stylesheet.12891501283130addd65d5c9aa3af45b949edff3f949a53c8f890319a805b26b.css" integrity="sha256-EokVASgxMK3dZdXJqjr0W5Se3/P5SaU8j4kDGagFsms=" rel="preload stylesheet" as="style">
@@ -55,7 +55,7 @@
 
     </style>
 </noscript><meta property="og:title" content="Amazon EC2简介" />
-<meta property="og:description" content="Amazon Elastic Compute Cloud（亚马逊弹性云计算），简称ec2，是由亚马逊公司提供的web服务，是一个让用户可以租用云电脑运行所需应用的系统。EC2借由提" />
+<meta property="og:description" content="Amazon Elastic Compute Cloud（亚马逊弹性云计算），简称ec2，是由亚马逊公司提供的web服务，是一个让用户可以租用云电脑运行所需应用的系统。 EC2借由提" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://babyno.top/3shi/posts/2011/12/introduction-to-amazon-ec2/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2011-12-04T16:16:27+00:00" />
@@ -63,7 +63,7 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Amazon EC2简介"/>
-<meta name="twitter:description" content="Amazon Elastic Compute Cloud（亚马逊弹性云计算），简称ec2，是由亚马逊公司提供的web服务，是一个让用户可以租用云电脑运行所需应用的系统。EC2借由提"/>
+<meta name="twitter:description" content="Amazon Elastic Compute Cloud（亚马逊弹性云计算），简称ec2，是由亚马逊公司提供的web服务，是一个让用户可以租用云电脑运行所需应用的系统。 EC2借由提"/>
 
 
 <script type="application/ld+json">
@@ -92,11 +92,11 @@
   "@type": "BlogPosting",
   "headline": "Amazon EC2简介",
   "name": "Amazon EC2简介",
-  "description": "Amazon Elastic Compute Cloud（亚马逊弹性云计算），简称ec2，是由亚马逊公司提供的web服务，是一个让用户可以租用云电脑运行所需应用的系统。EC2借由提",
+  "description": "Amazon Elastic Compute Cloud（亚马逊弹性云计算），简称ec2，是由亚马逊公司提供的web服务，是一个让用户可以租用云电脑运行所需应用的系统。 EC2借由提",
   "keywords": [
     "aws"
   ],
-  "articleBody": "Amazon Elastic Compute\nCloud（亚马逊弹性云计算），简称ec2，是由亚马逊公司提供的web服务，是一个让用户可以租用云电脑运行所需应用的系统。EC2借由提供web服务的方式让用户可以弹性地运行自己的Amazon机器镜像文件，用户将可以在这个虚拟机上运行任何自己想要的软件或应用程序。\n要了解ec2，必须清楚这些名词：\nInstance ：实例。一个实例就是一台虚拟服务器，你可以自由在上面安装操作系统，软件，进行重启操作等。一个帐号可以创建多个实例。\nRegion ：区域。实际上就是实例所在的机房，在每一个Region，都有一个标准的数据中心，提供EC2服务，不同区域运行的Instance价格不同，一般来讲国内连西海岸加州机房较快。另外，AWS的所有服务之间的数据传输都是要收流量费的，但是如果两个服务是处于同一个Region的话，就免费。例如：Northern California的s3和Northern California的ec2之间传输文件产生的流量免费。\nAMI（Amazon Machine Image） ：可以看成是不用安装的操作系统，并且附带了很多以安装的软件，在创建Instance的时候必须选择一个AMI。它们保存在Amazon S3中，亚马逊提供了上千种AMI，包括了各种主流的操作系统。\nEBS（Elastic Block Store） Volumes ：可以看成是硬盘，EC2默认不带存储，虽然可以通过存储在S3的AMI启动，但当你关闭或重启Instance后，所有数据都会消失。而通过存储在EBS的AMI启动则不会有这个问题。所有数据变更保存到EBS中。添加和卸载EBS都是弹性的，您可以随时将EBS挂载或卸载到某个Instance，即时生效。\nEBS（Elastic Block Store） Snapshots ：EBS Volumes的快照服务。每天增量的对Volumes进行快照备份，也可以使用Snapshots方便的克隆出另一个一模一样的EBS用以挂载到另一个Instance上。\nElastic IP ：EC2的Instance是变化的，每次重启分配给你的ip都会改变。如果你需要固定的IP，可以在这里设置，为一个Instance分配一个固定ip免费，不过需要注意，如果你分配了固定IP但是没有挂载到任何Instance上，你会被Amazon惩罚性收费。\nElastic Load Balancing ：EC2提供的类似负载均衡服务。\nSecurity Groups ：EC2提供的类似防火墙服务。\nElastic这个词是弹性的意思，用户可以随时创建、运行、终止自己的虚拟服务器，使用多少时间算多少钱，也因此这个系统是\"弹性\"使用的。从各方面来看，EC2应该算是Amazon的王牌产品。EC2功能全面，它可以在数分钟内launch一个实例，可以（理论上）自动提升/降低机器性能配置，可以绑定EBS成为具有高可用性特质的计算核心，可以摇身一变成为ELB成为一个load\nbalancer。这些功能非常实用，特别适合针对国外市场且快速增长的小网站，可以在前期完全不受机器约束。\nEC2的收费还是要仔细研究的，一般来讲，收费分为3个部分：\nInstance运行的费用\n实际流量费用\nEBS存储费用\nInstance运行的费用是按照小时来计算的，把Instance关掉，就停止计费。影响Instance的费用的有两个因素，一个是所在的Region，另一个是Instance类型，我们以运行在Northern\nCalifornia的Micro Instances为例：\n费用为linux每小时0.025美元，windows每小时0.035美元。一个月linux系统的话约18.6美元。\n流量产生的费用和Instance无关，费用如下：所有的流入流量免费，也就是说上传到EC2和用EC2下载是免费的。流出流量的话每个月有1G的免费额度，接下来的流量就要按使用收费了，大致上是每个月如果流量少于10T的话，每G\n0.120美元，假设你这个月流量是10G，产生的费用约为1.08美元。\n另外还有EBS的使用费用，这个也是按使用收费的，每个月每GB0.11美元，每100万次I/O请求0.11美元。这里感觉Amazon还要按照I/O请求来收费有点不厚道，可以用IOSTAT之类的工具查看I/O请求数。\n当然，如果你使用了其他的服务，比如S3，Load Balancers，Cloud Watch之类的，还要另外收费。\n这里的收费仅供参考，关于收费可以参考这里：http://aws.amazon.com/ec2/#pricing。\n",
+  "articleBody": "Amazon Elastic Compute Cloud（亚马逊弹性云计算），简称ec2，是由亚马逊公司提供的web服务，是一个让用户可以租用云电脑运行所需应用的系统。\nEC2借由提供web服务的方式让用户可以弹性地运行自己的Amazon机器镜像文件，用户将可以在这个虚拟机上运行任何自己想要的软件或应用程序。\n要了解ec2，必须清楚这些名词：\nInstance ：实例。一个实例就是一台虚拟服务器，你可以自由在上面安装操作系统，软件，进行重启操作等。一个帐号可以创建多个实例。\nRegion ：区域。实际上就是实例所在的机房，在每一个Region，都有一个标准的数据中心，提供EC2服务，不同区域运行的Instance价格不同，一般来讲国内连西海岸加州机房较快。另外，AWS的所有服务之间的数据传输都是要收流量费的，但是如果两个服务是处于同一个Region的话，就免费。例如：Northern California的s3和Northern California的ec2之间传输文件产生的流量免费。\nAMI（Amazon Machine Image） ：可以看成是不用安装的操作系统，并且附带了很多以安装的软件，在创建Instance的时候必须选择一个AMI。它们保存在Amazon S3中，亚马逊提供了上千种AMI，包括了各种主流的操作系统。\nEBS（Elastic Block Store） Volumes ：可以看成是硬盘，EC2默认不带存储，虽然可以通过存储在S3的AMI启动，但当你关闭或重启Instance后，所有数据都会消失。而通过存储在EBS的AMI启动则不会有这个问题。所有数据变更保存到EBS中。添加和卸载EBS都是弹性的，您可以随时将EBS挂载或卸载到某个Instance，即时生效。\nEBS（Elastic Block Store） Snapshots ：EBS Volumes的快照服务。每天增量的对Volumes进行快照备份，也可以使用Snapshots方便的克隆出另一个一模一样的EBS用以挂载到另一个Instance上。\nElastic IP ：EC2的Instance是变化的，每次重启分配给你的ip都会改变。如果你需要固定的IP，可以在这里设置，为一个Instance分配一个固定ip免费，不过需要注意，如果你分配了固定IP但是没有挂载到任何Instance上，你会被Amazon惩罚性收费。\nElastic Load Balancing ：EC2提供的类似负载均衡服务。\nSecurity Groups ：EC2提供的类似防火墙服务。\nElastic这个词是弹性的意思，用户可以随时创建、运行、终止自己的虚拟服务器，使用多少时间算多少钱，也因此这个系统是\"弹性\"使用的。从各方面来看，EC2应该算是Amazon的王牌产品。EC2功能全面，它可以在数分钟内launch一个实例，可以（理论上）自动提升/降低机器性能配置，可以绑定EBS成为具有高可用性特质的计算核心，可以摇身一变成为ELB成为一个load balancer。这些功能非常实用，特别适合针对国外市场且快速增长的小网站，可以在前期完全不受机器约束。\nEC2的收费还是要仔细研究的，一般来讲，收费分为3个部分：\nInstance运行的费用\n实际流量费用\nEBS存储费用\nInstance运行的费用是按照小时来计算的，把Instance关掉，就停止计费。影响Instance的费用的有两个因素，一个是所在的Region，另一个是Instance类型，我们以运行在Northern California的Micro Instances为例：\n费用为linux每小时0.025美元，windows每小时0.035美元。一个月linux系统的话约18.6美元。\n流量产生的费用和Instance无关，费用如下：所有的流入流量免费，也就是说上传到EC2和用EC2下载是免费的。流出流量的话每个月有1G的免费额度，接下来的流量就要按使用收费了，大致上是每个月如果流量少于10T的话，每G 0.120美元，假设你这个月流量是10G，产生的费用约为1.08美元。\n另外还有EBS的使用费用，这个也是按使用收费的，每个月每GB0.11美元，每100万次I/O请求0.11美元。这里感觉Amazon还要按照I/O请求来收费有点不厚道，可以用IOSTAT之类的工具查看I/O请求数。\n当然，如果你使用了其他的服务，比如S3，Load Balancers，Cloud Watch之类的，还要另外收费。\n这里的收费仅供参考，关于收费可以参考这里：http://aws.amazon.com/ec2/#pricing。\n",
   "wordCount" : "1806",
   "inLanguage": "en",
   "datePublished": "2011-12-04T16:16:27Z",
@@ -207,8 +207,8 @@
 
 </div>
   </header> 
-  <div class="post-content"><p>Amazon Elastic Compute</p>
-<p>Cloud（亚马逊弹性云计算），简称ec2，是由亚马逊公司提供的web服务，是一个让用户可以租用云电脑运行所需应用的系统。EC2借由提供web服务的方式让用户可以弹性地运行自己的Amazon机器镜像文件，用户将可以在这个虚拟机上运行任何自己想要的软件或应用程序。</p>
+  <div class="post-content"><p>Amazon Elastic Compute Cloud（亚马逊弹性云计算），简称ec2，是由亚马逊公司提供的web服务，是一个让用户可以租用云电脑运行所需应用的系统。</p>
+<p>EC2借由提供web服务的方式让用户可以弹性地运行自己的Amazon机器镜像文件，用户将可以在这个虚拟机上运行任何自己想要的软件或应用程序。</p>
 <p>要了解ec2，必须清楚这些名词：</p>
 <ul>
 <li>
@@ -236,8 +236,7 @@
 <p><strong>Security Groups</strong> ：EC2提供的类似防火墙服务。</p>
 </li>
 </ul>
-<p>Elastic这个词是弹性的意思，用户可以随时创建、运行、终止自己的虚拟服务器，使用多少时间算多少钱，也因此这个系统是&quot;弹性&quot;使用的。从各方面来看，EC2应该算是Amazon的王牌产品。EC2功能全面，它可以在数分钟内launch一个实例，可以（理论上）自动提升/降低机器性能配置，可以绑定EBS成为具有高可用性特质的计算核心，可以摇身一变成为ELB成为一个load</p>
-<p>balancer。这些功能非常实用，特别适合针对国外市场且快速增长的小网站，可以在前期完全不受机器约束。</p>
+<p>Elastic这个词是弹性的意思，用户可以随时创建、运行、终止自己的虚拟服务器，使用多少时间算多少钱，也因此这个系统是&quot;弹性&quot;使用的。从各方面来看，EC2应该算是Amazon的王牌产品。EC2功能全面，它可以在数分钟内launch一个实例，可以（理论上）自动提升/降低机器性能配置，可以绑定EBS成为具有高可用性特质的计算核心，可以摇身一变成为ELB成为一个load balancer。这些功能非常实用，特别适合针对国外市场且快速增长的小网站，可以在前期完全不受机器约束。</p>
 <p>EC2的收费还是要仔细研究的，一般来讲，收费分为3个部分：</p>
 <ul>
 <li>
@@ -250,11 +249,9 @@
 <p>EBS存储费用</p>
 </li>
 </ul>
-<p>Instance运行的费用是按照小时来计算的，把Instance关掉，就停止计费。影响Instance的费用的有两个因素，一个是所在的Region，另一个是Instance类型，我们以运行在Northern</p>
-<p>California的Micro Instances为例：</p>
+<p>Instance运行的费用是按照小时来计算的，把Instance关掉，就停止计费。影响Instance的费用的有两个因素，一个是所在的Region，另一个是Instance类型，我们以运行在Northern California的Micro Instances为例：</p>
 <p>费用为linux每小时0.025美元，windows每小时0.035美元。一个月linux系统的话约18.6美元。</p>
-<p>流量产生的费用和Instance无关，费用如下：所有的流入流量免费，也就是说上传到EC2和用EC2下载是免费的。流出流量的话每个月有1G的免费额度，接下来的流量就要按使用收费了，大致上是每个月如果流量少于10T的话，每G</p>
-<p>0.120美元，假设你这个月流量是10G，产生的费用约为1.08美元。</p>
+<p>流量产生的费用和Instance无关，费用如下：所有的流入流量免费，也就是说上传到EC2和用EC2下载是免费的。流出流量的话每个月有1G的免费额度，接下来的流量就要按使用收费了，大致上是每个月如果流量少于10T的话，每G 0.120美元，假设你这个月流量是10G，产生的费用约为1.08美元。</p>
 <p>另外还有EBS的使用费用，这个也是按使用收费的，每个月每GB0.11美元，每100万次I/O请求0.11美元。这里感觉Amazon还要按照I/O请求来收费有点不厚道，可以用IOSTAT之类的工具查看I/O请求数。</p>
 <p>当然，如果你使用了其他的服务，比如S3，Load Balancers，Cloud Watch之类的，还要另外收费。</p>
 <p>这里的收费仅供参考，关于收费可以参考这里：<a href="http://aws.amazon.com/ec2/#pricing">http://aws.amazon.com/ec2/#pricing</a>。</p>

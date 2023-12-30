@@ -96,8 +96,8 @@
   "keywords": [
     "aws"
   ],
-  "articleBody": "上一篇介绍了EC2服务和它的价格，可以看出EC2的价格不菲，作为个人建站还是有点不太适合。好在Amazon在这方面还是比较大气，只要你注册了EC2服务，就立即获赠一年的AWS相关服务的免费使用（记时从你注册即开始，即时你不创建EC2\nInstance）。\n网上有很多注册EC2和创建Instance的教程，我这里就不再赘述了，这里跟大家分享一下免费的午餐到底包含哪些内容，好让大家知道AWS里那么多服务，我哪些可以免费使用，哪些使用了就会被收费。\n官方是这样说的：\nAWS Free Usage Tier (Per Month):\n750 hours of Amazon EC2 Linux Micro Instance usage (613 MB of memory and 32-bit and 64-bit platform support) –\nenough hours to run continuously each month*\n750 hours of an [Elastic Load Balancer](http://aws.amazon.com/elasticloadbalancing/) plus 15 GB data\nprocessing*\n10 GB of [Amazon Elastic Block Storage](http://aws.amazon.com/ebs “EBS”), plus 1 million I/Os and 1 GB of snapshot storage*\n5 GB of Amazon S3 standard storage, 20,000 Get Requests, and 2,000 Put Requests*\n15 GB of bandwidth out aggregated across all AWS services* 25 Amazon SimpleDB Machine Hours and 1 GB of Storage**\n100,000 Requests of [Amazon Simple Queue Service](http://aws.amazon.com/sqs “SQS”)**\n100,000 Requests, 100,000 HTTP notifications and 1,000 email notifications for [Amazon Simple Notification\nService](http://aws.amazon.com/sns “SNS”)**\n10 Amazon Cloudwatch metrics, 10 alarms, and 1,000,000 API requests**\nIn addition to these services, the [AWS Management\nConsole](http://aws.amazon.com/console) is available at no charge to help you\nbuild and manage your application on AWS.\n大致意思是这样的\n每月：\n750小时(也就是比24*31还多一点)的EC2 Linux Micro Instance (613MB内存, 32位/64位系统) 750小时的Elastic Load Balancer, 15GB数据处理 10GB Elastic Block Storage存储, 100万次I/O, 1GB snapshot存储, 1万次snapshot Get请求, 1千次snapshot Put请求\n5GB S3存储空间, 2万次Get请求, 2千次Put请求 15GB互联网数据传输，包括所有的AWS服务（EC2，S3等），注意这里只包括流出流量，流入流量免费 25主机小时的SimpleDB和1GB存储 10万次的Simple Queue Service请求 10万次的Simple Notification Service请求, 10万次HTTP通知, 以及1千次电子邮件通知 10个Cloudwatch指标，10次警报，和100万API请求 注意一下存储空间和流量，如果超了就要被收费了。 以下来自网络：\n免费服务在报告中显示为 “ under monthly free tier “，没有的话表明您无法享受free\ntier服务，需要付费。我的Micro instance已经免费稳定运行128小时。 图片中各项的意思是：\n当前ec2 micro instance运行的时间总计；\n费用，free tier的话，没有任何费用；\nEC2 EBS硬盘使用情况；\nEBS IO数目，free tier限额为100万次/月，足够了；\nEBS snapshot请求数，free tier限额为1万次读/月，图例中用掉2560次，应该是instance第一次启动造成的，常规运行无需任何snapshot请求，如果您经常重建instance，则此项可能会超出使用限额；\n如果您被收费，可能是因为：\n您不是AWS新用户；\n您用一张信用卡绑定了多个AWS账户；\n您用了Windows的instance，EC2 free tier只对 linux AMI免费，有部分linux AMI也会收费；\n您超出了free tier的限制：10GB EBS硬盘， 30GB流量（15GB in，15GB out）等 现在in已经免费了，只有15GB out；\n您分配了固定IP，但未绑定到运行中的instance上，被惩罚收费；\n其它…\n如果您已经被收费又不清楚具体原因，可以停用AWS服务。\n",
-  "wordCount" : "1257",
+  "articleBody": "上一篇介绍了EC2服务和它的价格，可以看出EC2的价格不菲，作为个人建站还是有点不太适合。好在Amazon在这方面还是比较大气，只要你注册了EC2服务，就立即获赠一年的AWS相关服务的免费使用（记时从你注册即开始，即时你不创建EC2 Instance）。\n网上有很多注册EC2和创建Instance的教程，我这里就不再赘述了，这里跟大家分享一下免费的午餐到底包含哪些内容，好让大家知道AWS里那么多服务，我哪些可以免费使用，哪些使用了就会被收费。\n官方是这样说的：\nAWS Free Usage Tier (Per Month):\n750 hours of Amazon EC2 Linux Micro Instance usage (613 MB of memory and 32-bit and 64-bit platform support) – enough hours to run continuously each month* 750 hours of an Elastic Load Balancer plus 15 GB data processing* 10 GB of Amazon Elastic Block Storage, plus 1 million I/Os and 1 GB of snapshot storage* 5 GB of Amazon S3 standard storage, 20,000 Get Requests, and 2,000 Put Requests* 15 GB of bandwidth out aggregated across all AWS services* 25 Amazon SimpleDB Machine Hours and 1 GB of Storage** 100,000 Requests of Amazon Simple Queue Service** 100,000 Requests, 100,000 HTTP notifications and 1,000 email notifications for Amazon Simple Notification Service** 10 Amazon Cloudwatch metrics, 10 alarms, and 1,000,000 API requests** In addition to these services, the AWS Management Console is available at no charge to help you build and manage your application on AWS.\n大致意思是这样的\n每月：\n750小时(也就是比24*31还多一点)的EC2 Linux Micro Instance (613MB内存, 32位/64位系统) 750小时的Elastic Load Balancer, 15GB数据处理 10GB Elastic Block Storage存储, 100万次I/O, 1GB snapshot存储, 1万次snapshot Get请求, 1千次snapshot Put请求 5GB S3存储空间, 2万次Get请求, 2千次Put请求 15GB互联网数据传输，包括所有的AWS服务（EC2，S3等），注意这里只包括流出流量，流入流量免费 25主机小时的SimpleDB和1GB存储 10万次的Simple Queue Service请求 10万次的Simple Notification Service请求, 10万次HTTP通知, 以及1千次电子邮件通知 10个Cloudwatch指标，10次警报，和100万API请求 注意一下存储空间和流量，如果超了就要被收费了。 以下来自网络：\n免费服务在报告中显示为 “ under monthly free tier “，没有的话表明您无法享受free tier服务，需要付费。我的Micro instance已经免费稳定运行128小时。 图片中各项的意思是：\n当前ec2 micro instance运行的时间总计；\n费用，free tier的话，没有任何费用；\nEC2 EBS硬盘使用情况；\nEBS IO数目，free tier限额为100万次/月，足够了；\nEBS snapshot请求数，free tier限额为1万次读/月，图例中用掉2560次，应该是instance第一次启动造成的，常规运行无需任何snapshot请求，如果您经常重建instance，则此项可能会超出使用限额；\n如果您被收费，可能是因为：\n您不是AWS新用户；\n您用一张信用卡绑定了多个AWS账户；\n您用了Windows的instance，EC2 free tier只对 linux AMI免费，有部分linux AMI也会收费；\n您超出了free tier的限制：10GB EBS硬盘， 30GB流量（15GB in，15GB out）等 现在in已经免费了，只有15GB out；\n您分配了固定IP，但未绑定到运行中的instance上，被惩罚收费；\n其它…\n如果您已经被收费又不清楚具体原因，可以停用AWS服务。\n",
+  "wordCount" : "1254",
   "inLanguage": "en",
   "datePublished": "2011-12-04T16:58:45Z",
   "dateModified": "2011-12-04T16:58:45Z",
@@ -207,160 +207,44 @@
 
 </div>
   </header> 
-  <div class="post-content"><p>上一篇介绍了EC2服务和它的价格，可以看出EC2的价格不菲，作为个人建站还是有点不太适合。好在Amazon在这方面还是比较大气，只要你注册了EC2服务，就立即获赠一年的AWS相关服务的免费使用（记时从你注册即开始，即时你不创建EC2</p>
-<p>Instance）。</p>
+  <div class="post-content"><p>上一篇介绍了EC2服务和它的价格，可以看出EC2的价格不菲，作为个人建站还是有点不太适合。好在Amazon在这方面还是比较大气，只要你注册了EC2服务，就立即获赠一年的AWS相关服务的免费使用（记时从你注册即开始，即时你不创建EC2 Instance）。</p>
 <p>网上有很多注册EC2和创建Instance的教程，我这里就不再赘述了，这里跟大家分享一下免费的午餐到底包含哪些内容，好让大家知道AWS里那么多服务，我哪些可以免费使用，哪些使用了就会被收费。</p>
 <p>官方是这样说的：</p>
 <blockquote>
 <p><strong>AWS Free Usage Tier (Per Month):</strong></p>
-</blockquote>
-<blockquote>
-</blockquote>
-<blockquote>
 <ul>
-<li>750 hours of <a href="http://aws.amazon.com/ec2">Amazon EC2</a> Linux Micro</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>Instance usage (613 MB of memory and 32-bit and 64-bit platform support) –</p>
-</blockquote>
-<blockquote>
-<p>enough hours to run continuously each month*</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>750 hours of an [Elastic Load</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>Balancer](<a href="http://aws.amazon.com/elasticloadbalancing/">http://aws.amazon.com/elasticloadbalancing/</a>) plus 15 GB data</p>
-</blockquote>
-<blockquote>
-<p>processing*</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>10 GB of [Amazon Elastic Block Storage](<a href="http://aws.amazon.com/ebs">http://aws.amazon.com/ebs</a></li>
-</ul>
-</blockquote>
-<blockquote>
-<p>&ldquo;EBS&rdquo;), plus 1 million I/Os and 1 GB of snapshot storage*</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>5 GB of <a href="http://aws.amazon.com/s3">Amazon S3</a> standard storage, 20,000</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>Get Requests, and 2,000 Put Requests*</p>
-</blockquote>
-<blockquote>
-<ul>
+<li>750 hours of <a href="http://aws.amazon.com/ec2">Amazon EC2</a> Linux Micro Instance usage (613 MB of memory and 32-bit and 64-bit platform support) – enough hours to run continuously each month*</li>
+<li>750 hours of an <a href="http://aws.amazon.com/elasticloadbalancing/">Elastic Load Balancer</a> plus 15 GB data processing*</li>
+<li>10 GB of <a href="http://aws.amazon.com/ebs" title="EBS">Amazon Elastic Block Storage</a>, plus 1 million I/Os and 1 GB of snapshot storage*</li>
+<li>5 GB of <a href="http://aws.amazon.com/s3">Amazon S3</a> standard storage, 20,000 Get Requests, and 2,000 Put Requests*</li>
 <li>15 GB of bandwidth out aggregated across all AWS services*</li>
+<li>25 <a href="http://aws.amazon.com/simpledb">Amazon SimpleDB</a> Machine Hours and 1 GB of Storage**</li>
+<li>100,000 Requests of <a href="http://aws.amazon.com/sqs" title="SQS">Amazon Simple Queue Service</a>**</li>
+<li>100,000 Requests, 100,000 HTTP notifications and 1,000 email notifications for <a href="http://aws.amazon.com/sns" title="SNS">Amazon Simple Notification Service</a>**</li>
+<li>10 <a href="http://aws.amazon.com/cloudwatch">Amazon Cloudwatch</a> metrics, 10 alarms, and 1,000,000 API requests**</li>
 </ul>
+<p>In addition to these services, the <a href="http://aws.amazon.com/console">AWS Management Console</a> is available at no charge to help you build and manage your application on AWS.</p>
 </blockquote>
-<blockquote>
-<ul>
-<li>25 <a href="http://aws.amazon.com/simpledb">Amazon SimpleDB</a> Machine Hours and 1</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>GB of Storage**</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>100,000 Requests of [Amazon Simple Queue</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>Service](<a href="http://aws.amazon.com/sqs">http://aws.amazon.com/sqs</a> &ldquo;SQS&rdquo;)**</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>100,000 Requests, 100,000 HTTP notifications and 1,000 email</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>notifications for [Amazon Simple Notification</p>
-</blockquote>
-<blockquote>
-<p>Service](<a href="http://aws.amazon.com/sns">http://aws.amazon.com/sns</a> &ldquo;SNS&rdquo;)**</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>10 <a href="http://aws.amazon.com/cloudwatch">Amazon Cloudwatch</a> metrics, 10</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>alarms, and 1,000,000 API requests**</p>
-</blockquote>
-<blockquote>
-</blockquote>
-<p>In addition to these services, the [AWS Management</p>
-<p>Console](<a href="http://aws.amazon.com/console">http://aws.amazon.com/console</a>) is available at no charge to help you</p>
-<p>build and manage your application on AWS.</p>
 <p>大致意思是这样的</p>
 <blockquote>
 <p>每月：</p>
-</blockquote>
-<blockquote>
-</blockquote>
-<blockquote>
 <ul>
 <li>750小时(也就是比24*31还多一点)的EC2 Linux Micro Instance (613MB内存, 32位/64位系统)</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
 <li>750小时的Elastic Load Balancer, 15GB数据处理</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>10GB Elastic Block Storage存储, 100万次I/O, 1GB snapshot存储, 1万次snapshot</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>Get请求, 1千次snapshot Put请求</p>
-</blockquote>
-<blockquote>
-<ul>
+<li>10GB Elastic Block Storage存储, 100万次I/O, 1GB snapshot存储, 1万次snapshot Get请求, 1千次snapshot Put请求</li>
 <li>5GB S3存储空间, 2万次Get请求, 2千次Put请求</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
 <li>15GB互联网数据传输，包括所有的AWS服务（EC2，S3等），注意这里只包括流出流量，流入流量免费</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
 <li>25主机小时的SimpleDB和1GB存储</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
 <li>10万次的Simple Queue Service请求</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
 <li>10万次的Simple Notification Service请求, 10万次HTTP通知, 以及1千次电子邮件通知</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
 <li>10个Cloudwatch指标，10次警报，和100万API请求</li>
 </ul>
-</blockquote>
-<blockquote>
 </blockquote>
 <p>注意一下存储空间和流量，如果超了就要被收费了。 以下来自网络：</p>
 <p><a href="http://farm8.staticflickr.com/7152/6451461197_74881a44d5_z.jpg"><a href="http://farm8.staticflickr.com/7152/6451461197_74881a44d5.jpg"  data-lightbox="image-1" >
 <img loading="lazy" src="http://farm8.staticflickr.com/7152/6451461197_74881a44d5.jpg" alt=""  />
 </a></a></p>
-<p>免费服务在报告中显示为 “ <strong>under monthly free tier</strong> “，没有的话表明您无法享受free</p>
-<p>tier服务，需要付费。我的Micro instance已经免费稳定运行128小时。 图片中各项的意思是：</p>
+<p>免费服务在报告中显示为 “ <strong>under monthly free tier</strong> “，没有的话表明您无法享受free tier服务，需要付费。我的Micro instance已经免费稳定运行128小时。 图片中各项的意思是：</p>
 <ol>
 <li>
 <p>当前ec2 micro instance运行的时间总计；</p>
