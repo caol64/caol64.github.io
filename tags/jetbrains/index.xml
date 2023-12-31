@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>jetbrains on 路边的阿不</title>
+    <link>https://babyno.top/tags/jetbrains/</link>
+    <description>Recent content in jetbrains on 路边的阿不</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 Dec 2023 15:44:56 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/jetbrains/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>申请到了JetBrains开源免费许可证</title>
+      <link>https://babyno.top/posts/2023/12/apply-for-jetbrains-oss-development-license/</link>
+      <pubDate>Sun, 31 Dec 2023 15:44:56 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/12/apply-for-jetbrains-oss-development-license/</guid>
+      <description>背景 记得三个月前我在GitHub上开源了ps2mc-browser项目，一个可以查看和渲染ps2存档3D图标的神奇小工具。间或推送代码，增添</description>
+    </item>
+    
+  </channel>
+</rss>

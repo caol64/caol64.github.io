@@ -6,7 +6,16 @@
     <description>Recent content in 粗茶淡饭 代码为伴 on 路边的阿不</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Dec 2023 12:07:17 +0000</lastBuildDate><atom:link href="https://babyno.top/categories/%E7%B2%97%E8%8C%B6%E6%B7%A1%E9%A5%AD-%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BC%B4/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Dec 2023 15:44:56 +0000</lastBuildDate><atom:link href="https://babyno.top/categories/%E7%B2%97%E8%8C%B6%E6%B7%A1%E9%A5%AD-%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BC%B4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>申请到了JetBrains开源免费许可证</title>
+      <link>https://babyno.top/posts/2023/12/apply-for-jetbrains-oss-development-license/</link>
+      <pubDate>Sun, 31 Dec 2023 15:44:56 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/12/apply-for-jetbrains-oss-development-license/</guid>
+      <description>背景 记得三个月前我在GitHub上开源了ps2mc-browser项目，一个可以查看和渲染ps2存档3D图标的神奇小工具。间或推送代码，增添</description>
+    </item>
+    
     <item>
       <title>ps2mc-browser的着色器代码分析</title>
       <link>https://babyno.top/posts/2023/12/ps2mc-browsers-shader-introduction/</link>
