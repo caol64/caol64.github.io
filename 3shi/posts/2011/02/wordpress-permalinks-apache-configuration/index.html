@@ -96,8 +96,8 @@
   "keywords": [
     "wordpress", "permalinks"
   ],
-  "articleBody": "首先确定apache服务器已经安装并支持mod_rewrite模块。\n登录wordpress后台，“设置”-“固定链接”，然后选择你希望的固定链接形式。此时会在wordpress根目录下生成.htaccess文件（什么是.htaccess文件）。\n可以看一下这个.htaccess文件的内容：\n[cc lang=“apache”]# BEGIN WordPress RewriteEngine On RewriteBase / RewriteCond %{REQUEST_FILENAME} !-f RewriteCond\n%{REQUEST_FILENAME} !-d RewriteRule . /index.php [L] # END WordPress[/cc]\n我们不需要修改这个文件。 打开apache的httpd.conf文件，找到wordpress的Directory节点，加上AllowOverride\nAll，如： [cc lang=“apache”] AllowOverride All Order allow,deny Allow from all\nDirectoryIndex index.php [/cc]\n因为apache默认的AllowOverride为None(禁用.htaccess文件)，所以要修改为All。\n",
-  "wordCount" : "311",
+  "articleBody": "首先确定apache服务器已经安装并支持mod_rewrite模块。\n登录wordpress后台，“设置”-“固定链接”，然后选择你希望的固定链接形式。此时会在wordpress根目录下生成.htaccess文件（什么是.htaccess文件）。\n可以看一下这个.htaccess文件的内容：\n1 2 3 4 5 6 7 # BEGIN WordPress RewriteEngine On RewriteBase / RewriteCond %{REQUEST_FILENAME} !-f RewriteCond %{REQUEST_FILENAME} !-d RewriteRule . /index.php [L] # END WordPress 我们不需要修改这个文件。 打开apache的httpd.conf文件，找到wordpress的Directory节点，加上AllowOverride All，如：\n1 2 3 4 AllowOverride All Order allow,deny Allow from all DirectoryIndex index.php 因为apache默认的AllowOverride为None(禁用.htaccess文件)，所以要修改为All。\n",
+  "wordCount" : "318",
   "inLanguage": "en",
   "datePublished": "2011-02-10T14:03:57Z",
   "dateModified": "2011-02-10T14:03:57Z",
@@ -210,12 +210,42 @@
   <div class="post-content"><p>首先确定apache服务器已经安装并支持mod_rewrite模块。</p>
 <p>登录wordpress后台，“设置”-“固定链接”，然后选择你希望的固定链接形式。此时会在wordpress根目录下生成.htaccess文件（<a href="http://man.chinaunix.net/newsoft/Apache2.2_chinese_manual/howto/htaccess.html">什么是.htaccess文件</a>）。</p>
 <p>可以看一下这个.htaccess文件的内容：</p>
-<p>[cc lang=&ldquo;apache&rdquo;]# BEGIN WordPress  RewriteEngine On RewriteBase / RewriteCond %{REQUEST_FILENAME} !-f RewriteCond</p>
-<p>%{REQUEST_FILENAME} !-d RewriteRule . /index.php [L]  # END WordPress[/cc]</p>
-<p>我们不需要修改这个文件。 打开apache的httpd.conf文件，找到wordpress的Directory节点，加上AllowOverride</p>
-<p>All，如： [cc lang=&ldquo;apache&rdquo;] AllowOverride All Order allow,deny Allow from all</p>
-<p>DirectoryIndex index.php [/cc]</p>
-<p>因为apache默认的AllowOverride为None(禁用.htaccess文件)，所以要修改为All。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># BEGIN WordPress  
+</span></span><span class="line"><span class="cl">RewriteEngine On 
+</span></span><span class="line"><span class="cl">RewriteBase / 
+</span></span><span class="line"><span class="cl">RewriteCond %{REQUEST_FILENAME} !-f 
+</span></span><span class="line"><span class="cl">RewriteCond %{REQUEST_FILENAME} !-d 
+</span></span><span class="line"><span class="cl">RewriteRule . /index.php [L]  
+</span></span><span class="line"><span class="cl"># END WordPress
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们不需要修改这个文件。 打开apache的httpd.conf文件，找到wordpress的Directory节点，加上AllowOverride All，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">AllowOverride All 
+</span></span><span class="line"><span class="cl">Order allow,deny 
+</span></span><span class="line"><span class="cl">Allow from all
+</span></span><span class="line"><span class="cl">DirectoryIndex index.php
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>因为apache默认的AllowOverride为None(禁用.htaccess文件)，所以要修改为All。</p>
 
 
   </div>
@@ -258,7 +288,7 @@ href="/assets/@waline/client/dist/waline.css"
     </main>
     
 <footer class="footer">
-    <span>&copy; 2023 <a href="https://babyno.top/3shi/">3shi天下</a></span>
+    <span>&copy; 2024 <a href="https://babyno.top/3shi/">3shi天下</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
