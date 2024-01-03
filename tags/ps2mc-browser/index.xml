@@ -6,7 +6,16 @@
     <description>Recent content in ps2mc-browser on 路边的阿不</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Dec 2023 12:07:17 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/ps2mc-browser/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Dec 2023 15:44:56 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/ps2mc-browser/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>申请到了JetBrains开源免费许可证</title>
+      <link>https://babyno.top/posts/2023/12/apply-for-jetbrains-oss-development-license/</link>
+      <pubDate>Sun, 31 Dec 2023 15:44:56 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/12/apply-for-jetbrains-oss-development-license/</guid>
+      <description>背景 记得三个月前我在GitHub上开源了ps2mc-browser项目，一个可以查看和渲染ps2存档3D图标的神奇小工具。间或推送代码，增添</description>
+    </item>
+    
     <item>
       <title>ps2mc-browser的着色器代码分析</title>
       <link>https://babyno.top/posts/2023/12/ps2mc-browsers-shader-introduction/</link>
@@ -35,12 +44,30 @@
     </item>
     
     <item>
+      <title>解析PS2游戏存档3D图标</title>
+      <link>https://babyno.top/posts/2023/10/parsing-ps2-3d-icon/</link>
+      <pubDate>Wed, 04 Oct 2023 18:00:34 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/10/parsing-ps2-3d-icon/</guid>
+      <description>看到这个图片，对于熟悉PS2的老玩家来说应该不会陌生。它是PS2记忆卡管理界面中的游戏存档3D图标。本篇文章我们将介绍如何从存档文件里解析出</description>
+    </item>
+    
+    <item>
       <title>从PS2记忆卡中导出存档文件</title>
       <link>https://babyno.top/posts/2023/09/exporting-file-from-ps2-memcard/</link>
       <pubDate>Fri, 29 Sep 2023 17:49:16 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/09/exporting-file-from-ps2-memcard/</guid>
       <description>上一篇文章中我们解析了PS2存储卡的文件系统，这次直接实战，编写python代码导出指定的游戏存档。本篇文章完整代码可以访问：ps2mc-b</description>
+    </item>
+    
+    <item>
+      <title>解析PS2记忆卡文件系统</title>
+      <link>https://babyno.top/posts/2023/09/parsing-ps2-memcard-file-system/</link>
+      <pubDate>Tue, 26 Sep 2023 15:15:16 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/09/parsing-ps2-memcard-file-system/</guid>
+      <description>01 前言 作为一个80后的游戏老玩家，PS2游戏机在我心中一直有着特殊的地位。时至今日，已经过去了20多年，然而，最近我因为模拟器的缘故重新接触</description>
     </item>
     
   </channel>

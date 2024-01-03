@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ModernGL on 路边的阿不</title>
+    <link>https://babyno.top/tags/moderngl/</link>
+    <description>Recent content in ModernGL on 路边的阿不</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 20 Nov 2023 14:52:18 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/moderngl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ps2mc-browser新功能发布</title>
+      <link>https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/</link>
+      <pubDate>Mon, 20 Nov 2023 14:52:18 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/</guid>
+      <description>ps2mc-browser是一个PS2存档文件查看器，使用OpenGL画布显示存档里的3D动态图标。依赖如下： Python3 WxPython Numpy ModernGL PyGlm Github地址戳这</description>
+    </item>
+    
+    <item>
+      <title>使用Python和OpenGL渲染PS2存档3D图标</title>
+      <link>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</link>
+      <pubDate>Mon, 09 Oct 2023 17:34:15 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</guid>
+      <description>经过前面一系列文章的铺垫，PS2存档3D图标的文件已经全部解析完毕。本篇开始将介绍使用如下工具将3D图标渲染出来，并尽可能接近PS2主机原生</description>
+    </item>
+    
+  </channel>
+</rss>

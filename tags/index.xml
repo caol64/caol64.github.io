@@ -6,7 +6,16 @@
     <description>Recent content in Tags on 路边的阿不</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Dec 2023 15:44:56 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Jan 2024 13:52:36 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>3shi</title>
+      <link>https://babyno.top/tags/3shi/</link>
+      <pubDate>Tue, 02 Jan 2024 13:52:36 +0000</pubDate>
+      
+      <guid>https://babyno.top/tags/3shi/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>JetBrains</title>
       <link>https://babyno.top/tags/jetbrains/</link>
@@ -26,6 +35,15 @@
     </item>
     
     <item>
+      <title>ps2mc-browser</title>
+      <link>https://babyno.top/tags/ps2mc-browser/</link>
+      <pubDate>Sun, 31 Dec 2023 15:44:56 +0000</pubDate>
+      
+      <guid>https://babyno.top/tags/ps2mc-browser/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>OpenGL</title>
       <link>https://babyno.top/tags/opengl/</link>
       <pubDate>Wed, 20 Dec 2023 12:07:17 +0000</pubDate>
@@ -35,20 +53,29 @@
     </item>
     
     <item>
-      <title>ps2mc-browser</title>
-      <link>https://babyno.top/tags/ps2mc-browser/</link>
-      <pubDate>Wed, 20 Dec 2023 12:07:17 +0000</pubDate>
+      <title>Apple Shortcuts</title>
+      <link>https://babyno.top/tags/apple-shortcuts/</link>
+      <pubDate>Thu, 14 Dec 2023 15:55:11 +0000</pubDate>
       
-      <guid>https://babyno.top/tags/ps2mc-browser/</guid>
+      <guid>https://babyno.top/tags/apple-shortcuts/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Shortcuts</title>
-      <link>https://babyno.top/tags/shortcuts/</link>
-      <pubDate>Thu, 14 Dec 2023 15:55:11 +0000</pubDate>
+      <title>ModernGL</title>
+      <link>https://babyno.top/tags/moderngl/</link>
+      <pubDate>Mon, 20 Nov 2023 14:52:18 +0000</pubDate>
       
-      <guid>https://babyno.top/tags/shortcuts/</guid>
+      <guid>https://babyno.top/tags/moderngl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WxPython</title>
+      <link>https://babyno.top/tags/wxpython/</link>
+      <pubDate>Mon, 20 Nov 2023 14:52:18 +0000</pubDate>
+      
+      <guid>https://babyno.top/tags/wxpython/</guid>
       <description></description>
     </item>
     
@@ -80,6 +107,33 @@
     </item>
     
     <item>
+      <title>Github Pages</title>
+      <link>https://babyno.top/tags/github-pages/</link>
+      <pubDate>Wed, 08 Nov 2023 14:23:52 +0000</pubDate>
+      
+      <guid>https://babyno.top/tags/github-pages/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PaperMod</title>
+      <link>https://babyno.top/tags/papermod/</link>
+      <pubDate>Wed, 08 Nov 2023 14:23:52 +0000</pubDate>
+      
+      <guid>https://babyno.top/tags/papermod/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A1B5G5R5</title>
+      <link>https://babyno.top/tags/a1b5g5r5/</link>
+      <pubDate>Fri, 20 Oct 2023 14:48:31 +0000</pubDate>
+      
+      <guid>https://babyno.top/tags/a1b5g5r5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Algorithm</title>
       <link>https://babyno.top/tags/algorithm/</link>
       <pubDate>Fri, 20 Oct 2023 14:48:31 +0000</pubDate>
@@ -89,20 +143,29 @@
     </item>
     
     <item>
-      <title>Playstation2</title>
-      <link>https://babyno.top/tags/playstation2/</link>
-      <pubDate>Fri, 20 Oct 2023 14:48:31 +0000</pubDate>
-      
-      <guid>https://babyno.top/tags/playstation2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Python</title>
       <link>https://babyno.top/tags/python/</link>
       <pubDate>Fri, 20 Oct 2023 14:48:31 +0000</pubDate>
       
       <guid>https://babyno.top/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RLE</title>
+      <link>https://babyno.top/tags/rle/</link>
+      <pubDate>Mon, 16 Oct 2023 12:30:58 +0000</pubDate>
+      
+      <guid>https://babyno.top/tags/rle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Playstation2</title>
+      <link>https://babyno.top/tags/playstation2/</link>
+      <pubDate>Wed, 04 Oct 2023 18:00:34 +0000</pubDate>
+      
+      <guid>https://babyno.top/tags/playstation2/</guid>
       <description></description>
     </item>
     
