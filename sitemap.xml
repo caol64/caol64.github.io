@@ -2,25 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://babyno.top/categories/</loc>
+    <lastmod>2024-01-05T17:51:11+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/tags/chatgpt/</loc>
+    <lastmod>2024-01-05T17:51:11+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/tags/cloudflare/</loc>
+    <lastmod>2024-01-05T17:51:11+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/posts/</loc>
+    <lastmod>2024-01-05T17:51:11+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/tags/</loc>
+    <lastmod>2024-01-05T17:51:11+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/tags/warp/</loc>
+    <lastmod>2024-01-05T17:51:11+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/posts/2024/01/optimize-the-network-experience-using-cloudflare-warp/</loc>
+    <lastmod>2024-01-05T17:51:11+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/categories/%E7%B2%97%E8%8C%B6%E6%B7%A1%E9%A5%AD-%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BC%B4/</loc>
+    <lastmod>2024-01-05T17:51:11+00:00</lastmod>
+  </url><url>
+    <loc>https://babyno.top/</loc>
+    <lastmod>2024-01-05T17:51:11+00:00</lastmod>
+  </url><url>
     <loc>https://babyno.top/tags/3shi/</loc>
     <lastmod>2024-01-02T13:52:36+00:00</lastmod>
   </url><url>
-    <loc>https://babyno.top/categories/</loc>
-    <lastmod>2024-01-02T13:52:36+00:00</lastmod>
-  </url><url>
-    <loc>https://babyno.top/posts/</loc>
-    <lastmod>2024-01-02T13:52:36+00:00</lastmod>
-  </url><url>
-    <loc>https://babyno.top/tags/</loc>
-    <lastmod>2024-01-02T13:52:36+00:00</lastmod>
-  </url><url>
     <loc>https://babyno.top/posts/2024/01/you-are-the-protagonist-of-your-own-life/</loc>
-    <lastmod>2024-01-02T13:52:36+00:00</lastmod>
-  </url><url>
-    <loc>https://babyno.top/categories/%E7%B2%97%E8%8C%B6%E6%B7%A1%E9%A5%AD-%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BC%B4/</loc>
-    <lastmod>2024-01-02T13:52:36+00:00</lastmod>
-  </url><url>
-    <loc>https://babyno.top/</loc>
     <lastmod>2024-01-02T13:52:36+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/posts/2024/01/importing-android-contacts-into-an-activated-ios-device/</loc>
@@ -62,17 +74,11 @@
     <loc>https://babyno.top/tags/wxpython/</loc>
     <lastmod>2023-11-20T14:52:18+00:00</lastmod>
   </url><url>
-    <loc>https://babyno.top/tags/chatgpt/</loc>
-    <lastmod>2023-11-14T11:31:43+00:00</lastmod>
-  </url><url>
     <loc>https://babyno.top/tags/vscode/</loc>
     <lastmod>2023-11-14T11:31:43+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/posts/2023/11/create-hugo-post-with-vscode-task-and-chatgpt/</loc>
     <lastmod>2023-11-14T11:31:43+00:00</lastmod>
-  </url><url>
-    <loc>https://babyno.top/tags/cloudflare/</loc>
-    <lastmod>2023-11-08T14:23:52+00:00</lastmod>
   </url><url>
     <loc>https://babyno.top/tags/github-pages/</loc>
     <lastmod>2023-11-08T14:23:52+00:00</lastmod>
