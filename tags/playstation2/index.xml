@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>从PS2记忆卡中导出存档文件</title>
+      <link>https://babyno.top/posts/2023/09/exporting-file-from-ps2-memcard/</link>
+      <pubDate>Fri, 29 Sep 2023 17:49:16 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/09/exporting-file-from-ps2-memcard/</guid>
+      <description>上一篇文章中我们解析了PS2存储卡的文件系统，这次直接实战，编写python代码导出指定的游戏存档。本篇文章完整代码可以访问：ps2mc-b</description>
+    </item>
+    
+    <item>
       <title>解析PS2记忆卡文件系统</title>
       <link>https://babyno.top/posts/2023/09/parsing-ps2-memcard-file-system/</link>
       <pubDate>Tue, 26 Sep 2023 15:15:16 +0000</pubDate>
