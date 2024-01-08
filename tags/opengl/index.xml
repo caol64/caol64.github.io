@@ -8,21 +8,12 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 20 Dec 2023 12:07:17 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/opengl/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>ps2mc-browser的着色器代码分析</title>
+      <title>「ps2mc-browser」着色器代码分析</title>
       <link>https://babyno.top/posts/2023/12/ps2mc-browsers-shader-introduction/</link>
       <pubDate>Wed, 20 Dec 2023 12:07:17 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/12/ps2mc-browsers-shader-introduction/</guid>
-      <description>如何将多边形的顶点和纹理渲染成缤纷多彩的画面呢？我们需要通过一个窗口，窥探其中的奥秘，它就是OpenGL着色器。今天我们就要聊聊ps2mc-</description>
-    </item>
-    
-    <item>
-      <title>使用Python和OpenGL渲染PS2存档3D图标</title>
-      <link>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</link>
-      <pubDate>Mon, 09 Oct 2023 17:34:15 +0000</pubDate>
-      
-      <guid>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</guid>
-      <description>经过前面一系列文章的铺垫，PS2存档3D图标的文件已经全部解析完毕。本篇开始将介绍使用如下工具将3D图标渲染出来，并尽可能接近PS2主机原生</description>
+      <description>本文介绍了ps2mc-browser项目使用的所有着色器，对每个着色器的代码进行了深入分析。</description>
     </item>
     
     <item>
@@ -31,7 +22,7 @@
       <pubDate>Wed, 04 Oct 2023 18:00:34 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/10/parsing-ps2-3d-icon/</guid>
-      <description>看到这个图片，对于熟悉PS2的老玩家来说应该不会陌生。它是PS2记忆卡管理界面中的游戏存档3D图标。本篇文章我们将介绍如何从存档文件里解析出</description>
+      <description>本文详尽分析了Playstation2游戏存档中3D图标的数据结构。</description>
     </item>
     
   </channel>

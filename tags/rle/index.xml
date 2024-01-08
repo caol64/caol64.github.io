@@ -8,12 +8,12 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 16 Oct 2023 12:30:58 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/rle/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>RLE算法在PS2中的应用</title>
+      <title>「RLE」算法在PS2中的应用</title>
       <link>https://babyno.top/posts/2023/10/rle-algorithm-in-ps2/</link>
       <pubDate>Mon, 16 Oct 2023 12:30:58 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/10/rle-algorithm-in-ps2/</guid>
-      <description>RLE算法介绍 RLE（Run Length Encoding，行程长度编码）算法，是把文件内容用“重复次数x数据”的形式来表示的压缩方法。比如：有AAAA</description>
+      <description>本文介绍了Run Length Encoding（行程长度编码）算法，以及其在Playstation2游戏中的应用。</description>
     </item>
     
   </channel>

@@ -5,9 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>ps2mc-browser新功能发布 | 路边的阿不</title>
-<meta name="keywords" content="ps2mc-browser, WxPython, ModernGL">
-<meta name="description" content="ps2mc-browser是一个PS2存档文件查看器，使用OpenGL画布显示存档里的3D动态图标。依赖如下： Python3 WxPython Numpy ModernGL PyGlm Github地址戳这">
+<title>「ps2mc-browser」新功能发布 | 路边的阿不</title>
+<meta name="keywords" content="ps2mc-browser, WxPython, ModernGL, 3D Icon, Python">
+<meta name="description" content="ps2mc-browser最新版本发布，新功能值得你来探索。">
 <meta name="author" content="路边的阿不">
 <link rel="canonical" href="https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.12891501283130addd65d5c9aa3af45b949edff3f949a53c8f890319a805b26b.css" integrity="sha256-EokVASgxMK3dZdXJqjr0W5Se3/P5SaU8j4kDGagFsms=" rel="preload stylesheet" as="style">
@@ -54,16 +54,16 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="ps2mc-browser新功能发布" />
-<meta property="og:description" content="ps2mc-browser是一个PS2存档文件查看器，使用OpenGL画布显示存档里的3D动态图标。依赖如下： Python3 WxPython Numpy ModernGL PyGlm Github地址戳这" />
+</noscript><meta property="og:title" content="「ps2mc-browser」新功能发布" />
+<meta property="og:description" content="ps2mc-browser最新版本发布，新功能值得你来探索。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-11-20T14:52:18+00:00" />
 <meta property="article:modified_time" content="2023-11-20T14:52:18+00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ps2mc-browser新功能发布"/>
-<meta name="twitter:description" content="ps2mc-browser是一个PS2存档文件查看器，使用OpenGL画布显示存档里的3D动态图标。依赖如下： Python3 WxPython Numpy ModernGL PyGlm Github地址戳这"/>
+<meta name="twitter:title" content="「ps2mc-browser」新功能发布"/>
+<meta name="twitter:description" content="ps2mc-browser最新版本发布，新功能值得你来探索。"/>
 
 
 <script type="application/ld+json">
@@ -80,7 +80,7 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "ps2mc-browser新功能发布",
+      "name": "「ps2mc-browser」新功能发布",
       "item": "https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/"
     }
   ]
@@ -90,11 +90,11 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "ps2mc-browser新功能发布",
-  "name": "ps2mc-browser新功能发布",
-  "description": "ps2mc-browser是一个PS2存档文件查看器，使用OpenGL画布显示存档里的3D动态图标。依赖如下： Python3 WxPython Numpy ModernGL PyGlm Github地址戳这",
+  "headline": "「ps2mc-browser」新功能发布",
+  "name": "「ps2mc-browser」新功能发布",
+  "description": "ps2mc-browser最新版本发布，新功能值得你来探索。",
   "keywords": [
-    "ps2mc-browser", "WxPython", "ModernGL"
+    "ps2mc-browser", "WxPython", "ModernGL", "3D Icon", "Python"
   ],
   "articleBody": "ps2mc-browser是一个PS2存档文件查看器，使用OpenGL画布显示存档里的3D动态图标。依赖如下：\nPython3 WxPython Numpy ModernGL PyGlm Github地址戳这里。\n新功能 一些PS2游戏存档内置了三套不同的图标动画，分别对应玩家进行“浏览”、“拷贝”和“删除”这三种不同的操作。\n新发布的功能使得ps2mc-browser界面不仅仅只是展示图标的动画，还可以与用户进行交互，响应用户的鼠标操作。这样一来，图标的动画可以根据用户的选择而变化。\n其它更新 每个存档动画的背景图案都保存在icon.sys文件里（具体请查阅解析PS2游戏存档3D图标），实际上它是有透明度的，在PS2实体机上比较容易看出来。\n因此，在OpenGL渲染背景时，在bg背景层的后面，加了一层skybox。这两层的z坐标分布为0.99和0.999，且skybox的RGBA为(0.6, 0.6, 0.6, 1)不透明。这样如果bg有透明效果，那就会显示出skybox的颜色。\n以Viewtiful Joe为例，它的bg透明度是100%，如果不加skybox，其效果如下： 加上后效果如下： 未解决问题 光源问题尚未解决，导致很多游戏光照不正确显示效果不佳。详情见解析PS2游戏存档3D图标。\n",
   "wordCount" : "501",
@@ -195,8 +195,11 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://babyno.top/">Home</a>&nbsp;»&nbsp;<a href="https://babyno.top/posts/">Posts</a></div>
     <h1 class="post-title">
-      ps2mc-browser新功能发布
+      「ps2mc-browser」新功能发布
     </h1>
+    <div class="post-description">
+      ps2mc-browser最新版本发布，新功能值得你来探索。
+    </div>
     <div class="post-meta"><span title='2023-11-20 14:52:18 +0000 UTC'>2023-11-20</span>&nbsp;·&nbsp;路边的阿不
 
 </div>
@@ -318,17 +321,19 @@
       <li><a href="https://babyno.top/tags/ps2mc-browser/">ps2mc-browser</a></li>
       <li><a href="https://babyno.top/tags/wxpython/">WxPython</a></li>
       <li><a href="https://babyno.top/tags/moderngl/">ModernGL</a></li>
+      <li><a href="https://babyno.top/tags/3d-icon/">3D Icon</a></li>
+      <li><a href="https://babyno.top/tags/python/">Python</a></li>
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://babyno.top/posts/2023/11/shortcuts-sharing-fueling-record/">
     <span class="title">« Prev</span>
     <br>
-    <span>「Apple快捷指令」分享 - 加油记录</span>
+    <span>「Apple快捷指令」 - 汽车加油数据自动保存至Numbers</span>
   </a>
   <a class="next" href="https://babyno.top/posts/2023/11/create-hugo-post-with-vscode-task-and-chatgpt/">
     <span class="title">Next »</span>
     <br>
-    <span>用VSCode Task自动化创建博客</span>
+    <span>用「VSCode Task」自动化创建博客</span>
   </a>
 </nav>
 

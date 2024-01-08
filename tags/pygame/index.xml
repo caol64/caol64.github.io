@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>PyGame on 路边的阿不</title>
+    <link>https://babyno.top/tags/pygame/</link>
+    <description>Recent content in PyGame on 路边的阿不</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 09 Oct 2023 17:34:15 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/pygame/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用Python和OpenGL渲染PS2存档3D图标</title>
+      <link>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</link>
+      <pubDate>Mon, 09 Oct 2023 17:34:15 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</guid>
+      <description>本文介绍了如何使用`PyGame`和`ModernGL`将Playstation2游戏存档中3D图标渲染在自己开发的APP界面上。</description>
+    </item>
+    
+  </channel>
+</rss>

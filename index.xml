@@ -8,12 +8,12 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 05 Jan 2024 17:51:11 +0000</lastBuildDate><atom:link href="https://babyno.top/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>使用Cloudflare Warp优化网络体验</title>
+      <title>使用「Cloudflare Warp」优化网络体验</title>
       <link>https://babyno.top/posts/2024/01/optimize-the-network-experience-using-cloudflare-warp/</link>
       <pubDate>Fri, 05 Jan 2024 17:51:11 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2024/01/optimize-the-network-experience-using-cloudflare-warp/</guid>
-      <description>前言 使用手机版的ChatGPT，给我提示： Something went wrong. You may be connected to a disallowed ISP. If you are using VPN, try disabling it. Otherwise try a different Wi-Fi network or data connection. 其实不止ChatGPT，我遇到的情况还有：</description>
+      <description>介绍了遇到`You may be connected to a disallowed ISP. If you are using VPN, try disabling it.`及类似问题的解决方法。</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Tue, 02 Jan 2024 13:52:36 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2024/01/you-are-the-protagonist-of-your-own-life/</guid>
-      <description>感触 历史的长河深延，其中存在着那些被歌颂为“唐宗宋祖、李白杜甫”的人，他们的名字在历史的巨幕上浩然猎猎，引得后人口诵留香。 而我们，普通的你我</description>
+      <description>博主在2011年创立的`3shi.net`博客网站由兴盛转向衰落，直到2023年将至恢复，不禁感慨：每一段发生在自己身上的历史都不应该遗忘，自己是人生的主角。</description>
     </item>
     
     <item>
@@ -31,25 +31,25 @@
       <pubDate>Tue, 02 Jan 2024 10:10:24 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2024/01/importing-android-contacts-into-an-activated-ios-device/</guid>
-      <description>事情的起因 那天，家里的长辈的Android手机坏了，正好我这里有台闲置的苹果手机。你可能想：哦，这挺简单的吧，启动新手机，下载转移到 iOS的</description>
+      <description>本文介绍了为什么从Android手机导出的vCard文件无法直接导入iCloud&amp;#39;，并提供了解决方法。</description>
     </item>
     
     <item>
-      <title>申请到了JetBrains开源免费许可证</title>
+      <title>申请到了「JetBrains」开源免费许可证</title>
       <link>https://babyno.top/posts/2023/12/apply-for-jetbrains-oss-development-license/</link>
       <pubDate>Sun, 31 Dec 2023 15:44:56 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/12/apply-for-jetbrains-oss-development-license/</guid>
-      <description>背景 记得三个月前我在GitHub上开源了ps2mc-browser项目，一个可以查看和渲染ps2存档3D图标的神奇小工具。间或推送代码，增添</description>
+      <description>分享了在GitHub上发布开源项目并且申请一年JetBrains OSS许可的经历。</description>
     </item>
     
     <item>
-      <title>ps2mc-browser的着色器代码分析</title>
+      <title>「ps2mc-browser」着色器代码分析</title>
       <link>https://babyno.top/posts/2023/12/ps2mc-browsers-shader-introduction/</link>
       <pubDate>Wed, 20 Dec 2023 12:07:17 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/12/ps2mc-browsers-shader-introduction/</guid>
-      <description>如何将多边形的顶点和纹理渲染成缤纷多彩的画面呢？我们需要通过一个窗口，窥探其中的奥秘，它就是OpenGL着色器。今天我们就要聊聊ps2mc-</description>
+      <description>本文介绍了ps2mc-browser项目使用的所有着色器，对每个着色器的代码进行了深入分析。</description>
     </item>
     
     <item>
@@ -58,61 +58,61 @@
       <pubDate>Thu, 14 Dec 2023 15:55:11 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/12/the-wonders-of-base64-encoding-in-apple-shortcuts/</guid>
-      <description>苹果快捷指令是一款强大的工具，可以帮助我们自动化日常任务。在创建快捷指令时，有时我们需要添加附件，例如文本、图片、音频等。但是，苹果快捷指令</description>
+      <description>在使用快捷指令时可以使用”Base64编码“帮助我们在快捷指令中添加附件。</description>
     </item>
     
     <item>
-      <title>「Apple快捷指令」分享 - 加油记录</title>
+      <title>「Apple快捷指令」 - 汽车加油数据自动保存至Numbers</title>
       <link>https://babyno.top/posts/2023/11/shortcuts-sharing-fueling-record/</link>
       <pubDate>Fri, 24 Nov 2023 10:43:16 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/11/shortcuts-sharing-fueling-record/</guid>
-      <description>今天开始我创建了一个「快捷指令」专题，专门分享自己常用的Apple Shortcuts。我是一个喜欢效率的人，所以能够自动化的工作我都尽量不进</description>
+      <description>以“汽车加油记录”为例介绍了如何创建一个“Apple快捷指令”自动将加油明细记录到苹果的“Numbers” App。</description>
     </item>
     
     <item>
-      <title>ps2mc-browser新功能发布</title>
+      <title>「ps2mc-browser」新功能发布</title>
       <link>https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/</link>
       <pubDate>Mon, 20 Nov 2023 14:52:18 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/</guid>
-      <description>ps2mc-browser是一个PS2存档文件查看器，使用OpenGL画布显示存档里的3D动态图标。依赖如下： Python3 WxPython Numpy ModernGL PyGlm Github地址戳这</description>
+      <description>ps2mc-browser最新版本发布，新功能值得你来探索。</description>
     </item>
     
     <item>
-      <title>用VSCode Task自动化创建博客</title>
+      <title>用「VSCode Task」自动化创建博客</title>
       <link>https://babyno.top/posts/2023/11/create-hugo-post-with-vscode-task-and-chatgpt/</link>
       <pubDate>Tue, 14 Nov 2023 11:31:43 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/11/create-hugo-post-with-vscode-task-and-chatgpt/</guid>
-      <description>在之前的文章中，我提到我通常使用 VSCode 进行写作。这一次，我想分享一些提高平时写作效率的小技巧。同时，这也是我第一次尝试使用刚刚注册的 ChatGP</description>
+      <description>本文介绍了使用VSCode Task创建博客帖子，自动利用Google翻译将文章标题翻译成英文，并生成HUGO Front Matter的方法。</description>
     </item>
     
     <item>
-      <title>用Github和Cloudflare自建博客</title>
+      <title>用「Github」和「Cloudflare」自建博客</title>
       <link>https://babyno.top/posts/2023/11/new-hugo-blog/</link>
       <pubDate>Wed, 08 Nov 2023 14:23:52 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/11/new-hugo-blog/</guid>
-      <description>起因 大约在十几年前，我也自己搭建过一个博客，在godaddy买了虚拟主机和一个域名，搭建好LAMP环境，再装上wordpress就开始折腾了</description>
+      <description>本文介绍了使用markdown写博客，通过HUGO生成静态网站，部署并发布到Github Pages上的流程。并使用Cloudflare优化网络以及自定义PaperMod主题的方法。</description>
     </item>
     
     <item>
-      <title>PS2纹理图片编码算法A1B5G5R5</title>
+      <title>PS2纹理图片编码算法「A1B5G5R5」</title>
       <link>https://babyno.top/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</link>
       <pubDate>Fri, 20 Oct 2023 14:48:31 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</guid>
-      <description>简介 在上一篇文章里我们介绍了PS2使用的图片压缩算法RLE，这次我们再来研究一下它的纹理贴图编码算法——A1B5G5R5。 对于纹理来说，常用</description>
+      <description>本文介绍了A1B5G5R5编码算法，以及其在Playstation2游戏中的应用。</description>
     </item>
     
     <item>
-      <title>RLE算法在PS2中的应用</title>
+      <title>「RLE」算法在PS2中的应用</title>
       <link>https://babyno.top/posts/2023/10/rle-algorithm-in-ps2/</link>
       <pubDate>Mon, 16 Oct 2023 12:30:58 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/10/rle-algorithm-in-ps2/</guid>
-      <description>RLE算法介绍 RLE（Run Length Encoding，行程长度编码）算法，是把文件内容用“重复次数x数据”的形式来表示的压缩方法。比如：有AAAA</description>
+      <description>本文介绍了Run Length Encoding（行程长度编码）算法，以及其在Playstation2游戏中的应用。</description>
     </item>
     
     <item>
@@ -121,7 +121,7 @@
       <pubDate>Mon, 09 Oct 2023 17:34:15 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</guid>
-      <description>经过前面一系列文章的铺垫，PS2存档3D图标的文件已经全部解析完毕。本篇开始将介绍使用如下工具将3D图标渲染出来，并尽可能接近PS2主机原生</description>
+      <description>本文介绍了如何使用`PyGame`和`ModernGL`将Playstation2游戏存档中3D图标渲染在自己开发的APP界面上。</description>
     </item>
     
     <item>
@@ -130,7 +130,7 @@
       <pubDate>Wed, 04 Oct 2023 18:00:34 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/10/parsing-ps2-3d-icon/</guid>
-      <description>看到这个图片，对于熟悉PS2的老玩家来说应该不会陌生。它是PS2记忆卡管理界面中的游戏存档3D图标。本篇文章我们将介绍如何从存档文件里解析出</description>
+      <description>本文详尽分析了Playstation2游戏存档中3D图标的数据结构。</description>
     </item>
     
     <item>
@@ -139,7 +139,7 @@
       <pubDate>Fri, 29 Sep 2023 17:49:16 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/09/exporting-file-from-ps2-memcard/</guid>
-      <description>上一篇文章中我们解析了PS2存储卡的文件系统，这次直接实战，编写python代码导出指定的游戏存档。本篇文章完整代码可以访问：ps2mc-b</description>
+      <description>本文介绍了如何使用`Python`将游戏存档从Playstation2记忆卡（Memory Card）中导出。</description>
     </item>
     
     <item>
@@ -148,7 +148,7 @@
       <pubDate>Tue, 26 Sep 2023 15:15:16 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/09/parsing-ps2-memcard-file-system/</guid>
-      <description>01 前言 作为一个80后的游戏老玩家，PS2游戏机在我心中一直有着特殊的地位。时至今日，已经过去了20多年，然而，最近我因为模拟器的缘故重新接触</description>
+      <description>本文详尽分析了Playstation2主机记忆卡（Memory Card）的文件系统及数据结构。</description>
     </item>
     
     <item>

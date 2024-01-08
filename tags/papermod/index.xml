@@ -8,12 +8,12 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 08 Nov 2023 14:23:52 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/papermod/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>用Github和Cloudflare自建博客</title>
+      <title>用「Github」和「Cloudflare」自建博客</title>
       <link>https://babyno.top/posts/2023/11/new-hugo-blog/</link>
       <pubDate>Wed, 08 Nov 2023 14:23:52 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/11/new-hugo-blog/</guid>
-      <description>起因 大约在十几年前，我也自己搭建过一个博客，在godaddy买了虚拟主机和一个域名，搭建好LAMP环境，再装上wordpress就开始折腾了</description>
+      <description>本文介绍了使用markdown写博客，通过HUGO生成静态网站，部署并发布到Github Pages上的流程。并使用Cloudflare优化网络以及自定义PaperMod主题的方法。</description>
     </item>
     
   </channel>

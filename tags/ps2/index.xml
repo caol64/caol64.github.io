@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>PS2 on 路边的阿不</title>
+    <link>https://babyno.top/tags/ps2/</link>
+    <description>Recent content in PS2 on 路边的阿不</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Oct 2023 14:48:31 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/ps2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PS2纹理图片编码算法「A1B5G5R5」</title>
+      <link>https://babyno.top/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</link>
+      <pubDate>Fri, 20 Oct 2023 14:48:31 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/</guid>
+      <description>本文介绍了A1B5G5R5编码算法，以及其在Playstation2游戏中的应用。</description>
+    </item>
+    
+    <item>
+      <title>「RLE」算法在PS2中的应用</title>
+      <link>https://babyno.top/posts/2023/10/rle-algorithm-in-ps2/</link>
+      <pubDate>Mon, 16 Oct 2023 12:30:58 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/10/rle-algorithm-in-ps2/</guid>
+      <description>本文介绍了Run Length Encoding（行程长度编码）算法，以及其在Playstation2游戏中的应用。</description>
+    </item>
+    
+    <item>
+      <title>使用Python和OpenGL渲染PS2存档3D图标</title>
+      <link>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</link>
+      <pubDate>Mon, 09 Oct 2023 17:34:15 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</guid>
+      <description>本文介绍了如何使用`PyGame`和`ModernGL`将Playstation2游戏存档中3D图标渲染在自己开发的APP界面上。</description>
+    </item>
+    
+    <item>
+      <title>解析PS2游戏存档3D图标</title>
+      <link>https://babyno.top/posts/2023/10/parsing-ps2-3d-icon/</link>
+      <pubDate>Wed, 04 Oct 2023 18:00:34 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/10/parsing-ps2-3d-icon/</guid>
+      <description>本文详尽分析了Playstation2游戏存档中3D图标的数据结构。</description>
+    </item>
+    
+    <item>
+      <title>从PS2记忆卡中导出存档文件</title>
+      <link>https://babyno.top/posts/2023/09/exporting-file-from-ps2-memcard/</link>
+      <pubDate>Fri, 29 Sep 2023 17:49:16 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/09/exporting-file-from-ps2-memcard/</guid>
+      <description>本文介绍了如何使用`Python`将游戏存档从Playstation2记忆卡（Memory Card）中导出。</description>
+    </item>
+    
+    <item>
+      <title>解析PS2记忆卡文件系统</title>
+      <link>https://babyno.top/posts/2023/09/parsing-ps2-memcard-file-system/</link>
+      <pubDate>Tue, 26 Sep 2023 15:15:16 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/09/parsing-ps2-memcard-file-system/</guid>
+      <description>本文详尽分析了Playstation2主机记忆卡（Memory Card）的文件系统及数据结构。</description>
+    </item>
+    
+  </channel>
+</rss>

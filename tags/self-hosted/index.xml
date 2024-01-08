@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Self Hosted on 路边的阿不</title>
+    <link>https://babyno.top/tags/self-hosted/</link>
+    <description>Recent content in Self Hosted on 路边的阿不</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Nov 2023 14:23:52 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/self-hosted/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用「Github」和「Cloudflare」自建博客</title>
+      <link>https://babyno.top/posts/2023/11/new-hugo-blog/</link>
+      <pubDate>Wed, 08 Nov 2023 14:23:52 +0000</pubDate>
+      
+      <guid>https://babyno.top/posts/2023/11/new-hugo-blog/</guid>
+      <description>本文介绍了使用markdown写博客，通过HUGO生成静态网站，部署并发布到Github Pages上的流程。并使用Cloudflare优化网络以及自定义PaperMod主题的方法。</description>
+    </item>
+    
+  </channel>
+</rss>
