@@ -13,7 +13,7 @@
       <pubDate>Fri, 05 Jan 2024 17:51:11 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2024/01/optimize-the-network-experience-using-cloudflare-warp/</guid>
-      <description>介绍了遇到`You may be connected to a disallowed ISP. If you are using VPN, try disabling it.`及类似问题的解决方法。</description>
+      <description>提供一个`You may be connected to a disallowed ISP. If you are using VPN, try disabling it.`及类似问题的解决方法。</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Tue, 14 Nov 2023 11:31:43 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/11/create-hugo-post-with-vscode-task-and-chatgpt/</guid>
-      <description>本文介绍了使用VSCode Task创建博客帖子，自动利用Google翻译将文章标题翻译成英文，并生成HUGO Front Matter的方法。</description>
+      <description>本文介绍了使用VSCode Task创建博客帖子，自动利用Google翻译将文章标题翻译成英文，并生成Front Matter的方法。</description>
     </item>
     
   </channel>

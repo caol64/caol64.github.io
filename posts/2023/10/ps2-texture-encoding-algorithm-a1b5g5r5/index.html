@@ -96,7 +96,7 @@
   "keywords": [
     "PS2", "A1B5G5R5", "Python", "Algorithm"
   ],
-  "articleBody": "简介 在上一篇文章里我们介绍了PS2使用的图片压缩算法RLE，这次我们再来研究一下它的纹理贴图编码算法——A1B5G5R5。\n对于纹理来说，常用的图片编码格式如jpg或png都不适合。因为图片是由GPU读取并进行渲染的，你总不能送过去一张jpg图片，让GPU要读取其中一个像素的时候，先把整个图片解码吧？因此最理想的图片格式是未经压缩的位图格式，可以根据像素点坐标直接获取RGB数据。今天要介绍的A1B5G5R5正是这种编码格式之一。\n分析 上面两张纹理图片是从PS2存档中提取出来的，它们以位图的形式储存，像素数量为128x128。\n标准的32位位图，每个像素占用4字节数据，分别储存了RGBA四个通道的数据。因此上面两个纹理图片的图片大小为128x128x4字节。32位RGBA每像素数据结构如下：\n对于A1B5G5R5编码来说，每个像素占用2字节数据，其中alpha通道占用1位，其它3种颜色各占5位。每像素数据结构如下：\n将A1B5G5R5解码为32位RGBA可以用下图的方法进行。\n伪代码如下：\n1 2 3 4 5 6 7 while tex_offset \u003c len(self.texture): b = tex_struct.unpack_from(self.texture, tex_offset)[0] out[rgb_tex_offset] = (b \u0026 0x1F) \u003c\u003c 3 # R out[rgb_tex_offset + 1] = ((b \u003e\u003e 5) \u0026 0x1F) \u003c\u003c 3 # G out[rgb_tex_offset + 2] = ((b \u003e\u003e 10) \u0026 0x1F) \u003c\u003c 3 # B rgb_tex_offset += 3 tex_offset += tex_struct.size 很明显可以看到，将32位的RGBA图片编码成16位的A1B5G5R5，会丢失每种色彩的最后3个bit数据，是一种有损编码格式，但带来的好处是压缩比2:1，图片缩小了一半。再配合上一篇讲到的RLE编码，可以进一步缩小图片大小。\n最后 最后放上上面两个纹理图片渲染后的效果，有小伙伴还记得这两个游戏吗？\n",
+  "articleBody": "在上一篇文章里我们介绍了PS2使用的图片压缩算法RLE，这次我们再来研究一下它的纹理贴图编码算法——A1B5G5R5。\n简介 对于纹理来说，常用的图片编码格式如jpg或png都不适合。因为图片是由GPU读取并进行渲染的，你总不能送过去一张jpg图片，让GPU要读取其中一个像素的时候，先把整个图片解码吧？因此最理想的图片格式是未经压缩的位图格式，可以根据像素点坐标直接获取RGB数据。今天要介绍的A1B5G5R5正是这种编码格式之一。\n分析 上面两张纹理图片是从PS2存档中提取出来的，它们以位图的形式储存，像素数量为128x128。\n标准的32位位图，每个像素占用4字节数据，分别储存了RGBA四个通道的数据。因此上面两个纹理图片的图片大小为128x128x4字节。32位RGBA每像素数据结构如下：\n对于A1B5G5R5编码来说，每个像素占用2字节数据，其中alpha通道占用1位，其它3种颜色各占5位。每像素数据结构如下：\n将A1B5G5R5解码为32位RGBA可以用下图的方法进行。\n伪代码如下：\n1 2 3 4 5 6 7 while tex_offset \u003c len(self.texture): b = tex_struct.unpack_from(self.texture, tex_offset)[0] out[rgb_tex_offset] = (b \u0026 0x1F) \u003c\u003c 3 # R out[rgb_tex_offset + 1] = ((b \u003e\u003e 5) \u0026 0x1F) \u003c\u003c 3 # G out[rgb_tex_offset + 2] = ((b \u003e\u003e 10) \u0026 0x1F) \u003c\u003c 3 # B rgb_tex_offset += 3 tex_offset += tex_struct.size 很明显可以看到，将32位的RGBA图片编码成16位的A1B5G5R5，会丢失每种色彩的最后3个bit数据，是一种有损编码格式，但带来的好处是压缩比2:1，图片缩小了一半。再配合上一篇讲到的RLE编码，可以进一步缩小图片大小。\n最后 最后放上上面两个纹理图片渲染后的效果，有小伙伴还记得这两个游戏吗？\n",
   "wordCount" : "647",
   "inLanguage": "en",
   "datePublished": "2023-10-20T14:48:31Z",
@@ -282,8 +282,8 @@
         return rect.top + win.pageYOffset;   
     }
 </script>
-  <div class="post-content"><h2 id="简介">简介<a hidden class="anchor" aria-hidden="true" href="#简介">#</a></h2>
-<p>在<a href="../rle-algorithm-in-ps2/">上一篇文章</a>里我们介绍了<code>PS2</code>使用的图片压缩算法<code>RLE</code>，这次我们再来研究一下它的纹理贴图编码算法——<code>A1B5G5R5</code>。</p>
+  <div class="post-content"><p>在<a href="../rle-algorithm-in-ps2/">上一篇文章</a>里我们介绍了<code>PS2</code>使用的图片压缩算法<code>RLE</code>，这次我们再来研究一下它的纹理贴图编码算法——<code>A1B5G5R5</code>。</p>
+<h2 id="简介">简介<a hidden class="anchor" aria-hidden="true" href="#简介">#</a></h2>
 <p>对于纹理来说，常用的图片编码格式如<code>jpg</code>或<code>png</code>都不适合。因为图片是由<code>GPU</code>读取并进行渲染的，你总不能送过去一张<code>jpg</code>图片，让<code>GPU</code>要读取其中一个像素的时候，先把整个图片解码吧？因此最理想的图片格式是未经压缩的位图格式，可以根据像素点坐标直接获取<code>RGB</code>数据。今天要介绍的<code>A1B5G5R5</code>正是这种编码格式之一。</p>
 <h2 id="分析">分析<a hidden class="anchor" aria-hidden="true" href="#分析">#</a></h2>
 <p><a href="/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/3.jpg"  data-lightbox="image-1" >
