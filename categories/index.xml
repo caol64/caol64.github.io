@@ -6,40 +6,49 @@
     <description>Recent content in Categories on 路边的阿不</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 05 Jan 2024 17:51:11 +0000</lastBuildDate><atom:link href="https://babyno.top/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Jan 2024 18:13:51 +0000</lastBuildDate><atom:link href="https://babyno.top/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>技术</title>
-      <link>https://babyno.top/categories/%E6%8A%80%E6%9C%AF/</link>
+      <title>Thoughts</title>
+      <link>https://babyno.top/categories/thoughts/</link>
+      <pubDate>Fri, 12 Jan 2024 18:13:51 +0000</pubDate>
+      
+      <guid>https://babyno.top/categories/thoughts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Networking</title>
+      <link>https://babyno.top/categories/networking/</link>
       <pubDate>Fri, 05 Jan 2024 17:51:11 +0000</pubDate>
       
-      <guid>https://babyno.top/categories/%E6%8A%80%E6%9C%AF/</guid>
+      <guid>https://babyno.top/categories/networking/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>随笔</title>
-      <link>https://babyno.top/categories/%E9%9A%8F%E7%AC%94/</link>
-      <pubDate>Tue, 02 Jan 2024 13:52:36 +0000</pubDate>
+      <title>Programming</title>
+      <link>https://babyno.top/categories/programming/</link>
+      <pubDate>Tue, 02 Jan 2024 10:10:24 +0000</pubDate>
       
-      <guid>https://babyno.top/categories/%E9%9A%8F%E7%AC%94/</guid>
+      <guid>https://babyno.top/categories/programming/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>ps2mc-browser</title>
-      <link>https://babyno.top/categories/ps2mc-browser/</link>
-      <pubDate>Wed, 20 Dec 2023 12:07:17 +0000</pubDate>
+      <title>Open Source</title>
+      <link>https://babyno.top/categories/open-source/</link>
+      <pubDate>Sun, 31 Dec 2023 15:44:56 +0000</pubDate>
       
-      <guid>https://babyno.top/categories/ps2mc-browser/</guid>
+      <guid>https://babyno.top/categories/open-source/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Apple快捷指令</title>
-      <link>https://babyno.top/categories/apple%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/</link>
+      <title>Productivity</title>
+      <link>https://babyno.top/categories/productivity/</link>
       <pubDate>Thu, 14 Dec 2023 15:55:11 +0000</pubDate>
       
-      <guid>https://babyno.top/categories/apple%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/</guid>
+      <guid>https://babyno.top/categories/productivity/</guid>
       <description></description>
     </item>
     

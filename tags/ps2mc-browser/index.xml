@@ -13,7 +13,7 @@
       <pubDate>Sun, 31 Dec 2023 15:44:56 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/12/apply-for-jetbrains-oss-development-license/</guid>
-      <description>分享在GitHub上发布开源项目并且申请一年JetBrains OSS许可的经历。</description>
+      <description>Dive into the process of applying for a JetBrains open source license, upgrading your development toolkit, and contributing more effectively to your open source projects.</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Wed, 20 Dec 2023 12:07:17 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/12/ps2mc-browsers-shader-introduction/</guid>
-      <description>本文对ps2mc-browser项目使用的所有着色器代码进行了深入分析。</description>
+      <description>Uncover the magic behind colorful 3D rendering using OpenGL Shader with the ps2mc-browser. Dive deep into how polygons, vertices, and textures combine to create vibrant tabletop graphics.</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Mon, 20 Nov 2023 14:52:18 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/</guid>
-      <description>ps2mc-browser最新版本发布，新功能值得你来探索。</description>
+      <description>Check out the new features and updates in the PS2MC-Browser, a PS2 save file viewer that can now interactively display dynamic 3D Icons, provide enhanced visibility with a skybox layer, and much more.</description>
     </item>
     
     <item>
@@ -40,7 +40,7 @@
       <pubDate>Mon, 09 Oct 2023 17:34:15 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/10/rendering-ps2-3d-icon/</guid>
-      <description>本文介绍了如何使用`PyGame`和`ModernGL`将Playstation2游戏存档中3D图标渲染在自己开发的APP界面上。</description>
+      <description>Step into the world of 3D icon rendering using tools like Python3, PyGame, Numpy, ModernGL and PyGLM. Discover their unique roles in creating animation effects, light additions, smooth transitions and more within PS2.</description>
     </item>
     
     <item>
@@ -49,7 +49,7 @@
       <pubDate>Wed, 04 Oct 2023 18:00:34 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/10/parsing-ps2-3d-icon/</guid>
-      <description>本文详尽分析了Playstation2游戏存档中3D图标的数据结构。</description>
+      <description>Dive deep into the realm of PS2 game development as we demonstrate how to unpack 3D icon data from save files. Our intricate guide covers vertices, model animation, textures, lighting, and backgrounds, all with accurate coding details.</description>
     </item>
     
     <item>
@@ -58,7 +58,7 @@
       <pubDate>Fri, 29 Sep 2023 17:49:16 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/09/exporting-file-from-ps2-memcard/</guid>
-      <description>本文介绍了如何使用`Python`将游戏存档从Playstation2记忆卡（Memory Card）中导出。</description>
+      <description>Dive into the exciting world of PS2 memory card filesystems and learn how to extract specific game saves using Python. Fully executable code provided. Step into our in-depth analysis!</description>
     </item>
     
     <item>
@@ -67,7 +67,7 @@
       <pubDate>Tue, 26 Sep 2023 15:15:16 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/09/parsing-ps2-memcard-file-system/</guid>
-      <description>本文详尽分析了Playstation2主机记忆卡（Memory Card）的文件系统及数据结构。</description>
+      <description>Immerse yourself in the intricate world of PS2 gaming nostalgia as we delve into the PS2 memory card file system. Uncover how your favorite PS2 games were stored and relive your gaming youth through the eyes of a programming expert.</description>
     </item>
     
   </channel>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>HUGO on 路边的阿不</title>
+    <title>Hugo on 路边的阿不</title>
     <link>https://babyno.top/tags/hugo/</link>
-    <description>Recent content in HUGO on 路边的阿不</description>
+    <description>Recent content in Hugo on 路边的阿不</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 14 Nov 2023 11:31:43 +0000</lastBuildDate><atom:link href="https://babyno.top/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <pubDate>Tue, 14 Nov 2023 11:31:43 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/11/create-hugo-post-with-vscode-task-and-chatgpt/</guid>
-      <description>本文介绍了使用VSCode Task创建博客帖子，自动利用Google翻译将文章标题翻译成英文，并生成Front Matter的方法。</description>
+      <description>Immerse in innovative ways of improving your writing efficiency using VSCode and ChatGPT. Learn how to swiftly generate blog posts in Hugo, with a mere article title input, and see how translation and automation aid the process.</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Wed, 08 Nov 2023 14:23:52 +0000</pubDate>
       
       <guid>https://babyno.top/posts/2023/11/new-hugo-blog/</guid>
-      <description>本文介绍了使用markdown写博客，通过HUGO生成静态网站，部署并发布到Github Pages上的流程。并使用Cloudflare优化网络以及自定义PaperMod主题的方法。</description>
+      <description>Master all the necessary steps to fabricate a stunning blog via Github Pages and Hugo. This comprehensive guide elucidates on how to incorporate personalized elements, capitalize on Cloudflare to accelerate the loading speed, and optimize your blog for superior indexing by search engines.</description>
     </item>
     
   </channel>
