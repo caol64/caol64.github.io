@@ -35,6 +35,4 @@ jobs:
       - name: Run script
         run: |
           cd .github
-          BING_API_KEY="${{ secrets.BING_API_KEY }}"
-          TEST="${{ secrets.TEST }}"
-          python ping_bing.py
+          python ping_bing.py ${{ secrets.BING_API_KEY }} ${{ secrets.TEST }}
