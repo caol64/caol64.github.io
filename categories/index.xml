@@ -8,20 +8,20 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Jan 2024 18:13:51 +0000</lastBuildDate><atom:link href="https://babyno.top/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Thoughts</title>
-      <link>https://babyno.top/categories/thoughts/</link>
+      <title>想法</title>
+      <link>https://babyno.top/categories/%E6%83%B3%E6%B3%95/</link>
       <pubDate>Fri, 12 Jan 2024 18:13:51 +0000</pubDate>
       
-      <guid>https://babyno.top/categories/thoughts/</guid>
+      <guid>https://babyno.top/categories/%E6%83%B3%E6%B3%95/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Networking</title>
-      <link>https://babyno.top/categories/networking/</link>
+      <title>网络安全</title>
+      <link>https://babyno.top/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</link>
       <pubDate>Fri, 05 Jan 2024 17:51:11 +0000</pubDate>
       
-      <guid>https://babyno.top/categories/networking/</guid>
+      <guid>https://babyno.top/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</guid>
       <description></description>
     </item>
     
@@ -35,20 +35,29 @@
     </item>
     
     <item>
-      <title>Open Source</title>
-      <link>https://babyno.top/categories/open-source/</link>
+      <title>开源</title>
+      <link>https://babyno.top/categories/%E5%BC%80%E6%BA%90/</link>
       <pubDate>Sun, 31 Dec 2023 15:44:56 +0000</pubDate>
       
-      <guid>https://babyno.top/categories/open-source/</guid>
+      <guid>https://babyno.top/categories/%E5%BC%80%E6%BA%90/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Productivity</title>
-      <link>https://babyno.top/categories/productivity/</link>
+      <title>效率</title>
+      <link>https://babyno.top/categories/%E6%95%88%E7%8E%87/</link>
       <pubDate>Thu, 14 Dec 2023 15:55:11 +0000</pubDate>
       
-      <guid>https://babyno.top/categories/productivity/</guid>
+      <guid>https://babyno.top/categories/%E6%95%88%E7%8E%87/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>建站</title>
+      <link>https://babyno.top/categories/%E5%BB%BA%E7%AB%99/</link>
+      <pubDate>Wed, 08 Nov 2023 14:23:52 +0000</pubDate>
+      
+      <guid>https://babyno.top/categories/%E5%BB%BA%E7%AB%99/</guid>
       <description></description>
     </item>
     

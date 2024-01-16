@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>PS2纹理图片编码算法「A1B5G5R5」 | 路边的阿不</title>
-<meta name="keywords" content="PS2, A1B5G5R5, Python, Algorithm, Texture Encoding, Image Compression">
+<meta name="keywords" content="A1B5G5R5, Python, Algorithm, Texture Encoding, Image Compression">
 <meta name="description" content="Delve into the unique texture mapping coding algorithm, A1B5G5R5, utilized by PS2. Our detailed guide takes you through the principle behind this lossy yet efficient form of image encoding that significantly reduces image size.">
 <meta name="author" content="路边的阿不">
 <link rel="canonical" href="https://babyno.top/posts/2023/10/ps2-texture-encoding-algorithm-a1b5g5r5/">
@@ -94,7 +94,7 @@
   "name": "PS2纹理图片编码算法「A1B5G5R5」",
   "description": "Delve into the unique texture mapping coding algorithm, A1B5G5R5, utilized by PS2. Our detailed guide takes you through the principle behind this lossy yet efficient form of image encoding that significantly reduces image size.",
   "keywords": [
-    "PS2", "A1B5G5R5", "Python", "Algorithm", "Texture Encoding", "Image Compression"
+    "A1B5G5R5", "Python", "Algorithm", "Texture Encoding", "Image Compression"
   ],
   "articleBody": "在上一篇文章里我们介绍了PS2使用的图片压缩算法RLE，这次我们再来研究一下它的纹理贴图编码算法——A1B5G5R5。\n简介 对于纹理来说，常用的图片编码格式如jpg或png都不适合。因为图片是由GPU读取并进行渲染的，你总不能送过去一张jpg图片，让GPU要读取其中一个像素的时候，先把整个图片解码吧？因此最理想的图片格式是未经压缩的位图格式，可以根据像素点坐标直接获取RGB数据。今天要介绍的A1B5G5R5正是这种编码格式之一。\n分析 上面两张纹理图片是从PS2存档中提取出来的，它们以位图的形式储存，像素数量为128x128。\n标准的32位位图，每个像素占用4字节数据，分别储存了RGBA四个通道的数据。因此上面两个纹理图片的图片大小为128x128x4字节。32位RGBA每像素数据结构如下：\n对于A1B5G5R5编码来说，每个像素占用2字节数据，其中alpha通道占用1位，其它3种颜色各占5位。每像素数据结构如下：\n将A1B5G5R5解码为32位RGBA可以用下图的方法进行。\n伪代码如下：\n1 2 3 4 5 6 7 while tex_offset \u003c len(self.texture): b = tex_struct.unpack_from(self.texture, tex_offset)[0] out[rgb_tex_offset] = (b \u0026 0x1F) \u003c\u003c 3 # R out[rgb_tex_offset + 1] = ((b \u003e\u003e 5) \u0026 0x1F) \u003c\u003c 3 # G out[rgb_tex_offset + 2] = ((b \u003e\u003e 10) \u0026 0x1F) \u003c\u003c 3 # B rgb_tex_offset += 3 tex_offset += tex_struct.size 很明显可以看到，将32位的RGBA图片编码成16位的A1B5G5R5，会丢失每种色彩的最后3个bit数据，是一种有损编码格式，但带来的好处是压缩比2:1，图片缩小了一半。再配合上一篇讲到的RLE编码，可以进一步缩小图片大小。\n最后 最后放上上面两个纹理图片渲染后的效果，有小伙伴还记得这两个游戏吗？\n",
   "wordCount" : "647",
@@ -337,7 +337,6 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://babyno.top/tags/ps2/">PS2</a></li>
       <li><a href="https://babyno.top/tags/a1b5g5r5/">A1B5G5R5</a></li>
       <li><a href="https://babyno.top/tags/python/">Python</a></li>
       <li><a href="https://babyno.top/tags/algorithm/">Algorithm</a></li>

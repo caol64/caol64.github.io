@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>「ps2mc-browser」新功能发布 | 路边的阿不</title>
-<meta name="keywords" content="ps2mc-browser, WxPython, ModernGL, 3D Rendering, Python">
+<meta name="keywords" content="ps2mc-browser, ModernGL, 3D Rendering, Python">
 <meta name="description" content="Check out the new features and updates in the PS2MC-Browser, a PS2 save file viewer that can now interactively display dynamic 3D Icons, provide enhanced visibility with a skybox layer, and much more.">
 <meta name="author" content="路边的阿不">
 <link rel="canonical" href="https://babyno.top/posts/2023/11/ps2mc-browser-new-feature-release/">
@@ -94,7 +94,7 @@
   "name": "「ps2mc-browser」新功能发布",
   "description": "Check out the new features and updates in the PS2MC-Browser, a PS2 save file viewer that can now interactively display dynamic 3D Icons, provide enhanced visibility with a skybox layer, and much more.",
   "keywords": [
-    "ps2mc-browser", "WxPython", "ModernGL", "3D Rendering", "Python"
+    "ps2mc-browser", "ModernGL", "3D Rendering", "Python"
   ],
   "articleBody": "ps2mc-browser是一个PS2存档文件查看器，使用OpenGL画布显示存档里的3D动态图标。依赖如下：\nPython3 WxPython Numpy ModernGL PyGlm Github地址戳这里。\n新功能 一些PS2游戏存档内置了三套不同的图标动画，分别对应玩家进行“浏览”、“拷贝”和“删除”这三种不同的操作。\n新发布的功能使得ps2mc-browser界面不仅仅只是展示图标的动画，还可以与用户进行交互，响应用户的鼠标操作。这样一来，图标的动画可以根据用户的选择而变化。\n其它更新 每个存档动画的背景图案都保存在icon.sys文件里（具体请查阅解析PS2游戏存档3D图标），实际上它是有透明度的，在PS2实体机上比较容易看出来。\n因此，在OpenGL渲染背景时，在bg背景层的后面，加了一层skybox。这两层的z坐标分布为0.99和0.999，且skybox的RGBA为(0.6, 0.6, 0.6, 1)不透明。这样如果bg有透明效果，那就会显示出skybox的颜色。\n以Viewtiful Joe为例，它的bg透明度是100%，如果不加skybox，其效果如下： 加上后效果如下： 未解决问题 光源问题尚未解决，导致很多游戏光照不正确显示效果不佳。详情见解析PS2游戏存档3D图标。\n",
   "wordCount" : "501",
@@ -319,7 +319,6 @@
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://babyno.top/tags/ps2mc-browser/">ps2mc-browser</a></li>
-      <li><a href="https://babyno.top/tags/wxpython/">WxPython</a></li>
       <li><a href="https://babyno.top/tags/moderngl/">ModernGL</a></li>
       <li><a href="https://babyno.top/tags/3d-rendering/">3D Rendering</a></li>
       <li><a href="https://babyno.top/tags/python/">Python</a></li>

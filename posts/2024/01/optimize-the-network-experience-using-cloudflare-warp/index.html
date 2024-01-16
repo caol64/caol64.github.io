@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>使用「Cloudflare WARP」优化网络体验 | 路边的阿不</title>
-<meta name="keywords" content="Cloudflare WARP, ChatGPT">
+<meta name="keywords" content="Cloudflare, ChatGPT">
 <meta name="description" content="Optimize online connectivity with Cloudflare WARP. Conquer ISP restrictions to enhance your network experience on platforms like ChatGPT, Twitter, Instagram, etc.">
 <meta name="author" content="路边的阿不">
 <link rel="canonical" href="https://babyno.top/posts/2024/01/optimize-the-network-experience-using-cloudflare-warp/">
@@ -94,7 +94,7 @@
   "name": "使用「Cloudflare WARP」优化网络体验",
   "description": "Optimize online connectivity with Cloudflare WARP. Conquer ISP restrictions to enhance your network experience on platforms like ChatGPT, Twitter, Instagram, etc.",
   "keywords": [
-    "Cloudflare WARP", "ChatGPT"
+    "Cloudflare", "ChatGPT"
   ],
   "articleBody": " 当我使用IOS版本ChatGPT时，遇到错误提示：\nSomething went wrong. You may be connected to a disallowed ISP. If you are using VPN, try disabling it. Otherwise try a different Wi-Fi network or data connection.\n其实不止ChatGPT，我遇到的情况还有：\nTwitter不能发帖（访问正常） Instagram无法登录 等等 我发现不止我一个人出现这种情况，很多其它人也是，大家都处在不同的国家和地区。\n看来出问题的服务应该是对访问者做了一些限制，我们无法得知其中的逻辑，但可以肯定的是我们的机场应该不符合服务商的条件，被过滤出来了。既然这样，那我们就尝试用魔法打败魔法，使用一个免费的服务使得我们的机场看起来更像是符合服务商条件的那种。\nCloudflare WARP 今天要介绍的是“Cloudflare WARP”：\nCloudflare WARP is a service provided by Cloudflare that offers a faster, more secure, and more private experience online. It acts as a secure connection between a user’s device and the Internet, with various connection modes to suit different needs. The WARP client is available for multiple operating systems, including iOS, Android, Windows, macOS, and Linux. It is designed to improve the speed and security of Internet connections for individual users. Additionally, Cloudflare WARP is also used in the context of Cloudflare Zero Trust, providing secure access to private applications.\n简单来说是由Cloudflare提供的一项服务，主要的功能是使你的网络连接更安全、更快速，以及更加保密。是一种类V P N服务，可以在客户端和服务端之间加一层屏障。\n那我们就利用这个服务，在我们的机场和目标服务间加一层屏障从而把我们自己“伪装”起来。\n配置 安装和使用非常简单，按着下面的步骤就行。具体可查阅官方文档，下面以Ubuntu 22.04为例，在你的V P S服务器上做如下操作：\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # Add cloudflare gpg key curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg # Add this repo to your apt repositories echo \"deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main\" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list # Install sudo apt update \u0026\u0026 sudo apt install cloudflare-warp # Check systemctl status warp-svc # Run warp-cli register warp-cli set-mode proxy warp-cli connect warp-cli enable-always-on warp-cli warp-stats 按照上面的安装步骤，Cloudflare Warp就安装好了，默认运行在40000端口，起了一个Socket服务。\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 { \"outbounds\": [{ \"protocol\": \"freedom\", \"settings\": {} }, { \"tag\": \"warp\", \"protocol\": \"socks\", \"settings\": { \"servers\": [{ \"address\": \"127.0.0.1\", \"port\": 40000, \"users\": [] }] } }, { \"protocol\": \"blackhole\", \"settings\": {}, \"tag\": \"blocked\" }], \"routing\": { \"rules\": [{ \"type\": \"field\", \"ip\": [\"geoip:private\"], \"outboundTag\": \"blocked\" }, { \"type\": \"field\", \"domain\": [\"openai.com\"], \"outboundTag\": \"warp\" }] } } 注意一下routing.domain属性，你可以在这里添加想要使用Cloudflare WARP代理的域名。比如上面提到的ChartGPT、Twitter以及Instagram等服务的域名，加上后访问这些域名的请求会通过40000端口，也就是Cloudflare WARP运行的Socket接口代理。这样让目标服务商以为我们的访问是来自于Cloudflare WARP服务器的。\n尾声 最后说一句，Cloudflare WARP服务是免费的，甚至无需注册。但是使用起来一定要遵守当地法律法规。\n",
   "wordCount" : "1027",
@@ -428,7 +428,7 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://babyno.top/tags/cloudflare-warp/">Cloudflare WARP</a></li>
+      <li><a href="https://babyno.top/tags/cloudflare/">Cloudflare</a></li>
       <li><a href="https://babyno.top/tags/chatgpt/">ChatGPT</a></li>
     </ul>
 <nav class="paginav">
