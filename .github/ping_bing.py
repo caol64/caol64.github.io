@@ -42,7 +42,7 @@ API_KEY = os.getenv("BING_API_KEY")
 data = {
   "host": "babyno.top",
   "key": API_KEY,
-  "keyLocation": f"https://babyno.top/${API_KEY}.txt",
+  "keyLocation": f"https://babyno.top/{API_KEY}.txt",
   "urlList": url_list
 }
 
