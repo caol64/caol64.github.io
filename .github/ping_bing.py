@@ -37,6 +37,7 @@ headers = {
 }
 
 API_KEY = os.getenv("BING_API_KEY")
+print(os.getenv("TEST"))
 
 # Prepare the body data.
 data = {
