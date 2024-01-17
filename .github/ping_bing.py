@@ -2,6 +2,10 @@ import xml.etree.ElementTree as ET
 import requests
 
 
+HOST = 'babyno.top'
+KEY = '7a7bd06ffb3547eeab63a96961906e90'
+
+
 def get_latest_posts(sitemap_path, n=10):
     # Parse the XML sitemap.
     tree = ET.parse(sitemap_path)
@@ -24,16 +28,16 @@ def get_latest_posts(sitemap_path, n=10):
 
 def ping_bing(url_list):
     # Prepare the URL and headers.
-    url = 'https://api.indexnow.org/indexnow'
+    url = 'https://www.bing.com/indexnow'
     headers = {
       'Content-Type': 'application/json; charset=utf-8',
     }
 
     # Prepare the body data.
     data = {
-      "host": "babyno.top",
-      "key": "7a7bd06ffb3547eeab63a96961906e90",
-      "keyLocation": "https://babyno.top/7a7bd06ffb3547eeab63a96961906e90.txt",
+      "host": HOST,
+      "key": KEY,
+      "keyLocation": f"https://{HOST}/{KEY}.txt",
       "urlList": url_list
     }
 
@@ -46,7 +50,7 @@ if __name__ == "__main__":
 
     sitemap_path = "../sitemap.xml"
     url_list = get_latest_posts(sitemap_path, 9)
-    url_list.insert(0, 'https://babyno.top/')
+    url_list.insert(0, f'https://{HOST}/')
     print(url_list)
 
     response = ping_bing(url_list)
