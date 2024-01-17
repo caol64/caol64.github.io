@@ -1,7 +1,5 @@
 import xml.etree.ElementTree as ET
 import requests
-import json
-import os
 
 
 def get_latest_posts(sitemap_path, n=10):
@@ -40,7 +38,7 @@ def ping_bing(url_list):
     }
 
     # Send the POST request.
-    response = requests.post(url, headers=headers, data=json.dumps(data))
+    response = requests.post(url, headers=headers, json=data)
     return response
 
 
