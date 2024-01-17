@@ -24,7 +24,7 @@ def get_latest_posts(sitemap_path, n=10):
 
 def ping_bing(url_list):
     # Prepare the URL and headers.
-    url = 'https://www.bing.com/indexnow'
+    url = 'https://api.indexnow.org/indexnow'
     headers = {
       'Content-Type': 'application/json; charset=utf-8',
     }
