@@ -4,10 +4,6 @@ import json
 import os
 
 
-API_KEY = os.environ['API_KEY']
-TEST = os.environ['TEST']
-
-
 def get_latest_posts(sitemap_path, n=10):
     # Parse the XML sitemap.
     tree = ET.parse(sitemap_path)
@@ -35,13 +31,11 @@ def ping_bing(url_list):
       'Content-Type': 'application/json; charset=utf-8',
     }
 
-    print(TEST)
-
     # Prepare the body data.
     data = {
       "host": "babyno.top",
-      "key": API_KEY,
-      "keyLocation": f"https://babyno.top/{API_KEY}.txt",
+      "key": "7a7bd06ffb3547eeab63a96961906e90",
+      "keyLocation": "https://babyno.top/7a7bd06ffb3547eeab63a96961906e90.txt",
       "urlList": url_list
     }
 
