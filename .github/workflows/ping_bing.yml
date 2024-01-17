@@ -33,6 +33,9 @@ jobs:
           pip install requests
 
       - name: Run script
+        env:
+          API_KEY: ${{ secrets.BING_API_KEY }}
+          TEST: ${{ secrets.TEST }}
         run: |
           cd .github
-          python ping_bing.py ${{ secrets.BING_API_KEY }} ${{ secrets.TEST }}
+          python ping_bing.py

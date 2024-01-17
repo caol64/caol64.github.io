@@ -2,7 +2,10 @@ import xml.etree.ElementTree as ET
 import requests
 import json
 import os
-import sys
+
+
+API_KEY = os.environ['API_KEY']
+TEST = os.environ['TEST']
 
 
 def get_latest_posts(sitemap_path, n=10):
@@ -25,15 +28,7 @@ def get_latest_posts(sitemap_path, n=10):
     return [url[0] for url in urls[:n]]
 
 
-if __name__ == "__main__":
-    API_KEY = sys.argv[1]
-    TEST = sys.argv[2]
-
-    sitemap_path = "../sitemap.xml"
-    url_list = get_latest_posts(sitemap_path, 9)
-    url_list.insert(0, 'https://babyno.top/')
-    print(url_list)
-
+def ping_bing(url_list):
     # Prepare the URL and headers.
     url = 'https://www.bing.com/indexnow'
     headers = {
@@ -52,7 +47,17 @@ if __name__ == "__main__":
 
     # Send the POST request.
     response = requests.post(url, headers=headers, data=json.dumps(data))
+    return response
 
+
+if __name__ == "__main__":
+
+    sitemap_path = "../sitemap.xml"
+    url_list = get_latest_posts(sitemap_path, 9)
+    url_list.insert(0, 'https://babyno.top/')
+    print(url_list)
+
+    response = ping_bing(url_list)
     # Print the response.
     print(response.status_code)
     print(response.text)
