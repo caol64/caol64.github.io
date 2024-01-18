@@ -3,7 +3,7 @@ import requests
 
 
 HOST = 'babyno.top'
-KEY = '7a7bd06ffb3547eeab63a96961906e90'
+KEY = '898460573df54f0a8b6eb4bb09469c18'
 
 
 def get_latest_posts(sitemap_path, n=10):
@@ -28,16 +28,14 @@ def get_latest_posts(sitemap_path, n=10):
 
 def ping_bing(url_list):
     # Prepare the URL and headers.
-    url = 'https://www.bing.com/indexnow'
+    url = f"https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlbatch?apikey={KEY}"
     headers = {
       'Content-Type': 'application/json; charset=utf-8',
     }
 
     # Prepare the body data.
     data = {
-      "host": HOST,
-      "key": KEY,
-      "keyLocation": f"https://{HOST}/{KEY}.txt",
+      "siteUrl": HOST,
       "urlList": url_list
     }
 
@@ -57,3 +55,4 @@ if __name__ == "__main__":
     # Print the response.
     print(response.status_code)
     print(response.text)
+    print("Data: ", response.request.body)
