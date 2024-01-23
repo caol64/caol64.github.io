@@ -25,7 +25,7 @@ Base64是一种编码格式，可以将任意数据转换为可存储和传输�
 
 1. 创建“numbers”文件，选择“文件”>“保存”。
 2. 使用如下“快捷指令”将其生成Base64字符串并保存在剪贴板中。
-![](</imgs/posts/2023-12-14-the-wonders-of-base64-encoding-in-apple-shortcuts/截屏2023-12-14 16.08.54.webp>)
+![](imgs/posts/2023-12-14-the-wonders-of-base64-encoding-in-apple-shortcuts/截屏2023-12-14 16.08.54.webp)
 1. 打开“快捷指令”应用，创建一个新的快捷指令。
 2. 在“操作”列表中，找到“文本”>“输入文本”。
 3. 在“文本”字段中，粘贴Base64字符串。
@@ -35,7 +35,7 @@ Base64是一种编码格式，可以将任意数据转换为可存储和传输�
 
 下图是“[加油记录](https://github.com/caol64/apple-shortcuts/blob/main/FuelingRecord/README.md)”里的一个例子，首次执行快捷指令时，会自动创建一个模版numbers文件，这个模版文件就使用base64编码隐藏在快捷指令中。
 
-![](</imgs/posts/2023-12-14-the-wonders-of-base64-encoding-in-apple-shortcuts/截屏2023-12-14 16.15.56.webp>)
+![](imgs/posts/2023-12-14-the-wonders-of-base64-encoding-in-apple-shortcuts/截屏2023-12-14%2016.15.56.webp)
 
 ## 注意事项
 

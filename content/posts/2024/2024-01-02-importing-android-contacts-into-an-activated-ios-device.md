@@ -25,7 +25,7 @@ categories: ["Programming"]
 
 那怎么将`.vcf`文件导入到iPhone的通讯录呢？我在网上搜索答案，得到的解决方法是：需要通过网页版`iCloud`的“导入vcard联系人”功能。既然有方法，那就试试看。然而过程还是那么酸爽：当我尝试导入时，提示“无法导入”。
 
-![import vcard](</imgs/posts/2024-01-02-importing-android-contacts-into-an-activated-ios-device/截屏2024-01-02 09.39.34.webp>)
+![import vcard](imgs/posts/2024-01-02-importing-android-contacts-into-an-activated-ios-device/截屏2024-01-02%2009.39.34.webp)
 
 那一刹那，我心里那个呐喊啊，“苹果哥，你就饶了我这个卑微的Android战士吧，我只是想导入一个文件而已！”
 

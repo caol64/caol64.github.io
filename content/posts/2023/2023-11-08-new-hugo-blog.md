@@ -60,7 +60,7 @@ my-site/
 > 
 > `Build and deployment`设置中`workflow`选择`Deploy static content to Pages`，由`Hugo`本地编译静态资源，可以大大提升`Github Pages`的部署速度。
 > 
-> ![](</imgs/posts/2023-11-08-new-hugo-blog/截屏2023-11-09 11.32.58.webp>)
+> ![](imgs/posts/2023-11-08-new-hugo-blog/截屏2023-11-09%2011.32.58.webp)
 
 下面说一下域名的两种玩法。
 
@@ -72,13 +72,13 @@ my-site/
 `github`在国内访问速度非常不稳定，体验不佳。如果你有自己的域名，可以注册一个`Cloudflare`账号，稍微配置一下就可以优化访问速度。
 
 第一步，使用`Cloudflare`的`DNS`解析。如果你的域名不是在`Cloudflare`购买的，需要先将域名注册商那里的`DNS`解析服务器换成`Cloudflare`的，比如腾讯：
-<img src="/imgs/posts/2023-11-08-new-hugo-blog/截屏2023-11-09 11.56.25.webp" width="60%" >
+![](imgs/posts/2023-11-08-new-hugo-blog/截屏2023-11-09%2011.56.25.webp)
 
 第二步，使用`dig`命令查看`Github Pages`分配给你的域名的真实ip地址：
-![](</imgs/posts/2023-11-08-new-hugo-blog/截屏2023-11-09 12.04.03.webp>)
+![](imgs/posts/2023-11-08-new-hugo-blog/截屏2023-11-09%2012.04.03.webp)
 
 第三步，在`Cloudflare`控制台创建你的域名指向上述ip地址的`DNS`解析`A记录`：
-![](</imgs/posts/2023-11-08-new-hugo-blog/截屏2023-11-09 12.12.49.webp>)
+![](imgs/posts/2023-11-08-new-hugo-blog/截屏2023-11-09%2012.12.49.webp)
 
 > 嫌第二步和第三步麻烦的话，可以直接使用一条`CNAME`记录指向你的`github.io`域名，效果是一样的。
 
@@ -220,11 +220,11 @@ sequenceDiagram
 ### 显示文章TOC
 `TOC`就是侧边栏等文章大纲，如果不喜欢主题自带的`TOC`样式，可以自己定义。网上教程很多，不再赘述。比如下图：
 
-![](</imgs/posts/2023-11-08-new-hugo-blog/截屏2023-11-09 14.31.59.webp>)
+![](imgs/posts/2023-11-08-new-hugo-blog/截屏2023-11-09%2014.31.59.webp)
 
 ## 最后
 到此为止，基本能满足我的需求了。最后放一张平时写文章时的图：
-![](</imgs/posts/2023-11-08-new-hugo-blog/截屏2023-11-09 14.39.11.webp>)
+![](imgs/posts/2023-11-08-new-hugo-blog/截屏2023-11-09%2014.39.11.webp)
 
 我通常使用`VSCode`编写文章，实时预览`Markdown`格式非常方便。为了让图片在`VSCode`和网页上都能正常显示，我在项目的根目录下创建了一个名为`imgs`的软链接，指向`static/imgs`。这是因为`Hugo`在编译时会自动将`static`目录下的文件复制到网站的根目录下，所以使用绝对路径`/imgs/`可以在不同预览方式下找到文件。
 

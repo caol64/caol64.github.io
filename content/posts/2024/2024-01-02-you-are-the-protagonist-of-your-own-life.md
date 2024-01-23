@@ -35,11 +35,11 @@ categories: ["想法"]
 
 有句话说得好，“互联网是有记忆的”，这句话对每个人来说都是如此。我在 [archive.org](https://web.archive.org/) 找到了博客当年的截图。
 
-![](/imgs/posts/2024-01-02-you-are-the-protagonist-of-your-own-life/%E7%BD%91%E9%A1%B5%E6%8D%95%E8%8E%B7_2-1-2024_113718_web.archive.org.webp)
+![](imgs/posts/2024-01-02-you-are-the-protagonist-of-your-own-life/%E7%BD%91%E9%A1%B5%E6%8D%95%E8%8E%B7_2-1-2024_113718_web.archive.org.webp)
 
 在Gmail的存档中，还能找到一些和网友互动的邮件。
 
-![](/imgs/posts/2024-01-02-you-are-the-protagonist-of-your-own-life/image.webp)
+![](imgs/posts/2024-01-02-you-are-the-protagonist-of-your-own-life/image.webp)
 
 ## 结尾
 这篇文章稍显伤感，因为正反映了我近期的心境。最近我一直在整理可以回顾过去的东西，包括照片集、笔记、文章等。因此我想说：人生的每个阶段都值得回溯，但人的记忆有限，尽可能将这些珍贵的回忆记录在某个可以看得见的地方。你会发现，每个回忆中，你都是主角。

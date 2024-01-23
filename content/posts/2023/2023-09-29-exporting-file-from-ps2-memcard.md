@@ -68,7 +68,7 @@ def read_cluster(self, n): # n为cluster编号
 
 ## 03 构建`FAT`矩阵
 从上一篇文章知道`FAT`矩阵的构建方式如下：
-![](/imgs/posts/2023-09-29-exporting-file-from-ps2-memcard/%E5%AD%98%E5%82%A8%E5%8D%A1-FAT2.jpg)
+![](imgs/posts/2023-09-29-exporting-file-from-ps2-memcard/%E5%AD%98%E5%82%A8%E5%8D%A1-FAT2.jpg)
 
 ```python
 def __build_fat_matrix(self):

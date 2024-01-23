@@ -23,11 +23,11 @@ categories: ["Programming"]
 
 这里我们再回顾一下我们创建的坐标系统：
 
-![](/imgs/posts/2023-10-09-rendering-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-%E5%9D%90%E6%A0%87%E7%B3%BB.jpg)
+![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-%E5%9D%90%E6%A0%87%E7%B3%BB.jpg)
 
 因为我们创建出来的空间是一个每条边长度都是2的正立方体，而坐标所在的原点坐标是立方体的中心。此外我们的摄像机是在`z轴`的负方向，想象一下立方体的哪一个面应该是背景面：
 
-![](/imgs/posts/2023-12-20-ps2mc-browsers-shader-introduction/image.webp)
+![](imgs/posts/2023-12-20-ps2mc-browsers-shader-introduction/image.webp)
 
 因此我们可以构建出背景的四个顶点坐标是：
 
@@ -79,7 +79,7 @@ skybox_colors = [
 
 最后来一张背景图效果，可以看到中间的颜色过渡效果是着色器插值自动计算的。
 
-![](</imgs/posts/2023-12-20-ps2mc-browsers-shader-introduction/截屏2023-12-20 14.41.10.webp>)
+![](imgs/posts/2023-12-20-ps2mc-browsers-shader-introduction/截屏2023-12-20%2014.41.10.webp)
 
 ## 图标着色器(icon.frag和icon.vert)
 

@@ -30,7 +30,7 @@ categories: ["效率"]
 - 选择`92#`或者`95#`汽油
 - 输入加油金额 
 
-![](/imgs/posts/2023-11-24-shortcuts-sharing-fueling-record/1.gif)
+![](imgs/posts/2023-11-24-shortcuts-sharing-fueling-record/1.gif)
 
 ## 下载地址
 https://www.icloud.com/shortcuts/914e212e8aff4a92a2a6deb676a3932e

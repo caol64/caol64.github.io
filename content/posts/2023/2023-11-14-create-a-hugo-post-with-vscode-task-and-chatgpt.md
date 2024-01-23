@@ -126,7 +126,7 @@ hugo new content posts/2023/2023-10-21-hello-world.md
 
 嗬，看上去不错，赶紧把这段代码保存成`scripts/new_post.py`试一下。
 
-![](/imgs/posts/2023-11-14-create-a-hugo-post-with-vscode-task-and-chatgpt/1.gif)
+![](imgs/posts/2023-11-14-create-a-hugo-post-with-vscode-task-and-chatgpt/1.gif)
 
 真不错，一次性成功，我的心还有点小激动。但还有点小问题，生成的模版里的`title`也被翻译成英文了，我想保留的是我的输入。只要用`sed`命令查找并替换就行了。有了刚才的经历，这点小事交给`ChatGPT`我信心十足。
 
@@ -201,7 +201,7 @@ hugo new content posts/2023/2023-10-21-hello-world.md
 
 稍作调整后，我继续进行操作：
 
-![](/imgs/posts/2023-11-14-create-a-hugo-post-with-vscode-task-and-chatgpt/2.gif)
+![](imgs/posts/2023-11-14-create-a-hugo-post-with-vscode-task-and-chatgpt/2.gif)
 
 效果不错，还是挺满意的。
 

@@ -11,7 +11,7 @@ tags: ["RLE", "Python", "Algorithm", "Image Compression"]
 categories: ["Programming"]
 ---
 
-![](/imgs/posts/2023-10-16-rle-algorithm-in-ps2/run_length_f9030faa12.webp)
+![](imgs/posts/2023-10-16-rle-algorithm-in-ps2/run_length_f9030faa12.webp)
 
 ## RLE算法介绍
 `RLE`（Run Length Encoding，行程长度编码）算法，是把文件内容用“重复次数x数据”的形式来表示的压缩方法。比如：有`AAAAAABBCDDEEEEEF`这样一段数据，在字符后面加上重复出现次数，就可以用`6A2B1C2D5E1F`来表示。可以看到原始数据是17字节，编码后是12字节，因此压缩是成功的。
@@ -27,7 +27,7 @@ categories: ["Programming"]
 
 如果标识位为`0`，则表示后面紧跟着的数据块是“重复数据”，类似于`AAAAA`，此时`rle_code`就是重复次数，只要取出后面紧跟着的一个`数据块`，重复`rle_code`次即可。
 
-![](/imgs/posts/2023-10-16-rle-algorithm-in-ps2/2.gif)
+![](imgs/posts/2023-10-16-rle-algorithm-in-ps2/2.gif)
 
 伪代码如下：
 ```python

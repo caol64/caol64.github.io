@@ -47,7 +47,7 @@ categories: ["开源"]
 
 在等待了2天后，我收到了JetBrains的邮件，告知我申请已经通过，并且提供了`JetBrains All Products Pack`的许可。
 
-![JetBrains All Products Pack](</imgs/posts/2023-12-31-apply-for-jetbrains-oss-development-license/截屏2023-12-31 15.56.31.webp>)
+![JetBrains All Products Pack](imgs/posts/2023-12-31-apply-for-jetbrains-oss-development-license/截屏2023-12-31%2015.56.31.webp)
 
 JetBrains的`All Products Pack`许可证几乎涵盖了我需要的所有功能。从Java的`IntelliJ IDEA`，Python的`PyCharm`，前端的WebStorm到数据分析的`DataGrip`，以及许多其他的产品。
 

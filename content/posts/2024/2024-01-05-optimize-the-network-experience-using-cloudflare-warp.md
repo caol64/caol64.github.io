@@ -11,7 +11,7 @@ tags: ["Cloudflare", "ChatGPT"]
 categories: ["网络安全"]
 ---
 
-![Cloudflare WARP](/imgs/posts/2024-01-05-optimize-the-network-experience-using-cloudflare-warp/%E4%B8%8B%E8%BD%BD.webp)
+![Cloudflare WARP](imgs/posts/2024-01-05-optimize-the-network-experience-using-cloudflare-warp/%E4%B8%8B%E8%BD%BD.webp)
 
 当我使用`IOS`版本`ChatGPT`时，遇到错误提示：
 

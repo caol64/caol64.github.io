@@ -17,21 +17,21 @@ categories: ["Programming"]
 对于纹理来说，常用的图片编码格式如`jpg`或`png`都不适合。因为图片是由`GPU`读取并进行渲染的，你总不能送过去一张`jpg`图片，让`GPU`要读取其中一个像素的时候，先把整个图片解码吧？因此最理想的图片格式是未经压缩的位图格式，可以根据像素点坐标直接获取`RGB`数据。今天要介绍的`A1B5G5R5`正是这种编码格式之一。
 
 ## 分析
-![](/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/3.jpg)
+![](imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/3.jpg)
 
 上面两张纹理图片是从`PS2`存档中提取出来的，它们以`位图`的形式储存，像素数量为`128x128`。
 
 标准的`32位`位图，每个像素占用`4字节`数据，分别储存了`RGBA`四个通道的数据。因此上面两个纹理图片的图片大小为`128x128x4`字节。`32位RGBA`每像素数据结构如下：
 
-![](/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/RGBA.jpg)
+![](imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/RGBA.jpg)
 
 对于`A1B5G5R5`编码来说，每个像素占用`2字节`数据，其中`alpha通道`占用`1位`，其它3种颜色各占`5位`。每像素数据结构如下：
 
-![](/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/A1B5G5R5.jpg)
+![](imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/A1B5G5R5.jpg)
 
 将`A1B5G5R5`解码为`32位RGBA`可以用下图的方法进行。
 
-![](/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/decode.jpg)
+![](imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/decode.jpg)
 
 伪代码如下：
 ```python
@@ -49,4 +49,4 @@ while tex_offset < len(self.texture):
 ## 最后
 最后放上上面两个纹理图片渲染后的效果，有小伙伴还记得这两个游戏吗？
 
-![](/imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/4.jpg)
+![](imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/4.jpg)

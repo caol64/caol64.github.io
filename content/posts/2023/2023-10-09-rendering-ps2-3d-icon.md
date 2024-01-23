@@ -11,7 +11,7 @@ tags: ["3D Rendering", "ps2mc-browser", "Python", "ModernGL"]
 categories: ["Programming"]
 ---
 
-![](/imgs/posts/2023-10-09-rendering-ps2-3d-icon/1.jpg)
+![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/1.jpg)
 
 经过前面一系列文章的铺垫，PS2存档3D图标的文件已经全部解析完毕。本篇开始将介绍使用如下工具将3D图标渲染出来，并尽可能接近PS2主机原生的效果。
 - Python3
@@ -74,7 +74,7 @@ struct IconSys {
 
 ## 03 坐标系统
 这里以右手系统创建坐标系，但是原始的顶点是y轴颠倒的，如下图A。因此我们之后的工作将在转换后的图B坐标系下进行。
-![](/imgs/posts/2023-10-09-rendering-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-%E5%9D%90%E6%A0%87%E7%B3%BB.jpg)
+![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-%E5%9D%90%E6%A0%87%E7%B3%BB.jpg)
 
 ## 04 变换矩阵
 ### 观察矩阵
@@ -168,7 +168,7 @@ void main() {
 
 以下是运行代码后的效果：
 
-![](/imgs/posts/2023-10-09-rendering-ps2-3d-icon/3.gif)
+![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/3.gif)
 
 ### 添加纹理
 在上面的基础上，引入纹理坐标和纹理数据。
@@ -211,7 +211,7 @@ void main() {
     fragColor = vec4(color, alpha);
 }
 ```
-![](/imgs/posts/2023-10-09-rendering-ps2-3d-icon/4.gif)
+![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/4.gif)
 
 ### 添加光照
 在上面的基础上，引入光源，环境光以及法线数据。
@@ -277,7 +277,7 @@ void main() {
     fragColor = vec4(color, alpha);
 }
 ```
-![](/imgs/posts/2023-10-09-rendering-ps2-3d-icon/5.gif)
+![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/5.gif)
 
 ### 动画效果
 动画效果是让着色器按照时间渲染不同形状的顶点数据。我们可以设计一个计时器和一个计数器，以确定当前时间应该渲染哪个形状的顶点。
@@ -294,7 +294,7 @@ curr_frame = int(animation_time * self.window.fps * self.icon.anim_speed)
 curr_shape = int(curr_frame // (self.icon.frame_length / self.icon.animation_shapes))
 ```
 
-![](/imgs/posts/2023-10-09-rendering-ps2-3d-icon/6.gif)
+![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/6.gif)
 
 ### 使动画平滑过渡
 使动画平滑过渡需要使用着色器的顶点插值技术。我们在发送着色器顶点的时候，将当前形状和下一个形状的顶点数据同时发送。这样再根据时间因子，着色器会自动计算两个形状之间的顶点。
@@ -375,7 +375,7 @@ void main() {
 
 最终效果：
 
-![](/imgs/posts/2023-10-09-rendering-ps2-3d-icon/7.gif)
+![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/7.gif)
 
 ## 06 尾声
 所有代码均可在 https://github.com/caol64/ps2mc-browser 下载到。在我的第一篇文章中，我也提到了这个系列的创作初衷：为了纪念逝去的青春，以及对技术永不磨灭的热情。在此收尾，也算还了年少时的一个梦想。

@@ -42,7 +42,7 @@ categories: ["建站"]
 
 实际上准备工作就是上面的步骤1和步骤2。在上面的网站上生成一个`API Key` （按钮1），下载`API Key`文件（按钮2），最后将文本文件放置在你的网站根目录下。
 
-![IndexNow Implementation Steps](/imgs/posts/2024-01-17-boost-your-seo-with-indexnow/Untitled.webp)
+![IndexNow Implementation Steps](imgs/posts/2024-01-17-boost-your-seo-with-indexnow/Untitled.webp)
 
 IndexNow Implementation Steps
 
@@ -146,7 +146,7 @@ jobs:
 
 最后查看下效果，登录[Bing Webmaster Tools](https://www.bing.com/webmasters/indexnow)，选择左边菜单栏的`IndexNow`：
 
-![IndexNow on Bing Webmaster Tools](/imgs/posts/2024-01-17-boost-your-seo-with-indexnow/Untitled%201.webp)
+![IndexNow on Bing Webmaster Tools](imgs/posts/2024-01-17-boost-your-seo-with-indexnow/Untitled%201.webp)
 
 IndexNow on Bing Webmaster Tools
 
@@ -159,7 +159,7 @@ IndexNow on Bing Webmaster Tools
 3. Click on the **Configuration** section.
 4. Locate the Crawler Hints sign up card and enable. It's that easy.
 
-![Cloudflare Crawler Hints](/imgs/posts/2024-01-17-boost-your-seo-with-indexnow/Untitled%202.webp)
+![Cloudflare Crawler Hints](imgs/posts/2024-01-17-boost-your-seo-with-indexnow/Untitled%202.webp)
 
 Cloudflare Crawler Hints
 
