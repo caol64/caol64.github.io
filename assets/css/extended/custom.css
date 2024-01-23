@@ -1,0 +1,126 @@
+:root {
+    --content-c: #ff502c;
+    --code-bg-c: #fff5f5;
+    --quote: #eee;
+    --hljs-bg: unset !important;
+    --td-border: #d0d7de;
+}
+.dark {
+    --content-c: #fff5f5;
+    --code-bg-c: rgba(175, 184, 193, 0.2);
+    --quote: #888;
+    --hljs-bg: unset !important;
+    --td-border: #888;
+}
+.post-title {
+    margin-bottom: 12px;
+    font-size: 2rem;
+    font-weight: unset;
+}
+.breadcrumbs {
+    margin-bottom: 12px;
+}
+body {
+    font-family: "Segoe UI","Helvetica Neue","Helvetica",Arial,sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+/* 链接样式 */
+.post-content a {
+    color: #0969da;
+    box-shadow: none;
+    text-decoration: none;
+}
+.post-content a:hover {
+    text-decoration: underline;
+}
+/* 行内代码 - 左右间距 */
+.post-content code {
+    margin: unset;
+}
+
+.post-content blockquote {
+    color: #808080;
+}
+/* GitHub 样式的表格 */
+.post-content table tr {
+    border: 1px solid #979da3;
+}
+.post-content table tr:nth-child(2n),
+.post-content thead {
+    background-color: var(--code-bg);
+}
+.post-content table th,
+.post-content table:not(.highlighttable, .highlight table, .gist .highlight) td {
+    border: 1px solid var(--td-border);
+    border-bottom: 1px solid var(--td-border);
+}
+
+/* 图片居中 */
+.post-content img {
+    margin: auto;
+}
+
+.post-content h3,.post-content h4,.post-content h5,.post-content h6 {
+    margin: 24px 0 16px
+}
+
+.post-content h1 {
+    margin: 30px auto 24px;
+    font-size: 30px;
+    border-bottom: 1px solid var(--quote);
+    padding-bottom: 8px;
+    font-weight: unset;
+}
+
+.post-content h2 {
+    margin: 26px auto 24px;
+    border-bottom: 1px solid var(--quote);
+    font-size: 28px;
+    padding-bottom: 8px;
+    font-weight: unset;
+}
+
+.post-content h3 {
+    font-size: 24px;
+    font-weight: unset;
+}
+
+.post-content h4 {
+    font-size: 22px;
+    font-weight: unset;
+}
+
+.post-content h5 {
+    font-size: 20px;
+    font-weight: unset;
+}
+
+.post-content h6 {
+    font-size: 18px;
+    font-weight: unset;
+}
+/* 代码高亮 */
+.post-content pre code {
+    color: var(--content);
+}
+.post-content .highlight table {
+    border-radius: unset;
+}
+/* 文章摘要 */
+.post-description {
+    font-style: italic;
+    font-size: 14px;
+    color: gray;
+}
+
+.post-content code {
+    background: var(--code-bg-c);
+    color: var(--content-c);
+}
+
+.post-content blockquote {
+    padding: 0 20px;
+    border-inline-start: 3px solid var(--quote);
+}

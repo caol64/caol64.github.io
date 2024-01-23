@@ -1,0 +1,3 @@
+<a href="{{ .Destination | safeURL }}"  data-lightbox="image-1" >
+<img loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }} />
+</a>
