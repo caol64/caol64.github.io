@@ -63,3 +63,7 @@ tell application "Finder" to make new file at (the target of the front window) a
 指定文件名创建文件：
 
 ![example2](imgs/posts/2024-01-23-create-files-anywhere-on-your-mac-with-apple-shortcuts/example2.gif)
+
+## 下载地址
+
+https://www.icloud.com/shortcuts/951edcaf19bb45d8be6f9a90532e253d
