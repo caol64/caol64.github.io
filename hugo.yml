@@ -11,7 +11,7 @@ paginate: 10
 
 params:
   # ShowReadingTime: true
-  description: '阿不的技术博客，主要聊AI、技术、架构、云服务、网络安全、个人提升、效率提升以及其它有趣的东西'
+  description: '路边的阿不的技术博客，主要聊AI、技术、架构、云服务、网络安全、个人提升、效率提升以及其它有趣的东西'
   author: 路边的阿不
   DateFormat: "2006-01-02"
   ShowCodeCopyButtons: true
@@ -37,7 +37,7 @@ params:
     disableHLJS: true
   homeInfoParams:
     Title: Hi there!
-    Content: 大家好，我是阿不，一名步入中年的程序员。向往一种「粗茶淡饭，代码相伴」的宁静生活。在这里，我会与你们分享一些不太主流，却同样有趣有益的技术心得。
+    Content: 「粗茶淡饭，代码相伴」—— 平凡即是真，技术即是美。
   comments: true
 
 minify:
