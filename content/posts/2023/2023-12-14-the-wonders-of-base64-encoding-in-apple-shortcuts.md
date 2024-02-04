@@ -8,7 +8,7 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags: ["Apple Shortcuts", "Automation", "Efficiency"]
-categories: ["效率"]
+categories: ["快捷指令"]
 ---
 
 苹果快捷指令是一款强大的工具，可以帮助我们自动化日常任务。在创建快捷指令时，有时我们需要添加附件，例如文本、图片、音频等。但是，苹果快捷指令本身并不支持添加附件，因此我们需要使用一些技巧来实现。
