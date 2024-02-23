@@ -31,7 +31,7 @@ def modify_md_image_links(text):
         alt_text = match.group(1)
         url = match.group(2).replace(' ', '%20')
         if not url.startswith('http'):
-            return f'![{alt_text}](https://babyno.top{url})'
+            return f'![{alt_text}](https://babyno.top/{url})'
         else:
             return match.group(0)
 
