@@ -1,13 +1,38 @@
 import sys
-from googletrans import Translator
 import subprocess
 from datetime import datetime
+import ollama
+
+
+roles = {
+    'english_translator': 'Translate `%s` to English, Do not output other information.',
+}
+
+models = {
+    'mistral': 'mistral:7b-instruct-v0.2-q8_0',
+}
+
+
+class Assistant:
+    def __init__(self) -> None:
+        self.role_prompt = roles['english_translator']
+        self.model = models['mistral']
+
+    def work(self, user_prompt):
+        response = ollama.generate(
+            model=self.model,
+            options={'temperature': 0.7},
+            prompt=self.role_prompt % user_prompt
+        )
+
+        return response['response']
 
 
 def translate_title(title):
-    translator = Translator()
-    translated_title = translator.translate(title, dest='en').text
-    return translated_title.lower().replace(',', '').replace('"', '').replace('\'', '').replace(' ', '-')
+    assistant = Assistant()
+    translated_title = assistant.work(title)
+    print(translated_title)
+    return translated_title.lower().strip().replace('.', '').replace(',', '').replace('"', '').replace('\'', '').replace(' ', '-')
 
 
 def create_post(title):
