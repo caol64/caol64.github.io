@@ -5,39 +5,45 @@ import ollama
 
 
 roles = {
-    'english_translator': 'Translate `%s` to English, Do not output other information.',
-}
-
-models = {
-    'mistral': 'mistral:7b-instruct-v0.2-q8_0',
+    "english_translator": "Translate `%s` to English.",
 }
 
 
 class Assistant:
     def __init__(self) -> None:
-        self.role_prompt = roles['english_translator']
-        self.model = models['mistral']
+        self.role_prompt = roles["english_translator"]
+        self.model = "qwen:7b"
 
     def work(self, user_prompt):
         response = ollama.generate(
             model=self.model,
-            options={'temperature': 0.7},
-            prompt=self.role_prompt % user_prompt
+            options={"temperature": 0.7},
+            prompt=self.role_prompt % user_prompt,
         )
 
-        return response['response']
+        return response["response"]
 
 
 def translate_title(title):
     assistant = Assistant()
     translated_title = assistant.work(title)
     print(translated_title)
-    return translated_title.lower().strip().replace('.', '').replace(',', '').replace('"', '').replace('\'', '').replace(' ', '-')
+    return (
+        translated_title.lower()
+        .strip()
+        .replace(".", "")
+        .replace(",", "")
+        .replace('"', "")
+        .replace("'", "")
+        .replace("(", "")
+        .replace(")", "")
+        .replace(" ", "-")
+    )
 
 
 def create_post(title):
     today = datetime.today()
-    formatted_date = today.strftime('%Y-%m-%d')
+    formatted_date = today.strftime("%Y-%m-%d")
     translated_title = translate_title(title)
     file_name = f"content/posts/{today.year}/{formatted_date}-{translated_title}.md"
     subprocess.run(["hugo", "new", file_name])

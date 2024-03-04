@@ -10,7 +10,6 @@ TocOpen: true
 tags:
   - Ollama
   - AI
-  - LocalLLM
 categories:
   - 教程
 ---
