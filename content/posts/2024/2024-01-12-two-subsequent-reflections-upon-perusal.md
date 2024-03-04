@@ -1,16 +1,17 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 读后感两篇
 slug: two-subsequent-reflections-upon-perusal
-description: "Delve into an enlightening journey reflected upon two game-changing methods of thinking - Lateral Thinking and Six Thinking Hats. Discover new gates towards efficient problem-solving, team collaboration and personal growth!"
+description: Delve into an enlightening journey reflected upon two game-changing methods of thinking - Lateral Thinking and Six Thinking Hats. Discover new gates towards efficient problem-solving, team collaboration and personal growth!
 date: 2024-01-12 18:13:51
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["Team Collaboration", "Personal Growth"]
-categories: ["想法"]
+tags:
+  - 个人成长
+categories:
+  - 想法
 ---
-
 ## 《水平思考法》读后感
 
 > 2011年10月15日 星期六 20:00

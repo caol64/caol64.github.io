@@ -1,16 +1,18 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: Base64编码在「Apple快捷指令」中的妙用
 slug: the-wonders-of-base64-encoding-in-apple-shortcuts
-description: "Learn how to harness the power of Base64 encoding to insert attachments into Apple Shortcuts actions, boosting the efficiency and functionality of your daily errands beyond the obvious."
+description: Learn how to harness the power of Base64 encoding to insert attachments into Apple Shortcuts actions, boosting the efficiency and functionality of your daily errands beyond the obvious.
 date: 2023-12-14 15:55:11
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["Apple Shortcuts", "Automation", "Efficiency"]
-categories: ["快捷指令"]
+tags:
+  - 快捷指令
+  - 效率
+categories:
+  - 教程
 ---
-
 苹果快捷指令是一款强大的工具，可以帮助我们自动化日常任务。在创建快捷指令时，有时我们需要添加附件，例如文本、图片、音频等。但是，苹果快捷指令本身并不支持添加附件，因此我们需要使用一些技巧来实现。
 
 ## Base64编码

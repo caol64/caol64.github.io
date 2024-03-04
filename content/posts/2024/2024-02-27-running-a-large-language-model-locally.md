@@ -1,16 +1,19 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 在本地跑一个大语言模型
 slug: running-a-large-language-model-locally
-description: "Explore how to run a Large Language Model (LLM) like GPT-3 on your own computer, understand the benefits it offers, and the tools you need to get started."
+description: Explore how to run a Large Language Model (LLM) like GPT-3 on your own computer, understand the benefits it offers, and the tools you need to get started.
 date: 2024-02-27 12:22:33
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["Ollama", "AI"]
-categories: ["人工智能"]
+tags:
+  - Ollama
+  - AI
+  - LocalLLM
+categories:
+  - 教程
 ---
-
 随着ChatGPT的兴起，LLM (Large Language Model，大语言模型) 已经成为人工智能和自然语言处理领域的热门话题。本篇文章我将和大家一起在自己的个人电脑上运行一个大语言模型。
 
 ## 优缺点

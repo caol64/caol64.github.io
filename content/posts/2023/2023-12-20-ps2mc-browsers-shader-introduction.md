@@ -1,16 +1,19 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 「ps2mc-browser」着色器代码分析
 slug: ps2mc-browsers-shader-introduction
-description: "Uncover the magic behind colorful 3D rendering using OpenGL Shader with the ps2mc-browser. Dive deep into how polygons, vertices, and textures combine to create vibrant tabletop graphics."
+description: Uncover the magic behind colorful 3D rendering using OpenGL Shader with the ps2mc-browser. Dive deep into how polygons, vertices, and textures combine to create vibrant tabletop graphics.
 date: 2023-12-20 12:07:17
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["ps2mc-browser", "OpenGL", "3D Rendering"]
-categories: ["Programming"]
+tags:
+  - ps2mc-browser
+  - OpenGL
+  - Python
+categories:
+  - 教程
 ---
-
 如何将多边形的顶点和纹理渲染成缤纷多彩的画面呢？它就是OpenGL着色器。今天我们就要聊聊`ps2mc-browser`的着色器。
 
 这里简单介绍一下，[ps2mc-browser](https://github.com/caol64/ps2mc-browser)是一个ps2存档查看器，它有能力解析ps2存档中3D图标的顶点和纹理等数据，并通过`OpenGL`的能力将图标渲染出来。

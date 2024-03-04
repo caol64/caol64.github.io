@@ -1,16 +1,18 @@
 ---
-author: "路边的阿不"
-title: "用「VSCode Task」自动化创建博客"
+author: 路边的阿不
+title: 用「VSCode Task」自动化创建博客
 slug: create-hugo-post-with-vscode-task-and-chatgpt
-description: "Immerse in innovative ways of improving your writing efficiency using VSCode and ChatGPT. Learn how to swiftly generate blog posts in Hugo, with a mere article title input, and see how translation and automation aid the process."
+description: Immerse in innovative ways of improving your writing efficiency using VSCode and ChatGPT. Learn how to swiftly generate blog posts in Hugo, with a mere article title input, and see how translation and automation aid the process.
 date: 2023-11-14 11:31:43
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["Automation", "Efficiency", "ChatGPT"]
-categories: ["效率"]
+tags:
+  - 效率
+  - AI
+categories:
+  - 教程
 ---
-
 在之前的文章中，我提到我通常使用 `VSCode` 进行写作。这一次，我想分享一些提高平时写作效率的小技巧。同时，这也是我第一次尝试使用刚刚注册的 `ChatGPT`，看看它在辅助编码方面的能力如何。
 
 ## 需求背景

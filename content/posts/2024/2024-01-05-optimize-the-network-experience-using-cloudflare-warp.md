@@ -1,16 +1,18 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 使用「Cloudflare WARP」优化网络体验
 slug: optimize-the-network-experience-using-cloudflare-warp
-description: "Optimize online connectivity with Cloudflare WARP. Conquer ISP restrictions to enhance your network experience on platforms like ChatGPT, Twitter, Instagram, etc."
+description: Optimize online connectivity with Cloudflare WARP. Conquer ISP restrictions to enhance your network experience on platforms like ChatGPT, Twitter, Instagram, etc.
 date: 2024-01-05 17:51:11
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["Cloudflare", "ChatGPT"]
-categories: ["网络安全"]
+tags:
+  - Cloudflare
+  - 网络安全
+categories:
+  - 教程
 ---
-
 ![Cloudflare WARP](imgs/posts/2024-01-05-optimize-the-network-experience-using-cloudflare-warp/%E4%B8%8B%E8%BD%BD.webp)
 
 当我使用`IOS`版本`ChatGPT`时，遇到错误提示：

@@ -1,5 +1,5 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 「快捷指令」- 智能闹钟
 slug: smart-alarm-with-apple-shortcuts
 description: Learn how to set up a "smart" alarm with Shortcuts on your iPhone that reacts to your schedule and lifestyle in this comprehensive guide.
@@ -7,8 +7,11 @@ date: 2024-02-04 13:24:35
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["Apple Shortcuts", "Automation", "Efficiency"]
-categories: ["快捷指令"]
+tags:
+  - 快捷指令
+  - 效率
+categories:
+  - 教程
 ---
 相信现在大部分打工人都会使用手机上的闹钟功能每天定时叫醒自己吧。虽然现在的手机闹钟应用可以自己定义重复周期等简单的设置，但是对于大部分人来讲这些功能过于简单。今天我就介绍一个使用「快捷指令」实现的我认为比较“智能”的闹钟。
 

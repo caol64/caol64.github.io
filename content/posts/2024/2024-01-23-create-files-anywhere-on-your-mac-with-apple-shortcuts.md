@@ -1,16 +1,18 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 使用「快捷指令」在Mac上的任何地方创建文件
 slug: create-files-anywhere-on-your-mac-with-apple-shortcuts
-description: "Discover how to simplify file creation in any directory on your Mac using Apple's Shortcuts. Enhance your productivity with this step-by-step guide!"
+description: Discover how to simplify file creation in any directory on your Mac using Apple's Shortcuts. Enhance your productivity with this step-by-step guide!
 date: 2024-01-23 17:07:11
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["Apple Shortcuts", "Automation", "Efficiency"]
-categories: ["快捷指令"]
+tags:
+  - 快捷指令
+  - 效率
+categories:
+  - 教程
 ---
-
 MAC有个令人“脑阔疼”的地方，没法在直接在某个目录下面创建文件，有的时候真的不方便。还好我们有“**快捷指令**”，这点问题不在话下。
 
 ## 原理介绍

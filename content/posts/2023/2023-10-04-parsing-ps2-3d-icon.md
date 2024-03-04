@@ -1,16 +1,18 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 解析PS2游戏存档3D图标
 slug: parsing-ps2-3d-icon
-description: "Dive deep into the realm of PS2 game development as we demonstrate how to unpack 3D icon data from save files. Our intricate guide covers vertices, model animation, textures, lighting, and backgrounds, all with accurate coding details."
+description: Dive deep into the realm of PS2 game development as we demonstrate how to unpack 3D icon data from save files. Our intricate guide covers vertices, model animation, textures, lighting, and backgrounds, all with accurate coding details.
 date: 2023-10-04 18:00:34
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["3D Rendering", "ps2mc-browser"]
-categories: ["Programming"]
+tags:
+  - ps2mc-browser
+  - OpenGL
+categories:
+  - 教程
 ---
-
 ![](imgs/posts/2023-10-04-parsing-ps2-3d-icon/1.gif)
 
 看到这个图片，对于熟悉PS2的老玩家来说应该不会陌生。它是PS2记忆卡管理界面中的游戏存档3D图标。本篇文章我们将介绍如何从存档文件里解析出这个活动的小人。

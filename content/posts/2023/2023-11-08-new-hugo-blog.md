@@ -1,16 +1,19 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 用「Github」和「Cloudflare」自建博客
 slug: new-hugo-blog
-description: "Master all the necessary steps to fabricate a stunning blog via Github Pages and Hugo. This comprehensive guide elucidates on how to incorporate personalized elements, capitalize on Cloudflare to accelerate the loading speed, and optimize your blog for superior indexing by search engines."
+description: Master all the necessary steps to fabricate a stunning blog via Github Pages and Hugo. This comprehensive guide elucidates on how to incorporate personalized elements, capitalize on Cloudflare to accelerate the loading speed, and optimize your blog for superior indexing by search engines.
 date: 2023-11-08 14:23:52
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["Cloudflare", "Github Pages", "SEO"]
-categories: ["建站"]
+tags:
+  - Cloudflare
+  - SEO
+  - 建站
+categories:
+  - 教程
 ---
-
 大约在十几年前，我也自己搭建过一个博客，在`Godaddy`买了虚拟主机和一个域名，搭建好`LAMP`环境，再装上`Wordpress`就开始折腾了。什么`百度统计`、`Google广告`、`Jiathis`等等全都安排上。那个时候在网上结识了一帮志同道合的网友，一起聊建站心得，甚至网站的`PR`值升到2时还兴奋的奔走相告。
 
 后来由于种种原因博客就荒废了，再后来就没有了……

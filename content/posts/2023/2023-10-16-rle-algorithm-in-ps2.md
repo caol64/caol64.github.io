@@ -1,16 +1,18 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 「RLE」算法在PS2中的应用
 slug: rle-algorithm-in-ps2
-description: "Experience the power of Run Length Encoding (RLE), a fundamental data compression algorithm. Witness its astounding application in PS2 for efficient image compression and unveil the intricacies behind its implementation."
+description: Experience the power of Run Length Encoding (RLE), a fundamental data compression algorithm. Witness its astounding application in PS2 for efficient image compression and unveil the intricacies behind its implementation.
 date: 2023-10-16 12:30:58
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["RLE", "Python", "Algorithm", "Image Compression"]
-categories: ["Programming"]
+tags:
+  - Python
+  - 算法
+categories:
+  - 教程
 ---
-
 ![](imgs/posts/2023-10-16-rle-algorithm-in-ps2/run_length_f9030faa12.webp)
 
 ## RLE算法介绍

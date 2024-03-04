@@ -1,16 +1,17 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 申请到了「JetBrains」开源免费许可证
 slug: apply-for-jetbrains-oss-development-license
-description: "Dive into the process of applying for a JetBrains open source license, upgrading your development toolkit, and contributing more effectively to your open source projects."
+description: Dive into the process of applying for a JetBrains open source license, upgrading your development toolkit, and contributing more effectively to your open source projects.
 date: 2023-12-31 15:44:56
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["JetBrains", "ps2mc-browser"]
-categories: ["开源"]
+tags:
+  - 开源
+categories:
+  - 分享
 ---
-
 ![jetbrains](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png)
 
 记得三个月前我在GitHub上开源了[ps2mc-browser](https://github.com/caol64/ps2mc-browser)项目，一个可以查看和渲染ps2存档3D图标的神奇小工具。间或推送代码，增添功能，如今终于发布了它的第一个稳定版本。

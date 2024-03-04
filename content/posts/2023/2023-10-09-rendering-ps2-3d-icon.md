@@ -1,16 +1,19 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 使用Python和OpenGL渲染PS2存档3D图标
 slug: rendering-ps2-3d-icon
-description: "Step into the world of 3D icon rendering using tools like Python3, PyGame, Numpy, ModernGL and PyGLM. Discover their unique roles in creating animation effects, light additions, smooth transitions and more within PS2."
+description: Step into the world of 3D icon rendering using tools like Python3, PyGame, Numpy, ModernGL and PyGLM. Discover their unique roles in creating animation effects, light additions, smooth transitions and more within PS2.
 date: 2023-10-09 17:34:15
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["3D Rendering", "ps2mc-browser", "Python", "ModernGL"]
-categories: ["Programming"]
+tags:
+  - ps2mc-browser
+  - Python
+  - OpenGL
+categories:
+  - 教程
 ---
-
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/1.jpg)
 
 经过前面一系列文章的铺垫，PS2存档3D图标的文件已经全部解析完毕。本篇开始将介绍使用如下工具将3D图标渲染出来，并尽可能接近PS2主机原生的效果。

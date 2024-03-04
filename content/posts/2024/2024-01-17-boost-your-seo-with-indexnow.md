@@ -1,16 +1,18 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 使用IndexNow提升Github Pages网站SEO
 slug: boost-your-seo-with-indexnow
-description: "Learn how to optimize SEO for your Github Pages site by using IndexNow. From understanding the purpose of SEO to detailed steps on applying IndexNow, enhance your website visibility efficiently!"
+description: Learn how to optimize SEO for your Github Pages site by using IndexNow. From understanding the purpose of SEO to detailed steps on applying IndexNow, enhance your website visibility efficiently!
 date: 2024-01-17 14:42:30
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["Cloudflare", "Github Pages", "SEO", "IndexNow"]
-categories: ["建站"]
+tags:
+  - SEO
+  - 建站
+categories:
+  - 教程
 ---
-
 我之前写过[一篇文章](https://babyno.top/posts/2023/11/new-hugo-blog/)，介绍了[本站](https://babyno.top/)是使用`Hugo`进行构建并发布在`Github Pages`上的。也向大家介绍过将网站提交给搜索引擎的方法，但是手工提交未免繁琐和低效。今天给大家介绍下如何通过`IndexNow` 对网站进行`SEO`优化。
 
 ## SEO的作用

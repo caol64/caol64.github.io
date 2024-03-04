@@ -1,16 +1,18 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 从PS2记忆卡中导出存档文件
 slug: exporting-file-from-ps2-memcard
-description: "Dive into the exciting world of PS2 memory card filesystems and learn how to extract specific game saves using Python. Fully executable code provided. Step into our in-depth analysis!"
+description: Dive into the exciting world of PS2 memory card filesystems and learn how to extract specific game saves using Python. Fully executable code provided. Step into our in-depth analysis!
 date: 2023-09-29 17:49:16
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["ps2mc-browser", "Python"]
-categories: ["Programming"]
+tags:
+  - ps2mc-browser
+  - Python
+categories:
+  - 教程
 ---
-
 上一篇文章中我们解析了PS2存储卡的文件系统，这次直接实战，编写`python`代码导出指定的游戏存档。本篇文章完整代码可以访问：[ps2mc-browser](https://github.com/caol64/ps2mc-browser)。
 
 ## 01 解析`SuperBlock`

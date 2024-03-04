@@ -1,16 +1,18 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: PS2纹理图片编码算法「A1B5G5R5」
 slug: ps2-texture-encoding-algorithm-a1b5g5r5
-description: "Delve into the unique texture mapping coding algorithm, A1B5G5R5, utilized by PS2. Our detailed guide takes you through the principle behind this lossy yet efficient form of image encoding that significantly reduces image size."
+description: Delve into the unique texture mapping coding algorithm, A1B5G5R5, utilized by PS2. Our detailed guide takes you through the principle behind this lossy yet efficient form of image encoding that significantly reduces image size.
 date: 2023-10-20 14:48:31
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["A1B5G5R5", "Python", "Algorithm", "Texture Encoding", "Image Compression"]
-categories: ["Programming"]
+tags:
+  - Python
+  - 算法
+categories:
+  - 教程
 ---
-
 在[上一篇文章](../rle-algorithm-in-ps2/)里我们介绍了`PS2`使用的图片压缩算法`RLE`，这次我们再来研究一下它的纹理贴图编码算法——`A1B5G5R5`。
 
 ## 简介

@@ -1,16 +1,17 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 将Android通讯录导入已激活IOS设备
 slug: importing-android-contacts-into-an-activated-ios-device
-description: "Learn how to import Android contacts into an activated iOS device without 'Move to iOS' app. Overcome the challenges of vCard version constraints with proven solutions."
+description: Learn how to import Android contacts into an activated iOS device without 'Move to iOS' app. Overcome the challenges of vCard version constraints with proven solutions.
 date: 2024-01-02 10:10:24
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["Efficiency"]
-categories: ["Programming"]
+tags:
+  - 效率
+categories:
+  - 教程
 ---
-
 那天，家里的长辈的`Android`手机坏了，正好我这里有台闲置的苹果手机。你可能想：哦，这挺简单的吧，启动新手机，下载`转移到 iOS`的APP，一键迁移就完事了。然而往往事情都不会这么顺利，正所谓“第一步错，步步错”来形容一点不为过。
 
 ## 安卓的倔强

@@ -1,16 +1,18 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 「Apple快捷指令」 - 数据自动保存至Numbers
 slug: shortcuts-sharing-fueling-record
-description: "Sharing a commonly used Apple Shortcut, the Fueling Record. Catered for those who crave efficiency, this function simplifies fueling record processes. No need for separate apps or manual tracking. Hope these shortcuts can facilitate your life too."
+description: Sharing a commonly used Apple Shortcut, the Fueling Record. Catered for those who crave efficiency, this function simplifies fueling record processes. No need for separate apps or manual tracking. Hope these shortcuts can facilitate your life too.
 date: 2023-11-24 10:43:16
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["Apple Shortcuts", "Automation", "Efficiency"]
-categories: ["快捷指令"]
+tags:
+  - 快捷指令
+  - 效率
+categories:
+  - 教程
 ---
-
 今天开始我创建了一个「快捷指令」专题，专门分享自己常用的`Apple Shortcuts`。我是一个喜欢效率的人，所以能够自动化的工作我都尽量不进行繁琐的逐步操作。希望这些「快捷指令」也能为你们的生活带来便利。
 
 今天分享第一个快捷指令：“汽车加油记录”。

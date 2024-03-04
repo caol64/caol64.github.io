@@ -1,16 +1,19 @@
 ---
-author: "路边的阿不"
+author: 路边的阿不
 title: 「ps2mc-browser」新功能发布
 slug: ps2mc-browser-new-feature-release
-description: "Check out the new features and updates in the PS2MC-Browser, a PS2 save file viewer that can now interactively display dynamic 3D Icons, provide enhanced visibility with a skybox layer, and much more."
+description: Check out the new features and updates in the PS2MC-Browser, a PS2 save file viewer that can now interactively display dynamic 3D Icons, provide enhanced visibility with a skybox layer, and much more.
 date: 2023-11-20 14:52:18
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["ps2mc-browser", "ModernGL", "3D Rendering", "Python"]
-categories: ["开源"]
+tags:
+  - ps2mc-browser
+  - Python
+  - 开源
+categories:
+  - 分享
 ---
-
 `ps2mc-browser`是一个`PS2`存档文件查看器，使用`OpenGL`画布显示存档里的3D动态图标。依赖如下：
 - Python3
 - WxPython
