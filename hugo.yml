@@ -19,12 +19,18 @@ params:
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   socialIcons:
-    - name: github
-      url: "https://github.com/caol64/"
-    - name: email
-      url: "mailto:caol64@gmail.com"
     - name: Rss
       url: "index.xml"
+    - name: email
+      url: "mailto:caol64@gmail.com"
+    - name: github
+      url: "https://github.com/caol64/"
+    - name: zhihu
+      url: https://www.zhihu.com/people/caol64
+    - name: wechat
+      url: imgs/qrcode.jpg
+    - name: buymeacoffee
+      url: https://www.buymeacoffee.com/caol64
   fuseOpts:
     isCaseSensitive: false
     shouldSort: true
