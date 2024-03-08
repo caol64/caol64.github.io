@@ -6,6 +6,7 @@ date: "2019-03-11"
 description: "This is a document for testing the support of Markdown syntax."
 ShowToc: true
 TocOpen: true
+draft: true
 ---
 This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.
 

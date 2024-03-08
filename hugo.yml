@@ -1,6 +1,6 @@
 baseURL: https://babyno.top/
 languageCode: "zh-CN"
-# defaultContentLanguage: "zh"
+defaultContentLanguage: "zh"
 title: 路边的阿不
 theme: PaperMod
 hasCJKLanguage: true
@@ -8,7 +8,17 @@ enableEmoji: true
 enableRobotsTXT: true
 buildFuture: true
 paginate: 10
+# mainsections: ["posts", "en"]
 
+languages:
+  zh:
+    languageName: 中文
+  en:
+    languageName: English
+    params:
+      homeInfoParams:
+        Title: Hi there!
+        Content: Plain living and high thinking, with code as a companion.
 params:
   # ShowReadingTime: true
   description: '路边的阿不的技术博客，主要聊AI、技术、架构、云服务、网络安全、个人提升、效率提升以及其它有趣的东西'

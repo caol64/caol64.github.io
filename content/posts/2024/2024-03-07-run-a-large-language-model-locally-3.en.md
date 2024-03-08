@@ -1,6 +1,6 @@
 ---
-author: 路边的阿不
-title: 在本地跑一个大语言模型(3)
+author: caol64
+title: Run a large language models locally (3)
 slug: run-a-large-language-model-locally-3
 description: Run LLMs on your machine and extend their capabilities!  This guide explores function calling in Ollama, allowing the model to connect with external tools and become more intelligent.
 date: 2024-03-07 14:24:56
@@ -11,31 +11,31 @@ tags:
   - Ollama
   - AI
 categories:
-  - 教程
+  - Tutorial
 ---
-在前两篇文章里，我们已经介绍了如何在本地运行`Ollama`以及如何通过提供外部数据库的方式微调模型的答案。本篇文章将继续探索如何使用“函数调用(`function-calling`)”功能以扩展模型能力，使其在“智能”的道路上越走越远。
+This article is the third in a series on running large language models (LLMs) locally. In the previous two articles, we introduced how to run `Ollama` locally and how to fine-tune the model's answers by providing an external database. This article will continue to explore how to use the `function-calling` feature to extend the model's capabilities and make it go further on the road to "intelligence".
 
-## function-calling介绍
+## **Function-calling**
 
-根据`OpenAI`官方文档，`function-calling`是使得大型语言模型具备可以连接到外部工具的能力。简而言之，**开发者事先给模型提供了若干工具（函数），在模型理解用户的问题后，自行判断是否需要调用工具以获得更多上下文信息，帮助模型更好的决策**。
+According to the `OpenAI` official documentation, `function-calling` is a way for large language models to connect to external tools. In short, **developers provide the model with a number of tools (functions) in advance. After the model understands the user's question, it decides whether to call the tool to obtain more context information to help the model make better decisions.**
 
-举个例子：在[上一篇文章](https://babyno.top/posts/2024/03/run-a-large-language-model-locally-2/)我们是利用`Document loaders`将事先准备好的文本作为上下文提供给模型，而使用`function-calling`以后，我们只要提供一个“搜索函数”作为工具，模型即可自己通过搜索引擎进行搜索然后得出答案。
+For example, in the previous [article](https://babyno.top/en/posts/2024/03/run-a-large-language-model-locally-2/), we used `Document loaders` to provide pre-prepared text as context to the model. With `function-calling`, we only need to provide a "search function" as a tool, and the model can search through the search engine and get the answer by itself.
 
-得益于最新的模型训练，现在的模型既能够检测何时应调用函数（取决于输入），还能够以比以前的模型更贴近函数签名的方式响应 JSON。
+Thanks to the latest model training, the current model can detect when to call a function (depending on the input) and respond to JSON in a way that is closer to the function signature than previous models.
 
-## 用途
+## **Use case**
 
-`function-calling`有什么用？官网给出3个例子：
+What are the uses of `function-calling`? The official website provides 3 examples:
 
-- **创建通过调用外部 API 回答问题的助手**
-- **将自然语言转换为 API 调用**
-- **从文本中提取结构化数据**
+- **Create an assistant that answers questions by calling external APIs**
+- **Convert natural language to API calls**
+- **Extract structured data from text**
 
-下面我们就一步一步来理解一下`function-calling`。
+Below we will understand `function-calling` step by step.
 
-## 定义function
+## **Defining Functions**
 
-首先定义4个`function`，这4个`function`有不同的使用场景。
+First, let's define 4 `functions`, each with a different usage scenario.
 
 ```python
 def get_gas_prices(city: str) -> float:
@@ -60,7 +60,7 @@ def get_directions(start: str, destination: str) -> float:
     print(f'Get directions for {start} {destination}.')
 ```
 
-## 定义Prompts
+## **Defining Prompts**
 
 ```python
     functions_prompt = f"""
@@ -86,9 +86,9 @@ User Query:
     """
 ```
 
-这是一个复杂的提示，让我们一步一步来看：
+This is a complex prompt, let's take a look at it step by step:
 
-首先，告诉模型我提供了4个工具，让它自己去查询这4个工具的元数据。`function_to_json`函数返回的内容如下：
+First, it tells the model that I have provided 4 tools and let it query the metadata of these 4 tools. The content returned by the `function_to_json` function is as follows:
 
 ```json
 {
@@ -106,13 +106,13 @@ User Query:
 }
 ```
 
-这一步就是让模型根据这几个函数的元数据来理解函数，尤其是`description`写的应该尽量详细。
+This step is to let the model understand the function based on the metadata of these functions, especially the `description` should be written as detailed as possible.
 
-第二步提示模型作出自己的判断，根据上面提供的工具选择一个或多个进行调用，并指定了模型返回数据格式——`JSON`以及这个`JSON`的`schema`。
+The second step prompts the model to make its own judgment. Based on the provided tools above, it should choose one or more to call and specifies the model's response data format - `JSON` and the `schema` of this `JSON`.
 
-第三步等待用户的问题。
+The third step waits for the user's question.
 
-## 完整代码
+## **Complete Code**
 
 ```python
 import inspect
@@ -213,7 +213,7 @@ User Query:
     ]
 
     for prompt in prompts:
-        print(f"❓{prompt}")
+        print(f"{prompt}")
         question = functions_prompt + prompt
         response = generate_full_completion(GPT_MODEL, question)
         try:
@@ -230,11 +230,9 @@ def execute_fuc(tool_data):
     func_name = tool_data["tool"]
     func_input = tool_data["tool_input"]
 
-    # 获取全局命名空间中的函数对象
     func = globals().get(func_name)
 
     if func is not None and callable(func):
-        # 如果找到了函数并且是可调用的，调用它
         func(**func_input)
     else:
         print(f"Unknown function: {func_name}")
@@ -244,9 +242,11 @@ if __name__ == "__main__":
     main()
 ```
 
-整段代码就是用来测试模型对问题的理解能力以及是否能正确判断调用哪个工具的。
+## **Testing**
 
-我们来看下设定的4个问题：
+This entire code snippet is used to test the model's ability to understand the problem and whether it can correctly determine which tool to call.
+
+Let's take a look at the 4 questions we defined:
 
 ```python
   "What's the weather like in Beijing?",
@@ -255,38 +255,39 @@ if __name__ == "__main__":
   "What is the exchange rate between US dollar and Japanese yen?",
 ```
 
-按照我们的设想，如果模型理解了我提供的工具的功能以及读懂了用户的问题，应该按照以下规则选择工具：
+According to our design, if the model understands the functionalities of the provided tools and comprehends the user's questions, it should choose the tools based on the following rules:
 
-- 问题1应该对应的是`get_weather('Beijing')`
-- 问题2应该对应的是`get_directions('Shanghai', 'Hangzhou')`和`get_gas_prices('Shanghai')`
-- 问题3应该对应的是`github('snake-game')`
-- 问题4应该没有对应的函数，模型不选择任何工具
+- Question 1 should correspond to `get_weather('Beijing')`
+- Question 2 should correspond to `get_directions('Shanghai', 'Hangzhou')` and `get_gas_prices('Shanghai')`
+- Question 3 should correspond to `github('snake-game')`
+- Question 4 should not have a corresponding function, and the model should not choose any tool
 
-下一步，我们也写好了代码进行测试，我们在工具函数里进行参数打印，以查看是否达到我们的预期。
-## 结果
+Next, we also wrote code for testing, where we perform parameter printing in the tool functions to see if it meets our expectations.
+
+## **Results**
 
 ```
-❓What's the weather like in Beijing?
+What's the weather like in Beijing?
 Getting weather for Beijing.
 Total duration: 3.481918084 seconds
 
-❓What is the distance from Shanghai to Hangzhou and how much do I need to fill up the gas in advance to drive from Shanghai to Hangzhou?
+What is the distance from Shanghai to Hangzhou and how much do I need to fill up the gas in advance to drive from Shanghai to Hangzhou?
 Get directions for Shanghai, China Hangzhou, China.
 Get gas prices for Shanghai.
 Total duration: 5.467253959 seconds
 
-❓Who's the author of the 'snake-game' on github?
+Who's the author of the 'snake-game' on github?
 Access the github for snake-game.
 Total duration: 2.510993791 seconds
 
-❓What is the exchange rate between US dollar and Japanese yen?
+What is the exchange rate between US dollar and Japanese yen?
 {}
 No tools found.
 Total duration: 0.200526292 seconds
 ```
 
-## 总结
+## **Summary**
 
-本篇文章介绍了使用`function-calling`使得`Ollama`模型具备可以调用外部工具的能力。也对一些场景进行了测试，希望通过本系列的3篇文章，使大家对本地运行大语言模型有一些深入的了解。
+This article introduced how to use `function-calling` to enable the `Ollama` model to call external tools. We also tested some scenarios. Hopefully, through this series of 3 articles, you will have a deeper understanding of running large language models locally.
 
-这次的文章就到这里了，下回我们将继续介绍更多本地`LLM`的实用场景。
+This is it for this article. In the next one, we will continue to introduce more practical use cases for local LLMs.

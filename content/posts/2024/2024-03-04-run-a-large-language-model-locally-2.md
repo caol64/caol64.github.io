@@ -2,7 +2,7 @@
 author: 路边的阿不
 title: 在本地跑一个大语言模型(2)
 slug: run-a-large-language-model-locally-2
-description: Discover how to make your Large Language Model (LLM) smarter with external knowledge bases using the RAG concept and a tool called LangChain.
+description: Make your local large language models (LLMs) smarter! This guide shows how to use LangChain and RAG to let them retrieve data from external knowledge bases, improving answer accuracy.
 date: 2024-03-04 11:18:00
 draft: false
 ShowToc: true
@@ -19,7 +19,7 @@ categories:
 
 ## 准备模型
 
-访问Ollama的模型页面，搜索`qwen`，我们这次将使用对中文语义了解的更好的“[通义千问](https://ollama.com/library/qwen:7b)”模型进行实验。
+访问`Ollama`的模型页面，搜索`qwen`，我们这次将使用对中文语义了解的更好的“[通义千问](https://ollama.com/library/qwen:7b)”模型进行实验。
 
 ## 运行模型
 
@@ -60,7 +60,7 @@ RAG后的工作流程如下：读取文档->分词->嵌入->将嵌入数据存�
 
 ## 嵌入
 
-在人工智能中，嵌入（Embedding）是将数据向量化的一个过程，可以理解为将人类语言转换为大语言模型所需要的计算机语言的一个过程。在我们第二轮测试开始前，首先下载一个嵌入模型：[nomic-embed-text](https://ollama.com/library/nomic-embed-text) 。它可以使我们的Ollama具备将文档向量化的能力。
+在人工智能中，嵌入（Embedding）是将数据向量化的一个过程，可以理解为将人类语言转换为大语言模型所需要的计算机语言的一个过程。在我们第二轮测试开始前，首先下载一个嵌入模型：[nomic-embed-text](https://ollama.com/library/nomic-embed-text) 。它可以使我们的`Ollama`具备将文档向量化的能力。
 
 ```
 ollama run nomic-embed-text

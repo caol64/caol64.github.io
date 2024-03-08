@@ -2,7 +2,7 @@
 author: 路边的阿不
 title: 在本地跑一个大语言模型
 slug: running-a-large-language-model-locally
-description: Explore how to run a Large Language Model (LLM) like GPT-3 on your own computer, understand the benefits it offers, and the tools you need to get started.
+description: This guide shows you how to run a large language model (LLM) directly on your computer! It's free, protects your privacy, and lets you try various open-source models.
 date: 2024-02-27 12:22:33
 draft: false
 ShowToc: true
@@ -78,22 +78,22 @@ ollama rm llama2
 
 这里科普下主要的一些参数说明：
 
-- 2b, 7b, 13b
+- `2b, 7b, 13b`
   - 模型训练时的参数数量，b代表亿。越大结果越精确，相应的也越占资源，同时生成结果所需的时间也越长。7B至少需要8G内存，13B至少需要16G内存。
-- instruct, chat, text
+- `instruct, chat, text`
   - instruct, chat更适合聊天，text更适合内容生成（参看[Ollama API](#ollama-api)）。
-- q2, q4, q8
+- `q2, q4, q8`
   - 模型量化值，同样越大越精确，但越占内存，同时生成结果所需的时间也越长。
 
-这些参数根据你的电脑配置自行选择，我的M1芯片MacBook一般都选择7b_q8。
+这些参数根据你的电脑配置自行选择，我的M1芯片MacBook一般都选择`7b_q8`。
 
 ### 运行
 
 拉取完模型后，可以使用`ollama list`命令查看一下所有已安装的模型。接下来就可以运行Ollama了。
 
-Ollama的运行方式有两种，一种是命令行方式，输入`ollama serve`即可启动服务。另一种是点击App的快捷方式运行，这种方式会在状态栏出现一个ollama的图标。无论哪种方式，启动服务后都会占用`11434`端口。
+`Ollama`的运行方式有两种，一种是命令行方式，输入`ollama serve`即可启动服务。另一种是点击App的快捷方式运行，这种方式会在状态栏出现一个ollama的图标。无论哪种方式，启动服务后都会占用`11434`端口。
 
-此时你可以使用任何支持修改API地址的`ChatGPT`客户端连接Ollama（因为最新版的Ollama已经适配了OpenAI的API）。另外，某些APP如果适配Llama API接口的话，也可以直接配置：
+此时你可以使用任何支持修改API地址的`ChatGPT`客户端连接`Ollama`（因为最新版的Ollama已经适配了OpenAI的API）。另外，某些APP如果适配`Llama API`接口的话，也可以直接配置：
 
 ![](imgs/posts/2024-02-27-running-a-large-language-model-locally/2.webp)
 
