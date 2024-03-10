@@ -1,6 +1,6 @@
 ---
 author: caol64
-title: Run a large language models locally (2)
+title: Run a large language models locally (2) - Providing an External Knowledge Base to the Model
 slug: run-a-large-language-model-locally-2
 description: Make your local large language models (LLMs) smarter! This guide shows how to use LangChain and RAG to let them retrieve data from external knowledge bases, improving answer accuracy.
 date: 2024-03-04 11:18:00

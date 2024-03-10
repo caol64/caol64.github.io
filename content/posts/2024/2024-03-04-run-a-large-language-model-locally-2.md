@@ -1,6 +1,6 @@
 ---
 author: 路边的阿不
-title: 在本地跑一个大语言模型(2)
+title: 在本地跑一个大语言模型(2) - 给模型提供外部知识库
 slug: run-a-large-language-model-locally-2
 description: Make your local large language models (LLMs) smarter! This guide shows how to use LangChain and RAG to let them retrieve data from external knowledge bases, improving answer accuracy.
 date: 2024-03-04 11:18:00

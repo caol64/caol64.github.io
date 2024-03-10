@@ -1,6 +1,6 @@
 ---
 author: caol64
-title: Run a large language models locally (3)
+title: Run a large language models locally (3) - Enabling the Model to Use Tools Autonomously
 slug: run-a-large-language-model-locally-3
 description: Run LLMs on your machine and extend their capabilities!  This guide explores function calling in Ollama, allowing the model to connect with external tools and become more intelligent.
 date: 2024-03-07 14:24:56

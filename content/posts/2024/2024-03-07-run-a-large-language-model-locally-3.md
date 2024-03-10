@@ -1,6 +1,6 @@
 ---
 author: 路边的阿不
-title: 在本地跑一个大语言模型(3)
+title: 在本地跑一个大语言模型(3) - 让模型自主使用工具
 slug: run-a-large-language-model-locally-3
 description: Run LLMs on your machine and extend their capabilities!  This guide explores function calling in Ollama, allowing the model to connect with external tools and become more intelligent.
 date: 2024-03-07 14:24:56
