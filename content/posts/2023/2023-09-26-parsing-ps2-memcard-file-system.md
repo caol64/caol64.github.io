@@ -1,6 +1,6 @@
 ---
 author: 路边的阿不
-title: 解析PS2记忆卡文件系统
+title: 硬核解析PS2记忆卡存储格式
 slug: parsing-ps2-memcard-file-system
 description: Immerse yourself in the intricate world of PS2 gaming nostalgia as we delve into the PS2 memory card file system. Uncover how your favorite PS2 games were stored and relive your gaming youth through the eyes of a programming expert.
 date: 2023-09-26 15:15:16
