@@ -1,3 +1,6 @@
-<a href="/{{ .Destination | safeURL }}"  data-lightbox="image-1" >
+{{/*  <a href="/{{ .Destination | safeURL }}"  data-lightbox="image-1" >
 <img loading="lazy" src="/{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }} />
+</a>  */}}
+<a href="{{ if or (hasPrefix .Destination "http://") (hasPrefix .Destination "https://") }}{{ .Destination | safeURL }}{{ else }}/{{ .Destination | safeURL }}{{ end }}"  data-lightbox="image-1" >
+    <img loading="lazy" src="{{ if or (hasPrefix .Destination "http://") (hasPrefix .Destination "https://") }}{{ .Destination | safeURL }}{{ else }}/{{ .Destination | safeURL }}{{ end }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }} />
 </a>

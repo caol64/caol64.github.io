@@ -15,7 +15,7 @@ categories:
 ---
 ![](imgs/posts/2023-10-04-parsing-ps2-3d-icon/1.gif)
 
-看到这个图片，对于熟悉PS2的老玩家来说应该不会陌生。它是PS2记忆卡管理界面中的游戏存档3D图标。本篇文章我们将介绍如何从存档文件里解析出这个活动的小人。
+Seeing this image, it shouldn't be unfamiliar to seasoned players familiar with PS2. It's the 3D icon of a game save file from the PS2 memory card management interface. In this article, we will introduce how to extract the character model from the save file.
 
 ## 01 Parsing Objectives
 
