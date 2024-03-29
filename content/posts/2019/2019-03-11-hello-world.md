@@ -92,7 +92,7 @@ This is pre text
 
 #### Code block with backticks and language specified
 
-```html {linenos=true}
+```html
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -106,34 +106,6 @@ This is pre text
 </html>
 ```
 
-#### Code block indented with four spaces
-
-    <!doctype html>
-    <html lang="en">
-    <head>
-      <meta charset="utf-8">
-      <title>Example HTML5 Document</title>
-    </head>
-    <body>
-      <p>Test</p>
-    </body>
-    </html>
-
-#### Code block with Hugo's internal highlight shortcode
-
-{{< highlight html >}}
-
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Example HTML5 Document</title>
-</head>
-<body>
-  <p>Test</p>
-</body>
-</html>
-{{< /highlight >}}
 
 <!-- #### Gist
 

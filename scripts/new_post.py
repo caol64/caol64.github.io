@@ -1,32 +1,40 @@
 import sys
 import subprocess
 from datetime import datetime
-import ollama
-
-
-roles = {
-    "english_translator": "Translate `%s` to English.",
-}
+import requests
 
 
 class Assistant:
     def __init__(self) -> None:
-        self.role_prompt = roles["english_translator"]
-        self.model = "qwen:7b"
+        with open('secrets/gemini.key', 'r') as f:
+            self.api_key = f.read()
 
     def work(self, user_prompt):
-        response = ollama.generate(
-            model=self.model,
-            options={"temperature": 0.7},
-            prompt=self.role_prompt % user_prompt,
-        )
+        url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.0-pro:generateContent?key={self.api_key}'
+        # print(url)
+        headers = {
+            'Content-Type': 'application/json',
+        }
 
-        return response["response"]
+        # Prepare the body data.
+        data = {
+            "contents": [{
+                "parts": [{
+                    "text": f"Translate to English:\n\n{user_prompt}"
+                }]
+            }]
+        }
+
+        # Send the POST request.
+        response = requests.post(url, headers=headers, json=data)
+        response.raise_for_status()
+        return response
 
 
 def translate_title(title):
     assistant = Assistant()
-    translated_title = assistant.work(title)
+    resp_json = assistant.work(title).json()
+    translated_title = resp_json['candidates'][0]['content']['parts'][0]['text']
     print(translated_title)
     return (
         translated_title.lower()
@@ -61,9 +69,6 @@ def replace_title_in_post(file_path, title):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python new_post.py <title>")
-    else:
-        title = sys.argv[1]
-        file_path = create_post(title)
-        replace_title_in_post(file_path, title)
+    title = sys.argv[1]
+    file_path = create_post(title)
+    replace_title_in_post(file_path, title)
