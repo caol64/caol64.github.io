@@ -111,7 +111,17 @@ class Assistant:
         data = {
             "contents": [{
                 "parts": [{
-                    "text": f"Translate to English:\n\n{user_prompt}"
+                    "text": f"""Translate this Chinese text:
+
+[{user_prompt}]
+
+
+Translate text into English.
+
+Use the following style:
+
+Fluent and natural
+Accurate and precise"""
                 }]
             }]
         }
