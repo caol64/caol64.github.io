@@ -91,7 +91,7 @@ pipe.load_lora_weights("your/path", weight_name="lora_name.safetensors")
 
 ### 像素风格
 
-触发关键词：`pixel。
+触发关键词：`pixel`。
 
 ![](imgs/posts/2024-04-22-run-stable-diffusion-locally-with-lora/pixel_out.jpg)
 

@@ -1,21 +1,21 @@
-import subprocess
 import re
 import sys
 import yaml
+import markdown
+import subprocess
 
 
 def handle(file_path):
     with open(file_path, "r", encoding="utf-8") as file:
         content = file.read()
     try:
+
         # 使用正则表达式匹配 `---` 包裹的部分
         match = re.search(r"^---(.*?)---", content, re.DOTALL)
         if match:
             yaml_data = match.group(1)
             metadata = yaml.safe_load(yaml_data)
             title = metadata.get('title')
-            slug = metadata.get('slug')
-            date = metadata.get('date')
             content = re.sub(r"^---(.*?)---", "", content, flags=re.DOTALL)
         else:
             title = None
@@ -23,24 +23,20 @@ def handle(file_path):
         # 使用正则表达式匹配图片地址 `![]()`和`![](<>)` 将其改为在线路径
         content = modify_md_image_links(content)
 
+        html = markdown.markdown(content, extensions=['fenced_code', 'tables', 'footnotes'])
         if title:
-            content = f'# {title}\n\n{content}'
-            year = date.year
-            month = f'{date.month:02d}'
-            url = f'https://babyno.top/posts/{year}/{month}/{slug}/'
-            print(url)
-            content = f'{content}\n\n> 本文首发于：{url}\n>\n> 公众号：机器人小不'
+            html = f'<h1>{title}</h1>\n\n{html}'
 
-        print(content)
-        write_to_clipboard(content)
+        # print(html)
+        write_to_clipboard(html)
 
     except Exception as e:
         print(f"An error occurred: {e}")
 
 
 def modify_md_image_links(text):
-    pattern1 = re.compile(r'!\[(.*?)\]\(<(.*?)>\)')  # 尖括号的模式
-    pattern2 = re.compile(r'!\[(.*?)\]\(([^<].*?)\)')  # 非尖括号的模式
+    pattern1 = re.compile(r'!\[(.*?)\]\(<(.*?)>\)')  # 匹配![](<>)
+    pattern2 = re.compile(r'!\[(.*?)\]\(([^<].*?)\)')  # 匹配![]()
 
     def replacer(match):
         alt_text = match.group(1)
@@ -58,9 +54,11 @@ def modify_md_image_links(text):
     return text
 
 
-def write_to_clipboard(content):
-    process = subprocess.Popen(['pbcopy'], stdin=subprocess.PIPE)
-    process.communicate(input=content.encode('utf-8'))
+def write_to_clipboard(html):
+    hex_text = subprocess.check_output(['hexdump', '-ve', '1/1 "%.2x"'], input=html.encode('utf-8'))
+    cmd = subprocess.check_output(['xargs', 'printf', 'set the clipboard to {text:\" \", «class HTML»:«data HTML%s»}'], input=hex_text)
+
+    subprocess.run(['osascript', '-'], input=cmd)
 
 
 if __name__ == "__main__":

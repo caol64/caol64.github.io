@@ -51,6 +51,16 @@
                 "${file}"
             ],
             "problemMatcher": []
+        },
+        {
+            "label": "Html Copy",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "scripts/rich.py",
+                "${file}"
+            ],
+            "problemMatcher": []
         }
     ],
     "inputs": [
