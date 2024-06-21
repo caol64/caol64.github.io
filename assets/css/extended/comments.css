@@ -29,3 +29,6 @@ body.dark {
     --waline-active-color: #60a7f1 !important;
     --waline-border: 1px solid #eee;
 }
+.wl-card .wl-meta .wl-addr {
+    display: none;
+}

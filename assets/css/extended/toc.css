@@ -13,6 +13,10 @@
     color: #888;
 }
 
+.toc code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 .toc-container.wide {
     position: absolute;
     height: 100%;
