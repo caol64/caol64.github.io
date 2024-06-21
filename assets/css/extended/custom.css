@@ -21,7 +21,7 @@
     margin-bottom: 12px;
 }
 body {
-    font-family: "Segoe UI","Helvetica Neue","Helvetica",Arial,sans-serif;
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1rem;
     line-height: 1.6;
     margin: 0;
@@ -34,10 +34,6 @@ body {
 }
 .post-content a:hover {
     text-decoration: underline;
-}
-/* 行内代码 - 左右间距 */
-.post-content code {
-    margin: unset;
 }
 
 .post-content blockquote {
@@ -103,6 +99,7 @@ body {
 }
 /* 代码高亮 */
 .post-content pre code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     color: var(--content);
 }
 .post-content .highlight table {
@@ -116,6 +113,8 @@ body {
 }
 
 .post-content code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    margin: unset;
     background: var(--code-bg-c);
     color: var(--content-c);
 }
