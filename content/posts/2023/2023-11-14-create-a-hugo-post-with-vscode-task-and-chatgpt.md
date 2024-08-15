@@ -8,10 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - 效率
-  - AI
+  - Automation
 categories:
-  - 教程
+  - 建站
 ---
 在之前的文章中，我提到我通常使用 `VSCode` 进行写作。这一次，我想分享一些提高平时写作效率的小技巧。同时，这也是我第一次尝试使用刚刚注册的 `ChatGPT`，看看它在辅助编码方面的能力如何。
 
@@ -41,7 +40,9 @@ hugo new content posts/2023/2023-10-21-hello-world.md
   利用`Google翻译API`，将输入的中文标题翻译成英文。
 
 ## 实际操作
+
 ### 创建`VSCode Task`
+
 在`VSCode`菜单栏中选择：`Terminal` -> `Configure Tasks` -> `create tasks.json file from template` -> `Others`，会自动在工作目录的`.vscode`文件夹下生成`tasks.json`文件。
 
 将`tasks.json`改成如下内容：
@@ -68,12 +69,15 @@ hugo new content posts/2023/2023-10-21-hello-world.md
     ]
 }
 ```
+
 说明一下，这段代码创建了一个名叫`new post`的`task`，底层使用`shell`脚本调用了名叫`scripts/new_post.py`的`python`脚本，并将用户输入的`title`作为参数输入。
 
 ### 创建`python`脚本
+
 接下来我们要请出今天的嘉宾——`ChatGPT`，让它帮我生成`python`脚本。
 
 先整理一下我的需求：
+
 > 我希望生成一个python脚本，要求：
 > - 接收一个文本类型的输入参数：title
 > - 调用google翻译API将title翻译成英文
@@ -81,6 +85,7 @@ hugo new content posts/2023/2023-10-21-hello-world.md
 > - 调用shell脚本`hugo new content posts/${yyyy}/${yyyy-MM-dd}-${title}.md`
 
 将上述提示发给`ChatGPT`，以下是它的回复：
+
 > 您可以使用以下的 Python 脚本来实现您的需求。请确保您已经安装了 `googletrans` 库。您可以使用以下命令来安装它：
 > 
 > ```bash
@@ -175,12 +180,15 @@ hugo new content posts/2023/2023-10-21-hello-world.md
 把`replace_title_in_file`方法复制到`scripts/new_post.py`文件里，并在刚才到操作完成后调用它即可。
 
 ### 调试
+
 本以为这一步也会像第一步那样顺利，但没想到事实打脸。这段代码运行报错。无奈只能将`sed`命令拷贝到终端调试。
 
 继续追问：
+
 > 使用`sed`命令找到文件中`title: `开头的行，将该行`title: `之后的内容替换为${title}
 
 回答：
+
 > 如果您只想使用 `sed` 命令替换文件中以 `title: ` 开头的行的内容，可以在终端中执行如下命令：
 > 
 > ```bash
@@ -188,9 +196,11 @@ hugo new content posts/2023/2023-10-21-hello-world.md
 > ```
 
 还是不行，有点汗流浃背了。此时我突然意识到了什么，于是再次追问：
+
 > mac环境下，使用`sed`命令找到文件中`title: `开头的行，将该行`title: `之后的内容替换为${title}
 
 回答：
+
 > 在 macOS 上，`sed` 的用法稍有不同。您可以使用以下命令来实现在文件中找到以 `title: ` 开头的行，并将其后的内容替换为 `${title}`：
 > 
 > ```bash
@@ -208,6 +218,7 @@ hugo new content posts/2023/2023-10-21-hello-world.md
 效果不错，还是挺满意的。
 
 ## 总结
+
 通过这样的优化，我现在只需专注于输入文章标题，而不再需要关心繁杂的命令。这大大提高了我的写作效率，使得整个流程更加流畅。
 
 最让人惊喜的是`ChatGPT`，它带给我的体验是震撼的。我没有尝试它的高级功能，但已经被它的魅力折服。看来是时候去深入了解它了。

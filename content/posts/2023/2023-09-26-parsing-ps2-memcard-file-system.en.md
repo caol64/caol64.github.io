@@ -8,18 +8,20 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - ps2mc-browser
+  - OpenSource
 categories:
-  - Tutorial
+  - Ps2mc
 ---
 ![](imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/Playstation_2_Memory_Card-3.jpg)
 
 ## 01 Preface
+
 As an 80s gamer, the PS2 game console has always held a special place in my heart. Over 20 years have passed, yet recently, due to the emulator, I rediscovered it. After revisiting games for a while, I had a sudden idea: could I recall my younger self with my current knowledge? So, I began creating this series of articles, starting with analyzing the file system of the PS2 memory card and gradually delving into its file storage mechanism and the save files of each game. My goal is to ultimately simulate the classic 3D character rotation effect from game saves using Python and OpenGL, commemorating the classic game console that once accompanied me through my youth.
 
 This is the first piece in the series, analyzing the file system of the PS2 memory card.
 
-## 02 词汇表
+## 02 Glossary
+
 - `Memory Cards`
 The PS2 memory cards used for the PlayStation 2 console are specialized media that can be inserted into the host system. These two devices operate independently of each other.
 - `NAND Flash`
@@ -43,19 +45,23 @@ The minimum erasure unit of the file system, the size of the block, is defined i
 - `entry`: A basic information unit that stores files or directories on the memory card, such as file (directory) name, size, and the number of the first cluster.
 
 ## 03 File System Structure
+
 _**Note: Here, a standard 8MB memory card is used as an example.**_
 
 ### 3.1 Data Structures
+
 From the `superblock`, we can determine that the size of a `page` is 512 bytes, and the size of a `cluster` is 2 `pages`. The size of the `spare area` can be obtained from the formula `(page_len / 128) * 4`, which is 16 bytes. Therefore, the basic data structure of the file system is as shown in the figure:
 
 ![](imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/%E5%AD%98%E5%82%A8%E5%8D%A1-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.jpg)
 
 ### 3.2 Logical Structure
+
 Having understood the most basic data structures, let's now divide the logical structure of the memory card. As shown in the figure below, a memory card can be roughly divided into several logical blocks. (The black and white parts are not relevant to this article and can be ignored.) Note: The minimum unit composing logical blocks is a cluster.
 
 ![](imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/%E5%AD%98%E5%82%A8%E5%8D%A1-%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.jpg)
 
 #### Superblock
+
 Located at the beginning of the entire file system (the first cluster), the first **340** bytes. This is the only part of the file system with a fixed position. The figure below illustrates a superblock of a memory card file.
 
 ![](imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/image.png)
@@ -84,6 +90,7 @@ _**Note: The byte order of PS2 memory card is little-endian.**_
 The fields `page_len`, `pages_per_cluster`, `pages_per_block`, and `clusters_per_card` define the basic geometric structure of the file system. The `ifc_list` can be used to access the `FAT`, and `rootdir_cluster` gives the first cluster of the root directory. Both the `FAT` and cluster offsets in directory entries are related to `alloc_offset`.
 
 #### FAT
+
 The file allocation table is a linked list. When you find the starting cluster of a file, imagine there are two threads: thread X reads the content (i.e., data) of this cluster, while thread Y searches the FAT for the next cluster to be read by thread X, and this process continues in a loop. Of course, two threads are not necessary. Here's a diagram illustrating this working mechanism:
 
 - Given a file A with the starting cluster being 8.
@@ -125,12 +132,15 @@ In the superblock, there's a field called `ifc_list`, which is a 4-byte 32-bit i
 ![](imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/%E5%AD%98%E5%82%A8%E5%8D%A1-FAT.jpg)
 
 #### Allocatable Clusters
+
 This is a range from `alloc_offset` to `alloc_end`. Excluding the positions of the superblock, FAT, reserved clusters, etc., all game saves are located within the allocatable clusters.
 
 ## 04 Files and Directories
+
 Next, we need to examine what each cluster within the allocatable clusters contains. Simply put, there are only two types of clusters within the allocatable clusters: "entry clusters" and "data clusters". Clusters that store entries are called "entry clusters", while clusters that store data are called "data clusters".
 
 ### 4.1 Entries
+
 Each directory or file has an "entry", which can be considered as metadata containing attributes such as file name, size, creation and modification time, etc. Each "entry" has a length of 512 bytes, so each 1024 clusters can only accommodate two "entries". "Entry clusters" do not store file data, even if there is only one "entry" in the "entry cluster".
 
 Except for the root directory which doesn't have a "root" entry, each directory has an "entry" named after its directory name, and each file also has an "entry" named after its file name. The structure of an "entry" is as follows:
@@ -152,10 +162,12 @@ Except for the root directory which doesn't have a "root" entry, each directory 
 - The number of "entries" in a directory and the number of bytes in a file are determined by the `length` field. When reading a file according to the "cluster chain", you need to keep track of where the last byte of the last cluster is.
 
 ## 05 Conclusion
+
 So far, I believe everyone has gained a rough understanding of a PS2 storage file. If interested, you can try writing a program to parse it. Later, I will also create a project and attach the source code related to this article.
 
 In the next article, we will start exporting game saves from the memory card and see what files each game save contains.
 
 ## 06 References
+
 This article mainly references the following articles, and I express my gratitude 🙏:
 - [Ross Ridge - PlayStation 2 Memory Card File System](https://www.ps2savetools.com/ps2memcardformat.html)

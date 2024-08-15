@@ -8,17 +8,20 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Python
-  - 算法
+  - OpenSource
+  - Algorithm
 categories:
-  - 教程
+  - Ps2mc
 ---
+
 在[上一篇文章](../rle-algorithm-in-ps2/)里我们介绍了`PS2`使用的图片压缩算法`RLE`，这次我们再来研究一下它的纹理贴图编码算法——`A1B5G5R5`。
 
 ## 简介
+
 对于纹理来说，常用的图片编码格式如`jpg`或`png`都不适合。因为图片是由`GPU`读取并进行渲染的，你总不能送过去一张`jpg`图片，让`GPU`要读取其中一个像素的时候，先把整个图片解码吧？因此最理想的图片格式是未经压缩的位图格式，可以根据像素点坐标直接获取`RGB`数据。今天要介绍的`A1B5G5R5`正是这种编码格式之一。
 
 ## 分析
+
 ![](imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/3.jpg)
 
 上面两张纹理图片是从`PS2`存档中提取出来的，它们以`位图`的形式储存，像素数量为`128x128`。
@@ -49,6 +52,7 @@ while tex_offset < len(self.texture):
 很明显可以看到，将`32位`的`RGBA`图片编码成`16位`的`A1B5G5R5`，会丢失每种色彩的最后3个`bit`数据，是一种有损编码格式，但带来的好处是压缩比2:1，图片缩小了一半。再配合上一篇讲到的`RLE`编码，可以进一步缩小图片大小。
 
 ## 最后
+
 最后放上上面两个纹理图片渲染后的效果，有小伙伴还记得这两个游戏吗？
 
 ![](imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/4.jpg)

@@ -8,11 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - ps2mc-browser
-  - Python
-  - OpenGL
+  - OpenSource
 categories:
-  - 教程
+  - Ps2mc
 ---
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/1.jpg)
 
@@ -23,8 +21,10 @@ categories:
 - ModernGL
 - PyGLM
 
-## 01 初始化`PyGame`和`ModernGL`
+## 01 初始化`PyGame`和`ModernGL
+`
 第一步先初始化`PyGame`，设置窗口大小为`640x480`，`FPS`为`60`。开启`OpenGL`渲染模式，`OpenGL`的版本号设置为`3.3`。
+
 ```python
 import pygame as pg
 
@@ -47,6 +47,7 @@ self.ctx.enable(flags=mgl.DEPTH_TEST | mgl.CULL_FACE)
 ```
 
 ## 02 获取顶点、纹理、法线等数据
+
 这部分内容在上一篇[解析PS2游戏存档3D图标]()有详细描述，就不展开了，这里只贴一下`icon.sys`的数据结构供参考。
 
 ```c++
@@ -76,24 +77,33 @@ struct IconSys {
 ```
 
 ## 03 坐标系统
+
 这里以右手系统创建坐标系，但是原始的顶点是y轴颠倒的，如下图A。因此我们之后的工作将在转换后的图B坐标系下进行。
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-%E5%9D%90%E6%A0%87%E7%B3%BB.jpg)
 
 ## 04 变换矩阵
+
 ### 观察矩阵
+
 上图B中，摄像机位置在z轴的负延伸方向，我们稍稍向y轴负方向移动一小段距离，这样可以使视线不是对着图标的脚部，而是稍稍靠上一点，因此将摄像机位置坐标设为`(0, -2, -10)`。因为要将y轴颠倒，可以直接将摄像机向上的方向设置为y轴的负方向。这样一来`lookAt`矩阵创建如下：
+
 ```python
 self.position = glm.vec3(0, -2, -10)
 self.up = glm.vec3(0, -1, 0)
 self.view = glm.lookAt(self.position, glm.vec3(0, -2, 0), self.up)
 ```
 ### 投影矩阵
+
 投影矩阵可以用如下公式获得
+
 ```python
 self.proj = glm.perspective(glm.radians(50), window_width / window_height, 0.1, 100)
 ```
+
 ### 模型矩阵
+
 创建模型矩阵的目的是控制模型对象在3D空间中的位置变化，在这里模型对象需要在空间里绕着y轴做360度的旋转。
+
 ```python
 # 初始化模型矩阵
 self.m_model = glm.mat4()
@@ -102,7 +112,9 @@ self.m_model = glm.mat4()
 m_model = glm.rotate(self.m_model, glm.radians(180) + animation_time / 2,
                      glm.vec3(0, 1, 0))
 ```
+
 ## 05 创建着色器
+
 这里一共需要创建四个着色器
 - 背景顶点着色器
 - 背景片段着色器
@@ -110,7 +122,9 @@ m_model = glm.rotate(self.m_model, glm.radians(180) + animation_time / 2,
 - Icon片段着色器
 
 ### 背景着色器
+
 背景着色器比较简单，只要创建一个覆盖整个坐标系的矩形，并且设置在离摄像机最远的那个坐标平面上即可。参考上面的图B，这个平面应该是z轴的0.9999。这个矩形的四个顶点的坐标分别为(-1, 1), (-1, -1), (1, -1), (1, 1)，对应的颜色在`icon.sys`中可以解析出来。根据这四个顶点和颜色，就可以构建背景VBO及VAO，这里不做过多描述。
+
 ```glsl
 // bg.vert
 #version 330 core
@@ -142,7 +156,9 @@ void main() {
 ```
 
 ### Icon着色器
+
 Icon着色器会比较复杂，我们先尝试着把Icon顶点渲染出来。还记得每个图标有多个形状吗？形状与动画相关，我们现在只取其中的一个形状组成VBO和VAO。
+
 ```glsl
 // icon.vert
 #version 330 core
@@ -174,7 +190,9 @@ void main() {
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/3.gif)
 
 ### 添加纹理
+
 在上面的基础上，引入纹理坐标和纹理数据。
+
 ```glsl
 // icon.vert
 #version 330 core
@@ -217,7 +235,9 @@ void main() {
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/4.gif)
 
 ### 添加光照
+
 在上面的基础上，引入光源，环境光以及法线数据。
+
 ```glsl
 // icon.vert
 #version 330 core
@@ -280,9 +300,11 @@ void main() {
     fragColor = vec4(color, alpha);
 }
 ```
+
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/5.gif)
 
 ### 动画效果
+
 动画效果是让着色器按照时间渲染不同形状的顶点数据。我们可以设计一个计时器和一个计数器，以确定当前时间应该渲染哪个形状的顶点。
 
 - `frame_length` 完成动画效果需要的实际帧数，实际帧率等于60FPS
@@ -300,6 +322,7 @@ curr_shape = int(curr_frame // (self.icon.frame_length / self.icon.animation_sha
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/6.gif)
 
 ### 使动画平滑过渡
+
 使动画平滑过渡需要使用着色器的顶点插值技术。我们在发送着色器顶点的时候，将当前形状和下一个形状的顶点数据同时发送。这样再根据时间因子，着色器会自动计算两个形状之间的顶点。
 
 - `tween_factor` 计算当前时间戳在整个形状中所占帧的百分比
@@ -381,9 +404,11 @@ void main() {
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/7.gif)
 
 ## 06 尾声
+
 所有代码均可在 https://github.com/caol64/ps2mc-browser 下载到。在我的第一篇文章中，我也提到了这个系列的创作初衷：为了纪念逝去的青春，以及对技术永不磨灭的热情。在此收尾，也算还了年少时的一个梦想。
 
 ## 07 参考文献
+
 - [gothi - icon.sys format](https://www.ps2savetools.com/documents/iconsys-format/)
 - [Martin Akesson - PS2 Icon Format v0.5](http://www.csclub.uwaterloo.ca:11068/mymc/ps2icon-0.5.pdf)
 - [Florian Märkl - mymcplus](https://git.sr.ht/~thestr4ng3r/mymcplus)

@@ -9,9 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - Ollama
-  - AI
+  - Agent
 categories:
-  - 教程
+  - AI
 ---
 在前两篇文章里，我们已经介绍了如何在本地运行`Ollama`以及如何通过提供外部数据库的方式微调模型的答案。本篇文章将继续探索如何使用“函数调用(`function-calling`)”功能以扩展模型能力，使其在“智能”的道路上越走越远。
 

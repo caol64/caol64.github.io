@@ -8,7 +8,7 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Quantum-Secure
+  - Secure
 categories:
   - 翻译
 ---

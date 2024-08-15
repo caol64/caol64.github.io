@@ -9,9 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - Ollama
-  - AI
+  - RAG
 categories:
-  - 教程
+  - AI
 ---
 在[上一篇文章](https://babyno.top/posts/2024/02/running-a-large-language-model-locally/)里，我们展示了如何通过Ollama这款工具，在本地运行大型语言模型。本篇文章将着重介绍下如何让模型从外部知识库中检索定制数据，来提升大型语言模型的准确性，让它看起来更“智能”。
 

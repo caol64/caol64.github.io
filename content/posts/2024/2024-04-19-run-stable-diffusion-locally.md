@@ -8,10 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Stable-Diffusion
-  - AI
+  - Stable Diffusion
 categories:
-  - 教程
+  - AI
 ---
 在之前的文章中，我们使用[`ollama`](https://babyno.top/tags/ollama/)在本地运行了大语言模型，它可以与你聊天，帮助你理解和生成文本内容。使用[`coqui-tts`](https://babyno.top/tags/coqui/)在本地运行了文本转语音模型，它可以将大语言模型生成的文字转换成语音，让你的应用更有趣。今天我们将要介绍`Stable Diffusion`，一种扩散神经网络的深度学习模型，使用它可以生成各种不可思议的图片。
 

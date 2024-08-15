@@ -8,11 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Coqui
   - TTS
-  - AI
 categories:
-  - 教程
+  - AI
 ---
 大家好，好久不见。前三篇教程我们聊了如何在本地搭建一个大语言模型，它能够理解和生成文本，这确实是一个非常有趣且有前景的应用领域。今天，我们将更进一步，让你的AI模型具备实际的语音输出能力。
 

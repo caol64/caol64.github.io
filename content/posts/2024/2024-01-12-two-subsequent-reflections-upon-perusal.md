@@ -8,7 +8,7 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - 个人成长
+  - Thoughts
 categories:
   - 想法
 ---

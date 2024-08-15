@@ -8,15 +8,16 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - ps2mc-browser
-  - Python
+  - OpenSource
 categories:
-  - Tutorial
+  - Ps2mc
 ---
 In the previous article, we analyzed the file system of the PS2 memory card. This time, we'll dive straight into practice and write Python code to export specific game saves. The complete code for this article can be found at: [ps2mc-browser](https://github.com/caol64/ps2mc-browser).
 
-## 01 Parsing the `SuperBlock`
+## 01 Parsing the `SuperBlock
+`
 The structure of the `SuperBlock` is as follows, with a size of 340 bytes:
+
 ```c++
 struct SuperBlock {
     char magic[28];
@@ -40,14 +41,19 @@ struct SuperBlock {
     byte unknown; // ignore
 };
 ```
+
 Use `struct.unpack()` to unpack:
+
 ```python
 struct.Struct("<28s12sHHH2xLLLL4x4x8x128s128xbbxx").unpack(byte_val)
 ```
+
 Obtain `page_size` and `pages_per_cluster`.
 
 ## 02 Reading `page` and `cluster`
+
 Calculate the sizes of `page` and `cluster` using the formula:
+
 ```python
 self.spare_size = (self.page_size // 128) * 4  # Size of spare area in bytes
 self.raw_page_size = self.page_size + self.spare_size  # Total size of page including spare area in bytes
@@ -55,6 +61,7 @@ self.cluster_size = self.page_size * self.pages_per_cluster  # Size of cluster i
 ```
 
 Read `page` and `cluster`, discarding the contents of the `spare area`:
+
 ```python
 def read_page(self, n):  # n is the page number
     offset = self.raw_page_size * n
@@ -69,7 +76,9 @@ def read_cluster(self, n):  # n is the cluster number
 ```
 
 ## 03 Constructing the `FAT` Matrix
+
 From the previous article, we know the construction method of the `FAT` matrix as follows:
+
 ![](imgs/posts/2023-09-29-exporting-file-from-ps2-memcard/%E5%AD%98%E5%82%A8%E5%8D%A1-FAT2.jpg)
 
 ```python
@@ -107,7 +116,9 @@ def get_fat_value(self, n):
 ```
 
 ## 04 Entry Data Structure
+
 An entry serves as metadata for all files and directories. The data structure of an entry is as follows:
+
 ```c++
 struct Entry {
     uint16 mode;
@@ -123,13 +134,17 @@ struct Entry {
     char padding[416]; // ignore
 };
 ```
+
 Using `struct.unpack()` to unpack:
+
 ```python
 struct.Struct("<H2xL8sL4x8s4x28x32s416x").unpack(byte_val)
 ```
+
 Each entry is 512 bytes in size. The most important field in an entry is `cluster`, which identifies the cluster number corresponding to the file or directory of that entry. If the entry represents a directory, the cluster number corresponds to the "entry cluster"; if the entry represents a file, the cluster number corresponds to the "file cluster". Another important field is `length`, which represents the number of entries in a directory if the entry represents a directory, or the number of bytes in a file if the entry represents a file.
 
 ## 05 Parsing "Entry Cluster" and "Data Cluster"
+
 ```python
 # Read entry, where each entry is 512 bytes and multiple entries can be contained in one cluster
 def read_entry_cluster(self, cluster_offset):
@@ -177,6 +192,7 @@ def find_sub_entries(self, parent_entry):
 ```
 
 The result is as follows:
+
 ```
 BISCPS-15119sv01
     GameData
@@ -218,5 +234,6 @@ Now, we can successfully export a game's save files from the memory card. If you
 In the next article, we will analyze the `icon.sys` and `xxx.ico` files in each save file. These two files contain the data for the 3D effects in the save files.
 
 ## 09 References
+
 - [Ross Ridge - PlayStation 2 Memory Card File System](https://www.ps2savetools.com/ps2memcardformat.html)
 - [Florian Märkl - mymcplus](https://git.sr.ht/~thestr4ng3r/mymcplus)

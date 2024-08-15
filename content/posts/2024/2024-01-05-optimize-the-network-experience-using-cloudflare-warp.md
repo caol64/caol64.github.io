@@ -9,7 +9,7 @@ ShowToc: true
 TocOpen: true
 tags:
   - Cloudflare
-  - 网络安全
+  - Secure
 categories:
   - 教程
 ---
@@ -20,6 +20,7 @@ categories:
 > Something went wrong. You may be connected to a disallowed ISP. If you are using VPN, try disabling it. Otherwise try a different Wi-Fi network or data connection.
 
 其实不止`ChatGPT`，我遇到的情况还有：
+
 - `Twitter`不能发帖（访问正常）
 - `Instagram`无法登录
 - 等等

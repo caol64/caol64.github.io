@@ -9,9 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - Ollama
-  - AI
 categories:
-  - 教程
+  - AI
 ---
 随着ChatGPT的兴起，LLM (Large Language Model，大语言模型) 已经成为人工智能和自然语言处理领域的热门话题。本篇文章我将和大家一起在自己的个人电脑上运行一个大语言模型。
 

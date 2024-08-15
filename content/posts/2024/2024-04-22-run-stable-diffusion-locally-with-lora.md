@@ -8,10 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Stable-Diffusion
-  - AI
+  - Stable Diffusion
 categories:
-  - 教程
+  - AI
 ---
 本文是[`Stable Diffusion`系列](https://babyno.top/tags/stable-diffusion/)第二篇。
 

@@ -9,9 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - Ollama
-  - AI
 categories:
-  - Tutorial
+  - AI
 ---
 With the rise of ChatGPT, LLMs (Large Language Models) have become a hot topic in the field of artificial intelligence and natural language processing. In this article, I will walk you through the process of running a large language model on your own personal computer.
 

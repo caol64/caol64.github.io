@@ -8,10 +8,10 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Python
+  - OpenSource
   - Algorithm
 categories:
-  - Tutorial
+  - Ps2mc
 ---
 ![](imgs/posts/2023-10-16-rle-algorithm-in-ps2/run_length_f9030faa12.webp)
 
@@ -33,7 +33,8 @@ If the flag bit is `0`, it indicates that the following data block is "repeated 
 
 ![](imgs/posts/2023-10-16-rle-algorithm-in-ps2/2.gif)
 
-伪代码如下：
+The pseudo code is as follows:
+
 ```python
 while rle_offset < compressed_size:
     rle_code = rle_code_struct.unpack_from(self.byte_val, rle_offset)[0]

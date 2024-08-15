@@ -7,8 +7,11 @@ date: 2024-01-02 13:52:36
 draft: false
 ShowToc: true
 TocOpen: true
-tags: ["3shi"]
-categories: ["想法"]
+tags:
+  - 3shi
+  - Thoughts
+categories:
+  - 想法
 ---
 这是一篇个人的真实感想。
 
@@ -41,4 +44,5 @@ categories: ["想法"]
 ![](imgs/posts/2024-01-02-you-are-the-protagonist-of-your-own-life/image.webp)
 
 ## 结尾
+
 这篇文章稍显伤感，因为正反映了我近期的心境。最近我一直在整理可以回顾过去的东西，包括照片集、笔记、文章等。因此我想说：人生的每个阶段都值得回溯，但人的记忆有限，尽可能将这些珍贵的回忆记录在某个可以看得见的地方。你会发现，每个回忆中，你都是主角。

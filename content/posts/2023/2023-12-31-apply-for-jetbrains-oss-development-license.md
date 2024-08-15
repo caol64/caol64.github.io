@@ -8,9 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - 开源
+  - OpenSource
 categories:
-  - 分享
+  - 教程
 ---
 ![jetbrains](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png)
 

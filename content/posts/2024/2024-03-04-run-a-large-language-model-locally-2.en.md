@@ -9,9 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - Ollama
-  - AI
+  - RAG
 categories:
-  - Tutorial
+  - AI
 ---
 In the previous [article](https://babyno.top/en/posts/2024/02/running-a-large-language-model-locally/), we demonstrated how to run large language models (LLMs) locally using `Ollama`. This article focuses on enhancing LLM accuracy by allowing them to retrieve custom data from external knowledge bases, making them appear "smarter."
 

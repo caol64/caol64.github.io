@@ -8,10 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - AI
   - RAG
 categories:
-  - 教程
+  - AI
 ---
 在[之前](https://babyno.top/posts/2024/03/run-a-large-language-model-locally-2/)的文章中，我们介绍过使用`RAG`技术给大语言模型添加外部知识库。今天我们就来详细了解下`RAG`，并且不用任何框架，自己动手做一个`RAG`应用，从原理上理解其运行逻辑。
 

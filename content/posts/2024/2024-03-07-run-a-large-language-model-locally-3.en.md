@@ -9,9 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - Ollama
-  - AI
+  - Agent
 categories:
-  - Tutorial
+  - AI
 ---
 This article is the third in a series on running large language models (LLMs) locally. In the previous two articles, we introduced how to run `Ollama` locally and how to fine-tune the model's answers by providing an external database. This article will continue to explore how to use the `function-calling` feature to extend the model's capabilities and make it go further on the road to "intelligence".
 

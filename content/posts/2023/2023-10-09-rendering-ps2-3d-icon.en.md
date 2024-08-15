@@ -8,11 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - ps2mc-browser
-  - Python
-  - OpenGL
+  - OpenSource
 categories:
-  - Tutorial
+  - Ps2mc
 ---
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/1.jpg)
 
@@ -24,6 +22,7 @@ After a series of previous articles laying the groundwork, the files for PS2 sav
 - PyGLM
 
 ## 01 Initialize PyGame and ModernGL
+
 The first step is to initialize PyGame, setting the window size to `640x480` and the FPS to `60`. We enable OpenGL rendering mode and set the OpenGL version to `3.3`.
 
 ```python
@@ -48,6 +47,7 @@ self.ctx.enable(flags=mgl.DEPTH_TEST | mgl.CULL_FACE)
 ```
 
 ## 02 Obtain Vertex, Texture, Normal Data, etc.
+
 This part of the content was detailed in the previous article [Parsing PS2 Game Save 3D Icon](), so I won't go into detail here. Below is just the data structure of `icon.sys` for reference.
 
 ```c++
@@ -77,24 +77,33 @@ struct IconSys {
 ```
 
 ## 03 Coordinate System
+
 Here, we create a coordinate system using the right-hand system, but the original vertices are inverted along the y-axis, as shown in Figure A. Therefore, our subsequent work will be conducted in the transformed coordinate system shown in Figure B.
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/%E5%AD%98%E5%82%A8%E5%8D%A1-%E5%9D%90%E6%A0%87%E7%B3%BB.jpg)
 
 ## 04 Transformation Matrices
+
 ### View Matrix
+
 In Figure B, the camera position extends in the negative direction of the z-axis. We move the camera slightly downward along the negative y-axis to adjust the viewpoint slightly above the icon, rather than focusing on its feet. Thus, we set the camera position coordinates to `(0, -2, -10)`. As we need to invert the y-axis, we can directly set the camera's upward direction to the negative direction of the y-axis. This creates the `lookAt` matrix as follows:
+
 ```python
 self.position = glm.vec3(0, -2, -10)
 self.up = glm.vec3(0, -1, 0)
 self.view = glm.lookAt(self.position, glm.vec3(0, -2, 0), self.up)
 ```
 ### Projection Matrix
+
 The projection matrix can be obtained using the following formula:
+
 ```python
 self.proj = glm.perspective(glm.radians(50), window_width / window_height, 0.1, 100)
 ```
+
 ### Model Matrix
+
 The purpose of creating the model matrix is to control the positional changes of the model object in 3D space. Here, the model object needs to rotate 360 degrees around the y-axis.
+
 ```python
 # Initialize the model matrix
 self.m_model = glm.mat4()
@@ -103,7 +112,9 @@ self.m_model = glm.mat4()
 m_model = glm.rotate(self.m_model, glm.radians(180) + animation_time / 2,
                      glm.vec3(0, 1, 0))
 ```
+
 ## 05 Create Shaders
+
 Here, we need to create four shaders in total:
 - Background Vertex Shader
 - Background Fragment Shader
@@ -111,7 +122,9 @@ Here, we need to create four shaders in total:
 - Icon Fragment Shader
 
 ### Background Shader
+
 The background shader is relatively simple. We just need to create a rectangle that covers the entire coordinate system and place it on the coordinate plane farthest from the camera. Referring to the diagram above (Figure B), this plane should be at z-axis 0.9999. The coordinates of the four vertices of this rectangle are (-1, 1), (-1, -1), (1, -1), and (1, 1), respectively. The corresponding colors can be parsed from `icon.sys`. With these four vertices and colors, we can construct the background VBO and VAO. Further details are not provided here.
+
 ```glsl
 // bg.vert
 #version 330 core
@@ -143,7 +156,9 @@ void main() {
 ```
 
 ### Icon Shader
+
 The Icon shader will be relatively complex. Let's start by attempting to render the Icon vertices. Do you remember that each icon has multiple shapes? Shapes are related to animation. For now, we will only select one shape to compose the VBO and VAO.
+
 ```glsl
 // icon.vert
 #version 330 core
@@ -175,7 +190,9 @@ Below is the result after running the code:
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/3.gif)
 
 ### Adding Textures
+
 Building upon the previous setup, introduce texture coordinates and texture data.
+
 ```glsl
 // icon.vert
 #version 330 core
@@ -218,7 +235,9 @@ void main() {
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/4.gif)
 
 ### Adding Lighting
+
 Building upon the previous setup, introduce light sources, ambient light, and normal data.
+
 ```glsl
 // icon.vert
 #version 330 core
@@ -281,9 +300,11 @@ void main() {
     fragColor = vec4(color, alpha);
 }
 ```
+
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/5.gif)
 
 ### Animation Effects
+
 Animation effects involve rendering vertex data of different shapes by shaders over time. We can design a timer and a counter to determine which shape's vertices should be rendered at the current time.
 
 - `frame_length`: The actual number of frames required to complete the animation effect, with a frame rate of 60FPS.
@@ -301,6 +322,7 @@ curr_shape = int(curr_frame // (self.icon.frame_length / self.icon.animation_sha
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/6.gif)
 
 ### Achieving Smooth Animation Transitions
+
 To achieve smooth animation transitions, we need to use vertex interpolation techniques in the shader. When sending vertex data to the shader, we send the vertex data of both the current shape and the next shape simultaneously. Then, based on the time factor, the shader will automatically calculate the vertices between the two shapes.
 
 - `tween_factor`: Calculates the percentage of frames occupied by the current timestamp within the entire shape.
@@ -386,6 +408,7 @@ The final result:
 All the code can be downloaded from [here](https://github.com/caol64/ps2mc-browser). As I mentioned in my first article, the original intention of this series was to commemorate the passing of youth and the everlasting passion for technology. With this conclusion, it's like fulfilling a dream from my youth.
 
 ## 07 References
+
 - [gothi - icon.sys format](https://www.ps2savetools.com/documents/iconsys-format/)
 - [Martin Akesson - PS2 Icon Format v0.5](http://www.csclub.uwaterloo.ca:11068/mymc/ps2icon-0.5.pdf)
 - [Florian Märkl - mymcplus](https://git.sr.ht/~thestr4ng3r/mymcplus)

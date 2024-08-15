@@ -8,10 +8,10 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Python
+  - OpenSource
   - Algorithm
 categories:
-  - Tutorial
+  - Ps2mc
 ---
 In the [previous article](../rle-algorithm-in-ps2/), we discussed the `RLE` image compression algorithm used in `PS2`. This time, let's delve into its texture mapping encoding algorithm—`A1B5G5R5`.
 
@@ -19,6 +19,7 @@ In the [previous article](../rle-algorithm-in-ps2/), we discussed the `RLE` imag
 For textures, common image encoding formats like `jpg` or `png` are not suitable. This is because images are read and rendered by the GPU. You wouldn't want to send a `jpg` image over and have the GPU decode the entire image just to read one pixel, right? Therefore, the most ideal image format is an uncompressed bitmap format, allowing direct access to `RGB` data based on pixel coordinates. The `A1B5G5R5` format we're introducing today is one such encoding format.
 
 ## Analysis
+
 ![](imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/3.jpg)
 
 The above two texture images are extracted from `PS2` archives, stored in bitmap format with a pixel count of `128x128`.
@@ -36,6 +37,7 @@ Decoding `A1B5G5R5` into `32-bit RGBA` can be achieved using the method depicted
 ![](imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/decode.jpg)
 
 The pseudo-code is as follows:
+
 ```python
 while tex_offset < len(self.texture):
     b = tex_struct.unpack_from(self.texture, tex_offset)[0]
@@ -49,6 +51,7 @@ while tex_offset < len(self.texture):
 It's evident that encoding a `32-bit` `RGBA` image into a `16-bit` `A1B5G5R5` format results in the loss of the last 3 bits of data for each color, making it a lossy encoding format. However, the benefit is a compression ratio of 2:1, effectively halving the size of the image. When combined with the `RLE` encoding discussed in the previous article, further reduction in image size can be achieved.
 
 ## Conclusion
+
 Finally, here are the rendered effects of the two texture images mentioned above. Do any of you remember these two games?
 
 ![](imgs/posts/2023-10-20-ps2-texture-encoding-algorithm-a1b5g5r5/4.jpg)
