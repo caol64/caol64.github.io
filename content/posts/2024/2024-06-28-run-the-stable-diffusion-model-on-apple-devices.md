@@ -2,7 +2,7 @@
 author: 路边的阿不
 title: 在苹果设备上运行Stable Diffusion模型
 slug: run-the-stable-diffusion-model-on-apple-devices
-description: ""
+description: "本文介绍了在苹果设备（MAC、iPad、iPhone）上运行Stable Diffusion模型的方法，包括模型的下载、格式转换以及如何在Swift中调用模型进行推理。"
 date: 2024-06-28 15:18:47
 draft: false
 ShowToc: true
@@ -113,7 +113,34 @@ python convert_original_stable_diffusion_to_diffusers.py \
 
 ## `Swift`调用`Stable Diffusion`模型
 
-使用`Huggingface`提供的[swift-coreml-diffusers](https://github.com/huggingface/swift-coreml-diffusers)库。我的[AquariusAI](https://github.com/caol64/aquarius-ai)项目提供了示例代码。
+使用`Huggingface`提供的[swift-coreml-diffusers](https://github.com/huggingface/swift-coreml-diffusers)库。
+
+```swift
+import StableDiffusion
+import CoreML
+
+// 初始化CoreML配置
+let config = MLModelConfiguration()
+// 运行在GPU上（MAC限定）
+config.computeUnits = MLComputeUnits.cpuAndGPU
+// 初始化pipeline
+var pipeline = try StableDiffusionPipeline(resourcesAt: modelDirectory,
+                                      controlNet: [],
+                                      configuration: config,
+                                      reduceMemory: diffusersConfig.reduceMemory)
+let pipeline.loadResources()
+// 初始化图片推理配置
+var pipelineConfig = StableDiffusionPipeline.Configuration(prompt: prompt)
+pipelineConfig.stepCount = stepCount
+pipelineConfig.guidanceScale = cfgScale
+pipelineConfig.schedulerType = scheduler
+// 开始图片推理
+let images = try pipeline.generateImages(configuration: pipelineConfig,
+                                          progressHandler: { progress in
+})
+```
+
+***我的[AquariusAI](https://github.com/caol64/aquarius-ai)项目提供了示例代码。***
 
 ![](imgs/posts/2024-06-28-run-the-stable-diffusion-model-on-apple-devices/2.webp)
 
