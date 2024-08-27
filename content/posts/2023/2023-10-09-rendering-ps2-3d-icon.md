@@ -21,8 +21,8 @@ categories:
 - ModernGL
 - PyGLM
 
-## 01 初始化`PyGame`和`ModernGL
-`
+## 01 初始化`PyGame`和`ModernGL`
+
 第一步先初始化`PyGame`，设置窗口大小为`640x480`，`FPS`为`60`。开启`OpenGL`渲染模式，`OpenGL`的版本号设置为`3.3`。
 
 ```python
