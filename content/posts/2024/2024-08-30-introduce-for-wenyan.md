@@ -13,9 +13,7 @@ categories:
   - 文颜
 ---
 
-<div align="center">
-    <img alt = "logo" src="/imgs/posts/2024-08-30-introduce-for-wenyan/wenyan.webp" />
-</div>
+![wenyan logo](imgs/posts/2024-08-30-introduce-for-wenyan/wenyan.webp)
 
 今天向大家介绍一个我自己开发并且开源的工具——[「文颜」](https://yuzhi.tech/wenyan)。
 
