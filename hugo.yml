@@ -82,6 +82,10 @@ menu:
       name: 3shi天下
       url: https://3shi.babyno.top
       weight: 50
+    - identifier: yuzhi
+      name: 遇之
+      url: https://yuzhi.tech
+      weight: 60
 
 
 permalinks:
