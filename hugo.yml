@@ -19,6 +19,28 @@ languages:
       homeInfoParams:
         Title: Hi there!
         Content: Plain living and high thinking, with code as a companion.
+    menu:
+      main:
+      - identifier: archive
+        name: Archive
+        url: /archive/
+        weight: 10
+      - identifier: categories
+        name: Categories
+        url: /categories/
+        weight: 20
+      - identifier: search
+        name: Search
+        url: /search/
+        weight: 30
+      - identifier: 3shi
+        name: 3shi天下
+        url: https://3shi.babyno.top
+        weight: 40
+      - identifier: yuzhi
+        name: 遇之
+        url: https://yuzhi.tech
+        weight: 50
 params:
   # ShowReadingTime: true
   description: '路边的阿不的技术博客，主要聊AI、技术、架构、云服务、网络安全、个人提升、效率提升以及其它有趣的东西'
@@ -63,29 +85,25 @@ minify:
 menu:
   main:
     - identifier: archive
-      name: Archive
+      name: 归档
       url: /archive/
       weight: 10
     - identifier: categories
-      name: Categories
+      name: 目录
       url: /categories/
       weight: 20
-    - identifier: tags
-      name: Tags
-      url: /tags/
-      weight: 30
     - identifier: search
-      name: Search
+      name: 搜索
       url: /search/
-      weight: 40
+      weight: 30
     - identifier: 3shi
       name: 3shi天下
       url: https://3shi.babyno.top
-      weight: 50
+      weight: 40
     - identifier: yuzhi
       name: 遇之
       url: https://yuzhi.tech
-      weight: 60
+      weight: 50
 
 
 permalinks:
