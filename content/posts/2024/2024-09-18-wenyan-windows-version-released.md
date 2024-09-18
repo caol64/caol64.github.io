@@ -12,15 +12,11 @@ tags:
 categories:
   - 文颜
 ---
-「文颜」`Windows`版已发布，与`Mac`版本功能相同。
+文颜`Windows`版已发布，与`Mac`版本功能相同。
 
 ![](imgs/posts/2024-09-18-wenyan-windows-version-released/win.webp)
 
-## 下载地址
-
-[文颜](https://yuzhi.tech/wenyan)
-
-## 问题反馈
+[下载](https://api.yuzhi.tech/download?app=wenyan)
 
 [问题反馈](https://yuzhi.tech/contact)
 
