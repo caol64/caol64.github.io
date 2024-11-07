@@ -60,9 +60,9 @@ categories:
 
 ## 小贴士
 
-### 有限支持的伪元素
+### 标题及块元素的前缀和后缀
 
-`h1, h2, h3, h4, h5, h6, blockquote`这几个标签支持`::after`和`::before`伪元素，让我们看个例子：
+`h1, h2, h3, h4, h5, h6, blockquote`这几个标签可以与`::before`和`::after`伪元素配合`content`属性实现标签的前、后缀效果。让我们看个例子，给所有`blockquote`添加一个彩虹图标前缀：
 
 ```css
 #wenyan blockquote::before {
@@ -78,10 +78,76 @@ categories:
 
 ![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/6.webp)
 
-注意：虽然在预览页面中，其它标签可能也会支持伪元素，但是粘贴到公众号后，只有上面列举的这些标签和伪元素才会起作用。
+此外，你也可以使用一些`css`的其它技巧来绘制简单的几何图形，比如在`h2`标签前面添加一个`gradient`渐变图形，后面添加一个三角形图标：
+
+```css
+#wenyan h2:before {
+    display: inline-block;
+    content: "";
+    background: radial-gradient(#f69d3c, #3f87a6);
+    height: 2em;
+    width: 2em;
+    vertical-align: bottom;
+}
+#wenyan h2:after {
+    display: inline-block;
+    content: "";
+    vertical-align: bottom;
+    border-bottom: 36px solid #efebe9;
+    border-right: 20px solid transparent;
+}
+```
+
+效果：
+
+![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/8.webp)
+
+***注意：虽然在预览页面中，所有标签的伪元素看上去都是正常的，但是粘贴到公众号后，只有上面列举的这些标签和伪元素才会起作用。***
+
+***注意：目前`background-image`还不支持图片格式的背景图案（包括url引入或者base64引入），或许以后的版本会支持。***
+
+### 修改字体
+
+文颜默认使用用户系统的默认字体，如果你想使你的文章看起来更独特，可以考虑修改默认字体。比如：将字体修改为系统自带的“华文仿宋”：
+
+```css
+/* 全局变量 */
+:root {
+    --sans-serif-font: "华文仿宋";
+    --monospace-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "liberation mono", "courier new", monospace;
+}
+```
+
+效果：
+
+![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/7.webp)
+
+***注意：修改字体会影响未安装该字体的用户的阅读体验，因此请确保你有一定该方面的经验，保留保底字体。***
+
+***注意：目前不支持`web字体`，即url引入的字体。***
+
+### 背景图案
+
+如果你想修改公众号平平无奇的白色背景，可以使用`gradient`添加一些背景图案。下面这个例子将为你的文章背景添加淡淡的网格：
+
+```css
+#wenyan {
+    font-family: var(--sans-serif-font);
+    line-height: 1.75;
+    background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.04) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(50, 0, 0, 0.04) 3%, rgba(0, 0, 0, 0) 3%);
+    background-size: 20px 20px;
+    background-position: center center;
+}
+```
+
+效果：
+
+![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/9.webp)
+
+***注意：目前`background-image`还不支持图片格式的背景图案（包括url引入或者base64引入），或许以后的版本会支持。***
 
 ## 最后
 
-有关“自定义主题”如果有相关问题，可以到[这里](https://github.com/caol64/wenyan/discussions/9)进行讨论。
+问题讨论请移步[github discussions](https://github.com/caol64/wenyan/discussions/9)。
 
-另外也欢迎大家将自己的主题分享到[这里](https://github.com/caol64/wenyan/discussions/13)。
+主题分享请移步[这里](https://github.com/caol64/wenyan/discussions/13)。
