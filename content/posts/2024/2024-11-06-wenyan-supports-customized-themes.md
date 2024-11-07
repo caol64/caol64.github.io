@@ -13,7 +13,7 @@ categories:
   - 文颜
 ---
 
-到目前为止，「文颜」内置了7套主题，除了一套“默认”主题外，其它主题都来源于众多作者的开源主题，在这里向各位作者表示感谢🙏：
+到目前为止，[「文颜」](https://yuzhi.tech/wenyan)内置了7套主题，除了一套“默认”主题外，其它主题都来源于众多作者的开源主题，在这里向各位作者表示感谢🙏：
 
 -   [Orange Heart - evgo2017](https://github.com/evgo2017/typora-theme-orange-heart)
 -   [Rainbow - thezbm](https://github.com/thezbm/typora-theme-rainbow)
@@ -145,6 +145,116 @@ categories:
 ![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/9.webp)
 
 ***注意：目前`background-image`还不支持图片格式的背景图案（包括url引入或者base64引入），或许以后的版本会支持。***
+
+### 表格样式
+
+以下几个属性可以修改表格样式：
+
+```css
+#wenyan table {
+    border-collapse: collapse;
+    border: 0.25em solid var(--table-border-color);
+    margin: 1.4em auto;
+    max-width: 100%;
+    table-layout: fixed;
+    text-align: left;
+    overflow: auto;
+    display: inline-block;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+#wenyan table th {
+    background-color: var(--th-bg-color);
+}
+#wenyan table th, td {
+    font-size: .75em;
+    text-align: center;
+    border: 0.13em dashed var(--table-border-color);
+    padding: 0.5em;
+    height: 40px;
+    padding: 9px 12px;
+    line-height: 22px;
+    min-width: 60px;
+    vertical-align: top;
+}
+#wenyan table tr:nth-child(even) {
+    background-color: var(--tr-bg-color);
+}
+```
+
+### 脚注样式
+
+如果使用了脚注功能，请注意以下几个属性：
+
+```css
+/* 添加在原始链接旁的脚注上标 1️⃣ */
+#wenyan .footnote {
+    color: rgb(31, 117, 255);
+}
+/* 脚注行，每行包括编号和文字 2️⃣ */
+#wenyan #footnotes p {
+    display: flex;
+    margin: 0;
+    font-size: 0.9em;
+}
+/* 脚注行内编号 3️⃣ */
+#wenyan .footnote-num {
+    display: inline;
+    width: 10%;
+}
+/* 脚注行内文字 4️⃣ */
+#wenyan .footnote-txt {
+    display: inline;
+    width: 90%;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+```
+
+添加在原始链接旁的脚注上标：
+
+![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/10.webp)
+
+脚注行：
+
+![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/11.webp)
+
+### 行内代码
+
+```css
+#wenyan p code {
+    font-family: var(--monospace-font);
+    color: #ff502c;
+    padding: 4px 6px;
+    font-size: .78em;
+}
+```
+
+### 代码块
+
+```css
+/* 代码块外围 */
+#wenyan pre {
+    border-radius: 5px;
+    font-size: .8em;
+    line-height: 2;
+    margin: 1em 0.5em;
+    padding: 1em;
+    background-color: #afb8c133;
+}
+/* 代码块 */
+#wenyan pre code {
+    font-family: var(--monospace-font);
+    display: block;
+    overflow-x: auto;
+    margin: 0;
+    padding: 0;
+}
+```
+
+## 属性速查
+
+所有属性可以在下面的网页查询到：[属性速查表](https://yuzhi.tech/docs/wenyan/themes)。
 
 ## 最后
 
