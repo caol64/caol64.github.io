@@ -252,6 +252,24 @@ categories:
 }
 ```
 
+## 微调内置主题
+
+从版本`2.3`开始(`Windows`版`2.2`)，文颜开放了内置主题，你可以在任意内置主题的基础上生成自定义主题，并进行微调。以下是操作示例：
+
+<video controls>
+    <source src="https://yuzhi.tech/img/wenyan/custom_css.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+## 导入外部主题
+
+从版本`2.3`开始(`Windows`版`2.2`)，文颜支持导入外部`CSS`转换为自定义主题。对于成熟社区大量已有的主题可以直接导入，迅速形成自己的主题。以下是操作示例：
+
+<video controls>
+    <source src="https://yuzhi.tech/img/wenyan/import_css.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
 ## 属性速查
 
 所有属性可以在下面的网页查询到：[属性速查表](https://yuzhi.tech/docs/wenyan/themes)。

@@ -58,7 +58,7 @@ categories:
 
 然后粘贴以下内容：
 
-```md
+```markdown
 # 产品发布会邀请函
 
 尊敬的张XX先生，
