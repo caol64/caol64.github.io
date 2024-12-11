@@ -60,9 +60,9 @@ categories:
 
 ## 小贴士
 
-### 标题及块元素的前缀和后缀
+### 引用块美化
 
-`h1, h2, h3, h4, h5, h6, blockquote`这几个标签可以与`::before`和`::after`伪元素配合`content`属性实现标签的前、后缀效果。让我们看个例子，给所有`blockquote`添加一个彩虹图标前缀：
+`h1, h2, h3, h4, h5, h6, blockquote`这几个标签可以与`::before`和`::after`伪元素配合实现前、后缀效果。让我们看个例子，给引用块添加一个彩虹图标前缀：
 
 ```css
 #wenyan blockquote::before {
@@ -76,35 +76,61 @@ categories:
 
 效果：
 
-![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/6.webp)
+<img src="/imgs/posts/2024-11-06-wenyan-supports-customized-themes/6.webp" width="50%">
 
-此外，你也可以使用一些`css`的其它技巧来绘制简单的几何图形，比如在`h2`标签前面添加一个`gradient`渐变图形，后面添加一个三角形图标：
+再比如给引用块添加两个引号：
 
 ```css
-#wenyan h2:before {
-    display: inline-block;
-    content: "";
-    background: radial-gradient(#f69d3c, #3f87a6);
-    height: 2em;
-    width: 2em;
-    vertical-align: bottom;
+#wenyan blockquote::before {
+    position: absolute;
+    top: 0;
+    left: 12px;
+    font-family: Arial, serif;
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 1em;
+    color: var(--main-6);
+    content: "“";
 }
-#wenyan h2:after {
-    display: inline-block;
-    content: "";
-    vertical-align: bottom;
-    border-bottom: 36px solid #efebe9;
-    border-right: 20px solid transparent;
+#wenyan blockquote::after {
+    position: absolute;
+    bottom: 0;
+    right: 12px;
+    font-family: Arial, serif;
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 1em;
+    color: var(--main-6);
+    content: "”";
 }
 ```
 
 效果：
 
-![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/8.webp)
+<img src="/imgs/posts/2024-11-06-wenyan-supports-customized-themes/13.webp" width="50%">
 
-***注意：虽然在预览页面中，所有标签的伪元素看上去都是正常的，但是粘贴到公众号后，只有上面列举的这些标签和伪元素才会起作用。***
+### 标题美化
 
-***注意：目前`background-image`还不支持图片格式的背景图案（包括url引入或者base64引入），或许以后的版本会支持。***
+可以给标题添加任意前后缀，比如添加一个`svg`图片：
+
+```css
+#wenyan h2::before {
+    display: inline-block;
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-image: url(data:image/svg+xml;base64,PHN中间省略...g==);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position-y: 4px;
+    margin-right: 4px;
+    vertical-align: text-top;
+}
+```
+
+效果：
+
+<img src="/imgs/posts/2024-11-06-wenyan-supports-customized-themes/12.webp" width="50%">
 
 ### 修改字体
 
@@ -144,7 +170,17 @@ categories:
 
 ![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/9.webp)
 
-***注意：目前`background-image`还不支持图片格式的背景图案（包括url引入或者base64引入），或许以后的版本会支持。***
+此外你也可以给背景添加网络图片，比如：
+
+```css
+#wenyan {
+    background-image: url("https://marketplace.canva.com/EAGPIDVZ0-A/1/0/1131w/canva-peach-aesthetic-background-flyer-IqGDJ_simvM.jpg");
+}
+```
+
+效果：
+
+<img src="/imgs/posts/2024-11-06-wenyan-supports-customized-themes/14.webp" width="50%">
 
 ### 表格样式
 
@@ -251,6 +287,17 @@ categories:
     padding: 0;
 }
 ```
+
+### 允许导入主题的图片
+
+目前支持导入主题的图片包括：
+
+- 直接引入的`svg`
+    - `url("data:image/svg+xml;utf8,<svg>xxx</svg>"`
+- `base64`引入的`svg`
+    - `url(data:image/svg+xml;base64,xxxx)`
+- 网络图片（不限格式）
+    - `url(https://xx.com/x.jpg)`
 
 ## 微调内置主题
 
