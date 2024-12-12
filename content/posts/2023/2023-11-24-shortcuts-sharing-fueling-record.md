@@ -38,7 +38,7 @@ categories:
 
 ## 下载地址
 
-https://www.icloud.com/shortcuts/914e212e8aff4a92a2a6deb676a3932e
+https://www.icloud.com/shortcuts/bf8c7da96f0d423398e18f501c73fd73
 
 ## 最后
 
