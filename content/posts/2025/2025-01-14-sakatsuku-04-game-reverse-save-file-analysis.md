@@ -15,6 +15,8 @@ categories:
 
 本系列将和大家一起探索PS2游戏——J联盟创造球会04（J.League Pro Soccer Club o Tsukurou! 04）的逆向研究。本文先解析一下游戏存档。
 
+![](imgs/posts/2025-01-14-sakatsuku-04-game-reverse-save-file-analysis/cover.jpg)
+
 ## 存档文件目录
 
 将游戏存档导出后，文件目录如下：
