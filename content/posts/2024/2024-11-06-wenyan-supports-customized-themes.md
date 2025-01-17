@@ -249,11 +249,11 @@ categories:
 
 添加在原始链接旁的脚注上标：
 
-![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/10.webp)
+![](imgs/posts/2024-11-06-wenyan-supports-customized-themes/10.webp)
 
 脚注行：
 
-![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/11.webp)
+![](imgs/posts/2024-11-06-wenyan-supports-customized-themes/11.webp)
 
 ### 行内代码
 
