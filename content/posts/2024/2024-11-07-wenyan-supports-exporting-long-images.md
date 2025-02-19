@@ -19,7 +19,7 @@ categories:
 
 直接点击悬浮按钮“长图”即可，应用会询问你将图片保存到哪里。
 
-<img src="/imgs/posts/2024-11-07-wenyan-supports-exporting-long-images/1.webp" width="75%">
+<img src="/imgs/posts/2024-11-07-wenyan-supports-exporting-long-images/1.webp" width="65%" style="padding-bottom: 24px">
 
 一般来讲，这种长图可以直接发布到任何社交媒体。
 
@@ -77,8 +77,8 @@ categories:
 
 软件截图如下：
 
-![alt text](imgs/posts/2024-11-07-wenyan-supports-exporting-long-images/2.webp)
+![](imgs/posts/2024-11-07-wenyan-supports-exporting-long-images/2.webp)
 
 这是最后导出的海报图片：
 
-![alt text](imgs/posts/2024-11-07-wenyan-supports-exporting-long-images/out.jpeg)
+![](imgs/posts/2024-11-07-wenyan-supports-exporting-long-images/out.jpeg)
