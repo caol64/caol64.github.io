@@ -19,14 +19,16 @@ categories:
 
 直接点击悬浮按钮“长图”即可，应用会询问你将图片保存到哪里。
 
-<img src="/imgs/posts/2024-11-07-wenyan-supports-exporting-long-images/1.webp" width="65%" style="padding-bottom: 24px">
+![](imgs/posts/2024-11-07-wenyan-supports-exporting-long-images/1.webp)
+{width=55}
 
 一般来讲，这种长图可以直接发布到任何社交媒体。
 
-<video controls width="100%">
-    <source src="https://yuzhi.tech/img/wenyan/1.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+<p>
+    <video controls width="100%">
+        <source src="https://yuzhi.tech/img/wenyan/1.mp4" type="video/mp4">
+    </video>
+</p>
 
 ## 制作海报
 
@@ -82,3 +84,4 @@ categories:
 这是最后导出的海报图片：
 
 ![](imgs/posts/2024-11-07-wenyan-supports-exporting-long-images/out.jpeg)
+{width=70}

@@ -127,5 +127,10 @@ markup:
     noClasses: false
     # style: monokailight
   goldmark:
+    parser:
+      wrapStandAloneImageWithinParagraph: false
+      attribute:
+        block: true
+        title: true
     renderer:
       unsafe: true

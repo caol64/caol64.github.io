@@ -18,10 +18,11 @@ categories:
 
 在最新发布的3.0版本中，支持将本地图片上传至公共图床。你可以通过复制-粘贴或者拖拽将电脑上的图片上传至包括“公众号图床”在内的多个国内图床。为发布文章的最后一步扫清障碍，弥补了之前版本无法处理本地图片的限制。
 
-<video controls width="100%" style="padding-bottom: 24px">
-    <source src="https://yuzhi.tech/img/wenyan/upload1.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+<p>
+    <video controls width="100%">
+        <source src="https://yuzhi.tech/img/wenyan/upload1.mp4" type="video/mp4">
+    </video>
+</p>
 
 如果你是一个自媒体作者，需要在多个平台发布文章，不妨试试「文颜」这款自动排版工具。
 

@@ -34,11 +34,12 @@ categories:
 
 在主题选择菜单点击“创建新主题”按钮。
 
-<img src="/imgs/posts/2024-11-06-wenyan-supports-customized-themes/1.webp" width="50%">
+![](imgs/posts/2024-11-06-wenyan-supports-customized-themes/1.webp)
+{width=45}
 
 此时会弹出一个“主题编辑和预览”页面，你可以在左侧编辑器中自定义`CSS`，右侧预览页面可以实时进行效果预览。
 
-![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/2.webp)
+![](imgs/posts/2024-11-06-wenyan-supports-customized-themes/2.webp)
 
 最后保存即可。
 
@@ -46,17 +47,19 @@ categories:
 
 保存的自定义主题可以在主题菜单直接选择使用。
 
-<img src="/imgs/posts/2024-11-06-wenyan-supports-customized-themes/3.webp" width="50%">
+![](imgs/posts/2024-11-06-wenyan-supports-customized-themes/3.webp)
+{width=45}
 
 ## 修改和删除主题
 
 点击“自定义主题”边上的编辑按钮，会弹出“主题编辑和预览”页面，和创建主题一样。
 
-<img src="/imgs/posts/2024-11-06-wenyan-supports-customized-themes/4.webp" width="50%">
+![](imgs/posts/2024-11-06-wenyan-supports-customized-themes/4.webp)
+{width=45}
 
 如果要删除主题，点击“删除”按钮。
 
-![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/5.webp)
+![](imgs/posts/2024-11-06-wenyan-supports-customized-themes/5.webp)
 
 ## 小贴士
 
@@ -76,7 +79,8 @@ categories:
 
 效果：
 
-<img src="/imgs/posts/2024-11-06-wenyan-supports-customized-themes/6.webp" width="50%">
+![](imgs/posts/2024-11-06-wenyan-supports-customized-themes/6.webp)
+{width=50}
 
 再比如给引用块添加两个引号：
 
@@ -107,7 +111,8 @@ categories:
 
 效果：
 
-<img src="/imgs/posts/2024-11-06-wenyan-supports-customized-themes/13.webp" width="50%">
+![](imgs/posts/2024-11-06-wenyan-supports-customized-themes/13.webp)
+{width=50}
 
 ### 标题美化
 
@@ -130,7 +135,8 @@ categories:
 
 效果：
 
-<img src="/imgs/posts/2024-11-06-wenyan-supports-customized-themes/12.webp" width="50%">
+![](imgs/posts/2024-11-06-wenyan-supports-customized-themes/12.webp)
+{width=30}
 
 ### 修改字体
 
@@ -146,7 +152,7 @@ categories:
 
 效果：
 
-![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/7.webp)
+![](imgs/posts/2024-11-06-wenyan-supports-customized-themes/7.webp)
 
 ***注意：修改字体会影响未安装该字体的用户的阅读体验，因此请确保你有一定该方面的经验，保留保底字体。***
 
@@ -168,7 +174,7 @@ categories:
 
 效果：
 
-![alt text](imgs/posts/2024-11-06-wenyan-supports-customized-themes/9.webp)
+![](imgs/posts/2024-11-06-wenyan-supports-customized-themes/9.webp)
 
 此外你也可以给背景添加网络图片，比如：
 
@@ -180,7 +186,8 @@ categories:
 
 效果：
 
-<img src="/imgs/posts/2024-11-06-wenyan-supports-customized-themes/14.webp" width="50%">
+![](imgs/posts/2024-11-06-wenyan-supports-customized-themes/14.webp)
+{width=50}
 
 ### 表格样式
 
@@ -250,10 +257,12 @@ categories:
 添加在原始链接旁的脚注上标：
 
 ![](imgs/posts/2024-11-06-wenyan-supports-customized-themes/10.webp)
+{width=75}
 
 脚注行：
 
 ![](imgs/posts/2024-11-06-wenyan-supports-customized-themes/11.webp)
+{width=80}
 
 ### 行内代码
 
@@ -303,19 +312,21 @@ categories:
 
 从版本`2.3`开始(`Windows`版`2.2`)，文颜开放了内置主题，你可以在任意内置主题的基础上生成自定义主题，并进行微调。以下是操作示例：
 
-<video controls>
-    <source src="https://yuzhi.tech/img/wenyan/custom_css.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+<p>
+    <video controls>
+        <source src="https://yuzhi.tech/img/wenyan/custom_css.mp4" type="video/mp4">
+    </video>
+</p>
 
 ## 导入外部主题
 
 从版本`2.3`开始(`Windows`版`2.2`)，文颜支持导入外部`CSS`转换为自定义主题。对于成熟社区大量已有的主题可以直接导入，迅速形成自己的主题。以下是操作示例：
 
-<video controls>
-    <source src="https://yuzhi.tech/img/wenyan/import_css.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+<p>
+    <video controls>
+        <source src="https://yuzhi.tech/img/wenyan/import_css.mp4" type="video/mp4">
+    </video>
+</p>
 
 ## 属性速查
 
