@@ -10,7 +10,7 @@ class Assistant:
             self.api_key = f.read()
 
     def work(self, user_prompt):
-        url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.0-pro:generateContent?key={self.api_key}'
+        url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={self.api_key}'
         # print(url)
         headers = {
             'Content-Type': 'application/json',
