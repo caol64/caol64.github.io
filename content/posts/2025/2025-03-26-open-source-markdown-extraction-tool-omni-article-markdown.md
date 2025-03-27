@@ -78,3 +78,5 @@ python omni_article_md_cli.py https://example.com -s /home/user/data
 ## 项目代码
 
 源代码开放在 [github](https://github.com/caol64/omni-article-markdown) 上。
+
+此外，你还可以配合[「文颜」](https://yuzhi.tech/wenyan)将转换后的 markdown 文章一键发布到公众号、今日头条、知乎等平台。
