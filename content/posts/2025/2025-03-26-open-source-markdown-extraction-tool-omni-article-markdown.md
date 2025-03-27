@@ -1,6 +1,6 @@
 ---
 author: "路边的阿不"
-title: 开源Markdown提取工具-omni-article-markdown
+title: 开源Markdown提取工具-Omni Article Markdown
 slug: open-source-markdown-extraction-tool-omni-article-markdown
 description: ""
 date: 2025-03-26 17:25:27
