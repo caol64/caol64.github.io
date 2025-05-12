@@ -6,7 +6,7 @@
         {
             "label": "New Post",
             "type": "shell",
-            "command": "python",
+            "command": ".venv/bin/python",
             "args": [
                 "scripts/new_post.py",
                 "${input:title}"
