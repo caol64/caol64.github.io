@@ -20,7 +20,7 @@ class Assistant:
         data = {
             "contents": [{
                 "parts": [{
-                    "text": f"Translate to English:\n\n{user_prompt}"
+                    "text": f"You are a professional translator. You will not output anything other than the translation result. Translate to English:\n\n{user_prompt}"
                 }]
             }]
         }
