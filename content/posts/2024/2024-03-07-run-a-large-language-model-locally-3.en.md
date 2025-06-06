@@ -9,7 +9,10 @@ ShowToc: true
 TocOpen: true
 tags:
   - Ollama
-  - Agent
+  - LLM
+  - Function Calling
+  - Local AI
+  - Tutorial
 categories:
   - AI
 ---

@@ -8,9 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Github
+  - Tutorial
 categories:
-  - 教程
+  - 杂项
 ---
 那天，家里的长辈的`Android`手机坏了，正好我这里有台闲置的苹果手机。你可能想：哦，这挺简单的吧，启动新手机，下载`转移到 iOS`的APP，一键迁移就完事了。然而往往事情都不会这么顺利，正所谓“第一步错，步步错”来形容一点不为过。
 

@@ -9,8 +9,10 @@ ShowToc: true
 TocOpen: true
 tags:
   - Automation
+  - Tutorial
+  - Blogging
 categories:
-  - 建站
+  - 生产力
 ---
 在之前的文章中，我提到我通常使用 `VSCode` 进行写作。这一次，我想分享一些提高平时写作效率的小技巧。同时，这也是我第一次尝试使用刚刚注册的 `ChatGPT`，看看它在辅助编码方面的能力如何。
 

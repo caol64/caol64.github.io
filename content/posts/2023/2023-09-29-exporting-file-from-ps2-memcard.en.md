@@ -8,9 +8,12 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - OpenSource
+  - Open Source
+  - Reverse Engineering
+  - Tutorial
+  - PS2
 categories:
-  - Ps2mc
+  - Reverse Engineering
 ---
 In the previous article, we analyzed the file system of the PS2 memory card. This time, we'll dive straight into practice and write Python code to export specific game saves. The complete code for this article can be found at: [ps2mc-browser](https://github.com/caol64/ps2mc-browser).
 

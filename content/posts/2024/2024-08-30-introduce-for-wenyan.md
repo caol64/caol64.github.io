@@ -8,9 +8,11 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - OpenSource
-categories:
+  - Open Source
   - 文颜
+  - Software Releases
+categories:
+  - 项目介绍
 ---
 
 ![wenyan logo](imgs/posts/2024-08-30-introduce-for-wenyan/wenyan.webp)

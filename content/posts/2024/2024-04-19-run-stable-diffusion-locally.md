@@ -9,6 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - Stable Diffusion
+  - Local AI
+  - Image Generation
+  - Tutorial
 categories:
   - AI
 ---

@@ -8,9 +8,11 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - OpenSource
+  - Open Source
+  - Software Releases
+  - Ps2mc Browser
 categories:
-  - Ps2mc
+  - Project Introduction
 ---
 `ps2mc-browser` is a `PS2` memory card file viewer that utilizes an `OpenGL` canvas to display 3D dynamic icons from the memory card. It relies on the following dependencies:
 

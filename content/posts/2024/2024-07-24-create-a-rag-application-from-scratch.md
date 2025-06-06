@@ -9,6 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - RAG
+  - LLM
+  - Tutorial
+  - Software Architecture
 categories:
   - AI
 ---

@@ -8,9 +8,12 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Automation
-categories:
   - 快捷指令
+  - Apple Shortcuts
+  - Automation
+  - Tutorial
+categories:
+  - 生产力
 ---
 相信现在大部分打工人都会使用手机上的闹钟功能每天定时叫醒自己吧。虽然现在的手机闹钟应用可以自己定义重复周期等简单的设置，但是对于大部分人来讲这些功能过于简单。今天我就介绍一个使用「快捷指令」实现的我认为比较“智能”的闹钟。
 

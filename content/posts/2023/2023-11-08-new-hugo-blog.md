@@ -9,9 +9,11 @@ ShowToc: true
 TocOpen: true
 tags:
   - Cloudflare
-  - Github
+  - GitHub Pages
+  - Tutorial
+  - Blogging
 categories:
-  - 建站
+  - 网站开发
 ---
 
 大约在十几年前，我也自己搭建过一个博客，在`Godaddy`买了虚拟主机和一个域名，搭建好`LAMP`环境，再装上`Wordpress`就开始折腾了。什么`百度统计`、`Google广告`、`Jiathis`等等全都安排上。那个时候在网上结识了一帮志同道合的网友，一起聊建站心得，甚至网站的`PR`值升到2时还兴奋的奔走相告。

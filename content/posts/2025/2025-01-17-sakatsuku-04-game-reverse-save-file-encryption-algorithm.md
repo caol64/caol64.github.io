@@ -8,10 +8,13 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Reverse
-  - OpenSource
+  - Sakatsuku 04
+  - Open Source
+  - Reverse Engineering
+  - PS2
+  - Tutorial
 categories:
-  - Sakatsuku04
+  - 逆向工程
 ---
 ![](imgs/posts/2025-01-14-sakatsuku-04-game-reverse-save-file-analysis/cover.jpg)
 

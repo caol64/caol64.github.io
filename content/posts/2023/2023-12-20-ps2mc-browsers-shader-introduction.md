@@ -8,9 +8,12 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - OpenSource
+  - Open Source
+  - OpenGL
+  - 3D Graphics
+  - Tutorial
 categories:
-  - Ps2mc
+  - 图形开发
 ---
 如何将多边形的顶点和纹理渲染成缤纷多彩的画面呢？它就是OpenGL着色器。今天我们就要聊聊`ps2mc-browser`的着色器。
 

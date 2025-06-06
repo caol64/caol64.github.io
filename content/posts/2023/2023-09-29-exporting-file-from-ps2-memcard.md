@@ -8,9 +8,12 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - OpenSource
+  - Open Source
+  - Reverse Engineering
+  - Tutorial
+  - PS2
 categories:
-  - Ps2mc
+  - 逆向工程
 ---
 上一篇文章中我们解析了PS2存储卡的文件系统，这次直接实战，编写`python`代码导出指定的游戏存档。本篇文章完整代码可以访问：[ps2mc-browser](https://github.com/caol64/ps2mc-browser)。
 

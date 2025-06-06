@@ -9,7 +9,10 @@ ShowToc: true
 TocOpen: true
 tags:
   - Ollama
+  - LLM
   - RAG
+  - Local AI
+  - Tutorial
 categories:
   - AI
 ---

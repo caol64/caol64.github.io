@@ -8,9 +8,12 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - OpenSource
-categories:
+  - Open Source
   - 文颜
+  - MCP
+  - Tutorial
+categories:
+  - 生产力
 ---
 
 随着人工智能的飞速发展，我们的内容创作方式也正在发生深刻变化。从灵感生成到润色校对，从图像处理到音视频剪辑，AI 已逐步成为创作者不可或缺的助手。上一篇文章我们介绍了「文颜 MCP Server」，今天让我们来看看怎样让它与 AI 结合，发挥最大生产力。

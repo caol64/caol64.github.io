@@ -8,10 +8,13 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - OpenSource
+  - Texture Encoding
   - Algorithm
+  - Reverse Engineering
+  - PS2
+  - Tutorial
 categories:
-  - Ps2mc
+  - Game Development
 ---
 In the [previous article](../rle-algorithm-in-ps2/), we discussed the `RLE` image compression algorithm used in `PS2`. This time, let's delve into its texture mapping encoding algorithm—`A1B5G5R5`.
 

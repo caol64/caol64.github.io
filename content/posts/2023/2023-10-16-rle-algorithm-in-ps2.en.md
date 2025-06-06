@@ -8,10 +8,13 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - OpenSource
+  - Data Compression
   - Algorithm
+  - Reverse Engineering
+  - PS2
+  - Tutorial
 categories:
-  - Ps2mc
+  - Game Development
 ---
 ![](imgs/posts/2023-10-16-rle-algorithm-in-ps2/run_length_f9030faa12.webp)
 

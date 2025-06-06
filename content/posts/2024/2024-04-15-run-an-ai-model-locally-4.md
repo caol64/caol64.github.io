@@ -9,6 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - TTS
+  - Voice Generation
+  - Local AI
+  - Tutorial
 categories:
   - AI
 ---

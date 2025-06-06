@@ -8,9 +8,12 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Automation
-categories:
   - 快捷指令
+  - Apple Shortcuts
+  - Automation
+  - Tutorial
+categories:
+  - 生产力
 ---
 MAC有个令人“脑阔疼”的地方，没法在直接在某个目录下面创建文件，有的时候真的不方便。还好我们有“**快捷指令**”，这点问题不在话下。
 

@@ -8,7 +8,11 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Agent
+  - Agents
+  - LLM
+  - Software Architecture
+  - Tutorial
+  - Function Calling
 categories:
   - AI
 ---

@@ -8,9 +8,11 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Secure
+  - Quantum Cryptography
+  - Cryptography
+  - Translation
 categories:
-  - 翻译
+  - 网络安全
 ---
 今天，我们宣布推出 PQ3，这是 iMessage 历史上最重要的加密安全升级。PQ3 是一种突破性的后量子密码协议，它将使 iMessage 的端到端安全消息传递更上一层楼。得益于抗泄密加密和针对即使是极其复杂的量子攻击的强大防御能力，PQ3 是首个达到我们称为 “3级安全” 的消息传递协议 - 提供的协议保护措施超越了所有其他广泛部署的消息应用。据我们所知，PQ3 拥有当今规模最大的消息传递协议中最强的安全性属性。
 

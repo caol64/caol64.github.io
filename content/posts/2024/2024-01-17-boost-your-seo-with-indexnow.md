@@ -9,8 +9,10 @@ ShowToc: true
 TocOpen: true
 tags:
   - SEO
+  - GitHub Pages
+  - Tutorial
 categories:
-  - 建站
+  - 网站开发
 ---
 我之前写过[一篇文章](https://babyno.top/posts/2023/11/new-hugo-blog/)，介绍了[本站](https://babyno.top/)是使用`Hugo`进行构建并发布在`Github Pages`上的。也向大家介绍过将网站提交给搜索引擎的方法，但是手工提交未免繁琐和低效。今天给大家介绍下如何通过`IndexNow` 对网站进行`SEO`优化。
 

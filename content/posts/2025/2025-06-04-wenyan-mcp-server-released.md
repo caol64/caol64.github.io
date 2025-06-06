@@ -8,9 +8,12 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - OpenSource
-categories:
+  - Open Source
   - 文颜
+  - MCP
+  - Software Releases
+categories:
+  - 项目介绍
 ---
 
 不管你是自媒体作者还是技术人员，在创作的工作流中，有没有让你头疼的时刻？Markdown 写得很爽，但发布到微信公众号却要：

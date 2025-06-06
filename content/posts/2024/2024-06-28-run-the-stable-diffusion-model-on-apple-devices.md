@@ -10,6 +10,9 @@ TocOpen: true
 tags:
   - Stable Diffusion
   - CoreML
+  - Image Generation
+  - Local AI
+  - Tutorial
 categories:
   - AI
 ---

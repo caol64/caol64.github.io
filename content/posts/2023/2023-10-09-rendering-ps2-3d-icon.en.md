@@ -8,9 +8,14 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - OpenSource
+  - Open Source
+  - OpenGL
+  - PyGame
+  - PS2
+  - Tutorial
+  - 3D Graphics
 categories:
-  - Ps2mc
+  - Graphics Development
 ---
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/1.jpg)
 

@@ -8,9 +8,12 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - OpenSource
+  - Open Source
+  - OpenGL
+  - 3D Graphics
+  - Tutorial
 categories:
-  - Ps2mc
+  - Graphics Development
 ---
 How do we render the vertices and textures of polygons into a colorful scene? This is where OpenGL shaders come into play. Today, we'll discuss the shaders of `ps2mc-browser`.
 

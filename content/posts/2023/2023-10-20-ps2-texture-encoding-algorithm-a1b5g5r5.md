@@ -8,10 +8,13 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - OpenSource
+  - Texture Encoding
   - Algorithm
+  - Reverse Engineering
+  - PS2
+  - Tutorial
 categories:
-  - Ps2mc
+  - 游戏开发
 ---
 
 在[上一篇文章](../rle-algorithm-in-ps2/)里我们介绍了`PS2`使用的图片压缩算法`RLE`，这次我们再来研究一下它的纹理贴图编码算法——`A1B5G5R5`。
