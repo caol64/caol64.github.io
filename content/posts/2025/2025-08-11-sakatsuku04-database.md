@@ -17,6 +17,10 @@ categories:
 
 本资料集会不定时更新。
 
+## 球员类型统计分析
+
+https://babyno.top/posts/2025/07/sakatsuku04s-dataset/
+
 ## 全球员数据
 
 https://docs.qq.com/sheet/DSmhKcVJUT0J3VXd6
