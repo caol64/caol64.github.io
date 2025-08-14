@@ -33,6 +33,10 @@ https://docs.qq.com/sheet/DSk9hZ2xNWWp5YXhx
 
 https://docs.qq.com/sheet/DSkhFUWFKYXVmSUVh
 
+## 各位置关键能力
+
+![](imgs/posts/2025-08-11-sakatsuku04-database/9948507f-cc81-497c-9e16-6b93b12925bc.png)
+
 ## 赞助商合并一览
 
 ![](imgs/posts/2025-08-11-sakatsuku04-database/company_relations.png)
