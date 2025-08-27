@@ -25,6 +25,14 @@ https://babyno.top/posts/2025/07/sakatsuku04s-dataset/
 
 https://docs.qq.com/sheet/DSmhKcVJUT0J3VXd6
 
+## 全球探数据
+
+https://docs.qq.com/sheet/DSm1CTFRMaUpncUp6
+
+## 全教练数据
+
+https://docs.qq.com/sheet/DSnVaSE9pS1FLaHVG
+
 ## 特殊连携数据
 
 https://docs.qq.com/sheet/DSk9hZ2xNWWp5YXhx
