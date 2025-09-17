@@ -49,6 +49,22 @@ https://docs.qq.com/sheet/DSk5oYU9TUFVBS1Nr
 
 https://docs.qq.com/sheet/DSmNOWGtsS1RnY0Zr
 
+## 教练厌恶球员数据
+
+https://docs.qq.com/sheet/DSkVCZVBpTHV6Z1NK
+
+## 教练喜欢球员数据
+
+https://docs.qq.com/sheet/DSmtMemdOcHF4Z0NR
+
+## 互相喜欢球员数据
+
+https://docs.qq.com/sheet/DSm51dE5wWFhYeGdV
+
+## 互相厌恶球员数据
+
+https://docs.qq.com/sheet/DSmZBSk1qd2RtU25p
+
 ## 各位置关键能力
 
 ![](imgs/posts/2025-08-11-sakatsuku04-database/9948507f-cc81-497c-9e16-6b93b12925bc.png)
