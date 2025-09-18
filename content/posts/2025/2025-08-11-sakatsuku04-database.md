@@ -65,11 +65,11 @@ https://docs.qq.com/sheet/DSm51dE5wWFhYeGdV
 
 https://docs.qq.com/sheet/DSmZBSk1qd2RtU25p
 
-## 教练专有助教数据
+## 专有助教数据
 
 https://docs.qq.com/sheet/DSnVnVFZyeVRKRFd3
 
-## 教练喜爱的助教数据
+## 助教搭档数据
 
 https://docs.qq.com/sheet/DSm1VVHVSY3NXWVRv
 
