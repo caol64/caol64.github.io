@@ -65,6 +65,14 @@ https://docs.qq.com/sheet/DSm51dE5wWFhYeGdV
 
 https://docs.qq.com/sheet/DSmZBSk1qd2RtU25p
 
+## 教练专有助教数据
+
+https://docs.qq.com/sheet/DSnVnVFZyeVRKRFd3
+
+## 教练喜爱的助教数据
+
+https://docs.qq.com/sheet/DSm1VVHVSY3NXWVRv
+
 ## 各位置关键能力
 
 ![](imgs/posts/2025-08-11-sakatsuku04-database/9948507f-cc81-497c-9e16-6b93b12925bc.png)
