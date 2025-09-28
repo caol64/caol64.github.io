@@ -18,7 +18,7 @@ categories:
 
 当我使用`IOS`版本`ChatGPT`时，遇到错误提示：
 
-> Something went wrong. You may be connected to a disallowed ISP. If you are using VPN, try disabling it. Otherwise try a different Wi-Fi network or data connection.
+> Something went wrong. You may be connected to a disallowed ISP.
 
 其实不止`ChatGPT`，我遇到的情况还有：
 
@@ -28,7 +28,7 @@ categories:
 
 我发现不止我一个人出现这种情况，很多其它人也是，大家都处在不同的国家和地区。
 
-看来出问题的服务应该是对访问者做了一些限制，我们无法得知其中的逻辑，但可以肯定的是我们的机场应该不符合服务商的条件，被过滤出来了。既然这样，那我们就尝试用魔法打败魔法，使用一个免费的服务使得我们的机场看起来更像是符合服务商条件的那种。
+看来出问题的服务应该是对访问者做了一些限制，我们无法得知其中的逻辑，但可以肯定的是我们的某些网络参数应该不符合服务商的条件，被过滤出来了。既然这样，那我们就尝试用魔法打败魔法，使用一个免费的服务使得我们的网络看起来更像是符合服务商条件的那种。
 
 ## Cloudflare WARP
 
@@ -36,13 +36,13 @@ categories:
 
 > Cloudflare WARP is a service provided by Cloudflare that offers a faster, more secure, and more private experience online. It acts as a secure connection between a user's device and the Internet, with various connection modes to suit different needs. The WARP client is available for multiple operating systems, including iOS, Android, Windows, macOS, and Linux. It is designed to improve the speed and security of Internet connections for individual users. Additionally, Cloudflare WARP is also used in the context of Cloudflare Zero Trust, providing secure access to private applications.
 
-简单来说是由`Cloudflare`提供的一项服务，主要的功能是使你的网络连接更安全、更快速，以及更加保密。是一种类` V P N `服务，可以在客户端和服务端之间加一层屏障。
+简单来说是由`Cloudflare`提供的一项服务，主要的功能是使你的网络连接更安全、更快速，以及更加保密。是一种网络安全服务，可以在客户端和服务端之间加一层屏障。
 
-那我们就利用这个服务，在我们的机场和目标服务间加一层屏障从而把我们自己“伪装”起来。
+那我们就利用这个服务，在我们的网络服务和目标服务间加一层屏障从而把我们自己“伪装”起来。
 
 ## 配置
 
-安装和使用非常简单，按着下面的步骤就行。具体可查阅[官方文档](https://developers.cloudflare.com/warp-client/get-started/linux/)，下面以`Ubuntu 22.04`为例，在你的` V P S `服务器上做如下操作：
+安装和使用非常简单，按着下面的步骤就行。具体可查阅[官方文档](https://developers.cloudflare.com/warp-client/get-started/linux/)，下面以`Ubuntu 22.04`为例，在你的服务器上做如下操作：
 
 ```shell
 # Add cloudflare gpg key
