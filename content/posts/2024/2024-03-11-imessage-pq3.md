@@ -11,6 +11,7 @@ tags:
   - Quantum Cryptography
   - Cryptography
   - Translation
+  - Secure
 categories:
   - 网络安全
 ---
