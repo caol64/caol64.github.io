@@ -8,7 +8,6 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Sakatsuku 04
   - PS2
   - Tutorial
   - PCSX2
