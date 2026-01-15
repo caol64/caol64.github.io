@@ -79,7 +79,7 @@ params:
     disableHLJS: true
   homeInfoParams:
     Title: Hi there!
-    Content: 「粗茶淡饭，代码相伴」—— 平凡即是真，技术即是美。
+    Content: 粗茶淡饭，代码相伴
   comments: true
 
 minify:
