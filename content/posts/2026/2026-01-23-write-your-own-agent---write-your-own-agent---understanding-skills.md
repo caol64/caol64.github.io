@@ -3,7 +3,7 @@ author: "路边的阿不"
 title: 自己写一个智能体-让其理解Skills
 slug: write-your-own-agent---understanding-skills
 description: ""
-date: 2026-02-20 10:00:00
+date: 2026-01-23 10:00:00
 draft: false
 ShowToc: true
 TocOpen: true
