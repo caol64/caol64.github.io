@@ -13,6 +13,7 @@ tags:
   - Reverse Engineering
   - PS2
   - Tutorial
+  - Ps2mc Browser
 categories:
   - Game Development
 ---

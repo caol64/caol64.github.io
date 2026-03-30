@@ -14,6 +14,7 @@ tags:
   - PS2
   - Tutorial
   - 3D Graphics
+  - Ps2mc Browser
 categories:
   - 图形开发
 ---
