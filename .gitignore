@@ -2,4 +2,6 @@
 /public
 .obsidian
 secrets/
+.env*
 .venv
+.hugo_build.lock
