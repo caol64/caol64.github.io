@@ -9,7 +9,6 @@ ShowToc: true
 TocOpen: true
 tags:
   - Translation
-  - Rust
 categories:
   - 文档翻译
 ---

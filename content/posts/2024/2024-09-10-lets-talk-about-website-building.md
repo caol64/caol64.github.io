@@ -9,7 +9,6 @@ ShowToc: true
 TocOpen: true
 tags:
   - Cloudflare
-  - Svelte
   - Tutorial
 categories:
   - 网站开发

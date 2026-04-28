@@ -9,7 +9,6 @@ ShowToc: true
 TocOpen: true
 tags:
   - Open Source
-  - Markdown
   - 墨探
   - Software Architecture
 categories:
