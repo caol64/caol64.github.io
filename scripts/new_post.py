@@ -44,6 +44,7 @@ def translate_title(title):
         .replace(",", "")
         .replace('"', "")
         .replace("'", "")
+        .replace(":", "")
         .replace("(", "")
         .replace(")", "")
         .replace(" ", "-")
