@@ -8,13 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Open Source
-  - Reverse Engineering
-  - Tutorial
-  - PS2
-  - Ps2mc Browser
+  - PS2逆向
 categories:
-  - 逆向工程
+  - uncategorized
 ---
 
 ![](imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/Playstation_2_Memory_Card-3.jpg)

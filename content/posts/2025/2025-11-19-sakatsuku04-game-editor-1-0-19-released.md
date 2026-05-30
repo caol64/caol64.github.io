@@ -8,12 +8,10 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Sakatsuku 04
-  - Open Source
-  - Reverse Engineering
-  - PS2
+  - サカつく04
+  - 软件发布
 categories:
-  - 项目介绍
+  - uncategorized
 ---
 
 [开源项目 · sakatsuku04](https://github.com/caol64/sakatsuku04) 迎来全新版本！

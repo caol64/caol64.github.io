@@ -8,10 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Secure
-  - Tutorial
-categories:
   - 网络安全
+categories:
+  - uncategorized
 ---
 
 近期，npm 启动了一系列旨在增强生态系统安全性的重要更新。核心变化之一是逐步淘汰传统的、长期有效的经典访问令牌，并鼓励开发者转向一种更安全、更现代的发布方式：**可信发布 (Trusted Publishing)**。

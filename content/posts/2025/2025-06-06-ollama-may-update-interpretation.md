@@ -9,10 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - Ollama
-  - LLM
-  - Local AI
+  - AI迷局
 categories:
-  - AI
+  - uncategorized
 ---
 
 五月对于 Ollama 社区来说是激动人心的一个月！这个致力于让每个人都能轻松在本地运行强大AI模型的开源项目，在短短几周内接连发布了三项重大更新，极大地扩展了其功能和用户体验。如果你关注本地化 AI 的发展，或者已经是 Ollama 的忠实用户，那么这些新特性绝对不容错过。让我们一起来看看 Ollama 在这个五月都为我们带来了哪些惊喜。

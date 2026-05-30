@@ -8,12 +8,11 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - LLM
-  - Prompt Engineering
-  - Tutorial
-  - Fine-tune
+  - 少样本提示
+  - 微调
+  - AI入局
 categories:
-  - AI
+  - uncategorized
 ---
 
 > 这是一篇偏实践向的记录，主要整理我在「用多模态大模型做发票数据结构化提取」过程中踩过的坑、验证过的方案，以及一些比较稳妥的落地思路。整体目标只有一个：**让模型稳定输出可直接用的 JSON，而不是“看起来很聪明”的一大段解释。**

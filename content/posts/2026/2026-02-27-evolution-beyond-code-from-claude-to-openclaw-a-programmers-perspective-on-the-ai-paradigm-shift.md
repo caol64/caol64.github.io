@@ -9,9 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - Agents
-  - LLM
+  - AI迷局
 categories:
-  - AI
+  - uncategorized
 ---
 
 作为一名开发者，过去这两年我们大概都经历过类似的肌肉记忆：频繁地在 IDE 和浏览器之间 `Alt+Tab`，把一坨代码粘贴进对话框，等待 AI 吐出结果，然后再小心翼翼地复制回本地文件。

@@ -8,9 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Thoughts
-categories:
   - 想法
+categories:
+  - uncategorized
 ---
 ## 《水平思考法》读后感
 

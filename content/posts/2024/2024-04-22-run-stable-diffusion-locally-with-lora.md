@@ -9,11 +9,10 @@ ShowToc: true
 TocOpen: true
 tags:
   - Stable Diffusion
-  - Local AI
-  - Image Generation
-  - Tutorial
+  - AI入局
+  - 微调
 categories:
-  - AI
+  - uncategorized
 ---
 本文是[`Stable Diffusion`系列](https://babyno.top/tags/stable-diffusion/)第二篇。
 

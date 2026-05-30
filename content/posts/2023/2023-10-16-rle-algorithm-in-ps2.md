@@ -8,14 +8,10 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Data Compression
-  - Algorithm
-  - Reverse Engineering
-  - PS2
-  - Tutorial
-  - Ps2mc Browser
+  - 算法
+  - PS2逆向
 categories:
-  - 游戏开发
+  - uncategorized
 ---
 ![](imgs/posts/2023-10-16-rle-algorithm-in-ps2/run_length_f9030faa12.webp)
 

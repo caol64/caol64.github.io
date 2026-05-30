@@ -8,10 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Sakatsuku 04
-  - Reverse Engineering
+  - サカつく04
 categories:
-  - 逆向工程
+  - uncategorized
 ---
 
 ## 留学成长分析

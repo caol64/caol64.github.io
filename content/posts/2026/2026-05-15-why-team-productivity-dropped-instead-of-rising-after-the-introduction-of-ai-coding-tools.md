@@ -9,9 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
     - Agents
-    - LLM
+    - AI迷局
 categories:
-    - AI
+    - uncategorized
 ---
 
 今年三月，一个团队在内部复盘时发现了一个让人笑不出来的数据：AI 辅助后，团队 PR 数量涨了 98%，但代码评审时间涨了 91%。成员的个人交付速度确实快了，可反映到最终产出上，实际发版的频率几乎没有变化。

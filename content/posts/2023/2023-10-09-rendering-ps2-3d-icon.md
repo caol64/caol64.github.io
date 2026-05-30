@@ -8,15 +8,11 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Open Source
   - OpenGL
-  - PyGame
-  - PS2
-  - Tutorial
-  - 3D Graphics
-  - Ps2mc Browser
+  - PS2逆向
+  - 3D图形
 categories:
-  - 图形开发
+  - uncategorized
 ---
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/1.jpg)
 

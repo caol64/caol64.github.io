@@ -9,9 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - 3shi
-  - Thoughts
-categories:
   - 想法
+categories:
+  - uncategorized
 ---
 这是一篇个人的真实感想。
 

@@ -8,10 +8,10 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Sakatsuku 04
-  - PS2
+  - サカつく04
+  - 软件发布
 categories:
-  - 项目介绍
+  - uncategorized
 ---
 
 喜欢《创造球会04》的玩家注意，一个全新的网站 **「创造球会04游乐场」** 现已上线。

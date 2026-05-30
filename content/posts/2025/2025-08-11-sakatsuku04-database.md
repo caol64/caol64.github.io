@@ -8,10 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Sakatsuku 04
-  - Reverse Engineering
+  - サカつく04
 categories:
-  - 逆向工程
+  - uncategorized
 ---
 本资料集的数据来源于游戏逆向。其中的一部分已作为[球会 04 游戏修改器](https://yuzhi.tech/docs/saka04)的数据来源。
 

@@ -8,11 +8,10 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Open Source
-  - Software Releases
-  - Ps2mc Browser
+  - Ps2mc
+  - 软件发布
 categories:
-  - 项目介绍
+  - uncategorized
 ---
 `ps2mc-browser`是一个`PS2`存档文件查看器，使用`OpenGL`画布显示存档里的3D动态图标。依赖如下：
 

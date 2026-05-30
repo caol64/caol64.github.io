@@ -8,13 +8,11 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Sakatsuku 04
-  - Open Source
-  - Reverse Engineering
-  - PS2
-  - Tutorial
+  - サカつく04
+  - Ghidra
+  - PS2逆向
 categories:
-  - 逆向工程
+  - uncategorized
 ---
 ![](imgs/posts/2025-01-14-sakatsuku-04-game-reverse-save-file-analysis/cover.jpg)
 

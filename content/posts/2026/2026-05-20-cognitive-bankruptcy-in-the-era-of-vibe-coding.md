@@ -9,10 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - Agents
-  - LLM
-  - Harness Engineering
+  - AI迷局
 categories:
-  - AI
+  - uncategorized
 ---
 
 前几天，我删除了自己最近跑通的 4 个项目。

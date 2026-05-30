@@ -8,11 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Sakatsuku 04
-  - Reverse Engineering
-  - PS2
+  - サカつく04
 categories:
-  - 逆向工程
+  - uncategorized
 ---
 
 ## 真人能力修正相关

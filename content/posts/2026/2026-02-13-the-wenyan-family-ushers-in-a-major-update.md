@@ -8,12 +8,10 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Open Source
   - 文颜
-  - MCP
-  - Software Releases
+  - 软件发布
 categories:
-  - 项目介绍
+  - uncategorized
 ---
 
 ![](https://babyno.top/imgs/posts/2024-08-30-introduce-for-wenyan/wenyan.webp)

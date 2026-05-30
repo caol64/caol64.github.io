@@ -9,11 +9,10 @@ ShowToc: true
 TocOpen: true
 tags:
   - Agents
-  - LLM
-  - Prompt Engineering
-  - Tutorial
+  - Skill
+  - AI入局
 categories:
-  - AI
+  - uncategorized
 ---
 
 回顾一下我们的“造人”计划。

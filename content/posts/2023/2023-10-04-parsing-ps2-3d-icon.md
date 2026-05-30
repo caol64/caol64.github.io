@@ -8,14 +8,10 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Open Source
-  - Reverse Engineering
-  - Tutorial
-  - PS2
-  - 3D Graphics
-  - Ps2mc Browser
+  - PS2逆向
+  - 3D图形
 categories:
-  - 逆向工程
+  - uncategorized
 ---
 ![](imgs/posts/2023-10-04-parsing-ps2-3d-icon/1.gif)
 

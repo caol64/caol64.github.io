@@ -9,11 +9,10 @@ ShowToc: true
 TocOpen: true
 tags:
   - Agents
-  - LLM
   - MCP
-  - Tutorial
+  - AI入局
 categories:
-  - AI
+  - uncategorized
 ---
 
 还记得我们在[上一篇文章](https://babyno.top/posts/2024/12/write-your-own-agent---theory/)中聊过的“智能体”理论吗？

@@ -9,10 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - Ollama
-  - LLM
-  - Local AI
+  - AI迷局
 categories:
-  - AI
+  - uncategorized
 ---
 
 2025年的九月，Ollama社区迎来了三项意义非凡的更新：云端模型、性能强化的新调度引擎，以及网页搜索API。当我们将这三项更新放在一起审视时，会发现它们之间似乎存在着某种巧妙的内在联系。这不禁引人深思：Ollama是否正在下一盘大棋？这不仅仅是功能的迭代，或许更预示着一个全新的、融合本地与云端的混合式AI平台的雏形。

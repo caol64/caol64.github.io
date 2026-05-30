@@ -9,10 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - Cloudflare
-  - Secure
-  - Tutorial
-categories:
   - 网络安全
+categories:
+  - uncategorized
 ---
 ![Cloudflare WARP](imgs/posts/2024-01-05-optimize-the-network-experience-using-cloudflare-warp/%E4%B8%8B%E8%BD%BD.webp)
 

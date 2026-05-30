@@ -8,11 +8,10 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Open Source
   - 文颜
-  - Software Releases
+  - 软件发布
 categories:
-  - 项目介绍
+  - uncategorized
 ---
 
 ## 什么是文颜 CLI？

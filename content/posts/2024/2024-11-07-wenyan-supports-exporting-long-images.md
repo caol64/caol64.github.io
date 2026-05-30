@@ -8,11 +8,10 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Open Source
   - 文颜
-  - Software Updates
+  - 软件发布
 categories:
-  - 项目介绍
+  - uncategorized
 ---
 
 [「文颜」](https://yuzhi.tech/wenyan)是一款多平台写作工具，因此也适合图片社交媒体的内容发布。目前文颜可将内容按照预览效果导出成长图，这可以满足一些特殊的发布需求。

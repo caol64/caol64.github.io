@@ -8,10 +8,10 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Open Source
+  - 软件发布
   - 墨探
 categories:
-  - 项目介绍
+  - uncategorized
 ---
 
 > "让阅读止于理解，让知识始于结构化 Markdown。"

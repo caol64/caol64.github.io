@@ -9,9 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - Agents
-  - LLM
+  - AI迷局
 categories:
-  - AI
+  - uncategorized
 ---
 
 "龙虾养得起，token 烧不起。"

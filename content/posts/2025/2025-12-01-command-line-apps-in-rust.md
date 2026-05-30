@@ -8,9 +8,9 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Translation
+  - 译文
 categories:
-  - 文档翻译
+  - uncategorized
 ---
 
 原文链接：https://rust-cli.github.io/book/

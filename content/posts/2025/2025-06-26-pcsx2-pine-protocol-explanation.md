@@ -8,11 +8,10 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - PS2
-  - Tutorial
-  - PCSX2
+  - PS2逆向
+  - 教程
 categories:
-  - 游戏开发
+  - uncategorized
 ---
 
 最近在逛 [PCSX2](https://pcsx2.net/blog/2024/pcsx2-2-release) 博客的时候，注意到这么一段话：
