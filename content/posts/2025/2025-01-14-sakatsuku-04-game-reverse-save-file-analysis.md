@@ -11,7 +11,7 @@ tags:
   - サカつく04
   - PS2逆向
 categories:
-  - uncategorized
+  - 逆向工程
 ---
 
 本系列将和大家一起探索PS2游戏——J联盟创造球会04（J.League Pro Soccer Club o Tsukurou! 04）的逆向研究。本文先解析一下游戏存档。

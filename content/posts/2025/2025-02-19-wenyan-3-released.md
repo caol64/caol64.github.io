@@ -9,9 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - 文颜
-  - 软件发布
 categories:
-  - uncategorized
+  - 文颜
 ---
 「文颜」是一款全自动的文章排版美化工具，专为简化您的内容发布工作而设计。它可以将Markdown格式的文章快速转换为适合微信公众号、今日头条、知乎等平台的排版格式，从而省去因平台差异带来的繁琐调整。
 

@@ -9,9 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - Agents
-  - AI入局
 categories:
-  - uncategorized
+  - AI入局
 ---
 
 不知道大家有没有这种感觉，你与网页版的`ChatGPT`对话，和你调用API和`GPT4o`对话，返回的结果往往都是`ChatGPT`更好。明明它们背后使用的模型都是一样的，为什么结果却会不同呢？那就要聊聊我们今天的话题：“语言模型”和“智能体”。

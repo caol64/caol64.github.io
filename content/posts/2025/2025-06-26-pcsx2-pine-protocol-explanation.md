@@ -11,7 +11,7 @@ tags:
   - PS2逆向
   - 教程
 categories:
-  - uncategorized
+  - 逆向工程
 ---
 
 最近在逛 [PCSX2](https://pcsx2.net/blog/2024/pcsx2-2-release) 博客的时候，注意到这么一段话：

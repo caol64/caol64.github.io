@@ -12,7 +12,7 @@ tags:
   - PS2逆向
   - 3D图形
 categories:
-  - uncategorized
+  - 逆向工程
 ---
 ![](imgs/posts/2023-10-09-rendering-ps2-3d-icon/1.jpg)
 

@@ -9,9 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - Agents
-  - LLM
 categories:
-  - AI
+  - uncategorized
 ---
 
 

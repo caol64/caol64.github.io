@@ -12,7 +12,7 @@ tags:
   - Ps2mc
   - 3D图形
 categories:
-  - uncategorized
+  - Ps2mc
 ---
 如何将多边形的顶点和纹理渲染成缤纷多彩的画面呢？它就是OpenGL着色器。今天我们就要聊聊`ps2mc-browser`的着色器。
 

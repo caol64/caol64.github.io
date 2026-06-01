@@ -9,10 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - Stable Diffusion
-  - AI入局
   - 微调
 categories:
-  - uncategorized
+  - AI入局
 ---
 本文是[`Stable Diffusion`系列](https://babyno.top/tags/stable-diffusion/)第二篇。
 

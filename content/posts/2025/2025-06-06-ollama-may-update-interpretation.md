@@ -9,7 +9,6 @@ ShowToc: true
 TocOpen: true
 tags:
   - Ollama
-  - AI迷局
 categories:
   - uncategorized
 ---

@@ -9,9 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - サカつく04
-  - 软件发布
 categories:
-  - uncategorized
+  - 创造球会
 ---
 
 [开源项目 · sakatsuku04](https://github.com/caol64/sakatsuku04) 迎来全新版本！

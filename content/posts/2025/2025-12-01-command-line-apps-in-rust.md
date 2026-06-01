@@ -7,10 +7,8 @@ date: 2025-12-01 11:53:36
 draft: false
 ShowToc: true
 TocOpen: true
-tags:
-  - 译文
 categories:
-  - uncategorized
+  - 译文
 ---
 
 原文链接：https://rust-cli.github.io/book/

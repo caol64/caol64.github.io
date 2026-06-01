@@ -11,7 +11,7 @@ tags:
   - 墨探
   - 教程
 categories:
-  - uncategorized
+  - 墨探
 ---
 
 > 让网页内容一键转 Markdown，从未如此优雅。

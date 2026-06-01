@@ -10,7 +10,7 @@ TocOpen: true
 tags:
   - サカつく04
 categories:
-  - uncategorized
+  - 创造球会
 ---
 本资料集的数据来源于游戏逆向。其中的一部分已作为[球会 04 游戏修改器](https://yuzhi.tech/docs/saka04)的数据来源。
 

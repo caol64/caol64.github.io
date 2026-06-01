@@ -10,7 +10,7 @@ TocOpen: true
 tags:
   - サカつく04
 categories:
-  - uncategorized
+  - 创造球会
 ---
 
 纯属娱乐。

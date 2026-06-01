@@ -9,9 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - 文颜
-  - 软件发布
+  - 公众号
 categories:
-  - uncategorized
+  - 文颜
 ---
 
 ![](https://babyno.top/imgs/posts/2024-08-30-introduce-for-wenyan/wenyan.webp)

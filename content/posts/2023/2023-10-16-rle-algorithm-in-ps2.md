@@ -11,7 +11,7 @@ tags:
   - 算法
   - PS2逆向
 categories:
-  - uncategorized
+  - 逆向工程
 ---
 ![](imgs/posts/2023-10-16-rle-algorithm-in-ps2/run_length_f9030faa12.webp)
 

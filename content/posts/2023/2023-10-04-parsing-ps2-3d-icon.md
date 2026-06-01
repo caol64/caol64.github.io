@@ -11,7 +11,7 @@ tags:
   - PS2逆向
   - 3D图形
 categories:
-  - uncategorized
+  - 逆向工程
 ---
 ![](imgs/posts/2023-10-04-parsing-ps2-3d-icon/1.gif)
 

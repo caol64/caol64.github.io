@@ -9,9 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - 快捷指令
-  - 效率提升
 categories:
-  - uncategorized
+  - 效率提升
 ---
 MAC有个令人“脑阔疼”的地方，没法在直接在某个目录下面创建文件，有的时候真的不方便。还好我们有“**快捷指令**”，这点问题不在话下。
 

@@ -9,9 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - サカつく04
-  - 软件发布
 categories:
-  - uncategorized
+  - 创造球会
 ---
 
 喜欢《创造球会04》的玩家注意，一个全新的网站 **「创造球会04游乐场」** 现已上线。

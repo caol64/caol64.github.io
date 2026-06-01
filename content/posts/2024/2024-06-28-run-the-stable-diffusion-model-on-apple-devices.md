@@ -10,9 +10,8 @@ TocOpen: true
 tags:
   - Stable Diffusion
   - CoreML
-  - AI入局
 categories:
-  - uncategorized
+  - AI入局
 ---
 ## 模型类别
 

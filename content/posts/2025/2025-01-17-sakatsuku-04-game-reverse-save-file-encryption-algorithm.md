@@ -12,7 +12,7 @@ tags:
   - Ghidra
   - PS2逆向
 categories:
-  - uncategorized
+  - 逆向工程
 ---
 ![](imgs/posts/2025-01-14-sakatsuku-04-game-reverse-save-file-analysis/cover.jpg)
 

@@ -9,9 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - Agents
-  - AI迷局
 categories:
-  - uncategorized
+  - AI迷局
 ---
 
 前几天，我删除了自己最近跑通的 4 个项目。

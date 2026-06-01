@@ -10,9 +10,8 @@ TocOpen: true
 tags:
   - Agents
   - Skill
-  - AI入局
 categories:
-  - uncategorized
+  - AI入局
 ---
 
 回顾一下我们的“造人”计划。

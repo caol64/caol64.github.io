@@ -10,7 +10,7 @@ TocOpen: true
 tags:
   - PS2逆向
 categories:
-  - uncategorized
+  - 逆向工程
 ---
 
 ![](imgs/posts/2023-09-26-parsing-ps2-memcard-file-system/Playstation_2_Memory_Card-3.jpg)

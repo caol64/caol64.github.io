@@ -9,9 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - 快捷指令
-  - 效率提升
 categories:
-  - uncategorized
+  - 效率提升
 ---
 今天开始我创建了一个「快捷指令」专题，专门分享自己常用的`Apple Shortcuts`。我是一个喜欢效率的人，所以能够自动化的工作我都尽量不进行繁琐的逐步操作。希望这些「快捷指令」也能为你们的生活带来便利。
 

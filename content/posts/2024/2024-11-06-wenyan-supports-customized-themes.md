@@ -9,9 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - 文颜
-  - 软件发布
 categories:
-  - uncategorized
+  - 文颜
 ---
 
 到目前为止，[「文颜」](https://yuzhi.tech/wenyan)内置了7套主题，除了一套“默认”主题外，其它主题都来源于众多作者的开源主题，在这里向各位作者表示感谢🙏：

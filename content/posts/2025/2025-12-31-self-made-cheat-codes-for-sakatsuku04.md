@@ -10,7 +10,7 @@ TocOpen: true
 tags:
   - サカつく04
 categories:
-  - uncategorized
+  - 创造球会
 ---
 
 ## 真人能力修正相关
