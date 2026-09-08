@@ -78,7 +78,7 @@ categories:
 
 ## 解码 VDP1
 
-`VDP1`中有三个精灵图：
+`VDP1`中有三个缩放精灵：
 
 ```
 Scaled Sprite
@@ -94,6 +94,11 @@ Color bank: 00000000
 Color Calc. mode: Replace
 ```
 
+- **左半边对话框底图：**
+  - 数据位置：vdp1-vram.bin 的偏移量 **0x10B40**
+  - 格式：8 BPP (256色)
+  - 尺寸：宽 320，高 64
+
 ```
 Scaled Sprite
 Zoom Point: Center-center
@@ -107,6 +112,12 @@ Color mode: 8 BPP(128 color bank)
 Color bank: 00000000
 Color Calc. mode: Replace
 ```
+
+- **右半边对话框底图：**
+  - 数据位置：vdp1-vram.bin 的偏移量 **0x15B40**
+  - 格式：8 BPP (256色)
+  - 尺寸：宽 320，高 64
+  - 验证计算： 左半张图大小 = 320 * 64 * 1 byte (8BPP) = 20,480 字节 = 十六进制的 0x5000。而 0x10B40 + 0x5000 = 0x15B40。完美吻合！
 
 ```
 Scaled Sprite
@@ -122,23 +133,12 @@ Color bank: 00000400
 Color Calc. mode: Replace
 ```
 
-- **左半边对话框底图：**
-  - 数据位置：vdp1-vram.bin 的偏移量 **0x10B40**
-  - 格式：8 BPP (256色)
-  - 尺寸：宽 320，高 64
-
-- **右半边对话框底图：**
-  - 数据位置：vdp1-vram.bin 的偏移量 **0x15B40**
-  - 格式：8 BPP (256色)
-  - 尺寸：宽 320，高 64
-  - 验证计算： 左半张图大小 = 320 * 64 * 1 byte (8BPP) = 20,480 字节 = 十六进制的 0x5000。而 0x10B40 + 0x5000 = 0x15B40。完美吻合！
-
 - **跳动的光标 (倒三角)：**
   - 数据位置：vdp1-vram.bin 的偏移量 **0x10000**
   - 格式：4 BPP (16色)
   - 尺寸：宽 32，高 16
 
-到目前为止，我们只需写一个脚本，从`vdp1-vram.bin`的偏移`0x10B40`处，提取`8 BPP`的`320 x 64`字节数据即可还原左右半边对话框底图，如下：
+这三个缩放精灵会交由 VDP1 在硬件内部渲染为四边形。由于其中直接显示了纹理的宽和高，我们大胆猜测这三个纹理各自是一张连续的矩形位图（bitmap），像素数据按行连续存储（从左到右、从上到下）。只需写一个脚本，从`vdp1-vram.bin`的偏移`0x10B40`处，提取`8 BPP`的`320 x 64`字节数据即可还原，当然别忘了去`vdp2-vram.bin`查找调色板。其左右半边对话框底图，如下：
 
 ![](imgs/posts/2026-09-07-sega-saturn-graphics-technology-research-1/12.webp)
 
