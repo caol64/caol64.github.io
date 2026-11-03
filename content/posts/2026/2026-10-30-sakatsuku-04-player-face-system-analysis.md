@@ -9,8 +9,11 @@ ShowToc: true
 TocOpen: true
 tags:
   - サカつく04
+  - PS2逆向
+  - Ghidra
+  - OpenGL
 categories:
-  - 创造球会
+  - 逆向工程
 ---
 
 [创造球会04游乐场](https://saka04.babyno.top/)上新了一个新功能：球员头像显示。这篇文章聊聊背后的一些技术细节。
