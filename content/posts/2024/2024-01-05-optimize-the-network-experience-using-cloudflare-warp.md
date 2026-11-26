@@ -8,10 +8,10 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Cloudflare
-  - 网络安全
+  - Self-hosted
+  - Cloudflare WARP
 categories:
-  - uncategorized
+  - 效率工具
 ---
 ![Cloudflare WARP](imgs/posts/2024-01-05-optimize-the-network-experience-using-cloudflare-warp/%E4%B8%8B%E8%BD%BD.webp)
 

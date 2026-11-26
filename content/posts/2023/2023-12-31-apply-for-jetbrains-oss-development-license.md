@@ -7,10 +7,8 @@ date: 2023-12-31 15:44:56
 draft: false
 ShowToc: true
 TocOpen: true
-tags:
-  - JetBrains
 categories:
-  - uncategorized
+  - 随笔
 ---
 ![jetbrains](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png)
 

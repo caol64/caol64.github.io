@@ -8,10 +8,11 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - 算法
-  - PS2逆向
+  - 压缩算法
+  - RLE
+  - LZSS
 categories:
-  - 逆向工程
+  - 算法研究
 ---
 
 > [前文](/posts/2026/10/analysis-of-bz-and-bzw-decompression-algorithms/)我们已经剖析了 BZ/BZW 这对 LZSS 变体。但你也许会问：PS2 游戏中不是还有一套[基于 RLE 的图片压缩算法](/posts/2023/10/rle-algorithm-in-ps2/)吗？它和 BZ/BZW 又是什么关系？

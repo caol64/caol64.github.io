@@ -9,7 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - サカつく04
-  - Ghidra
+  - 加密算法
+  - BlowFish
   - PS2逆向
 categories:
   - 逆向工程

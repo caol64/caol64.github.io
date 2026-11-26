@@ -9,9 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - 墨探
-  - 教程
+  - CLI
 categories:
-  - 墨探
+  - 我的项目
 ---
 
 > 让网页内容一键转 Markdown，从未如此优雅。

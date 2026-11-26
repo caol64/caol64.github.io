@@ -10,6 +10,7 @@ TocOpen: true
 tags:
   - Ollama
   - RAG
+  - LLM推理
 categories:
   - AI入局
 ---

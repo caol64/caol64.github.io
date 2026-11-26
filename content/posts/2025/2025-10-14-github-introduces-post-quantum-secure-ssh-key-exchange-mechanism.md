@@ -9,9 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - 量子技术
-  - 网络安全
 categories:
-  - 译文
+  - 安全研究
 ---
 
 > GitHub 正在为通过 SSH 与 Git 交互时的 SSH 访问引入一种混合后量子安全密钥交换算法。

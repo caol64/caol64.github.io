@@ -8,9 +8,10 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - Cloudflare
+  - Cloudflare Pages
+  - SEO
 categories:
-  - 网站开发
+  - 建站
 ---
 这两天建了个[新站](https://yuzhi.tech/)，与[本博客建站](https://babyno.top/posts/2023/11/new-hugo-blog/)过程不同，因此想写篇文章记录下。
 

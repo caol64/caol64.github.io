@@ -10,8 +10,9 @@ TocOpen: true
 tags:
   - 墨探
   - 知识库
+  - CLI
 categories:
-  - 墨探
+  - 我的项目
 ---
 
 > "让阅读止于理解，让知识始于结构化 Markdown。"

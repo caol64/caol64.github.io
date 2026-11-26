@@ -9,6 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - RAG
+  - BM25
+  - LLM推理
 categories:
   - AI入局
 ---

@@ -9,8 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - 墨探
+  - CLI
 categories:
-  - 墨探
+  - 我的项目
 ---
 
 墨探 (omni-article-markdown) - 轻松将网页文章（博客、新闻、文档等）转换为 `Markdown` 格式。

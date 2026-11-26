@@ -9,6 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - Stable Diffusion
+  - ControlNet
+  - T2I-Adapter
+  - 图像生成
 categories:
   - AI入局
 ---

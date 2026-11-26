@@ -9,6 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - Stable Diffusion
+  - diffusers
+  - 图像生成
 categories:
   - AI入局
 ---

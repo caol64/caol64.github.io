@@ -9,8 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - 文颜
+  - 公众号
 categories:
-  - 文颜
+  - 我的项目
 ---
 
 ![wenyan logo](imgs/posts/2024-08-30-introduce-for-wenyan/wenyan.webp)

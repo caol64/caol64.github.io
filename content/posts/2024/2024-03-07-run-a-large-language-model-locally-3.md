@@ -9,6 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - Ollama
+  - LLM推理
+  - Agents
 categories:
   - AI入局
 ---

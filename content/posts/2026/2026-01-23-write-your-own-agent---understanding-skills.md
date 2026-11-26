@@ -9,7 +9,8 @@ ShowToc: true
 TocOpen: true
 tags:
   - Agents
-  - Skill
+  - Agent Skills
+  - LLM推理
 categories:
   - AI入局
 ---

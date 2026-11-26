@@ -10,6 +10,7 @@ TocOpen: true
 tags:
   - Stable Diffusion
   - CoreML
+  - 图像生成
 categories:
   - AI入局
 ---

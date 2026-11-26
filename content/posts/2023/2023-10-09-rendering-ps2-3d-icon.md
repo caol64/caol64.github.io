@@ -11,6 +11,7 @@ tags:
   - OpenGL
   - PS2逆向
   - 3D图形
+  - 着色器
 categories:
   - 逆向工程
 ---

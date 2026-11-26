@@ -8,11 +8,10 @@ draft: false
 ShowToc: true
 TocOpen: true
 tags:
-  - 算法
-  - PS2逆向
-  - 土星逆向
+  - 压缩算法
+  - LZSS
 categories:
-  - 逆向工程
+  - 算法研究
 ---
 
 > 本文将带你了解世嘉 Dreamcast 与 PlayStation 2 游戏中出现的一种 LZSS 类压缩算法变体，看看这些游戏如何用更少的光盘空间存储贴图、音效、字体等资源。

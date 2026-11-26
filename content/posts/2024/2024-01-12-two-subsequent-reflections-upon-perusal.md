@@ -7,10 +7,8 @@ date: 2024-01-12 18:13:51
 draft: false
 ShowToc: true
 TocOpen: true
-tags:
-  - 想法
 categories:
-  - uncategorized
+  - 随笔
 ---
 ## 《水平思考法》读后感
 

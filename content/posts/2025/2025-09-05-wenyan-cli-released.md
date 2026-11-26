@@ -10,8 +10,9 @@ TocOpen: true
 tags:
   - 文颜
   - 公众号
+  - CLI
 categories:
-  - 文颜
+  - 我的项目
 ---
 
 ## 什么是文颜 CLI？

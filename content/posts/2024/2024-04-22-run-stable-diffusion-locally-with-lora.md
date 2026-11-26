@@ -10,6 +10,8 @@ TocOpen: true
 tags:
   - Stable Diffusion
   - 微调
+  - LoRA
+  - 图像生成
 categories:
   - AI入局
 ---

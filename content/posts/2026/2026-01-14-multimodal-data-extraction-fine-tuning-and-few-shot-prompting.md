@@ -10,6 +10,7 @@ TocOpen: true
 tags:
   - 少样本提示
   - 微调
+  - LLM推理
 categories:
   - AI入局
 ---

@@ -4,7 +4,7 @@ title: 「译」Rust 中的命令行应用
 slug: command-line-apps-in-rust
 description: "Translation of 'Command line apps in Rust'"
 date: 2025-12-01 11:53:36
-draft: false
+draft: true
 ShowToc: true
 TocOpen: true
 categories:

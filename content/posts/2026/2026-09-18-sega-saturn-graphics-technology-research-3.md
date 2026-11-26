@@ -9,6 +9,9 @@ ShowToc: true
 TocOpen: true
 tags:
   - 土星逆向
+  - 纹理编码
+  - 文件格式解析
+  - 2D图像
 categories:
   - 逆向工程
 ---

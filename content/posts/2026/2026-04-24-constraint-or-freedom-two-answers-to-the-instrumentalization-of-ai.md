@@ -10,7 +10,7 @@ TocOpen: true
 tags:
   - Agents
   - MCP
-  - Skill
+  - Agent Skills
 categories:
   - AI迷局
 ---
