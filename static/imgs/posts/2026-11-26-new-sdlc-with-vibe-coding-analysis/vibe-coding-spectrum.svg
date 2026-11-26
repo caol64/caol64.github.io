@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">
+<defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#f59e0b"/><stop offset="0.5" stop-color="#3b82f6"/><stop offset="1" stop-color="#10b981"/></linearGradient>
+<marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#64748b"/></marker></defs>
+<rect x="40" y="110" width="820" height="26" rx="13" fill="url(#g)"/>
+<text x="450" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#334155">从 Vibe Coding 到 Agentic Engineering 的光谱</text>
+<text x="450" y="70" text-anchor="middle" font-size="14" fill="#64748b">区分标准不是"用不用 AI"，而是 AI 输出周围有多少 结构 · 验证 · 人类判断</text>
+<g font-size="15" font-weight="bold"><text x="60" y="170" fill="#b45309">Vibe Coding</text><text x="450" y="170" text-anchor="middle" fill="#1d4ed8">结构化 AI 辅助编码</text><text x="840" y="170" text-anchor="end" fill="#047857">Agentic Engineering</text></g>
+<g font-size="13" fill="#475569">
+<text x="60" y="195">验证："看起来能跑吗？"</text><text x="60" y="215">场景：原型/脚本/黑客松</text><text x="60" y="235">风险：高（可丢弃代码）</text>
+<text x="450" y="195" text-anchor="middle">验证：手动测试、抽查</text><text x="450" y="215" text-anchor="middle">场景：成熟代码库中的功能</text><text x="450" y="235" text-anchor="middle">风险：中（关键节点人工把关）</text>
+<text x="840" y="195" text-anchor="end">验证：测试套件 + CI 门禁 + LM 评审</text><text x="840" y="215" text-anchor="end">场景：生产系统、团队级开发</text><text x="840" y="235" text-anchor="end">风险：低（每阶段系统化验证）</text></g>
+<line x1="120" y1="275" x2="780" y2="275" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+<text x="450" y="268" text-anchor="middle" font-size="12" fill="#64748b">Harness 配置越审慎 → 越靠右（同一个 Agent 两端皆可）</text>
+</svg>

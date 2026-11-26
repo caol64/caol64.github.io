@@ -9,6 +9,7 @@ ShowToc: true
 TocOpen: true
 tags:
   - Agents
+  - Vibe Coding
 categories:
   - AI迷局
 ---
