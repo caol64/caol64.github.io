@@ -14,11 +14,9 @@ tags:
   - Agents
 categories:
   - AI入局
-cover:
-  image: "imgs/posts/2026-11-25-speculative-decoding-llm-inference-acceleration/hero.webp"
-  alt: "小模型打草稿，大模型验证：推测解码"
-  hidden: false
 ---
+
+![](imgs/posts/2026-11-25-speculative-decoding-llm-inference-acceleration/hero.webp)
 
 本地跑模型时，最容易被误诊的问题就是“慢”。
 
