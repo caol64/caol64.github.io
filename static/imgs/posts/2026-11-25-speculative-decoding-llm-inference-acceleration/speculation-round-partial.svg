@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 372" width="900" height="372"
+    font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, Noto Sans SC, Source Han Sans SC, sans-serif">
+    <text x="450.0" y="34.0" font-size="20" fill="#334155" text-anchor="middle" font-weight="bold">情况
+        A：中途被拒</text>
+    <text x="450.0" y="62.0" font-size="14" fill="#64748b" text-anchor="middle">第一个候选就被拒，后面的全部作废，本轮只推进
+        1 个</text>
+    <rect x="30" y="92" width="840" height="30" rx="8" fill="#e2e8f0" stroke="#cbd5e1" />
+    <text x="42" y="112.0" text-anchor="start"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">
+        <tspan font-size="12.5" fill="#475569">已有上下文</tspan>
+        <tspan dx="8" font-size="13" fill="#334155">The quick brown fox jumps</tspan>
+    </text>
+    <text x="30.0" y="158.0" text-anchor="start" font-size="12.5" fill="#64748b"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">草稿模型猜</text>
+    <rect x="236" y="138" width="100" height="30" rx="7" fill="#eff6ff" stroke="#3b82f6" />
+    <text x="286.0" y="158.0" text-anchor="middle" font-size="13" fill="#334155"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">runs</text>
+    <rect x="344" y="138" width="100" height="30" rx="7" fill="#eff6ff" stroke="#3b82f6" />
+    <text x="394.0" y="158.0" text-anchor="middle" font-size="13" fill="#334155"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">over</text>
+    <rect x="452" y="138" width="100" height="30" rx="7" fill="#eff6ff" stroke="#3b82f6" />
+    <text x="502.0" y="158.0" text-anchor="middle" font-size="13" fill="#334155"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">the</text>
+    <rect x="560" y="138" width="100" height="30" rx="7" fill="#eff6ff" stroke="#3b82f6" />
+    <text x="610.0" y="158.0" text-anchor="middle" font-size="13" fill="#334155"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">lazy</text>
+    <rect x="668" y="138" width="100" height="30" rx="7" fill="#eff6ff" stroke="#3b82f6" />
+    <text x="718.0" y="158.0" text-anchor="middle" font-size="13" fill="#334155"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">dog</text>
+    <text x="30.0" y="196.0" text-anchor="start" font-size="12.5" fill="#64748b"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">目标模型核</text>
+    <rect x="236" y="176" width="100" height="30" rx="7" fill="#ef4444" fill-opacity="0.12"
+        stroke="#ef4444" stroke-dasharray="5 4" />
+    <text x="286.0" y="196.0" text-anchor="middle" font-size="15" fill="#ef4444" font-weight="bold"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">✗</text>
+    <rect x="344" y="176" width="100" height="30" rx="7" fill="#ef4444" fill-opacity="0.12"
+        stroke="#ef4444" stroke-dasharray="5 4" />
+    <text x="394.0" y="196.0" text-anchor="middle" font-size="15" fill="#ef4444" font-weight="bold"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">✗</text>
+    <rect x="452" y="176" width="100" height="30" rx="7" fill="#ef4444" fill-opacity="0.12"
+        stroke="#ef4444" stroke-dasharray="5 4" />
+    <text x="502.0" y="196.0" text-anchor="middle" font-size="15" fill="#ef4444" font-weight="bold"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">✗</text>
+    <rect x="560" y="176" width="100" height="30" rx="7" fill="#ef4444" fill-opacity="0.12"
+        stroke="#ef4444" stroke-dasharray="5 4" />
+    <text x="610.0" y="196.0" text-anchor="middle" font-size="15" fill="#ef4444" font-weight="bold"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">✗</text>
+    <rect x="668" y="176" width="100" height="30" rx="7" fill="#ef4444" fill-opacity="0.12"
+        stroke="#ef4444" stroke-dasharray="5 4" />
+    <text x="718.0" y="196.0" text-anchor="middle" font-size="15" fill="#ef4444" font-weight="bold"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">✗</text>
+    <text x="30" y="234" font-size="12.5" fill="#475569"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">本轮结果</text>
+    <rect x="236" y="214" width="100" height="30" rx="7" fill="#f59e0b" fill-opacity="0.2"
+        stroke="#f59e0b" />
+    <text x="286.0" y="234.0" text-anchor="middle" font-size="13" fill="#b45309" font-weight="bold"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">jumps</text>
+    <rect x="344" y="214" width="100" height="30" rx="7" fill="#fff" stroke="#cbd5e1"
+        stroke-dasharray="4 4" />
+    <text x="394.0" y="234.0" text-anchor="middle" font-size="13" fill="#64748b"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">作废</text>
+    <rect x="452" y="214" width="100" height="30" rx="7" fill="#fff" stroke="#cbd5e1"
+        stroke-dasharray="4 4" />
+    <text x="502.0" y="234.0" text-anchor="middle" font-size="13" fill="#64748b"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">作废</text>
+    <rect x="560" y="214" width="100" height="30" rx="7" fill="#fff" stroke="#cbd5e1"
+        stroke-dasharray="4 4" />
+    <text x="610.0" y="234.0" text-anchor="middle" font-size="13" fill="#64748b"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">作废</text>
+    <rect x="668" y="214" width="100" height="30" rx="7" fill="#fff" stroke="#cbd5e1"
+        stroke-dasharray="4 4" />
+    <text x="718.0" y="234.0" text-anchor="middle" font-size="13" fill="#64748b"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">作废</text>
+    <text x="30.0" y="268.0" text-anchor="start" font-size="11.5" fill="#64748b"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">大模型更倾向 jumps，替换掉被拒的
+        runs</text>
+    <rect x="30" y="290" width="840" height="40" rx="10" fill="#10b981" fill-opacity="0.12"
+        stroke="#10b981" />
+    <text x="450.0" y="308.0" text-anchor="middle" font-size="13.5" fill="#047857"
+        font-weight="bold" font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">本轮推进
+        1 个 Token（纠正出来的 jumps）</text>
+    <text x="450.0" y="323.0" text-anchor="middle" font-size="11.5" fill="#475569"
+        font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">下一轮从 “The quick brown
+        fox jumps” 继续</text>
+    <text x="450.0" y="360.0" font-size="12" fill="#64748b" text-anchor="middle">示意：第一个就被拒是最差情况，也是“每轮至少推进
+        1 个”的下限</text>
+</svg>
